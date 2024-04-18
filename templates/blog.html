@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset='UTF-8'>
     <title>Kremilly: Blog</title>
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <script src='https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js'></script>
 </head>
 <body>
     {{ html_content }}
 
-    {{ blog_external_libs }}
+    {{ blog_external_js_libs }}
 
-    {% for js_file in blog_internal_libs %}
-        <script src="{{ url_for('static', filename=js_file) }}"></script>
+    {% for js_file in blog_internal_js_libs %}
+        <script src='{{ url_for('static', filename=js_file) }}'></script>
     {% endfor %}
 </body>
 </html>
