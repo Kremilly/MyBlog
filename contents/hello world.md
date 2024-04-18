@@ -15,3 +15,7 @@ codigo
 **Bold**
 
 *Italic*
+
+$$
+e^{i\pi} + 1 = 0
+$$

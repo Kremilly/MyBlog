@@ -1,23 +1,33 @@
 #!/usr/bin/python3
 
-import os, markdown2
+import markdown2
 
 from markupsafe import Markup
 
+from backend.utils.files import FilesUtils
+
 from backend.classes.settings import Settings
+
+from backend.core.posts_meta import PostsMeta
 
 class Posts:
     
     @classmethod
-    def post(self, file:str) -> str:
+    def posts(cls) -> dict:
+        # return PostsMeta.page_title('hello-world')
+        return [
+            'List all posts'
+        ]
+    
+    @classmethod
+    def post(cls, file:str) -> Markup:
         html_content = str()
         file = Settings.get('paths.contents', 'string') + file.lower().replace('-', ' ') + '.md'
         
-        if os.path.exists(file):
-            with open(file, 'rb') as content:
-                html_content = content.read().decode('utf-8')
-        else:
-            html_content = '# ERROR 404'
+        html_content = FilesUtils.read_content(file)
+        
+        if html_content is None:
+            html_content = '# Error 404'
         
         content = markdown2.markdown(html_content)
         return Markup(content)
