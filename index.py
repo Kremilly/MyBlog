@@ -5,21 +5,28 @@ from flask import Flask, render_template
 from backend.core.posts import Posts
 from backend.core.load_libs import LoadLibs
 
+from backend.classes.settings import Settings
+
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template(
+        'index.html',
+        site_name=Settings.get('basic.site_name', 'string'),
+    )
 
 @app.route('/blog')
 @app.route('/blog/<post>')
-def blog(post=None):
+def blog(post:str=None):
     if post is not None:
         return render_template(
-            'blog.html', 
+            'blog.html',
             html_content=Posts.post(post),
+            post_title=Posts.post_title(post),
             blog_internal_js_libs=LoadLibs.js_internal(),
-            blog_external_js_libs=LoadLibs.js_external('blog')
+            blog_external_js_libs=LoadLibs.js_external('blog'),
+            site_name=Settings.get('basic.site_name', 'string'),
         )
         
     else:
