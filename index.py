@@ -1,7 +1,8 @@
-import markdown2
+#!/usr/bin/python3
 
-from markupsafe import Markup
 from flask import Flask, render_template
+
+from backend.core.posts import Posts
 
 app = Flask(__name__)
 
@@ -12,8 +13,10 @@ def home():
 @app.route("/blog")
 @app.route("/blog/<post>")
 def blog(post=None):
-    html_content = markdown2.markdown(f'# Hello {post}')
-    return render_template('blog.html', html_content=Markup(html_content))
+    if post is not None:
+        return render_template('blog.html', html_content=Posts.post(post))
+    else:
+        return 'Posts'
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
