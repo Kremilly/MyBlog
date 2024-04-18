@@ -1,14 +1,15 @@
 basic:
   site_name: 'Kremilly'
 
+social_media:
+  github: 'kremilly'
+
 nav:
   main:
     - Home: './'
     - Blog: './blog/'
     - Setup: './setup/'
     - Projects: './projects/'
-  social_media:
-    - GitHub: 'https://github.com/kremilly'
   
 external_libs:
   blog:
