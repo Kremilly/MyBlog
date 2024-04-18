@@ -1,0 +1,20 @@
+basic:
+  title: 'Kremilly'
+
+nav:
+  main:
+    - Home: './'
+    - Blog: './blog/'
+    - Setup: './setup/'
+    - Projects: './projects/'
+  social_media:
+    - GitHub: 'https://github.com/kremilly'
+
+paths:
+  contents: './contents/'
+
+  assets:
+    js: './assets/js/'
+    css: './assets/css/'
+    sass: './assets/sass/'
+    images: './assets/images/'
