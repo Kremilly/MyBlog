@@ -1,13 +1,11 @@
 #!/usr/bin/python3
 
-import markdown2
-
 from markupsafe import Markup
+from markdown_it import MarkdownIt
 
 from backend.utils.files import FilesUtils
 
 from backend.classes.settings import Settings
-
 from backend.core.posts_meta import PostsMeta
 
 class Posts:
@@ -21,13 +19,16 @@ class Posts:
     
     @classmethod
     def post(cls, file:str) -> Markup:
-        html_content = str()
-        file = Settings.get('paths.contents', 'string') + file.lower().replace('-', ' ') + '.md'
+        md = MarkdownIt()
+        file_path = Settings.get('paths.contents', 'string') + file.lower().replace('-', ' ') + '.md'
         
-        html_content = FilesUtils.read_content(file)
+        html_content = FilesUtils.read_content(file_path)
         
         if html_content is None:
             html_content = '# Error 404'
         
-        content = markdown2.markdown(html_content)
+        if 'graph' in html_content:
+            md.renderer.rules['mermaid'] = lambda tokens, idx: '<div class="mermaid">' + tokens[idx].content + '</div>'
+        
+        content = md.render(html_content)
         return Markup(content)

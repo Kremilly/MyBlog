@@ -19,7 +19,8 @@ def blog(post=None):
         return render_template(
             'blog.html', 
             html_content=Posts.post(post),
-            blog_libs=LoadLibs.load('blog')
+            blog_internal_libs=LoadLibs.js_internal(),
+            blog_external_libs=LoadLibs.js_external('blog')
         )
         
     else:

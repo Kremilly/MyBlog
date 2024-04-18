@@ -5,6 +5,17 @@ import os
 class FilesUtils:
     
     @classmethod
+    def scan_path(cls, path:str) -> list:
+        list_files = []
+        
+        for root_dir, _, files in os.walk(path):
+            for file in files:
+                file_path = os.path.join(root_dir, file)
+                list_files.append(file_path)
+                
+        return set(list_files)
+    
+    @classmethod
     def read_content(cls, file:str) -> str|None:
         html_content = str()
         

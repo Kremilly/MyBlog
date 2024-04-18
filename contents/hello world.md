@@ -19,3 +19,12 @@ codigo
 $$
 e^{i\pi} + 1 = 0
 $$
+
+
+```mermaid
+graph TD
+    A[Square Rect] -- Link text --> B((Circle))
+    A --> C(Round Rect)
+    B --> D{Rhombus}
+    C --> D
+```
