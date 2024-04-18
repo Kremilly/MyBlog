@@ -21,14 +21,12 @@ class Posts:
     def post(cls, file:str) -> Markup:
         md = MarkdownIt()
         
-        file_path = Settings.get('paths.contents', 'string') + file.lower().replace('-', ' ') + '.md'
+        file = file.lower().replace('-', ' ') + '.md'
+        file_path = Settings.get('paths.contents', 'string') + file
         html_content = FilesUtils.read_content(file_path)
         
         if html_content is None:
             html_content = '# Error 404'
-        
-        if 'graph' in html_content:
-            md.renderer.rules['mermaid'] = lambda tokens, idx: '<div class="mermaid">' + tokens[idx].content + '</div>'
         
         return Markup(
             md.render(html_content)
