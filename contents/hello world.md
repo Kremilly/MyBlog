@@ -4,8 +4,11 @@
 
 ## Header 2
 
-```
-codigo
+```python
+import sys
+
+print('hello')
+sys.exit()
 ```
 
 * Exemplo 1

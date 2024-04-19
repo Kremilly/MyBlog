@@ -27,7 +27,7 @@ class LoadLibs:
         libs = Settings.get(f'external_libs.{page}', 'list')
 
         for lib in libs:
-            scripts.append(f"<script async defer src='{lib}'></script>")
+            scripts.append(f"<script src='{lib}'></script>")
         
         scripts = set(scripts)
         return Markup(''.join(scripts))
