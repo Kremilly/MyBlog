@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 
-import sys
-
 from flask import Flask, render_template
 
 from backend.core.posts import Posts
@@ -9,8 +7,6 @@ from backend.core.load_libs import LoadLibs
 from backend.core.posts_meta import PostsMeta
 
 from backend.classes.settings import Settings
-
-from backend.core.profile import Profile
 
 app = Flask(__name__)
 
