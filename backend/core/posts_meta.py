@@ -14,18 +14,20 @@ class PostsMeta:
         file_path = Settings.get('paths.contents', 'string') + file
 
         markdown_content = FilesUtils.read_content(file_path)
-        html_content = markdown2.markdown(markdown_content)
+        
+        if markdown_content is not None:
+            html_content = markdown2.markdown(markdown_content)
 
-        index_h1 = html_content.find('<h1>')
-        
-        if index_h1 != -1:
-            index_h1_end = html_content.find('</h1>', index_h1)
+            index_h1 = html_content.find('<h1>')
             
-            page_title = html_content[
-                index_h1+len('<h1>'):index_h1_end
-            ]
-        
-        return page_title
+            if index_h1 != -1:
+                index_h1_end = html_content.find('</h1>', index_h1)
+                
+                page_title = html_content[
+                    index_h1+len('<h1>'):index_h1_end
+                ]
+            
+            return page_title
     
     @classmethod
     def post_cover(cls, file:str) -> str:
@@ -45,5 +47,10 @@ class PostsMeta:
             return None
 
     @classmethod
-    def head_post_title(cls, file:str) -> str:
-        return f'> {cls.post_title(file)}'
+    def head_post_title(cls, file:str):
+        post_title = cls.post_title(file)
+        
+        if post_title is not None:
+            return f'> {post_title}'
+        
+        return '> 404: Not found'

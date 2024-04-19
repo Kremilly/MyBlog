@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+import sys
+
 from flask import Flask, render_template
 
 from backend.core.posts import Posts
