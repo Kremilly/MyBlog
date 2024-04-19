@@ -31,7 +31,3 @@ class Posts:
         return Markup(
             md.render(html_content)
         )
-        
-    @classmethod
-    def post_title(cls, file:str) -> str:
-        return f'> {PostsMeta.page_title(file)}'

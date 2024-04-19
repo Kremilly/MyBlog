@@ -4,6 +4,11 @@ basic:
 social_media:
   github: 'kremilly'
 
+author:
+  name: 'Kremilly'
+  site_url: 'https://kremilly.com'
+  avatar: 'https://avatars.githubusercontent.com/u/24691979?v=4'
+
 nav:
   main:
     - Home: './'
