@@ -1,28 +1,24 @@
+// mermaid version 10.9.0
+
 mermaid.initialize()
 
 document.addEventListener('DOMContentLoaded', function() {
-    var mermaidCodeBlocks = document.querySelectorAll('pre.language-mermaid')
+    let mermaidCodeBlocks = document.querySelectorAll('pre.language-mermaid');
 
-    mermaidCodeBlocks.forEach(function(block) {
+    mermaidCodeBlocks.forEach( block => {
         block.classList.remove('language-mermaid')
         block.classList.add('diagram-mermaid')
     })
 
-    var blocks = document.querySelectorAll('.language-mermaid')
+    mermaidCodeBlocks.forEach( block => {
+        let diagramDiv = document.createElement('div')
+        diagramDiv.classList.add('mermaid')
+        
+        diagramDiv.textContent = block.textContent
 
-    blocks.forEach(function(block) {
-        mermaid.init(undefined, block)
+        block.textContent = ''
+        block.appendChild(diagramDiv)
+
+        mermaid.init(undefined, diagramDiv)
     })
 })
-
-Prism.initialize()
-
-Prism.plugins.customIgnore = {
-    beforeHighlight: function (env) {
-        if (env.element.parentNode && env.element.parentNode.classList.contains('language-mermaid')) {
-            env.code = ''
-        }
-    }
-};
-
-Prism.hooks.add('before-highlight', Prism.plugins.customIgnore)
