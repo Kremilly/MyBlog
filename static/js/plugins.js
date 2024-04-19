@@ -1,6 +1,7 @@
-// mermaid version 10.9.0
-
-mermaid.initialize()
+mermaid.initialize({
+    theme: 'dark',
+    securityLevel: 'loose',
+})
 
 document.addEventListener('DOMContentLoaded', function() {
     let mermaidCodeBlocks = document.querySelectorAll('pre.language-mermaid');
