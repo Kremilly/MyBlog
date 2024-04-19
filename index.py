@@ -10,6 +10,8 @@ from backend.core.posts_meta import PostsMeta
 
 from backend.classes.settings import Settings
 
+from backend.core.profile import Profile
+
 app = Flask(__name__)
 
 @app.route('/')

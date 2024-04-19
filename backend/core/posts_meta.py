@@ -9,7 +9,7 @@ from backend.classes.settings import Settings
 class PostsMeta:
 
     @classmethod
-    def post_title(cls, file:str) -> str:
+    def post_title(cls, file:str) -> str|None:
         file = file.lower().replace('-', ' ') + '.md'
         file_path = Settings.get('paths.contents', 'string') + file
 
@@ -28,26 +28,32 @@ class PostsMeta:
                 ]
             
             return page_title
+        
+        return None
     
     @classmethod
-    def post_cover(cls, file:str) -> str:
+    def post_cover(cls, file:str) -> str|None:
         file = file.lower().replace('-', ' ') + '.md'
         file_path = Settings.get('paths.contents', 'string') + file
 
         markdown_content = FilesUtils.read_content(file_path)
-        html_content = markdown2.markdown(markdown_content)
-
-        img_match = re.search(r'<img[^>]*src="([^"]+)"[^>]*>', html_content)
-
-        if img_match:
-            img_src = img_match.group(1)
-            return img_src
         
-        else:
-            return None
+        if markdown_content is not None:
+            html_content = markdown2.markdown(markdown_content)
+
+            img_match = re.search(r'<img[^>]*src="([^"]+)"[^>]*>', html_content)
+
+            if img_match:
+                img_src = img_match.group(1)
+                return img_src
+            
+            else:
+                return None
+            
+        return None
 
     @classmethod
-    def head_post_title(cls, file:str):
+    def head_post_title(cls, file:str)-> str:
         post_title = cls.post_title(file)
         
         if post_title is not None:
