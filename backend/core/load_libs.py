@@ -9,6 +9,19 @@ from backend.classes.settings import Settings
 class LoadLibs:
     
     @classmethod
+    def css_internal(cls) -> str:
+        styles = []
+        
+        path = Settings.get('paths.static.css', 'string')
+        libs = FilesUtils.scan_path(path)
+        
+        for lib in libs:
+            file = lib.replace('./static/', '')
+            styles.append(f'{file}')
+            
+        return set(styles)
+    
+    @classmethod
     def js_internal(cls) -> str:
         scripts = []
         

@@ -26,6 +26,7 @@ def blog(post:str=None):
             html_content=Posts.post(post),
             post_title=PostsMeta.head_post_title(post),
             blog_internal_js_libs=LoadLibs.js_internal(),
+            blog_internal_css_libs=LoadLibs.css_internal(),
             blog_external_js_libs=LoadLibs.js_external('blog'),
             site_name=Settings.get('basic.site_name', 'string'),
         )

@@ -2,8 +2,12 @@
 <html lang='en'>
 <head>
     <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>{{ site_name }}: Home</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    
+    {% for css_file in blog_internal_css_libs %}
+        <link rel='stylesheet' href='{{ url_for('static', filename=css_file) }}'>
+    {% endfor %}
 </head>
 <body>
     Hello world: HOMEPAGE
