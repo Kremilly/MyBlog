@@ -15,7 +15,7 @@ class Profile:
     @classmethod
     def social_media(cls) -> list:
         profiles = []
-        social_media = Settings.get('social_media_profiles', 'list')
+        social_media = Settings.get('social_media', 'list')
         
         for profile in social_media:
             profiles.append({
