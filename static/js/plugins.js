@@ -1,10 +1,10 @@
-mermaid.initialize({
-    theme: 'dark',
-    securityLevel: 'loose',
-})
-
 document.addEventListener('DOMContentLoaded', function() {
-    let mermaidCodeBlocks = document.querySelectorAll('pre.language-mermaid');
+    mermaid.initialize({
+        theme: 'dark',
+        securityLevel: 'loose',
+    })
+
+    let mermaidCodeBlocks = document.querySelectorAll('.language-mermaid')
 
     mermaidCodeBlocks.forEach( block => {
         block.classList.remove('language-mermaid')
@@ -21,19 +21,5 @@ document.addEventListener('DOMContentLoaded', function() {
         block.appendChild(diagramDiv)
 
         mermaid.init(undefined, diagramDiv)
-    })
-
-    let renderMarkdownToHTML = (markdownText) => {
-        var md = window.markdownit()
-        return md.render(markdownText)
-    }
-
-    document.querySelectorAll('p').forEach(function(paragraph) {
-        var markdownText = paragraph.textContent.trim()
-        
-        if (markdownText.startsWith('|')) {
-            var htmlOutput = renderMarkdownToHTML(markdownText)
-            paragraph.innerHTML = htmlOutput.trim()
-        }
     })
 })

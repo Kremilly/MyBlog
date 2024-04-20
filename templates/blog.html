@@ -4,14 +4,13 @@
     <meta charset='UTF-8'>
     <title>{{ site_name }}: Blog {{ post_title }}</title>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.0/dist/mermaid.min.js"></script>
     
     {% for css_file in blog_internal_css_libs %}
         <link rel='stylesheet' href='{{ url_for('static', filename=css_file) }}'>
     {% endfor %}
 </head>
 <body>
-    {{ html_content }}
+    <article class='markdown-body'>{{ html_content }}</article>
 
     {{ blog_external_js_libs }}
 

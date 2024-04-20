@@ -22,8 +22,6 @@ sys.exit()
 * Exemplo 1
 * Exemplo 2
 * Exemplo 3
-* Exemplo 4
-* Exemplo 5
 
 1. Exemplo 1
 2. Exemplo 2

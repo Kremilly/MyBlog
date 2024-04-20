@@ -3,6 +3,9 @@
 from markupsafe import Markup
 
 from markdown_it import MarkdownIt
+from mdit_py_plugins.footnote import footnote_plugin
+from mdit_py_plugins.tasklists import tasklists_plugin
+from mdit_py_plugins.wordcount import wordcount_plugin
 
 from backend.utils.files import FilesUtils
 
@@ -19,7 +22,18 @@ class Posts:
         
     @classmethod
     def post(cls, file:str) -> Markup:
-        md = MarkdownIt()
+        md = MarkdownIt(
+            'commonmark', {
+                'html':True,
+                'breaks': True,
+            }
+        ).use(
+            footnote_plugin
+        ).use(
+            tasklists_plugin
+        ).use(
+            wordcount_plugin
+        ).enable('table')
         
         file = file.lower().replace('-', ' ') + '.md'
         file_path = Settings.get('paths.contents', 'string') + file
