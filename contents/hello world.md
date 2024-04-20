@@ -1,8 +1,16 @@
-# Header 1
-
 ![cover](https://media.dev.to/cdn-cgi/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F48fagykg1pynim5t3fv9.png)
 
+# Header 1
+
 ## Header 2
+
+### Header 3
+
+#### Header 4
+
+##### Header 5
+
+###### Header 6
 
 ```python
 import sys
@@ -17,9 +25,30 @@ sys.exit()
 * Exemplo 4
 * Exemplo 5
 
+1. Exemplo 1
+2. Exemplo 2
+3. Exemplo 3
+
 **Bold**
 
 *Italic*
+
+~~Strike~~
+
+[Link](#)
+
+* [ ] TODO 1
+* [X] TODO 2
+* [X] TODO 3
+
+> Citation
+
+`Inline code`
+
+| col1 | col2 | col3 |
+| ---- | ---- | ---- |
+| row  | row  | row  |
+| row  | row  | row  |
 
 $$
 e^{i\pi} + 1 = 0

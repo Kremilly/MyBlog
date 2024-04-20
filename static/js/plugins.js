@@ -22,4 +22,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
         mermaid.init(undefined, diagramDiv)
     })
+
+    let renderMarkdownToHTML = (markdownText) => {
+        var md = window.markdownit()
+        return md.render(markdownText)
+    }
+
+    document.querySelectorAll('p').forEach(function(paragraph) {
+        var markdownText = paragraph.textContent.trim()
+        
+        if (markdownText.startsWith('|')) {
+            var htmlOutput = renderMarkdownToHTML(markdownText)
+            paragraph.innerHTML = htmlOutput.trim()
+        }
+    })
 })
