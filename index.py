@@ -16,6 +16,13 @@ def home():
         'index.html',
         site_name=Settings.get('basic.site_name', 'string'),
     )
+    
+@app.route('/about')
+def about():
+    return render_template(
+        'about.html',
+        site_name=Settings.get('basic.site_name', 'string'),
+    )
 
 @app.route('/blog')
 @app.route('/blog/<post>')

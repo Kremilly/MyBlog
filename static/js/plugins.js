@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', e => {
     mermaid.initialize({
         theme: 'dark',
         securityLevel: 'loose',
