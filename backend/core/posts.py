@@ -41,7 +41,7 @@ class Posts:
         ).enable('table')
         
         file = file.lower().replace('-', ' ') + '.md'
-        file_path = Settings.get('paths.contents', 'string') + file
+        file_path = Settings.get('paths.contents.blog', 'string') + file
         html_content = FilesUtils.read_content(file_path)
         
         if html_content is None:
@@ -50,3 +50,12 @@ class Posts:
         return Markup(
             md.render(html_content)
         )
+        
+    @classmethod
+    def post_data(cls, file:str) -> list:
+        return {
+            'content': cls.post(file),
+            'title': PostsMeta.post_title(file),
+            'cover': PostsMeta.post_cover(file),
+            'topics': PostsMeta.post_topics(file),
+        }
