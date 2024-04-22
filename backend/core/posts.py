@@ -40,8 +40,7 @@ class Posts:
             wordcount_plugin
         ).enable('table')
         
-        file = file.lower().replace('-', ' ') + '.md'
-        file_path = Settings.get('paths.contents.blog', 'string') + file
+        file_path = FilesUtils.get_file_path(file, 'blog')
         html_content = FilesUtils.read_content(file_path)
         
         if html_content is None:
@@ -52,7 +51,7 @@ class Posts:
         )
         
     @classmethod
-    def post_data(cls, file:str) -> list:
+    def post_data(cls, file:str) -> dict:
         return {
             'content': cls.post(file),
             'title': PostsMeta.post_title(file),

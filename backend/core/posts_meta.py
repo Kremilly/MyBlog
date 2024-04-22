@@ -12,9 +12,7 @@ class PostsMeta:
     
     @classmethod
     def get_post_content(cls, file:str) -> str|None:
-        file = file.lower().replace('-', ' ') + '.md'
-        file_path = Settings.get('paths.contents.blog', 'string') + file
-
+        file_path = FilesUtils.get_file_path(file, 'blog')
         markdown_content = FilesUtils.read_content(file_path)
         
         if markdown_content is not None:

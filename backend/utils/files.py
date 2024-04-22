@@ -2,7 +2,14 @@
 
 import os
 
+from backend.classes.settings import Settings
+
 class FilesUtils:
+    
+    @classmethod
+    def get_file_path(cls, file:str, type:str) -> str:
+        file = file.lower().replace('-', ' ') + '.md'
+        return Settings.get(f'paths.contents.{type}', 'string') + file
     
     @classmethod
     def scan_path(cls, path:str) -> list:
