@@ -2,6 +2,7 @@
 
 from markupsafe import Markup
 
+import linkify_it
 from markdown_it import MarkdownIt
 
 from mdit_py_plugins.footnote import footnote_plugin
@@ -25,7 +26,7 @@ class Posts:
     @classmethod
     def post(cls, file:str) -> Markup:
         md = MarkdownIt(
-            'commonmark', {
+            'gfm-like', {
                 'html': True,
                 'breaks': True,
             }
