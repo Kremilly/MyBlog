@@ -1,10 +1,19 @@
 #!/usr/bin/python3
 
-import os
+import os, platform
 
 from backend.classes.settings import Settings
 
+from backend.utils.time_utils import TimeUtils
+
 class FilesUtils:
+    
+    @classmethod
+    def check_file_exists(cls, file:str) -> bool:
+        if os.path.exists(file):
+            return True
+        
+        return False
     
     @classmethod
     def get_file_path(cls, file:str, type:str) -> str:
@@ -33,6 +42,14 @@ class FilesUtils:
             html_content = None
             
         return html_content
+    
+    @classmethod
+    def get_creation_date_file(cls, file_path:str) -> str|None:
+        if os.path.exists(file_path):
+            file_date = os.path.getctime(file_path)
+            return TimeUtils.format_datetime(file_date)
+        
+        return None
     
     @classmethod
     def list_all_files(cls):

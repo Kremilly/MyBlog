@@ -12,9 +12,6 @@ from mdit_py_plugins.front_matter import front_matter_plugin
 
 from backend.utils.files import FilesUtils
 
-from backend.classes.settings import Settings
-from backend.core.posts_meta import PostsMeta
-
 class Posts:
     
     @classmethod
@@ -24,7 +21,7 @@ class Posts:
         ]
         
     @classmethod
-    def post(cls, file:str) -> Markup:
+    def post(cls, file:str, markup:bool=True) -> Markup:
         md = MarkdownIt(
             'gfm-like', {
                 'html': True,
@@ -46,15 +43,9 @@ class Posts:
         if html_content is None:
             html_content = '# Error 404'
         
-        return Markup(
-            md.render(html_content)
-        )
+        if markup:
+            return Markup(
+                md.render(html_content)
+            )
         
-    @classmethod
-    def post_data(cls, file:str) -> dict:
-        return {
-            'content': cls.post(file),
-            'title': PostsMeta.post_title(file),
-            'cover': PostsMeta.post_cover(file),
-            'topics': PostsMeta.post_topics(file),
-        }
+        return md.render(html_content)

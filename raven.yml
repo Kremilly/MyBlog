@@ -2,6 +2,11 @@ basic:
   site_name: 'Kremilly'
   url_root: 'http://127.0.0.1:5000'
 
+format_dates:
+  time: '%H-%M-%S'
+  datetime: '%Y-%m-%d %H:%M:%S'
+  today_datetime: '%a, %b %d %Y - %I:%M:%S %p'
+
 social_media:
   - Dev.To: 'https://dev.to/kremilly'
   - GitHub: 'https://github.com/kremilly'

@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+import sys
+
 from flask import Flask, render_template, request
 
 from backend.core.posts import Posts
@@ -37,11 +39,12 @@ def blog(post:str=None):
             'blog.html',
             
             html_content=Posts.post(post),
-            post_title=PostsMeta.head_post_title(post),
+            post_title=PostsMeta.post_head_title(post),
             url_root=Settings.get('basic.url_root', 'string'),
             site_name=Settings.get('basic.site_name', 'string'),
             
             qr_code=GenQRCode.get(request.url),
+            post_metadata=PostsMeta.post_data(post),
             
             blog_internal_js_libs=LoadLibs.js_internal(),
             blog_internal_css_libs=LoadLibs.css_internal(),

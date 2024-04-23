@@ -55,6 +55,21 @@ class PostsMeta:
         return None
     
     @classmethod
+    def post_description(cls, file:str) -> str|None:
+        html_content = cls.get_post_content(file)
+        
+        if html_content is not None:
+            soup = BeautifulSoup(html_content, 'html.parser')
+            first_paragraph = soup.find('p', text=True)
+            
+            if first_paragraph:
+                return first_paragraph.get_text(strip=True)
+            
+            return None
+            
+        return None
+    
+    @classmethod
     def post_topics(cls, file:str) -> dict:
         html_content = cls.get_post_content(file)
         
@@ -77,10 +92,25 @@ class PostsMeta:
             return headers
 
     @classmethod
-    def head_post_title(cls, file:str)-> str:
+    def post_head_title(cls, file:str)-> str:
         post_title = cls.post_title(file)
         
         if post_title is not None:
             return f'> {post_title}'
         
         return '> 404: Not found'
+    
+    @classmethod
+    def post_data(cls, file:str) -> dict|None:
+        file_path = FilesUtils.get_file_path(file, 'blog')
+        
+        if FilesUtils.check_file_exists(file_path):
+            return {
+                'title': PostsMeta.post_title(file),
+                'cover': PostsMeta.post_cover(file),
+                'topics': PostsMeta.post_topics(file),
+                'description': PostsMeta.post_description(file),
+                'published_at': FilesUtils.get_creation_date_file(file_path)
+            }
+        
+        return None
