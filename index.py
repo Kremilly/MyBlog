@@ -4,9 +4,10 @@ import sys
 
 from flask import Flask, render_template, request
 
-from backend.core.posts import Posts
-from loaders.load_libs import LoadLibs
-from backend.core.posts_meta import PostsMeta
+from backend.loaders.load_libs import LoadLibs
+
+from backend.posts.posts import Posts
+from backend.posts.posts_meta import PostsMeta
 
 from backend.plugins.gh_pinned import GHPinned
 from backend.plugins.gen_qrcode import GenQRCode
