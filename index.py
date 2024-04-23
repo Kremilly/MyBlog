@@ -8,10 +8,11 @@ from backend.posts.posts import Posts
 from backend.posts.posts_meta import PostsMeta
 
 from backend.plugins.gh_pinned import GHPinned
-from backend.plugins.wikipedia import Wikipedia
 from backend.plugins.gen_qrcode import GenQRCode
 
 from backend.classes.settings import Settings
+
+from api_routes import *
 
 app = Flask(__name__)
 
@@ -58,15 +59,8 @@ def blog(post:str=None):
     else:
         return Posts.posts()
 
-# API 
-   
-@app.route('/api/wikipedia')
-def api_route():
-    return Wikipedia().get(
-        term=request.args.get('term'), 
-        thumb_size=request.args.get('thumb_size'),
-        short_desc=request.args.get('short_desc'),
-    )
+# API Routes
+api_routes(app)
 
 if __name__ == '__main__':
     app.run(debug=True)
