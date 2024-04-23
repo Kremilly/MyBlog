@@ -157,3 +157,6 @@ cython_debug/
 
 # Ignore venv
 blg/
+
+# Ignore all run tests files
+*.test.py

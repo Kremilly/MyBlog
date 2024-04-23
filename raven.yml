@@ -35,6 +35,9 @@ api_integrations:
   mshots: 'https://s0.wp.com/mshots/v1/{page_url}'
   pdfthumb: 'https://pdfthumb.kremilly.com/get?pdf={pdf_url}'
   ghpinned: 'https://gh-pin.kremilly.com/api?user={github_user}'
+  
+  wikipedia:
+    location: 'en'
 
 paths:
   contents: 
