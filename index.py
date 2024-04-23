@@ -5,9 +5,11 @@ import sys
 from flask import Flask, render_template, request
 
 from backend.core.posts import Posts
-from backend.core.load_libs import LoadLibs
+from loaders.load_libs import LoadLibs
 from backend.core.posts_meta import PostsMeta
-from backend.core.gen_qrcode import GenQRCode
+
+from backend.plugins.gh_pinned import GHPinned
+from backend.plugins.gen_qrcode import GenQRCode
 
 from backend.classes.settings import Settings
 
@@ -20,6 +22,8 @@ def home():
         
         url_root=Settings.get('basic.url_root', 'string'),
         site_name=Settings.get('basic.site_name', 'string'),
+        
+        gh_repos=GHPinned.repos(),
     )
     
 @app.route('/about')
