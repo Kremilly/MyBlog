@@ -6,16 +6,20 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     
     {% for css_file in blog_internal_css_libs %}
-        <link rel='stylesheet' href='{{ url_for('static', filename=css_file) }}'>
+        <link rel='stylesheet' href='{{ url_root + url_for('static', filename=css_file) }}'>
     {% endfor %}
 </head>
 <body>
-    <article class='markdown-body'>{{ html_content }}</article>
-
+    <article class='markdown-body'>
+        <img src='{{ qr_code }}' />
+        
+        {{ html_content }}
+    </article>
+    
     {{ blog_external_js_libs }}
 
     {% for js_file in blog_internal_js_libs %}
-        <script src='{{ url_for('static', filename=js_file) }}'></script>
+        <script src='{{ url_root + url_for('static', filename=js_file) }}'></script>
     {% endfor %}
 </body>
 </html>

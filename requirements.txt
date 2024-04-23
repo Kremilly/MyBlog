@@ -18,9 +18,12 @@ mdit-py-plugins==0.4.0
 mdurl==0.1.2
 mistune==3.0.2
 Pygments==2.17.2
+pypng==0.20220715.0
 PyYAML==6.0.1
+qrcode==7.4.2
 requests==2.31.0
 soupsieve==2.5
+typing_extensions==4.11.0
 uc-micro-py==1.0.3
 urllib3==2.2.1
 Werkzeug==3.0.2

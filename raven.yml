@@ -1,5 +1,6 @@
 basic:
   site_name: 'Kremilly'
+  url_root: 'http://127.0.0.1:5000'
 
 social_media:
   - Dev.To: 'https://dev.to/kremilly'
