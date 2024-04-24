@@ -1,5 +1,6 @@
 basic:
   site_name: 'Kremilly'
+  favicon: 'favico.ico'
   url_root: 'http://127.0.0.1:5000'
 
 format_dates:
@@ -22,6 +23,7 @@ profile:
 nav:
   main:
     - Home: './'
+    - Docs: './docs/'
     - Blog: './blog/'
     - Setup: './setup/'
     - Projects: './projects/'
@@ -41,11 +43,11 @@ api_integrations:
 
 paths:
   contents: 
+    docs: './contents/docs/'
     blog: './contents/blog/'
     pages: './contents/pages/'
 
   static:
     js: './static/js/'
     css: './static/css/'
-    sass: './static/sass/'
     images: './static/images/'

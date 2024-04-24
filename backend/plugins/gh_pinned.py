@@ -2,6 +2,8 @@
 
 import requests
 
+from http import HTTPStatus
+
 from backend.plugins.profile import Profile
 
 from backend.classes.settings import Settings
@@ -14,4 +16,8 @@ class GHPinned:
         request_url = Settings.get('api_integrations.ghpinned', 'string').replace('{github_user}', github_user)
         
         response = requests.get(request_url)
-        return response.json()
+        
+        if response.status_code == HTTPStatus.OK:
+            return response.json()
+        
+        return None, response.status_code

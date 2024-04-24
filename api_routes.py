@@ -8,8 +8,8 @@ def api_routes(app):
     
     @app.route('/api/wikipedia')
     def wikipedia():
-        return Wikipedia.get(
+        return Wikipedia(
             term=request.args.get('term'), 
             thumb_size=request.args.get('thumb_size'),
             short_desc=request.args.get('short_desc'),
-        )
+        ).get()

@@ -9,6 +9,12 @@ from backend.classes.settings import Settings
 class Wikipedia:
     
     @classmethod
+    def __init__(cls, term:str, thumb_size:int, short_desc=bool):
+        cls.term = term
+        cls.thumb_size = thumb_size
+        cls.short_desc = short_desc
+    
+    @classmethod
     def api_url(cls) -> str:
         location = Settings.get('api_integrations.wikipedia.location', 'string')
         return f'https://{location}.wikipedia.org/w/api.php'
@@ -112,10 +118,10 @@ class Wikipedia:
         return None
 
     @classmethod
-    def get(cls, term:str, thumb_size:int, short_desc=bool) -> dict:
+    def get(cls) -> dict:
         return {
-            'title': cls.get_title(term),
-            'page_url': cls.get_url(term),
-            'thumbnail': cls.get_thumbnail(term, thumb_size),
-            'summary': cls.get_summary(term, short_desc),
+            'title': cls.get_title(cls.term),
+            'page_url': cls.get_url(cls.term),
+            'summary': cls.get_summary(cls.term, cls.short_desc),
+            'thumbnail': cls.get_thumbnail(cls.term, cls.thumb_size),
         }
