@@ -12,8 +12,6 @@ from backend.plugins.gen_qrcode import GenQRCode
 
 from backend.classes.settings import Settings
 
-from api_routes import *
-
 app = Flask(__name__)
 
 @app.route('/')
@@ -58,9 +56,6 @@ def blog(post:str=None):
         
     else:
         return Posts.posts()
-
-# API Routes
-api_routes(app)
 
 if __name__ == '__main__':
     app.run(debug=True)
