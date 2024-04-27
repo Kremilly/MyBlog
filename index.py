@@ -25,10 +25,12 @@ def home():
         gh_repos=GHPinned.repos(),
     )
     
-@app.route('/about')
-def about():
+@app.route('/<page>')
+def page(page:str):
     return render_template(
-        'about.html',
+        'pages.html',
+        
+        page=page.capitalize(),
         
         url_root=Settings.get('basic.url_root', 'string'),
         site_name=Settings.get('basic.site_name', 'string'),

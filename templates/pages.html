@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
     <meta charset='UTF-8'>
-    <title>{{ site_name }}: About</title>
+    <title>{{ site_name }}: {{ page }}</title>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     
     {% for css_file in blog_internal_css_libs %}
@@ -10,6 +10,6 @@
     {% endfor %}
 </head>
 <body>
-    Hello world: About
+    Hello world: {{ page }}
 </body>
 </html>
