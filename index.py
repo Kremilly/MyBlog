@@ -43,9 +43,9 @@ def blog(post:str=None):
         return render_template(
             'blog.html',
             
+            url_root=request.url_root,
             html_content=Posts.post(post),
             post_title=PostsMeta.post_head_title(post),
-            url_root=Settings.get('basic.url_root', 'string'),
             site_name=Settings.get('basic.site_name', 'string'),
             
             qr_code=GenQRCode.get(request.url),
