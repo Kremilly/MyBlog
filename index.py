@@ -19,7 +19,7 @@ def home():
     return render_template(
         'index.html',
         
-        url_root=request.url_root,
+        url_root=request.url_root[:-1],
         site_name=Settings.get('basic.site_name', 'string'),
         
         gh_repos=GHPinned.repos(),
@@ -32,7 +32,7 @@ def page(page:str):
         
         page=page.capitalize(),
         
-        url_root=request.url_root,
+        url_root=request.url_root[:-1],
         site_name=Settings.get('basic.site_name', 'string'),
     )
 
@@ -43,8 +43,8 @@ def blog(post:str=None):
         return render_template(
             'blog.html',
             
-            url_root=request.url_root,
             html_content=Posts.post(post),
+            url_root=request.url_root[:-1],
             post_title=PostsMeta.post_head_title(post),
             site_name=Settings.get('basic.site_name', 'string'),
             
