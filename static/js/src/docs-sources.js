@@ -1,4 +1,4 @@
-const DocsSources = (() => {
+const DocsSources = ( e => {
 
     const check_docs_url_ext = link => {
         if (
@@ -44,6 +44,7 @@ const DocsSources = (() => {
                 let li = document.createElement('li')
 
                 a.href = link.url
+                a.target = '_blank'
                 a.textContent = link.name
 
                 li.appendChild(a)
