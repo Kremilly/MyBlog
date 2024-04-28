@@ -46,7 +46,9 @@ paths:
     pages: './contents/pages/'
 
   static:
+    js:
+      src: './static/js/src/'
+      plugins: './static/js/plugins/'
+
     css: './static/css/'
-    js: './static/js/src/'
     images: './static/images/'
-    js_plugins: './static/js/plugins/'

@@ -26,10 +26,10 @@ class LoadLibs:
     @classmethod
     def js_internal(cls, plugins:bool=False) -> str:
         scripts = []
-        js_files_path = 'paths.static.js'
+        js_files_path = 'paths.static.js.src'
         
         if plugins:
-            js_files_path = 'paths.static.js_plugins'
+            js_files_path = 'paths.static.js.plugins'
         
         path = Settings.get(js_files_path, 'string')
         libs = FilesUtils.scan_path(path)
