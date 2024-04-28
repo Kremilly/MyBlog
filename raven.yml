@@ -25,6 +25,7 @@ nav:
     - Home: './'
     - Docs: './docs/'
     - Blog: './blog/'
+    - About: './about/'
     - Setup: './setup/'
     - Projects: './projects/'
   
@@ -35,11 +36,9 @@ external_libs:
 
 api_integrations:
   mshots: 'https://s0.wp.com/mshots/v1/{page_url}'
-  pdfthumb: 'https://pdfthumb.kremilly.com/get?pdf={pdf_url}'
-  ghpinned: 'https://gh-pin.kremilly.com/api?user={github_user}'
-  
-  wikipedia:
-    location: 'en'
+  pdfthumb: 'https://api.kremilly.com/pdfthumb?pdf={pdf_url}'
+  ghpinned: 'https://api.kremilly.com/github?user={github_user}'
+  wikipedia: 'https://api.kremilly.com/wikipedia?location={location}&term={term}&short_summary={short_summary}'
 
 paths:
   contents: 
