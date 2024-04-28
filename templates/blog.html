@@ -18,6 +18,10 @@
     
     {{ blog_external_js_libs }}
 
+    {% for js_file in blog_internal_js_plugins %}
+        <script src='{{ url_root + url_for('static', filename=js_file) }}'></script>
+    {% endfor %}
+
     {% for js_file in blog_internal_js_libs %}
         <script src='{{ url_root + url_for('static', filename=js_file) }}'></script>
     {% endfor %}

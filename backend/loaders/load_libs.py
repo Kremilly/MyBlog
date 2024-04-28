@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+import os
+
 from markupsafe import Markup
 
 from backend.utils.files import FilesUtils
@@ -22,10 +24,14 @@ class LoadLibs:
         return set(styles)
     
     @classmethod
-    def js_internal(cls) -> str:
+    def js_internal(cls, plugins:bool=False) -> str:
         scripts = []
+        js_files_path = 'paths.static.js'
         
-        path = Settings.get('paths.static.js', 'string')
+        if plugins:
+            js_files_path = 'paths.static.js_plugins'
+        
+        path = Settings.get(js_files_path, 'string')
         libs = FilesUtils.scan_path(path)
         
         for lib in libs:
