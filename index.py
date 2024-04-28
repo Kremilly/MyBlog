@@ -19,7 +19,7 @@ def home():
     return render_template(
         'index.html',
         
-        url_root=Settings.get('basic.url_root', 'string'),
+        url_root=request.url_root,
         site_name=Settings.get('basic.site_name', 'string'),
         
         gh_repos=GHPinned.repos(),
@@ -32,7 +32,7 @@ def page(page:str):
         
         page=page.capitalize(),
         
-        url_root=Settings.get('basic.url_root', 'string'),
+        url_root=request.url_root,
         site_name=Settings.get('basic.site_name', 'string'),
     )
 

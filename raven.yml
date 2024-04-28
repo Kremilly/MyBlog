@@ -1,7 +1,6 @@
 basic:
   site_name: 'Kremilly'
   favicon: 'favico.ico'
-  url_root: 'http://127.0.0.1:5000'
 
 format_dates:
   time: '%H-%M-%S'
