@@ -13,6 +13,6 @@ Blog Plugins (until now):
 * [X] Mermaid Diagram Render ([docs](https://mermaid.js.org/))
 * [X] Math Formulas Render ([docs](https://www.mathjax.org/))
 * [X] Code Syntax ([docs](https://prismjs.com/index.html))
-* [X] WikipediaRef List
+* [X] WikipediaRefs List
 * [ ] PDF Preview ([docs](https://github.com/kremilly/MyApis/wiki/pdfthumb))
 * [ ] Wikipedia Article Preview ([docs](https://github.com/kremilly/MyApis/wiki/wikipedia))

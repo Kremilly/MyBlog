@@ -1,4 +1,4 @@
-const WikipediaRef = ( e => {
+const WikipediaRefs = ( e => {
 
     const clean_article_title = article_title => {
         return article_title.replace(
