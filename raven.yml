@@ -27,12 +27,15 @@ nav:
     - About: './about/'
     - Setup: './setup/'
     - Projects: './projects/'
+
+external_css_libs:
+  - 'https://use.fontawesome.com/releases/v6.5.2/css/all.css'
+  - 'https://raw.githubusercontent.com/tscanlin/tocbot/master/dist/tocbot.css'
   
-external_libs:
-  blog:
-    - 'https://polyfill.io/v3/polyfill.min.js?features=es6'
-    - 'https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.27.4/tocbot.min.js'
-    - 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+external_js_libs:
+  - 'https://polyfill.io/v3/polyfill.min.js?features=es6'
+  - 'https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.27.4/tocbot.min.js'
+  - 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
 
 api_integrations:
   mshots: 'https://s0.wp.com/mshots/v1/{page_url}'

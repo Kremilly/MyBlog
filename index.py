@@ -2,7 +2,8 @@
 
 from flask import Flask, render_template, request
 
-from backend.loaders.load_libs import LoadLibs
+from backend.loaders.js import JS
+from backend.loaders.css import CSS
 
 from backend.posts.posts import Posts
 from backend.posts.posts_meta import PostsMeta
@@ -25,7 +26,7 @@ def home():
         gh_repos=GHPinned.repos(),
     )
     
-@app.route('/<page>')
+@app.route('/about')
 def page(page:str):
     return render_template(
         'pages.html',
@@ -51,10 +52,12 @@ def blog(post:str=None):
             qr_code=GenQRCode.get(request.url),
             post_metadata=PostsMeta.post_data(post),
             
-            blog_internal_js_libs=LoadLibs.js_internal(),
-            blog_internal_css_libs=LoadLibs.css_internal(),
-            blog_external_js_libs=LoadLibs.js_external('blog'),
-            blog_internal_js_plugins=LoadLibs.js_internal(True),
+            internal_css_libs=CSS.internal(),
+            external_css_libs=CSS.external(),
+            
+            external_js_libs=JS.external(),
+            internal_js_libs=JS.internal(),
+            internal_js_plugins=JS.plugins(),
         )
         
     else:

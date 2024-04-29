@@ -5,7 +5,9 @@
     <title>{{ site_name }}: Blog {{ post_title }}</title>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     
-    {% for css_file in blog_internal_css_libs %}
+    {{ external_css_libs }}
+    
+    {% for css_file in internal_css_libs %}
         <link rel='stylesheet' href='{{ url_root + url_for('static', filename=css_file) }}'>
     {% endfor %}
 </head>
@@ -15,17 +17,22 @@
         
         {{ html_content }}
 
-        <div id='pdfLinksList'></div>
-        <div id='wikiLinksList'></div>
+        <div id='pdfLinksList'>
+            <p>Documents:</p>
+        </div>
+
+        <div id='wikiLinksList'>
+            <p>Referencies:</p>
+        </div>
     </article>
     
-    {{ blog_external_js_libs }}
+    {{ external_js_libs }}
 
-    {% for js_file in blog_internal_js_plugins %}
+    {% for js_file in internal_js_plugins %}
         <script src='{{ url_root + url_for('static', filename=js_file) }}'></script>
     {% endfor %}
 
-    {% for js_file in blog_internal_js_libs %}
+    {% for js_file in internal_js_libs %}
         <script src='{{ url_root + url_for('static', filename=js_file) }}'></script>
     {% endfor %}
 </body>
