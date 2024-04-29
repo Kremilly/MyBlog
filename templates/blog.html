@@ -14,15 +14,31 @@
 <body>
     <article class='markdown-body'>
         <img src='{{ qr_code }}' />
+
+        <div id='wikipedia-preview'>
+            <a class='set-triangle'>
+                <img alt='globe'/>
+            </a>
+
+            <a>
+                <p></p>
+            </a>
+        </div>
         
         {{ html_content }}
 
         <div id='pdfLinksList'>
-            <p>Documents:</p>
+            <p>
+                <i class='fa-solid fa-paperclip'></i>
+                Documents:
+            </p>
         </div>
 
         <div id='wikiLinksList'>
-            <p>Referencies:</p>
+            <p>
+                <i class='fa-solid fa-book'></i>
+                Referencies:
+            </p>
         </div>
     </article>
     

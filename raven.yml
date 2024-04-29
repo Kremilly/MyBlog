@@ -31,6 +31,7 @@ nav:
 external_css_libs:
   - 'https://use.fontawesome.com/releases/v6.5.2/css/all.css'
   - 'https://raw.githubusercontent.com/tscanlin/tocbot/master/dist/tocbot.css'
+  - 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css'
   
 external_js_libs:
   - 'https://polyfill.io/v3/polyfill.min.js?features=es6'
