@@ -4,7 +4,8 @@ const DocsSources = ( e => {
         if (
             link.endsWith('.pdf') || link.endsWith('.docx') || 
             link.endsWith('.doc') || link.endsWith('.rst') || 
-            link.endsWith('.md') || link.endsWith('.mdx')
+            link.endsWith('.yml') || link.endsWith('.yaml') ||
+            link.endsWith('.json') || link.endsWith('.toml') 
         ) {
             return true
         }

@@ -1,11 +1,11 @@
-const PDFPreview = ({
+const PDFPreview = ( e => {
 
-    get_links () {
+    const get_links = e => {
         var links = document.querySelectorAll('a')
 
         links.forEach( link => {
             link.addEventListener('mouseenter', e => {
-                if (link.href.toLowerCase().endsWith('.pdf')) {
+                if (link.href.endsWith('.pdf')) {
                     console.log(link.href)
                 }
             })
@@ -14,6 +14,8 @@ const PDFPreview = ({
                 // TODO
             })
         })
-    },
+    }
+
+    get_links()
     
-})
+})()
