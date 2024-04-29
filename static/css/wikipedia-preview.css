@@ -17,6 +17,7 @@
 
 #wikipedia-preview img {
 	width: 320px;
+	display: none;
 	object-fit: cover;
 	-o-object-fit: cover;
 }
