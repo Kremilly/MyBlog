@@ -7,7 +7,7 @@ My blog for technical and non-technic articles
 
 Blog Plugins (until now):
 
-* [X] GitHub Pinned Repositories ([docs](https://github.com/kremilly/MyApis/wiki/github))
+* [ ] GitHub Pinned Repositories ([docs](https://github.com/kremilly/MyApis/wiki/github))
 * [X] DocsSource List
 * [X] QR Code
 * [X] Mermaid Diagram Render ([docs](https://mermaid.js.org/))
