@@ -4,7 +4,15 @@ const WikipediaPreview = ( e => {
     const element_preview_root = 'wikipedia-preview'
     const preview = document.getElementById(element_preview_root)
 
-    const fetch_wikipedia_api = (region, term) => {
+    const fetch_wikipedia_api = (link) => {
+        let region = link.match(/^(?:https?:\/\/)?([^\/]+)\./)[1].split('.')[0]
+
+        let term = (
+            decodeURIComponent(
+                link.split('/').pop()
+            )
+        )
+
         let api_wikipedia_uri = `https://api.kremilly.com/wikipedia?location=${
             region
         }&term=${
@@ -26,16 +34,8 @@ const WikipediaPreview = ( e => {
     }
 
     const change_elements = (link) => {
-        let region = link.match(/^(?:https?:\/\/)?([^\/]+)\./)[1].split('.')[0]
-
-        let term = (
-            decodeURIComponent(
-                link.split('/').pop()
-            )
-        )
-
         fetch_wikipedia_api(
-            region, term
+            link
         ).then(callback => {
             let summary_article = callback.summary
             let cover_article = callback.thumbnail
@@ -43,7 +43,7 @@ const WikipediaPreview = ( e => {
             let body = document.querySelector(`#${element_preview_root} a p`)
             let cover = document.querySelector(`#${element_preview_root} a.set-triangle img`)
             
-            body.innerHTML = summary_article
+            body.innerHTML = summary_article.split('.')[0] + '.'
 
             if (cover_article != undefined) {
                 cover.src = cover_article.source
