@@ -6,6 +6,7 @@
 
 #wikipedia-preview {
 	width: 320px;
+	display: none;
 	cursor: default;
 	margin: 2rem auto;
 	background: inherit;
