@@ -1,21 +1,21 @@
 const WikipediaRef = ( e => {
 
-    const clean_article_title = articleTitle => {
-        let cleaned_title = articleTitle.replace(
+    const clean_article_title = article_title => {
+        return article_title.replace(
             /[\(\)\[\]{}!@#$%^&*+=`~;:',.<>?\\|\/]/g, ''
-        ).trim()
-
-        return cleaned_title.replace(/\s+/g, ' ')
+        ).trim().replace(
+            /\s+/g, ' '
+        )
     }
 
-    const get_article_title = articleUrl => {
-        let articleTitle = decodeURIComponent(
-            articleUrl.split('/').pop().replace(
-                /_/g, ' '
+    const get_article_title = article_url => {
+        return clean_article_title(
+            decodeURIComponent(
+                article_url.split('/').pop().replace(
+                    /_/g, ' '
+                )
             )
         )
-
-        return clean_article_title(articleTitle)
     }
 
     const list = e => {
