@@ -7,6 +7,20 @@ const WikipediaPreview = ( e => {
     const body = document.querySelector(`#${element_preview_root} a p`)
     const cover = document.querySelector(`#${element_preview_root} a.set-triangle img`)
 
+    const is_in_list = element => {
+        let parent = element.parentNode
+
+        while (parent) {
+            if (parent.tagName === 'UL' || parent.tagName === 'OL') {
+                return true
+            }
+
+            parent = parent.parentNode
+        }
+
+        return false
+    }
+
     const fetch_wikipedia_api = (link) => {
         let region = link.match(/^(?:https?:\/\/)?([^\/]+)\./)[1].split('.')[0]
 
@@ -59,21 +73,23 @@ const WikipediaPreview = ( e => {
         let links = document.querySelectorAll('a[href*="wikipedia.org"]')
         
         links.forEach( link => {
-            link.addEventListener('mousemove', event => {
-                change_elements(event.target.href)
-                
-                preview.style.display = 'block'
-                preview.style.position = 'fixed'
+            if (!is_in_list(link)) {
+                link.addEventListener('mousemove', event => {
+                    change_elements(event.target.href)
+                    
+                    preview.style.display = 'block'
+                    preview.style.position = 'fixed'
 
-                preview.style.top = (event.clientY + 10) + 'px'
-                preview.style.left = (event.clientX + 10) + 'px'
-            })
+                    preview.style.top = (event.clientY + 10) + 'px'
+                    preview.style.left = (event.clientX + 10) + 'px'
+                })
 
-            link.addEventListener('mouseleave', e => {
-                cover.src = ''
-                body.innerHTML = ''
-                preview.style.display = 'none'
-            })
+                link.addEventListener('mouseleave', e => {
+                    cover.src = ''
+                    body.innerHTML = ''
+                    preview.style.display = 'none'
+                })
+            }
         })
     }
 
