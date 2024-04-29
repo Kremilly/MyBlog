@@ -15,4 +15,4 @@ Blog Plugins (until now):
 * [X] Code Syntax ([docs](https://prismjs.com/index.html))
 * [X] WikipediaRefs List
 * [ ] PDF Preview ([docs](https://github.com/kremilly/MyApis/wiki/pdfthumb))
-* [ ] Wikipedia Article Preview ([docs](https://github.com/kremilly/MyApis/wiki/wikipedia))
+* [X] Wikipedia Article Preview ([docs](https://github.com/kremilly/MyApis/wiki/wikipedia))
