@@ -4,6 +4,9 @@ const WikipediaPreview = ( e => {
     const element_preview_root = 'wikipedia-preview'
     const preview = document.getElementById(element_preview_root)
 
+    const body = document.querySelector(`#${element_preview_root} a p`)
+    const cover = document.querySelector(`#${element_preview_root} a.set-triangle img`)
+
     const fetch_wikipedia_api = (link) => {
         let region = link.match(/^(?:https?:\/\/)?([^\/]+)\./)[1].split('.')[0]
 
@@ -40,9 +43,6 @@ const WikipediaPreview = ( e => {
             let summary_article = callback.summary
             let cover_article = callback.thumbnail
             
-            let body = document.querySelector(`#${element_preview_root} a p`)
-            let cover = document.querySelector(`#${element_preview_root} a.set-triangle img`)
-            
             body.innerHTML = summary_article.split('.')[0] + '.'
 
             if (cover_article != undefined) {
@@ -60,21 +60,18 @@ const WikipediaPreview = ( e => {
         
         links.forEach( link => {
             link.addEventListener('mousemove', event => {
-                let mouseX = event.clientX
-                let mouseY = event.clientY
-
-                let link = event.target.href
+                change_elements(event.target.href)
                 
                 preview.style.display = 'block'
                 preview.style.position = 'fixed'
 
-                preview.style.top = (mouseY + 10) + 'px'
-                preview.style.left = (mouseX + 10) + 'px'
-
-                change_elements(link)
+                preview.style.top = (event.clientY + 10) + 'px'
+                preview.style.left = (event.clientX + 10) + 'px'
             })
 
             link.addEventListener('mouseleave', e => {
+                cover.src = ''
+                body.innerHTML = ''
                 preview.style.display = 'none'
             })
         })
