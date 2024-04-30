@@ -28,6 +28,9 @@ nav:
     - Setup: './setup/'
     - Projects: './projects/'
 
+google_fonts:
+  - 'Montserrat:ital,wght@0,100..900;1,100..900'
+
 external_css_libs:
   - 'https://use.fontawesome.com/releases/v6.5.2/css/all.css'
   - 'https://raw.githubusercontent.com/tscanlin/tocbot/master/dist/tocbot.css'

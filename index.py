@@ -1,9 +1,12 @@
 #!/usr/bin/python3
 
+import sys
+
 from flask import Flask, render_template, request
 
 from backend.loaders.js import JS
 from backend.loaders.css import CSS
+from backend.loaders.fonts import Fonts
 
 from backend.posts.posts import Posts
 from backend.posts.posts_meta import PostsMeta
@@ -22,16 +25,20 @@ def home():
         
         url_root=request.url_root[:-1],
         site_name=Settings.get('basic.site_name', 'string'),
+            
+        external_fonts=Fonts.load(),
         
         gh_repos=GHPinned.repos(),
     )
     
-@app.route('/about')
-def page(page:str):
+@app.route('/pages/<page>')
+def page(page:str=None):
     return render_template(
         'pages.html',
         
         page=page.capitalize(),
+            
+        external_fonts=Fonts.load(),
         
         url_root=request.url_root[:-1],
         site_name=Settings.get('basic.site_name', 'string'),
@@ -51,6 +58,8 @@ def blog(post:str=None):
             
             qr_code=GenQRCode.get(request.url),
             post_metadata=PostsMeta.post_data(post),
+            
+            external_fonts=Fonts.load(),
             
             internal_css_libs=CSS.internal(),
             external_css_libs=CSS.external(),

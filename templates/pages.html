@@ -8,6 +8,8 @@
     {% for css_file in blog_internal_css_libs %}
         <link rel='stylesheet' href='{{ url_root + url_for('static', filename=css_file) }}'>
     {% endfor %}
+
+    {{ external_fonts }}
 </head>
 <body>
     Hello world: {{ page }}
