@@ -62,6 +62,7 @@ Blog Plugins (until now):
 
 * [ ] GitHub Pinned Repositories ([docs](https://github.com/kremilly/MyApis/wiki/github))
 * [ ] ToCBot ([docs](https://tscanlin.github.io/tocbot/))
+* [ ] ReadingTime
 * [X] DocsSource List
 * [X] QR Code
 * [X] Mermaid Diagram Render ([docs](https://mermaid.js.org/))
