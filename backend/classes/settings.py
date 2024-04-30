@@ -2,15 +2,15 @@
 
 import yaml
 
-from backend.helper.configs import Configs
-
 from backend.exceptions.settings_exception import SettingsException
 
 class Settings:
+    
+    configs_file = './raven.yml'
 
     @classmethod
     def search_property_in_file(cls, prop):
-        with open(Configs.CONFIGS_FILE, 'r') as file:
+        with open(cls.configs_file, 'r') as file:
             lines = file.readlines()
 
             for line_number, line in enumerate(lines, start=1):
@@ -19,7 +19,7 @@ class Settings:
 
     @classmethod
     def get_wrong_property_position(cls, prop, open_file=False):
-        configs_file = Configs.CONFIGS_FILE
+        configs_file = cls.configs_file
         line_position = cls.search_property_in_file(prop)
 
         if open_file:
@@ -53,7 +53,7 @@ class Settings:
     @classmethod
     def get(cls, prop, data_type):
         try:
-            with open(Configs.CONFIGS_FILE, 'r') as content:
+            with open(cls.configs_file, 'r') as content:
                 data = yaml.safe_load(content)
 
             value = data
@@ -65,7 +65,7 @@ class Settings:
             return cls.is_valid(prop, value, data_type)
 
         except FileNotFoundError:
-            raise SettingsException(f"File '{Configs.CONFIGS_FILE.replace('./', '')}' not found.")
+            raise SettingsException(f"File '{cls.configs_file.replace('./', '')}' not found.")
 
         except yaml.YAMLError as e:
             raise SettingsException(f'Error while parsing the YAML file.: {e}')
