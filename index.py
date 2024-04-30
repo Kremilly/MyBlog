@@ -7,6 +7,7 @@ from backend.loaders.css import CSS
 from backend.loaders.fonts import Fonts
 
 from backend.posts.posts import Posts
+from backend.posts.paimon import Paimon
 from backend.posts.posts_meta import PostsMeta
 
 from backend.plugins.gh_pinned import GHPinned
@@ -15,6 +16,10 @@ from backend.plugins.gen_qrcode import GenQRCode
 from backend.classes.settings import Settings
 
 app = Flask(__name__)
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('errors/404.html'), 404
 
 @app.route('/')
 def home():
@@ -30,7 +35,7 @@ def home():
     )
     
 @app.route('/pages/<page>')
-def page(page:str=None):
+def page(page:str):
     return render_template(
         'pages.html',
         
@@ -83,6 +88,10 @@ def post(post:str=None):
         internal_js_libs=JS.internal(),
         internal_js_plugins=JS.plugins(),
     )
+    
+@app.route('/blog/<post>/paimon')
+def paimon_post_docs(post:str):
+    return Paimon.get(post)
 
 if __name__ == '__main__':
     app.run(debug=True)
