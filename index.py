@@ -67,7 +67,7 @@ def blog():
     )
 
 @app.route('/blog/<post>')
-def post(post:str=None):
+def post(post:str):
     return render_template(
         'post.html',
         
