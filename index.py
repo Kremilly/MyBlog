@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 
-import sys
-
 from flask import Flask, render_template, request
 
 from backend.loaders.js import JS

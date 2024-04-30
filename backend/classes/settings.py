@@ -1,8 +1,13 @@
 #!/usr/bin/python3
 
-import yaml
+import yaml, traceback
 
-from backend.exceptions.settings_exception import SettingsException
+class SettingsException(Exception):
+    
+    def __init__(cls, message):
+        cls.message = message
+        super().__init__(message)
+        traceback.print_exc()
 
 class Settings:
     
