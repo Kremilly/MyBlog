@@ -43,32 +43,46 @@ def page(page:str=None):
     )
 
 @app.route('/blog')
-@app.route('/blog/<post>')
-def blog(post:str=None):
-    if post is not None:
-        return render_template(
-            'blog.html',
-            
-            html_content=Posts.post(post),
-            url_root=request.url_root[:-1],
-            post_title=PostsMeta.post_head_title(post),
-            site_name=Settings.get('basic.site_name', 'string'),
-            
-            qr_code=GenQRCode.get(request.url),
-            post_metadata=PostsMeta.post_data(post),
-            
-            external_fonts=Fonts.load(),
-            
-            internal_css_libs=CSS.internal(),
-            external_css_libs=CSS.external(),
-            
-            external_js_libs=JS.external(),
-            internal_js_libs=JS.internal(),
-            internal_js_plugins=JS.plugins(),
-        )
+def blog():
+    return render_template(
+        'blog.html',
         
-    else:
-        return Posts.posts()
+        html_content=Posts.posts(),
+        url_root=request.url_root[:-1],
+        site_name=Settings.get('basic.site_name', 'string'),
+        
+        external_fonts=Fonts.load(),
+        
+        internal_css_libs=CSS.internal(),
+        external_css_libs=CSS.external(),
+        
+        external_js_libs=JS.external(),
+        internal_js_libs=JS.internal(),
+        internal_js_plugins=JS.plugins(),
+    )
+
+@app.route('/blog/<post>')
+def post(post:str=None):
+    return render_template(
+        'post.html',
+        
+        html_content=Posts.post(post),
+        url_root=request.url_root[:-1],
+        post_title=PostsMeta.post_head_title(post),
+        site_name=Settings.get('basic.site_name', 'string'),
+        
+        qr_code=GenQRCode.get(request.url),
+        post_metadata=PostsMeta.post_data(post),
+        
+        external_fonts=Fonts.load(),
+        
+        internal_css_libs=CSS.internal(),
+        external_css_libs=CSS.external(),
+        
+        external_js_libs=JS.external(),
+        internal_js_libs=JS.internal(),
+        internal_js_plugins=JS.plugins(),
+    )
 
 if __name__ == '__main__':
     app.run(debug=True)
