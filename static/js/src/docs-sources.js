@@ -3,13 +3,14 @@ const DocsSources = ( e => {
     const checkDocsUrlExt = link => {
         if (
             link.endsWith('.pdf') || link.endsWith('.docx') || 
+            link.endsWith('.epub') || link.endsWith('.mobi') || 
             link.endsWith('.doc') || link.endsWith('.rst') || 
             link.endsWith('.yml') || link.endsWith('.yaml') ||
             link.endsWith('.json') || link.endsWith('.toml') || 
             link.endsWith('.7z') || link.endsWith('.zip') || 
             link.endsWith('.rar') || link.endsWith('.tar') || 
             link.endsWith('.tar.gz') || link.endsWith('.gz') || 
-            link.endsWith('.bin') || link.endsWith('.img')  
+            link.endsWith('.bin') || link.endsWith('.img') 
         ) {
             return true
         }
@@ -27,11 +28,11 @@ const DocsSources = ( e => {
             if (checkDocsUrlExt(currentLink)) {
                 let fileName = link.href.split('/').pop()
 
-                let fileNameExists = docs_list.some(item => {
+                let file_name_exists = docs_list.some(item => {
                     return item.name === fileName
                 })
 
-                if (!fileNameExists) {
+                if (!file_name_exists) {
                     docs_list.push({
                         name: fileName,
                         url: currentLink, 

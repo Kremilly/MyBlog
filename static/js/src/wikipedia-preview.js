@@ -11,7 +11,7 @@ const WikipediaPreview = ( e => {
         let parent = element.parentNode
 
         while (parent) {
-            if (parent.tagName === 'ul' || parent.tagName === 'ol') {
+            if (parent.tagName === 'UL' || parent.tagName === 'OL') {
                 return true
             }
 
