@@ -1,13 +1,13 @@
 const WikipediaPreview = ( e => {
 
     const cache = {}
-    const element_preview_root = 'wikipedia-preview'
-    const preview = document.getElementById(element_preview_root)
+    const elementPreviewRoot = 'wikipedia-preview'
+    const preview = document.getElementById(elementPreviewRoot)
 
-    const body = document.querySelector(`#${element_preview_root} a p`)
-    const cover = document.querySelector(`#${element_preview_root} a.set-triangle img`)
+    const bodyPreviewElementRoot = document.querySelector(`#${elementPreviewRoot} a p`)
+    const coverPreviewElementRoot = document.querySelector(`#${elementPreviewRoot} a.set-triangle img`)
 
-    const is_in_list = element => {
+    const isInList = element => {
         let parent = element.parentNode
 
         while (parent) {
@@ -21,7 +21,7 @@ const WikipediaPreview = ( e => {
         return false
     }
 
-    const fetch_wikipedia_api = (link) => {
+    const fetchWikipediaApi = (link) => {
         let region = link.match(/^(?:https?:\/\/)?([^\/]+)\./)[1].split('.')[0]
 
         let term = (
@@ -30,7 +30,7 @@ const WikipediaPreview = ( e => {
             )
         )
 
-        let api_wikipedia_uri = `https://api.kremilly.com/wikipedia?location=${
+        let WikipediaApiUri = `https://api.kremilly.com/wikipedia?location=${
             region
         }&term=${
             term
@@ -39,7 +39,7 @@ const WikipediaPreview = ( e => {
         if (cache[term]) {
             return Promise.resolve(cache[term])
         } else {
-            return fetch(api_wikipedia_uri).then(
+            return fetch(WikipediaApiUri).then(
                 response => response.json()
             ).then( data => {
                 cache[term] = data
@@ -50,21 +50,21 @@ const WikipediaPreview = ( e => {
         }
     }
 
-    const change_elements = (link) => {
-        fetch_wikipedia_api(
+    const changeElements = (link) => {
+        fetchWikipediaApi(
             link
         ).then(callback => {
-            let summary_article = callback.summary
-            let cover_article = callback.thumbnail
+            let articleSummary = callback.summary
+            let articleCover = callback.thumbnail
             
-            body.innerHTML = summary_article.split('.')[0] + '.'
+            bodyPreviewElementRoot.innerHTML = articleSummary.split('.')[0] + '.'
 
-            if (cover_article != undefined) {
-                cover.src = cover_article.source
-                cover.style.display = 'block'
+            if (articleCover != undefined) {
+                coverPreviewElementRoot.src = articleCover.source
+                coverPreviewElementRoot.style.display = 'block'
             } else {
-                cover.src = ''
-                cover.style.display = 'none'
+                coverPreviewElementRoot.src = ''
+                coverPreviewElementRoot.style.display = 'none'
             }
         })
     }
@@ -73,9 +73,9 @@ const WikipediaPreview = ( e => {
         let links = document.querySelectorAll('a[href*="wikipedia.org"]')
         
         links.forEach( link => {
-            if (!is_in_list(link)) {
+            if (!isInList(link)) {
                 link.addEventListener('mousemove', event => {
-                    change_elements(event.target.href)
+                    changeElements(event.target.href)
                     
                     preview.style.display = 'block'
                     preview.style.position = 'fixed'
@@ -85,8 +85,8 @@ const WikipediaPreview = ( e => {
                 })
 
                 link.addEventListener('mouseleave', e => {
-                    cover.src = ''
-                    body.innerHTML = ''
+                    coverPreviewElementRoot.src = ''
+                    bodyPreviewElementRoot.innerHTML = ''
                     preview.style.display = 'none'
                 })
             }

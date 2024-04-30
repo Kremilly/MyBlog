@@ -1,11 +1,15 @@
 const DocsSources = ( e => {
 
-    const check_docs_url_ext = link => {
+    const checkDocsUrlExt = link => {
         if (
             link.endsWith('.pdf') || link.endsWith('.docx') || 
             link.endsWith('.doc') || link.endsWith('.rst') || 
             link.endsWith('.yml') || link.endsWith('.yaml') ||
-            link.endsWith('.json') || link.endsWith('.toml') 
+            link.endsWith('.json') || link.endsWith('.toml') || 
+            link.endsWith('.7z') || link.endsWith('.zip') || 
+            link.endsWith('.rar') || link.endsWith('.tar') || 
+            link.endsWith('.tar.gz') || link.endsWith('.gz') || 
+            link.endsWith('.bin') || link.endsWith('.img')  
         ) {
             return true
         }
@@ -18,19 +22,19 @@ const DocsSources = ( e => {
         let links = document.querySelectorAll('a')
 
         let promises = Array.from(links).map( link => {
-            let current_link = link.href
+            let currentLink = link.href
 
-            if (check_docs_url_ext(current_link)) {
-                let file_name = link.href.split('/').pop()
+            if (checkDocsUrlExt(currentLink)) {
+                let fileName = link.href.split('/').pop()
 
-                let file_name_exists = docs_list.some(item => {
-                    return item.name === file_name
+                let fileNameExists = docs_list.some(item => {
+                    return item.name === fileName
                 })
 
-                if (!file_name_exists) {
+                if (!fileNameExists) {
                     docs_list.push({
-                        name: file_name,
-                        url: current_link, 
+                        name: fileName,
+                        url: currentLink, 
                     })
                 }
             }
@@ -38,7 +42,7 @@ const DocsSources = ( e => {
 
         return Promise.all(promises).then( e => {
             let ul = document.createElement('ul')
-            let pdf_links_list_div = document.getElementById('pdfLinksList')
+            let pdfLinksListDiv = document.getElementById('pdfLinksList')
 
             docs_list.forEach( link => {
                 let a = document.createElement('a')
@@ -52,7 +56,7 @@ const DocsSources = ( e => {
                 ul.appendChild(li)
             })
 
-            pdf_links_list_div.appendChild(ul)
+            pdfLinksListDiv.appendChild(ul)
         })
     }
 
