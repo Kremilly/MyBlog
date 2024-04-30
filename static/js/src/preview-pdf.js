@@ -1,6 +1,6 @@
 const PDFPreview = ( e => {
 
-    const get_links = e => {
+    const getLinks = e => {
         var links = document.querySelectorAll('a')
 
         links.forEach( link => {
@@ -16,6 +16,6 @@ const PDFPreview = ( e => {
         })
     }
 
-    get_links()
+    getLinks()
     
 })()
