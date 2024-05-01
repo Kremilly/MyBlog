@@ -8,11 +8,10 @@ format_dates:
   today_datetime: '%a, %b %d %Y - %I:%M:%S %p'
 
 social_media:
-  - Dev.To: 'https://dev.to/kremilly'
   - GitHub: 'https://github.com/kremilly'
   - Leetcode: 'https://leetcode.com/kremilly'
   - Exercism: 'https://exercism.org/profiles/kremilly'
-  - BlueSky: 'https://bsky.app/profile/kremilly.bsky.social'
+  - BlueSky: 'https://bsky.app/profile/kremilly.com'
 
 profile:
   name: 'Kremilly'
