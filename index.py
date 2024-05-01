@@ -26,12 +26,12 @@ def home():
     return render_template(
         'index.html',
         
-        url_root=request.url_root[:-1],
-        site_name=Settings.get('basic.site_name', 'string'),
-            
+        gh_repos=GHPinned.repos(),
+        
         external_fonts=Fonts.load(),
         
-        gh_repos=GHPinned.repos(),
+        url_root=request.url_root[:-1],
+        site_name=Settings.get('basic.site_name', 'string'),
     )
     
 @app.route('/pages/<page>')
@@ -40,7 +40,7 @@ def page(page:str):
         'pages.html',
         
         page=page.capitalize(),
-            
+        
         external_fonts=Fonts.load(),
         
         url_root=request.url_root[:-1],
@@ -52,18 +52,17 @@ def blog():
     return render_template(
         'blog.html',
         
-        html_content=Posts.posts(),
-        url_root=request.url_root[:-1],
-        site_name=Settings.get('basic.site_name', 'string'),
-        
         external_fonts=Fonts.load(),
-        
         internal_css_libs=CSS.internal(),
         external_css_libs=CSS.external(),
         
         external_js_libs=JS.external(),
         internal_js_libs=JS.internal(),
         internal_js_plugins=JS.plugins(),
+        
+        html_content=Posts.posts(),
+        url_root=request.url_root[:-1],
+        site_name=Settings.get('basic.site_name', 'string'),
     )
 
 @app.route('/blog/<post>')
@@ -80,7 +79,6 @@ def post(post:str):
         post_metadata=PostsMeta.post_data(post),
         
         external_fonts=Fonts.load(),
-        
         internal_css_libs=CSS.internal(),
         external_css_libs=CSS.external(),
         
@@ -89,7 +87,7 @@ def post(post:str):
         internal_js_plugins=JS.plugins(),
     )
     
-@app.route('/blog/<post>/paimon')
+@app.route('/blog/<post>/paimon.txt')
 def paimon_post_docs(post:str):
     return Paimon.get(post)
 
