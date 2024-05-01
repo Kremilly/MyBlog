@@ -5,8 +5,7 @@ My blog for technical and non-technic articles
 > [!note]
 > Under in development
 
-> [!note]
->
+> [!important]
 > This blog uses Markdown for generate their posts and pages, and uses some libraries for make this: Markdown2, Markdown-it-py and MarkupSafe
 
 Paths structure (without files):
