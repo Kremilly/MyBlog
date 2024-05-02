@@ -3,6 +3,7 @@
 import re
 
 from flask import Response
+from markupsafe import escape
 from markdown_it import MarkdownIt
 
 from backend.utils.files import FilesUtils
@@ -57,7 +58,8 @@ class Paimon:
             }
         )
         
-        file_path = FilesUtils.get_file_path(post, 'blog')
+        escape_post = escape(post)
+        file_path = FilesUtils.get_file_path(escape_post, 'blog')
         md_content = FilesUtils.read_content(file_path)
         
         for token in md.parse(md_content):

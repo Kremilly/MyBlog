@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+from markupsafe import escape
 from flask import Flask, render_template, request
 
 from backend.loaders.js import JS
@@ -36,6 +37,7 @@ def home():
     
 @app.route('/pages/<page>')
 def page(page:str):
+    page = escape(page)
     return render_template(
         'pages.html',
         
@@ -67,6 +69,8 @@ def blog():
 
 @app.route('/blog/<post>')
 def post(post:str):
+    post = escape(post)
+    
     return render_template(
         'post.html',
         
@@ -89,7 +93,8 @@ def post(post:str):
     
 @app.route('/blog/<post>/paimon.txt')
 def paimon_post_docs(post:str):
+    post = escape(post)
     return Paimon.get(post)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
