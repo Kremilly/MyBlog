@@ -1,4 +1,4 @@
-import os
+import re, os
 
 from markupsafe import escape
 
@@ -27,7 +27,7 @@ class Security:
     def is_valid_post_file(cls, file_path:str) -> bool:
         file_path = escape(file_path)
         
-        if os.path.isfile(file_path):
+        if os.path.isfile(file_path) and bool(re.match(r'^[\w-]+$', file_path)):
             return True
         
         return False
