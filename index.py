@@ -15,6 +15,7 @@ from backend.plugins.gh_pinned import GHPinned
 from backend.plugins.gen_qrcode import GenQRCode
 
 from backend.classes.settings import Settings
+from backend.classes.security import Security
 
 app = Flask(__name__)
 
@@ -37,7 +38,7 @@ def home():
     
 @app.route('/pages/<page>')
 def page(page:str):
-    page = escape(page)
+    page = Security.check_and_valid_file(page)
     return render_template(
         'pages.html',
         
@@ -69,7 +70,7 @@ def blog():
 
 @app.route('/blog/<post>')
 def post(post:str):
-    post = escape(post)
+    post = Security.check_and_valid_file(post)
     
     return render_template(
         'post.html',
@@ -93,7 +94,7 @@ def post(post:str):
     
 @app.route('/blog/<post>/paimon.txt')
 def paimon_post_docs(post:str):
-    post = escape(post)
+    post = Security.check_and_valid_file(post)
     return Paimon.get(post)
 
 if __name__ == '__main__':

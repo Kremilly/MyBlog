@@ -37,7 +37,7 @@ class FilesUtils:
     def read_content(cls, file:str) -> str|None:
         html_content = str()
         
-        if Security.is_valid_post_file(file):
+        if Security.check_and_valid_file(file):
             if os.path.exists(file):
                 with open(file, 'rb') as content:
                     html_content = content.read().decode('utf-8')
