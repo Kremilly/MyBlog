@@ -2,8 +2,6 @@
 
 import os
 
-from backend.classes.security import Security
-
 from backend.classes.settings import Settings
 
 from backend.utils.time_utils import TimeUtils
@@ -37,16 +35,13 @@ class FilesUtils:
     def read_content(cls, file:str) -> str|None:
         html_content = str()
         
-        if Security.check_and_valid_file(file):
-            if os.path.exists(file):
-                with open(file, 'rb') as content:
-                    html_content = content.read().decode('utf-8')
-            else:
-                html_content = None
-                
-            return html_content
-        
-        return None
+        if os.path.exists(file):
+            with open(file, 'rb') as content:
+                html_content = content.read().decode('utf-8')
+        else:
+            html_content = None
+            
+        return html_content
     
     @classmethod
     def get_creation_date_file(cls, file_path:str) -> str|None:

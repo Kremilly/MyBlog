@@ -14,7 +14,6 @@ from backend.plugins.gh_pinned import GHPinned
 from backend.plugins.gen_qrcode import GenQRCode
 
 from backend.classes.settings import Settings
-from backend.classes.security import Security
 
 app = Flask(__name__)
 
@@ -37,19 +36,16 @@ def home():
     
 @app.route('/pages/<page>')
 def page(page:str):
-    page = Security.check_and_valid_file(page)
-    
-    if page:
-        return render_template(
-            'pages.html',
-            
-            page=page.capitalize(),
-            
-            external_fonts=Fonts.load(),
-            
-            url_root=request.url_root[:-1],
-            site_name=Settings.get('basic.site_name', 'string'),
-        )
+    return render_template(
+        'pages.html',
+        
+        page=page.capitalize(),
+        
+        external_fonts=Fonts.load(),
+        
+        url_root=request.url_root[:-1],
+        site_name=Settings.get('basic.site_name', 'string'),
+    )
 
 @app.route('/blog')
 def blog():
@@ -71,35 +67,29 @@ def blog():
 
 @app.route('/blog/<post>')
 def post(post:str):
-    post = Security.check_and_valid_file(post)
-    
-    if post:
-        return render_template(
-            'post.html',
-            
-            html_content=Posts.post(post),
-            url_root=request.url_root[:-1],
-            post_title=PostsMeta.post_head_title(post),
-            site_name=Settings.get('basic.site_name', 'string'),
-            
-            qr_code=GenQRCode.get(request.url),
-            post_metadata=PostsMeta.post_data(post),
-            
-            external_fonts=Fonts.load(),
-            internal_css_libs=CSS.internal(),
-            external_css_libs=CSS.external(),
-            
-            external_js_libs=JS.external(),
-            internal_js_libs=JS.internal(),
-            internal_js_plugins=JS.plugins(),
-        )
+    return render_template(
+        'post.html',
+        
+        html_content=Posts.post(post),
+        url_root=request.url_root[:-1],
+        post_title=PostsMeta.post_head_title(post),
+        site_name=Settings.get('basic.site_name', 'string'),
+        
+        qr_code=GenQRCode.get(request.url),
+        post_metadata=PostsMeta.post_data(post),
+        
+        external_fonts=Fonts.load(),
+        internal_css_libs=CSS.internal(),
+        external_css_libs=CSS.external(),
+        
+        external_js_libs=JS.external(),
+        internal_js_libs=JS.internal(),
+        internal_js_plugins=JS.plugins(),
+    )
     
 @app.route('/blog/<post>/paimon.txt')
 def paimon_post_docs(post:str):
-    post = Security.check_and_valid_file(post)
-    
-    if post:
-        return Paimon.get(post)
+    return Paimon.get(post)
 
 if __name__ == '__main__':
     app.run()
