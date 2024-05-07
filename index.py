@@ -92,4 +92,4 @@ def paimon_post_docs(post:str):
     return Paimon.get(post)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

@@ -73,6 +73,6 @@ class Paimon:
                     books_list.add(book_link)
             
         return Response(
-            '\n'.join(books_list), 
+            '\n'.join(f'kremilly/{post} !path\n\n{book_link}' for book_link in books_list),
             content_type='text/plain'
         )
