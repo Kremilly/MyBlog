@@ -75,7 +75,6 @@ def post(post:str):
         post_title=PostsMeta.post_head_title(post),
         site_name=Settings.get('basic.site_name', 'string'),
         
-        qr_code=GenQRCode.get(request.url),
         post_metadata=PostsMeta.post_data(post),
         
         external_fonts=Fonts.load(),
