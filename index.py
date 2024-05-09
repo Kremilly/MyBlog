@@ -10,9 +10,6 @@ from backend.posts.posts import Posts
 from backend.posts.paimon import Paimon
 from backend.posts.posts_meta import PostsMeta
 
-from backend.plugins.gh_pinned import GHPinned
-from backend.plugins.gen_qrcode import GenQRCode
-
 from backend.classes.settings import Settings
 
 app = Flask(__name__)
@@ -25,8 +22,6 @@ def page_not_found(e):
 def home():
     return render_template(
         'index.html',
-        
-        gh_repos=GHPinned.repos(),
         
         external_fonts=Fonts.load(),
         
