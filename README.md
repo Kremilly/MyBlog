@@ -40,6 +40,7 @@ static/
     └── plugins/
 ```
 
+<!--
 Main Dependencies:
 
 * beautifulsoup4
@@ -53,6 +54,7 @@ Main Dependencies:
 * PyYAML
 * qrcode
 * requests
+-->
 
 Blog Plugins (until now):
 
