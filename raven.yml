@@ -29,9 +29,6 @@ nav:
 
 google_fonts:
   - 'Montserrat:ital,wght@0,100..900;1,100..900'
-
-external_css_libs:
-  - 'https://raw.githubusercontent.com/tscanlin/tocbot/master/dist/tocbot.css'
   
 external_js_libs:
   - 'https://polyfill.io/v3/polyfill.min.js?features=es6'

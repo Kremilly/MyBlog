@@ -20,14 +20,3 @@ class CSS:
             styles.append(f'{file}')
             
         return set(styles)
-    
-    @classmethod
-    def external(cls) -> Markup:
-        styles = []
-        libs = Settings.get(f'external_css_libs', 'list')
-
-        for lib in libs:
-            styles.append(f"<link rel='stylesheet' href='{ lib }'>")
-        
-        styles = set(styles)
-        return Markup(''.join(styles))

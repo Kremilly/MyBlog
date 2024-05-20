@@ -49,7 +49,6 @@ def blog():
         
         external_fonts=Fonts.load(),
         internal_css_libs=CSS.internal(),
-        external_css_libs=CSS.external(),
         
         external_js_libs=JS.external(),
         internal_js_libs=JS.internal(),
@@ -74,7 +73,6 @@ def post(post:str):
         
         external_fonts=Fonts.load(),
         internal_css_libs=CSS.internal(),
-        external_css_libs=CSS.external(),
         
         external_js_libs=JS.external(),
         internal_js_libs=JS.internal(),

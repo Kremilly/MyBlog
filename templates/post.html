@@ -5,8 +5,6 @@
     <title>{{ site_name }}: Blog {{ post_title }}</title>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     
-    {{ external_css_libs }}
-    
     {% for css_file in internal_css_libs %}
         <link rel='stylesheet' href='{{ url_root + url_for('static', filename=css_file) }}'>
     {% endfor %}
