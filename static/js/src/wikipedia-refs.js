@@ -36,7 +36,6 @@ const WikipediaRefs = ( e => {
         return Promise.all(promises).then( e => {
             let ul = document.createElement('ul')
             let wikiLinksListDiv = document.getElementById('wikiLinksList')
-            wikiLinksListDiv.className = 'plugin-section'
 
             wikiList.forEach( link => {
                 let a = document.createElement('a')

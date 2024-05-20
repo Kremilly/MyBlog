@@ -39,7 +39,7 @@ sys.exit()
 
 [PDF Preview](https://www.mackenzie.br/fileadmin/OLD/47/Graduacao/CCBS/Cursos/Ciencias_Biologicas/1o_2012/Biblioteca_TCC_Lic/2009/2o_Semestre/Karen_e_Priscila.pdf)
 
-[Microsoft](https://en.wikipedia.org/Microsoft)
+[Microsoft](https://en.wikipedia.org/wiki/Microsoft)
 
 [Hello world](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program)
 
