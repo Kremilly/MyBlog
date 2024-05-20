@@ -5,17 +5,15 @@ from markupsafe import Markup
 import linkify_it
 from markdown_it import MarkdownIt
 
-from mdit_py_plugins.footnote import footnote_plugin
 from mdit_py_plugins.tasklists import tasklists_plugin
 from mdit_py_plugins.wordcount import wordcount_plugin
-from mdit_py_plugins.front_matter import front_matter_plugin
 
 from backend.utils.files import FilesUtils
 
 class Posts:
     
     @classmethod
-    def posts(cls) -> dict:
+    def posts(cls):
         return [
             'List all posts'
         ]
@@ -27,10 +25,6 @@ class Posts:
                 'html': True,
                 'breaks': True,
             }
-        ).use(
-            front_matter_plugin
-        ).use(
-            footnote_plugin
         ).use(
             tasklists_plugin
         ).use(

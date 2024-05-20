@@ -36,10 +36,12 @@ const WikipediaRefs = ( e => {
         return Promise.all(promises).then( e => {
             let ul = document.createElement('ul')
             let wikiLinksListDiv = document.getElementById('wikiLinksList')
+            wikiLinksListDiv.className = 'plugin-section'
 
             wikiList.forEach( link => {
                 let a = document.createElement('a')
                 let li = document.createElement('li')
+                li.className = 'pdd-left'
 
                 a.href = link.url
                 a.target = '_blank'
