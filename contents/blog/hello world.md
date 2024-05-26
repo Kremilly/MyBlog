@@ -60,10 +60,30 @@ $$
 e^{i\pi} + 1 = 0
 $$
 
+$$
+e^{i\pi} + 1 = 0
+$$
+
+The HTML specification
+is maintained by the W3C.
+
+*[HTML]: Hyper Text Markup Language
+*[W3C]: World Wide Web Consortium
+
 ```mermaid
-graph TD
-    A[Square Rect] -- Link text --> B((Circle))
-    A --> C(Round Rect)
-    B --> D{Rhombus}
-    C --> D
+graph LR;
+    master(Main) --> develop(Develop);
+    develop --> feature1(Feature 1);
+    develop --> feature2(Feature 2);
+    develop --> feature3(Feature 3);
+    feature1 --> |Merge| develop;
+    feature2 --> |Merge| develop;
+    feature3 --> |Merge| develop;
+    develop --> release(Release);
+    release --> |Merge| master;
+    release --> |Merge| develop;
+    master --> hotfix(Hotfix);
+    hotfix --> |Merge| master;
+    hotfix --> |Merge| develop;
+
 ```

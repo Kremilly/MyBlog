@@ -24,6 +24,7 @@ def home():
         'index.html',
         
         external_fonts=Fonts.load(),
+        internal_css_libs=CSS.internal(),
         
         url_root=request.url_root[:-1],
         site_name=Settings.get('basic.site_name', 'string'),

@@ -2,16 +2,27 @@
 <html lang='en'>
 <head>
     <meta charset='UTF-8'>
-    <title>{{ site_name }}: Home</title>
+    <title>{{ site_name }}: Blog {{ post_title }}</title>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     
-    {% for css_file in blog_internal_css_libs %}
+    {% for css_file in internal_css_libs %}
         <link rel='stylesheet' href='{{ url_root + url_for('static', filename=css_file) }}'>
     {% endfor %}
 
     {{ external_fonts }}
 </head>
 <body>
-    Hello world: HOMEPAGE
+    <header>
+        <div class="logo"></div>
+        <div class='label' id='headerLabel'></div>
+
+        <div class='nav'>
+            <div class='fa-solid fa-arrow-up' id='scrollToTopBtn'></div>
+            <div class='fa-solid fa-book' id='scrollToRefsBtn'></div>
+            <div class='fa-solid fa-paperclip' id='scrollToDocsBtn'></div>
+        </div>
+    </header>
+
+    <nav class="sidebar-home"></nav>
 </body>
 </html>

@@ -8,6 +8,19 @@ from markdown_it import MarkdownIt
 from mdit_py_plugins.tasklists import tasklists_plugin
 from mdit_py_plugins.wordcount import wordcount_plugin
 
+import mistune
+
+from mistune.plugins.url import url
+from mistune.plugins.abbr import abbr
+from mistune.plugins.math import math
+from mistune.plugins.ruby import ruby
+from mistune.plugins.table import table
+from mistune.plugins.formatting import *
+from mistune.plugins.spoiler import spoiler
+from mistune.plugins.def_list import def_list
+from mistune.plugins.footnotes import footnotes
+from mistune.plugins.task_lists import task_lists
+
 from backend.utils.files import FilesUtils
 
 class Posts:
@@ -19,27 +32,26 @@ class Posts:
         ]
         
     @classmethod
-    def post(cls, file:str, markup:bool=True) -> Markup:
-        md = MarkdownIt(
-            'gfm-like', {
-                'html': True,
-                'breaks': True,
-            }
-        ).use(
-            tasklists_plugin
-        ).use(
-            wordcount_plugin
-        ).enable('table')
-        
+    def post(cls, file:str) -> Markup:
         file_path = FilesUtils.get_file_path(file, 'blog')
-        html_content = FilesUtils.read_content(file_path)
+        md_content = FilesUtils.read_content(file_path)
         
-        if html_content is None:
-            html_content = '# Error 404'
+        renderer = mistune.HTMLRenderer()
+        markdown = mistune.Markdown(renderer, plugins=[
+            math, 
+            footnotes, 
+            table, 
+            url, 
+            abbr, 
+            ruby, 
+            spoiler,
+            task_lists, def_list, 
+            strikethrough, subscript, superscript, mark, insert, 
+        ])
         
-        if markup:
-            return Markup(
-                md.render(html_content)
-            )
+        if md_content is None:
+            md_content = '# Error 404'
         
-        return md.render(html_content)
+        html_content = markdown(md_content)
+        
+        return Markup(html_content)
