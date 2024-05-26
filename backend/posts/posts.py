@@ -2,12 +2,6 @@
 
 from markupsafe import Markup
 
-import linkify_it
-from markdown_it import MarkdownIt
-
-from mdit_py_plugins.tasklists import tasklists_plugin
-from mdit_py_plugins.wordcount import wordcount_plugin
-
 import mistune
 
 from mistune.plugins.url import url
@@ -52,6 +46,6 @@ class Posts:
         if md_content is None:
             md_content = '# Error 404'
         
-        html_content = markdown(md_content)
-        
-        return Markup(html_content)
+        return Markup(
+            markdown(md_content)
+        )
