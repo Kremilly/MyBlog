@@ -80,7 +80,7 @@ def post(post:str):
         internal_js_plugins=JS.plugins(),
     )
     
-@app.route('/blog/<post>/paimon.txt')
+@app.route('/blog/<post>/paimon')
 def paimon_post_docs(post:str):
     return Paimon.get(post)
 

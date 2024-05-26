@@ -11,6 +11,15 @@ from backend.utils.files import FilesUtils
 class Paimon:
     
     @classmethod
+    def get_bootstrap(cls, path:str, links:list) -> str:
+        with open('./static/pbd/template.pbd', 'r') as file:
+            content = file.read()
+        
+        links_str = "".join(links)
+        content = content.replace("__EBOOKS_PATH__", path)
+        return content.replace("__EBOOKS_LIST__", links_str)
+    
+    @classmethod
     def has_link(cls, text:str) -> bool:
         if re.search(r'(https?|ftp|sftp)://\S+', text):
             return True
@@ -73,6 +82,6 @@ class Paimon:
                     books_list.add(book_link)
             
         return Response(
-            '\n'.join(f'kremilly/{post} !path\n\n{book_link}' for book_link in books_list),
-            content_type='text/plain'
+            cls.get_bootstrap(f'kremilly/{post}', books_list),
+            content_type='text/pbd'
         )
