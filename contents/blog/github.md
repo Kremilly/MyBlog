@@ -89,5 +89,3 @@ fetch('https://api.kremilly.com/github?user=kremilly').then(
 * The user does not have any pinned repositores (Status code: `200`)
 * User does not exist on GitHub (Status code: `404`)
 * Error fetching pinned repositories (Status code: `500`)
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/8yis7GzlXNM?si=4JPwX6NCnqdU798j" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
