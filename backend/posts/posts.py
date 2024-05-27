@@ -30,6 +30,10 @@ class Posts:
         posts = FilesUtils.scan_path(path)
         
         for post in posts:
+            file = post.split('/')[-1].replace(
+                '.md', ''
+            )
+            
             slug = post.split('/')[-1].replace(
                 '+', '-'
             ).replace(
@@ -41,10 +45,9 @@ class Posts:
             list_posts.append({
                 'slug': slug,
                 'url': f'{url_root}/blog/{slug}',
-                'cover': PostsMeta.post_cover(slug),
-                'title': PostsMeta.post_title(slug),
-                'description': PostsMeta.post_description(slug),
-                'date': FilesUtils.get_creation_date_file(post)
+                'date': PostsMeta.post_metadata(file, 'Date'),
+                'title': PostsMeta.post_metadata(file, 'Title'),
+                'description': PostsMeta.post_metadata(file, 'Description'),
             })
             
         return sorted(
@@ -54,7 +57,9 @@ class Posts:
     @classmethod
     def post(cls, file:str) -> Markup:
         file_path = FilesUtils.get_file_path(file, 'blog')
-        md_content = FilesUtils.read_content(file_path)
+        md_content = FilesUtils.read_content(file_path).content
+        
+        print(FilesUtils.read_content(file_path).metadata['Title'])
         
         renderer = mistune.HTMLRenderer()
         markdown = mistune.Markdown(renderer, plugins=[

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import os
+import os, frontmatter
 
 from backend.classes.settings import Settings
 
@@ -36,8 +36,9 @@ class FilesUtils:
         html_content = str()
         
         if os.path.exists(file):
-            with open(file, 'rb') as content:
-                html_content = content.read().decode('utf-8')
+            with open(file, 'r') as content:
+                obj = frontmatter.load(content)
+                html_content = obj
         else:
             html_content = None
             

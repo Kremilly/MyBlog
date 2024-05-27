@@ -1,3 +1,10 @@
+---
+Title: Hello World
+Description: A simple hello world example
+Date: 2021-07-01
+Cover: 
+Tags: hello, world
+---
 ![cover](https://media.dev.to/cdn-cgi/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F48fagykg1pynim5t3fv9.png)
 
 # Header 1
@@ -28,6 +35,10 @@ sys.exit()
 1. Exemplo 1
 2. Exemplo 2
 3. Exemplo 3
+
+content in paragraph with footnote[^1] markup.
+
+[^1]: footnote explain
 
 **Bold**
 

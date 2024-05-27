@@ -14,7 +14,7 @@ class PostsMeta:
     def get_post_content(cls, file:str) -> str|None:
         file_path = FilesUtils.get_file_path(file, 'blog')
         
-        markdown_content = FilesUtils.read_content(file_path)
+        markdown_content = FilesUtils.read_content(file_path).content
         
         if markdown_content is not None:
             return markdown2.markdown(markdown_content)
@@ -94,7 +94,7 @@ class PostsMeta:
 
     @classmethod
     def post_head_title(cls, file:str)-> str:
-        post_title = cls.post_title(file)
+        post_title = cls.post_metadata(file, 'Title')
         
         if post_title is not None:
             return f'> {post_title}'
@@ -102,17 +102,8 @@ class PostsMeta:
         return '> 404: Not found'
     
     @classmethod
-    def post_data(cls, file:str) -> dict|None:
+    def post_metadata(cls, file:str, data:str) -> str:
         file_path = FilesUtils.get_file_path(file, 'blog')
-        slug = file.lower().replace('-', ' ').replace('.md', '')
-        
-        if FilesUtils.check_file_exists(file_path):
-            return {
-                'title': PostsMeta.post_title(file),
-                'cover': PostsMeta.post_cover(file),
-                'topics': PostsMeta.post_topics(file),
-                'description': PostsMeta.post_description(file),
-                'published_at': FilesUtils.get_creation_date_file(file_path)
-            }
-        
-        return None
+        metadata = FilesUtils.read_content(file_path).metadata
+        return metadata[data]
+    

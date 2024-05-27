@@ -13,32 +13,16 @@
 </head>
 <body>
     <header>
-        <div class="logo"></div>
+        <a href="{{ url_root }}" class="logo"></a>
         <div class='label' id='headerLabel'>{{ post_title.replace(">", "") }}</div>
 
         <div class='nav'>
             <div class='fa-solid fa-arrow-up' id='scrollToTopBtn'></div>
-            <div class='fa-solid fa-book' id='scrollToRefsBtn'></div>
-            <div class='fa-solid fa-paperclip' id='scrollToDocsBtn'></div>
         </div>
     </header>
 
     <article class='post-content'>
         {{ html_content }}
-
-        <div class='plugin-section' id='pdfLinksList'>
-            <p>
-                <i class='fa-solid fa-paperclip'></i>
-                Documents:
-            </p>
-        </div>
-
-        <div class='plugin-section' id='wikiLinksList'>
-            <p>
-                <i class='fa-solid fa-book'></i>
-                Referencies:
-            </p>
-        </div>
     </article>
     
     {{ external_js_libs }}
