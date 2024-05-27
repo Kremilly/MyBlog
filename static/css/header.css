@@ -28,6 +28,11 @@ header > .logo {
 
 header > .logo:hover { background-color: var(--color-border); }
 
+header > .fa-solid {
+    height: var(--header-size);
+    line-height: var(--header-size);
+}
+
 header > .label{
     float: left;
     cursor: default;
@@ -75,24 +80,22 @@ header > .nav > .actived{
     background: var(--color-border);
 }
 
-header > nav > .icon {
+header > .icon {
     float: left;
     width: 3.6em;
-    height: 3.8em;
-    color: inherit;
+    height: 3.7em;
     cursor: pointer;
     font-size: .8em;
-    line-height: 3.8em;
+    line-height: 3.7em;
     text-align: center;
-    text-decoration: none;
     vertical-align: middle;
+    color: inherit !important;
+    text-decoration: none !important;
 }
 
-header > nav > .showed {
-    background: var(--body-color);
-}
+header > .showed { background: var(--body-color); }
 
-header > nav > a:hover { background: var(--body-color); }
+header > .icon:hover { background: var(--color-border); }
 
 .search-bar {
     top: 0;
@@ -125,11 +128,8 @@ header > nav > a:hover { background: var(--body-color); }
     animation: border-slide .5s ease-in-out forwards;
 }
 
+#scrollToTopBtn{ display: none; }
+
 .search-bar > input:hover::placeholder { color: var(--text-color); }
 
 .search-bar > input::placeholder, .search-bar > input:focus::placeholder { opacity: .7; }
-
-
-#scrollToTopBtn{
-    display: none;
-}
