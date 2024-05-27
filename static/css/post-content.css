@@ -9,3 +9,98 @@
     border-radius: var(--border-radius);
     border: .1em solid var(--color-border);
 }
+
+.post-content > .footer .tags {
+    display: flex;
+    align-items: center;
+    margin-bottom: -2.8em;
+    height: var(--spacing-xl);
+    justify-content: flex-start;
+    line-height: var(--spacing-xl);
+}
+
+.post-content > .footer > .tags > a {
+    color: inherit;
+    font-size: .8em;
+    cursor: pointer;
+    padding-left: .5em;
+    padding-right: .5em;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.post-content > .footer > .tags > a:hover { text-decoration: underline; }
+
+.post-content > .footer > .social {
+    display: flex;
+    align-items: center;
+    margin-bottom: -1.5em;
+    justify-content: flex-end;
+    height: var(--spacing-xl);
+    line-height: var(--spacing-xl);
+    border-top: .1em solid var(--color-border);
+}
+
+.post-content > .footer > .social > input {
+    border: none;
+    outline: none;
+    height: 2.5em;
+    color: inherit;
+    cursor: pointer;
+    font-weight: bold;
+    padding-left: 1em;
+    padding-right: 1em;
+    line-height: 2.5em;
+    background: inherit;
+    border-left: .5em solid transparent;
+}
+
+.post-content > .footer > .social > input:hover, .post-content > .footer > .social > input:focus {
+    box-shadow: var(--box-shadow);
+    background: var(--color-border);
+    border-radius: var(--border-radius);
+    border-left-color: var(--border-color);
+    animation: border-slide .5s ease-in-out forwards;
+}
+
+.post-content > .footer > .social > .social-media {
+    margin: 0 var(--spacing-sm);
+}
+
+.post-content > .footer > .social > a {
+    float: left;
+    color: inherit;
+    cursor: pointer;
+    font-size: 1.25em;
+    text-decoration: none;
+    margin: 0 var(--spacing-sm);
+}
+
+.post-content > .footer > .social > .fa-whatsapp:hover {
+    color: #25D366;
+}
+
+.post-content > .footer > .social > .fa-facebook:hover {
+    color: #3B5998;
+}
+
+.post-content > .footer > .social > .fa-x-twitter:hover {
+    color: #000000;
+}
+
+.post-content > .footer > .social > .fa-linkedin:hover {
+    color: #0077B5;
+}
+
+.post-content > .footer > .social > .fa-share-nodes:hover {
+    color: var(--color-link-hover);
+}
+
+@keyframes border-slide {
+    0% { border-left-width: 0; }
+    
+    100% {
+        border-left-width: .5em;
+        border-color: var(--border-color);
+    }
+}
