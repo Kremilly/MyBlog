@@ -1,18 +1,18 @@
 :root {
     --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Open Sans", "Apple Color Emoji", "Segoe UI Emoji";
     --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
-    --color-text: #abb2bf;
-    --color-bg: #282c34;
-    --color-link: #61afef;
-    --color-link-hover: #528bff;
-    --color-border: #3e4451;
-    --color-muted: #5c6370;
-    --color-quote: #5c6370;
-    --color-pre-bg: #21252b;
-    --color-pre-fg: #abb2bf;
-    --color-important-bg: #e5c07b; /* Amber for important */
-    --color-note-bg: #98c379; /* Green for note */
-    --color-warning-bg: #e06c75; /* Red for warning */
+    --color-text: #dcdcdc;
+    --color-bg: #1e1e1e;
+    --color-link: #6fc3df;
+    --color-link-hover: #8cd6ff;
+    --color-border: #333333;
+    --color-muted: #808080;
+    --color-quote: #606060;
+    --color-pre-bg: #292929;
+    --color-pre-fg: #dcdcdc;
+    --color-important-bg: #ffcc00;
+    --color-note-bg: #77dd77;
+    --color-warning-bg: #ff6666;
     --spacing-sm: 8px;
     --spacing-md: 16px;
     --spacing-lg: 24px;

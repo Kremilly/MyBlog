@@ -40,6 +40,7 @@
 
 .posts > a > li:hover {
     box-shadow: var(--box-shadow);
+    background: var(--color-border);
     border-left: 0 solid transparent;
     animation: border-slide .5s ease-in-out forwards;
 }
