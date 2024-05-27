@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import glob, mistune
+import emoji_data_python, mistune
 from markupsafe import Markup
 
 from mistune.plugins.url import url
@@ -18,8 +18,6 @@ from backend.utils.files import FilesUtils
 from backend.classes.settings import Settings
 
 from backend.posts.posts_meta import PostsMeta
-
-from flask import url_for
 
 class Posts:
     
@@ -58,8 +56,7 @@ class Posts:
     def post(cls, file:str) -> Markup:
         file_path = FilesUtils.get_file_path(file, 'blog')
         md_content = FilesUtils.read_content(file_path).content
-        
-        print(FilesUtils.read_content(file_path).metadata['Title'])
+        md_content = emoji_data_python.replace_colons(md_content)
         
         renderer = mistune.HTMLRenderer()
         markdown = mistune.Markdown(renderer, plugins=[

@@ -5,14 +5,11 @@ Date: 2024-05-27
 Cover: 
 Tags: hello, world
 ---
-
 ![cover](https://media.dev.to/cdn-cgi/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F48fagykg1pynim5t3fv9.png)
-
-If you want to add your pinned repositories to your portfolio or website and can't find an API that works for this, then your problems are over. I've created an API that does exactly that, and its usage is extremely easy. Simply pass your GitHub username as a query parameter.
 
 ## Using the api on your project
 
-If you want to add your pinned repositories to your portfolio or website and can't find an API that works for this, then your problems are over. I've created an API that does exactly that, and its usage is extremely easy. Simply pass your GitHub username as a query parameter.
+If you want to add your pinned repositories to your portfolio or website and can't find an API that works for this, then your problems are over. I've created an API that does exactly that, and its usage is extremely easy. Simply pass your GitHub username as a query parameter. :warning: 
 
 ### Example of request
 
@@ -28,7 +25,7 @@ https://api.kremilly.com/github?user=YOUR_USERNAME
 
 ```javascript
 // Replace "kremilly" for your GitHub username
-fetch('https://api.kremilly.com/github?user=kremilly').then(
+fetch("https://api.kremilly.com/github?user=kremilly").then(
    json => json.json()
 ).then(callback => { 
    console.log(callback) 

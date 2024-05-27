@@ -110,21 +110,6 @@ img {
     border-radius: var(--border-radius);
 }
 
-.alert-important {
-    background-color: var(--color-important-bg);
-    border-left: 6px solid darken(var(--color-important-bg), 10%);
-}
-
-.alert-note {
-    background-color: var(--color-note-bg);
-    border-left: 6px solid darken(var(--color-note-bg), 10%);
-}
-
-.alert-warning {
-    background-color: var(--color-warning-bg);
-    border-left: 6px solid darken(var(--color-warning-bg), 10%);
-}
-
 abbr {
     border-bottom: 1px dotted;
     text-decoration: none;
@@ -158,4 +143,16 @@ pre > code {
     white-space: pre;
     word-break: normal;
     background: transparent;
+}
+
+blockquote > p > em > code {
+    font-weight: bold;
+    color: var(--color-link);
+}
+
+.emoji {
+    width: 1.1em;
+    height: 1.1em;
+    padding: 0 0 0 0;
+    vertical-align: -0.15em;
 }
