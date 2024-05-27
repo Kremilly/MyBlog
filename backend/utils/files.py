@@ -50,7 +50,3 @@ class FilesUtils:
             return TimeUtils.format_datetime(file_date)
         
         return None
-    
-    @classmethod
-    def list_all_files(cls):
-        pass

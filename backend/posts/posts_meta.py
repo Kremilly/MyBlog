@@ -13,6 +13,7 @@ class PostsMeta:
     @classmethod
     def get_post_content(cls, file:str) -> str|None:
         file_path = FilesUtils.get_file_path(file, 'blog')
+        
         markdown_content = FilesUtils.read_content(file_path)
         
         if markdown_content is not None:
@@ -103,6 +104,7 @@ class PostsMeta:
     @classmethod
     def post_data(cls, file:str) -> dict|None:
         file_path = FilesUtils.get_file_path(file, 'blog')
+        slug = file.lower().replace('-', ' ').replace('.md', '')
         
         if FilesUtils.check_file_exists(file_path):
             return {

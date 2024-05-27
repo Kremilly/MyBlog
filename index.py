@@ -19,6 +19,8 @@ def page_not_found(e):
     return render_template('errors/404.html'), 404
 
 @app.route('/')
+@app.route('/projects')
+@app.route('/opensource')
 def home():
     return render_template(
         'index.html',
@@ -27,6 +29,8 @@ def home():
         internal_css_libs=CSS.internal(),
         
         url_root=request.url_root[:-1],
+        posts_list=Posts.posts(request.url_root[:-1]),
+        
         site_name=Settings.get('basic.site_name', 'string'),
     )
     
@@ -39,23 +43,6 @@ def page(page:str):
         
         external_fonts=Fonts.load(),
         
-        url_root=request.url_root[:-1],
-        site_name=Settings.get('basic.site_name', 'string'),
-    )
-
-@app.route('/blog')
-def blog():
-    return render_template(
-        'blog.html',
-        
-        external_fonts=Fonts.load(),
-        internal_css_libs=CSS.internal(),
-        
-        external_js_libs=JS.external(),
-        internal_js_libs=JS.internal(),
-        internal_js_plugins=JS.plugins(),
-        
-        html_content=Posts.posts(),
         url_root=request.url_root[:-1],
         site_name=Settings.get('basic.site_name', 'string'),
     )

@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 
+import glob, mistune
 from markupsafe import Markup
-
-import mistune
 
 from mistune.plugins.url import url
 from mistune.plugins.abbr import abbr
@@ -16,14 +15,41 @@ from mistune.plugins.footnotes import footnotes
 from mistune.plugins.task_lists import task_lists
 
 from backend.utils.files import FilesUtils
+from backend.classes.settings import Settings
+
+from backend.posts.posts_meta import PostsMeta
+
+from flask import url_for
 
 class Posts:
     
     @classmethod
-    def posts(cls):
-        return [
-            'List all posts'
-        ]
+    def posts(cls, url_root:str) -> dict:
+        list_posts = []
+        path = Settings.get('paths.contents.blog', 'string')
+        posts = FilesUtils.scan_path(path)
+        
+        for post in posts:
+            slug = post.split('/')[-1].replace(
+                '+', '-'
+            ).replace(
+                ' ', '-'
+            ).replace(
+                '.md', ''
+            )
+            
+            list_posts.append({
+                'slug': slug,
+                'url': f'{url_root}/blog/{slug}',
+                'cover': PostsMeta.post_cover(slug),
+                'title': PostsMeta.post_title(slug),
+                'description': PostsMeta.post_description(slug),
+                'date': FilesUtils.get_creation_date_file(post)
+            })
+            
+        return sorted(
+            list_posts, key=lambda x: x['date'], reverse=True
+        )
         
     @classmethod
     def post(cls, file:str) -> Markup:

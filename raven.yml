@@ -36,11 +36,7 @@ external_js_libs:
   - 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
 
 api_integrations:
-  mshots: 'https://s0.wp.com/mshots/v1/{page_url}'
-  qrcode: 'https://api.kremilly.com/github?url={page_url}'
-  pdfthumb: 'https://api.kremilly.com/pdfthumb?pdf={pdf_url}'
   ghpinned: 'https://api.kremilly.com/github?user={github_user}'
-  wikipedia: 'https://api.kremilly.com/wikipedia?location={location}&term={term}&short_summary={short_summary}'
 
 paths:
   contents: 

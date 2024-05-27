@@ -6,7 +6,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     
     {% for css_file in internal_css_libs %}
-        <link rel='stylesheet' href='{{ url_root + url_for('static', filename=css_file) }}'>
+        <link rel='stylesheet' href='{{ url_for('static', filename=css_file, _external=True) }}'>
     {% endfor %}
 
     {{ external_fonts }}
@@ -23,6 +23,17 @@
         </div>
     </header>
 
-    <nav class="sidebar-home"></nav>
+    <ul class="posts">
+        {% for post in posts_list %}
+            <a href="{{ post.url }}">
+                <li class="article">
+                    <div class="date">{{ post.date }}</div>
+        
+                    <h2>{{ post.title }}</h2>
+                    <p>{{ post.description }}</p>
+                </li>
+            </a>
+        {% endfor %}
+    </ul>
 </body>
 </html>
