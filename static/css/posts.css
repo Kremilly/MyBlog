@@ -1,4 +1,5 @@
 .posts {
+    width: 800px;
     margin: auto;
     margin-top: 60px;
     max-width: var(--max-width-size);

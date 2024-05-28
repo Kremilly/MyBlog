@@ -1,6 +1,7 @@
 $( e => {
 
     lazyload();
+    Apis.pinned();
 
     $('#searchToggleBtn').on('click', function () {
         $(this).toggleClass('actived');

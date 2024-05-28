@@ -19,6 +19,7 @@ def page_not_found(e):
     return render_template('errors/404.html'), 404
 
 @app.route('/')
+@app.route('/packages')
 @app.route('/projects')
 @app.route('/opensource')
 def home():
@@ -35,19 +36,6 @@ def home():
         url_root=request.url_root[:-1],
         posts_list=Posts.posts(request.url_root[:-1]),
         
-        site_name=Settings.get('basic.site_name', 'string'),
-    )
-    
-@app.route('/pages/<page>')
-def page(page:str):
-    return render_template(
-        'pages.html',
-        
-        page=page.capitalize(),
-        
-        external_fonts=Fonts.load(),
-        
-        url_root=request.url_root[:-1],
         site_name=Settings.get('basic.site_name', 'string'),
     )
 

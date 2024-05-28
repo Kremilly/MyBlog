@@ -43,13 +43,16 @@ header > .label{
 }
 
 header > .tab {
-    width: 6em;
     float: left;
+    width: auto;
+    min-width: 6em;
     cursor: pointer;
     font-size: .8em;
     font-weight: 600;
+    padding-left: 1em;
     text-align: center;
     line-height: 3.7em;
+    padding-right: 1em;
 }
 
 header > .actived, header > .tab:hover { background: var(--color-border); }

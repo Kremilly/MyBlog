@@ -1,0 +1,71 @@
+.pinned {
+    float: left;
+    width: 250px;
+    margin: auto;
+    display: none;
+    margin-top: 60px;
+    margin-left: 260px;
+    box-sizing: border-box;
+    box-shadow: var(--box-shadow);
+    background: var(--color-pre-bg);
+    margin-bottom: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    border: .1em solid var(--color-border);
+    border-left: .5em solid var(--color-text);
+}
+
+.pinned > .header {
+    height: 3em;
+    display: block;
+    color: inherit;
+    cursor: pointer;
+    line-height: 3em;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    background: var(--color-bg);
+    border-top-right-radius: var(--border-radius);
+    border-bottom: .1em solid var(--color-border);
+}
+
+.pinned > .header:hover {
+    text-decoration: underline;
+    color: var(--color-text-hover);
+}
+
+.pinned > .body > .repo {
+    width: 100%;
+    color: inherit;
+    display: block;
+    cursor: pointer;
+    text-decoration: none;
+    box-sizing: border-box;
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+    border-bottom: .1em solid var(--color-border);
+}
+
+.pinned > .body > .repo > .name {
+    height: 2.5em;
+    font-size: .9em;
+    font-weight: bold;
+    line-height: 2.5em;
+}
+
+.pinned > .body > .repo > .info {
+    line-height: 2;
+    font-size: .8em;
+}
+
+.pinned > .body > .repo > .footer {
+    font-size: .7em;
+    font-weight: bold;
+    color: var(--color-muted);
+    margin-top: var(--spacing-sm);
+}
+
+.pinned > .body > .repo:last-child { border-bottom: none; }
+
+.pinned > .body > .repo:hover { animation: pinned-repos-bg .5s ease-in-out forwards; }
+
