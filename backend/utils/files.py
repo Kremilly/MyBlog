@@ -32,7 +32,7 @@ class FilesUtils:
         return set(list_files)
     
     @classmethod
-    def read_content(cls, file:str) -> str|None:
+    def read_content(cls, file:str):
         html_content = str()
         
         if os.path.exists(file):
@@ -45,7 +45,7 @@ class FilesUtils:
         return html_content
     
     @classmethod
-    def get_creation_date_file(cls, file_path:str) -> str|None:
+    def get_creation_date_file(cls, file_path:str):
         if os.path.exists(file_path):
             file_date = os.path.getctime(file_path)
             return TimeUtils.format_datetime(file_date)

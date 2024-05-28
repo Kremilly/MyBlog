@@ -14,7 +14,10 @@ const Apis = ( e => {
 	}
 
     let pinned = (no_anchor = false) => {
-        fetch(`${apiUri}/github?user=${username}`).then(
+        fetch(`${apiUri}/github?user=${username}`, {
+            method: 'GET',
+            cache: 'default',
+        }).then(
             json => json.json()
         ).then(response => {
             if (!no_anchor) window.location.hash = "pins";

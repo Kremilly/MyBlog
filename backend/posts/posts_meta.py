@@ -9,7 +9,7 @@ from backend.utils.files import FilesUtils
 class PostsMeta:
     
     @classmethod
-    def get_post_content(cls, file:str) -> str|None:
+    def get_post_content(cls, file:str):
         file_path = FilesUtils.get_file_path(file, 'blog')
         
         markdown_content = FilesUtils.read_content(file_path).content
@@ -20,7 +20,7 @@ class PostsMeta:
         return None
 
     @classmethod
-    def post_title(cls, file:str) -> str|None:
+    def post_title(cls, file:str):
         html_content = cls.get_post_content(file)
         
         if html_content is not None:
@@ -38,7 +38,7 @@ class PostsMeta:
         return None
     
     @classmethod
-    def post_cover(cls, file:str) -> str|None:
+    def post_cover(cls, file:str):
         html_content = cls.get_post_content(file)
         
         if html_content is not None:
@@ -54,7 +54,7 @@ class PostsMeta:
         return None
     
     @classmethod
-    def post_description(cls, file:str) -> str|None:
+    def post_description(cls, file:str):
         html_content = cls.get_post_content(file)
         
         if html_content is not None:
