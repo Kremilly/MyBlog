@@ -36,7 +36,7 @@ class FilesUtils:
         html_content = str()
         
         if os.path.exists(file):
-            with open(file, 'r') as content:
+            with open(file, 'r', encoding='utf-8') as content:
                 obj = frontmatter.load(content)
                 html_content = obj
         else:

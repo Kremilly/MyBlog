@@ -28,12 +28,9 @@
 
         <div class="footer">
             <div class="tags">
-                <a href="#">placeholder 1</a>
-                <a href="#">placeholder 2</a>
-                <a href="#">placeholder 3</a>
-                <a href="#">placeholder 4</a>
-                <a href="#">placeholder 5</a>
-                <a href="#">placeholder 6</a>
+                {% for tag in post_tags %}
+                    <a href="#">{{ tag }}</a>
+                {% endfor %}
             </div>
 
             <div class="social">

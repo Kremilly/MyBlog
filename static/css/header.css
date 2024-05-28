@@ -52,17 +52,29 @@ header > .tab {
     line-height: 3.7em;
 }
 
-header > .actived {
-    background: var(--color-border);
-}
-
-header > .tab:hover { background: var(--color-border); }
+header > .actived, header > .tab:hover { background: var(--color-border); }
 
 header > .nav{
     float: right;
     height: var(--header-size);
     line-height: var(--header-size);
 }
+
+header > .nav > input {
+    float: left;
+    border: none;
+    display: none;
+    outline: none;
+    color: inherit;
+    font-weight: bold;
+    background: var(--color-pre-bg);
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+    line-height: calc(var(--header-size) + .5em);
+    border-right: .1em solid var(--color-border);
+}
+
+header > .nav > input:hover, header > .nav > input:focus { background: var(--color-border); }
 
 header > .nav > div{
     width: 3em;
@@ -72,13 +84,7 @@ header > .nav > div{
     line-height: calc(var(--header-size) - .05em);
 }
 
-header > .nav > div:hover{
-    background: var(--color-border);
-}
-
-header > .nav > .actived{
-    background: var(--color-border);
-}
+header > .nav > div:hover, header > .nav > .actived{ background: var(--color-border); }
 
 header > .icon {
     float: left;
@@ -97,39 +103,4 @@ header > .showed { background: var(--body-color); }
 
 header > .icon:hover { background: var(--color-border); }
 
-.search-bar {
-    top: 0;
-    width: 100%;
-    height: 2.5em;
-    display: none;
-    margin-top: -1em;
-    line-height: 2.5em;
-    margin-bottom: 1em;
-    box-shadow: var(--box-shadow);
-    background: var(--bg-hover-color);
-}
-
-.search-bar > input {
-    width: 100%;
-    height: 100%;
-    border: none;
-    outline: none;
-    color: inherit;
-    font-weight: 600;
-    padding-left: 1%;
-    padding-right: 1%;
-    background: inherit;
-    font-family: inherit;
-    border-left: .5em solid transparent;
-}
-
-.search-bar > input:hover, .search-bar > input:focus {
-    border-left-color: var(--border-color);
-    animation: border-slide .5s ease-in-out forwards;
-}
-
 #scrollToTopBtn{ display: none; }
-
-.search-bar > input:hover::placeholder { color: var(--text-color); }
-
-.search-bar > input::placeholder, .search-bar > input:focus::placeholder { opacity: .7; }

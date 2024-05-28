@@ -107,3 +107,14 @@ class PostsMeta:
         metadata = FilesUtils.read_content(file_path).metadata
         return metadata[data]
     
+    @classmethod
+    def post_metadata_tags(cls, file:str) -> str:
+        tags = cls.post_metadata(file, 'Tags')
+        
+        if tags is not None:
+            return sorted(
+                set(
+                    tag.strip() for tag in tags.split(',')
+                )
+            )
+    

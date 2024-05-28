@@ -14,21 +14,23 @@
 </head>
 <body>
     <header>
-        <div class="logo"></div>
-        <div class="tab actived">Blog</div>
-        <div class="tab">Projects</div>
-        <div class="tab">About</div>
+        <div class='logo'></div>
+        <div class='tab actived'>Blog</div>
+        <div class='tab'>Projects</div>
+        <div class='tab'>About</div>
 
         <div class='nav'>
-            <div class='fa-solid fa-search icon'></div>
+            <input type='text' placeholder='Search...' id='searchInput'>
+            <div class='fa-solid fa-search icon' id='searchToggleBtn'></div>
+            <div class='fa-solid fa-arrow-up' id='scrollToTopBtn'></div>
         </div>
     </header>
 
-    <ul class="posts">
+    <ul class='posts'>
         {% for post in posts_list %}
-            <a href="{{ post.url }}">
-                <li class="article">
-                    <div class="date">{{ post.date }}</div>
+            <a href='{{ post.url }}'>
+                <li class='article'>
+                    <div class='date'>{{ post.date }}</div>
         
                     <h2>{{ post.title }}</h2>
                     <p>{{ post.description }}</p>
@@ -36,5 +38,15 @@
             </a>
         {% endfor %}
     </ul>
+    
+    {{ external_js_libs }}
+
+    {% for js_file in internal_js_plugins %}
+        <script src='{{ url_root + url_for('static', filename=js_file) }}'></script>
+    {% endfor %}
+
+    {% for js_file in internal_js_libs %}
+        <script src='{{ url_root + url_for('static', filename=js_file) }}'></script>
+    {% endfor %}
 </body>
 </html>

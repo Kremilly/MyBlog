@@ -28,6 +28,10 @@ def home():
         external_fonts=Fonts.load(),
         internal_css_libs=CSS.internal(),
         
+        external_js_libs=JS.external(),
+        internal_js_libs=JS.internal(),
+        internal_js_plugins=JS.plugins(),
+        
         url_root=request.url_root[:-1],
         posts_list=Posts.posts(request.url_root[:-1]),
         
@@ -55,6 +59,7 @@ def post(post:str):
         html_content=Posts.post(post),
         url_root=request.url_root[:-1],
         post_title=PostsMeta.post_head_title(post),
+        post_tags=PostsMeta.post_metadata_tags(post),
         site_name=Settings.get('basic.site_name', 'string'),
         
         external_fonts=Fonts.load(),

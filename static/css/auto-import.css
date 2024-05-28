@@ -6,8 +6,5 @@
 /* Animate.css: https://animate.style */
 @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
 
-/* Tocbot.css: https://tscanlin.github.io/tocbot/ */
-@import url('https://raw.githubusercontent.com/tscanlin/tocbot/master/dist/tocbot.css');
-
 /* Load fonts */
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
