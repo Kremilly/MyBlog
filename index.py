@@ -62,5 +62,14 @@ def post(post:str):
 def paimon_post_docs(post:str):
     return Paimon.get(post)
 
+@app.context_processor
+def inject_route_name():
+    return dict(current_route=request.path)
+
+@app.context_processor
+def inject_route_info():
+    is_blog = 'blog' in request.path
+    return dict(is_blog=is_blog)
+
 if __name__ == '__main__':
     app.run(debug=True)

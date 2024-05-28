@@ -1,13 +1,22 @@
 <header>
     <a href="{{ url_root }}" class="logo"></a>
-    <div class='tab actived'>Articles</div>
-    <div class='tab'>Projects</div>
-    <div class='tab'>Packages & API's</div>
-    <div class='tab'>About</div>
+    
+    {% if not is_blog %}
+        <div class='tab actived'>Articles</div>
+        <div class='tab'>Projects</div>
+        <div class='tab'>Packages & API's</div>
+        <div class='tab'>About</div>
+    {% else %}
+        <a href="{{ url_root }}" class="fa-solid fa-arrow-left icon"></a>
+        <div class='label' id='headerLabel'>{{ post_title.replace(">", "") }}</div>
+    {% endif %}
 
     <div class='nav'>
-        <input type='text' placeholder='Search...' id='searchInput'>
-        <div class='fa-solid fa-search icon' id='searchToggleBtn'></div>
+        {% if current_route == '/' %}
+            <input type='text' placeholder='Search...' id='searchInput'>
+            <div class='fa-solid fa-search icon' id='searchToggleBtn'></div>
+        {% endif %}
+
         <div class='fa-solid fa-arrow-up' id='scrollToTopBtn'></div>
     </div>
 </header>
