@@ -6,8 +6,6 @@ from bs4 import BeautifulSoup
 
 from backend.utils.files import FilesUtils
 
-from backend.classes.settings import Settings
-
 class PostsMeta:
     
     @classmethod
