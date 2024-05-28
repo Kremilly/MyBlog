@@ -1,12 +1,6 @@
-@keyframes pinned-repos-bg {
+@keyframes pin-repos-bg {
     0% { background: inherit; }
     100% { background: var(--color-bg); }
-}
-
-@keyframes featured-caller {
-    0% { border-left-color: var(--color-text); }
-    50% { border-left-color: var(--color-link); }
-    100% { border-left-color: var(--color-text); }
 }
 
 @keyframes border-slide {
@@ -16,4 +10,11 @@
         border-left-width: .5em;
         border-color: var(--border-color);
     }
+}
+
+@keyframes featured-caller {
+    0% { border-left-color: var(--color-link); }
+    50% { border-left-color: var(--color-text); }
+    75% { border-left-color: var(--color-link); }
+    100% { border-left-color: var(--color-text); }
 }

@@ -19,9 +19,6 @@ const Apis = ( e => {
         ).then(response => {
             if (!no_anchor) window.location.hash = "pins";
 
-            $('#featuredHeader').attr('href', 'https://github.com/kremilly');
-            $('#featuredHeader').text('Featured repositories');
-
             $('.featured-tabs').removeClass('actived');
             $('#tabPins').toggleClass('actived');
 
@@ -46,9 +43,6 @@ const Apis = ( e => {
             json => json.json()
         ).then(response => {
             window.location.hash = "apis";
-
-            $('#featuredHeader').attr('href', 'https://github.com/kremilly');
-            $('#featuredHeader').text("My API's");
 
             $('.featured-tabs').removeClass('actived');
             $('#tabApis').toggleClass('actived');
@@ -75,9 +69,6 @@ const Apis = ( e => {
         ).then(response => {
             window.location.hash = "crates";
 
-            $('#featuredHeader').attr('href', 'https://github.com/kremilly');
-            $('#featuredHeader').text('My crates');
-
             $('.featured-tabs').removeClass('actived');
             $('#tabCrates').toggleClass('actived');
 
@@ -87,7 +78,7 @@ const Apis = ( e => {
                 let title = item.name.charAt(0).toUpperCase() + item.name.slice(1);
 
                 $('#featuredList').append(`
-                    <a href="${item.url}" target="_blank" class="item">
+                    <a href="https://crates.io/crates/${item.name}" target="_blank" class="item">
                         <div class="name">${title}</div>
                         <div class="info">${item.description}</div>
                         <div class="footer">${format(item.downloads)} downloads • ${item.newest_version}</div>

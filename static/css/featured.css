@@ -14,10 +14,7 @@
     border-left: .5em solid var(--color-text);
 }
 
-.featured-caller {
-    animation-iteration-count: 1;
-    animation: featured-caller 1s ease-in-out forwards;
-}
+.featured-caller { animation: featured-caller 1s ease-in-out forwards; }
 
 .featured > .featured-top {
     height: 2.5em;
@@ -42,22 +39,21 @@
 
 .featured > .featured-top > .featured-tabs:hover, .featured > .featured-top > .actived { background: var(--color-pre-bg); }
 
-.featured > .featured-header {
+.featured > .featured-search {
+    width: 100%;
+    border: none;
+    outline: none;
     height: 2.5em;
     display: block;
     color: inherit;
-    cursor: pointer;
     font-weight: bold;
-    text-align: center;
     line-height: 2.5em;
     text-decoration: none;
     background: var(--color-bg);
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+    border-top: .1em solid var(--color-border);
     border-bottom: .1em solid var(--color-border);
-}
-
-.featured > .featured-header:hover {
-    text-decoration: underline;
-    color: var(--color-text-hover);
 }
 
 .featured > .featured-body > .item {
@@ -97,4 +93,4 @@
     border-bottom-right-radius: var(--border-radius);
 }
 
-.featured > .featured-body > .item:hover { animation: pinned-repos-bg .5s ease-in-out forwards; }
+.featured > .featured-body > .item:hover { animation: pin-repos-bg .5s ease-in-out forwards; }

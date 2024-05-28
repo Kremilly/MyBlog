@@ -4,19 +4,25 @@ $( e => {
 
     Apis.checkApi();
 
-    $('#searchToggleBtn').on('click', function () {
-        $(this).toggleClass('actived');
-        
-        $('#searchInput').fadeToggle(250);
-        $('input#searchInput').focus();
-    });
-
     $('#tabApis').on('click', Apis.apis);
     $('#tabPins').on('click', Apis.pinned);
     $('#tabCrates').on('click', Apis.crates);
+    $('#scrollToTopBtn').on('click', ScrollTo.top);
 
     $(window).on('scroll', ScrollTo.checkScroll);
 
-    $('#scrollToTopBtn').on('click', ScrollTo.top);
+    $('#searchItemsFeatured').on('input', function () {
+        var searchText = $(this).val().toLowerCase()
+
+        $('#featuredList > .item').each( function () {
+            var listItemText = $(this).text().toLowerCase()
+
+            if (listItemText.includes(searchText)) {
+                $(this).show()
+            } else {
+                $(this).hide()
+            }
+        })
+    })
 
 })
