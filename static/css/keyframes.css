@@ -3,6 +3,12 @@
     100% { background: var(--color-bg); }
 }
 
+@keyframes featured-caller {
+    0% { border-left-color: var(--color-text); }
+    50% { border-left-color: var(--color-link); }
+    100% { border-left-color: var(--color-text); }
+}
+
 @keyframes border-slide {
     0% { border-left-width: 0; }
     
