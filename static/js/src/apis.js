@@ -42,7 +42,7 @@ const Apis = ( e => {
     }
 
     let apis = e => {
-        fetch(`${apiUri}/json`).then(
+        fetch(`${apiUri}`).then(
             json => json.json()
         ).then(response => {
             window.location.hash = "apis";
