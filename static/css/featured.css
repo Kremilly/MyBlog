@@ -1,8 +1,10 @@
 .featured {
+    top: 70px;
     float: left;
     width: 300px;
     margin: auto;
     display: none;
+    position: sticky;
     margin-top: 60px;
     margin-left: 210px;
     box-sizing: border-box;
@@ -13,6 +15,8 @@
     border: .1em solid var(--color-border);
     border-left: .5em solid var(--color-text);
 }
+
+.featured-topics { width: 280px; }
 
 .featured-caller { animation: featured-caller 1s ease-in-out forwards; }
 
@@ -54,6 +58,22 @@
     padding-right: var(--spacing-md);
     border-top: .1em solid var(--color-border);
     border-bottom: .1em solid var(--color-border);
+}
+
+.featured > .featured-body > li {
+    width: 100%;
+    color: inherit;
+    display: block;
+    cursor: pointer;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+}
+
+.featured > .featured-body > li a {
+    color: inherit;
 }
 
 .featured > .featured-body > .item {

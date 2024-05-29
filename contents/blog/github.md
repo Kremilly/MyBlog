@@ -9,7 +9,7 @@ Tags: api, rest, github, python
 
 ## Using the api on your project
 
-If you want to add your pinned repositories to your portfolio or website and can't find an API that works for this, then your problems are over. I've created an API that does exactly that, and its usage is extremely easy. Simply pass your GitHub username as a query parameter. ⚠️
+If you want to add your pinned repositories to your portfolio or website and can't find an API that works for this, then your problems are over. I've created an API that does exactly that, and its usage is extremely easy. Simply pass your GitHub username as a query parameter.
 
 ### Example of request
 

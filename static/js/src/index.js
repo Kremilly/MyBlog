@@ -4,6 +4,8 @@ $( e => {
 
     Apis.checkApi();
 
+    $("#tocPage").toc();
+
     $('#tabApis').on('click', Apis.apis);
     $('#tabPins').on('click', Apis.pinned);
     $('#tabCrates').on('click', Apis.crates);

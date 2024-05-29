@@ -4,14 +4,16 @@
     {% if not is_blog %}
         <div class='tab actived'>Articles</div>
         <div class='tab'>Projects</div>
+        <div class='tab'>Documentation's</div>
         <div class='tab'>About</div>
+        <div class='tab'>My Links</div>
     {% else %}
         <a href="{{ url_root }}" class="fa-solid fa-arrow-left icon"></a>
         <div class='label' id='headerLabel'>{{ post_title.replace(">", "") }}</div>
     {% endif %}
 
     <div class='nav'>
-        {% if current_route == '/' %}
+        {% if not is_blog %}
             <input type='text' placeholder='Search...' id='searchInput'>
             <div class='fa-solid fa-search icon' id='searchToggleBtn'></div>
         {% endif %}
