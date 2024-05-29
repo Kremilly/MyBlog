@@ -1,4 +1,4 @@
-@keyframes pin-repos-bg {
+@keyframes featured-bg {
     0% { background: inherit; }
     100% { background: var(--color-bg); }
 }
