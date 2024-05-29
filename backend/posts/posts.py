@@ -58,7 +58,7 @@ class Posts:
         md_content = FilesUtils.read_content(file_path).content
         md_content = emoji_data_python.replace_colons(md_content)
         
-        renderer = mistune.HTMLRenderer()
+        renderer = mistune.HTMLRenderer(escape=False)
         markdown = mistune.Markdown(renderer, plugins=[
             math, 
             footnotes, 

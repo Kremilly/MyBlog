@@ -1,44 +1,45 @@
-$(document).ready( function() {
+$( e => {
 
-    var toc = $("#tocPage");
-    var headings = $("h1, h2, h3");
+    var toc = $('#tocPage')
+    var headings = $('h1, h2, h3')
+    var fragment = window.location.hash
 
     headings.each(function() {
-        var heading = $(this);
+        var heading = $(this)
 
-        if (!heading.attr("id")) {
+        if (!heading.attr('id')) {
             heading.attr(
-                "id", heading.text().replace(/\s+/g, "_")
-            );
+                'id', heading.text().replace(
+                    /\s+/g, '_'
+                )
+            )
         }
 
         toc.append(
-            $("<a/>").append().text(
+            $('<a/>').append().text(
                 heading.text()
             ).attr(
-                "href", "#" + heading.attr("id")
+                'href', '#' + heading.attr('id')
             ).attr(
-                "class", "toc"
+                'class', 'toc'
             )
-        );
-    });
+        )
+    })
 
-    toc.on("click", "a", function(event) {
+    toc.on('click', 'a', function(event) {
         var targetOffset = $(
-            $(this).attr("href")
-        ).offset().top;
+            $(this).attr('href')
+        ).offset().top
 
-        $("html, body").animate({
+        $('html, body').animate({
             scrollTop: targetOffset - 50
-        }, 800);
-    });
+        }, 800)
+    })
 
-    var fragment = window.location.hash;
     if (fragment) {
-        var targetOffset = $(fragment).offset().top;
-        $("html, body").animate({
-            scrollTop: targetOffset - 50
-        }, 800);
+        $('html, body').animate({
+            scrollTop: $(fragment).offset().top - 50
+        }, 800)
     }
 
-});
+})
