@@ -95,9 +95,9 @@ class PostsMeta:
         post_title = cls.post_metadata(file, 'Title')
         
         if post_title is not None:
-            return f'> {post_title}'
+            return post_title
         
-        return '> 404: Not found'
+        return '404: Not found'
     
     @classmethod
     def post_metadata(cls, file:str, data:str) -> str:
