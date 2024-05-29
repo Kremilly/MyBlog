@@ -16,7 +16,10 @@
     border-left: .5em solid var(--color-text);
 }
 
-.featured-topics { width: 280px; }
+.featured-topics {
+    width: 280px;
+    display: block;
+}
 
 .featured-caller { animation: featured-caller 1s ease-in-out forwards; }
 
