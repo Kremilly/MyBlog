@@ -11,6 +11,8 @@ $( e => {
 
     $(window).on('scroll', ScrollTo.checkScroll)
 
+    $('#readingTimePost').append(`${ ReadingTime.calculateReadingTime() } reading time`)
+
     $('.featured-search').on('input', function () {
         var searchText = $(this).val().toLowerCase()
 

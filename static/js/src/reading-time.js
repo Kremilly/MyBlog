@@ -2,7 +2,7 @@ const ReadingTime = ( e => {
 
     const getPageContent = e => {
         let textContent = ''
-        let articleElement = document.querySelector('article.markdown-body')
+        let articleElement = document.querySelector('article.post-content')
 
         if (articleElement) {
             textContent = articleElement.textContent || articleElement.innerText
@@ -11,11 +11,15 @@ const ReadingTime = ( e => {
         return textContent
     }
 
-    const calculateReadingTime = (wordsPerMinute = 200) => {
-        let removeTags = getPageContent().replace(/<[^>]*>/g, '')
-        let cleanText = removeTags.replace(/[^\w\s]/g, '').trim()
+    const calculateReadingTime = e => {
+        let wordsPerMinute = 200
 
-        let words = cleanText.split(/\s+/)
+        let words = getPageContent().replace(
+            /<[^>]*>/g, ''
+        ).replace(
+            /[^\w\s]/g, ''
+        ).trim().split(/\s+/)
+
         let timeCalculated = Math.round(words.length / wordsPerMinute)
 
         if (timeCalculated > 1) {
@@ -25,6 +29,10 @@ const ReadingTime = ( e => {
         }
 
         return 'Less than a minute'
+    }
+
+    return {
+        calculateReadingTime: calculateReadingTime
     }
     
 })()

@@ -35,9 +35,11 @@ def post(post:str):
         'post.html', 
         **Raven.common_template_args(), 
         
+        post_url=Raven.get_url(),
         html_content=Posts.post(post),
         post_title=PostsMeta.post_head_title(post),
         post_tags=PostsMeta.post_metadata_tags(post),
+        post_date=PostsMeta.post_metadata(post, 'Date'),
     )
     
 @app.route('/blog/<post>/paimon')
