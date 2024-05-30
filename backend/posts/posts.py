@@ -106,5 +106,5 @@ class Posts:
                     <language>en-us</language>
                     {rss_items}
                 </channel>
-            </rss>""", mimetype='application/rss+xml'
+            </rss>""", mimetype='application/xml'
         )
