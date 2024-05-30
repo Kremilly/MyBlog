@@ -29,120 +29,128 @@ const Apis = ( e => {
     }
 
     let pinned = (no_anchor = false) => {
-        fetch(`${apiUri}/github?user=${username}`, {
-            method: 'GET',
-            cache: 'default',
-        }).then(
-            json => json.json()
-        ).then(response => {
-            if (!no_anchor) window.location.hash = 'pins'
+        if (window.location.pathname == '/') {
+            fetch(`${apiUri}/github?user=${username}`, {
+                method: 'GET',
+                cache: 'default',
+            }).then(
+                json => json.json()
+            ).then(response => {
+                if (!no_anchor) window.location.hash = 'pins'
 
-            $('.featured-tabs').removeClass('actived')
-            $('#tabPins').toggleClass('actived')
+                $('.featured-tabs').removeClass('actived')
+                $('#tabPins').toggleClass('actived')
 
-            $('#featuredList').empty()
+                $('#featuredList').empty()
 
-            response.forEach(item => {
-                $('#featuredList').append(`
-                    <a href='${item.url}' target='_blank' class='item'>
-                        <div class='name'>${item.name}</div>
-                        <div class='info'>${item.description}</div>
+                response.forEach(item => {
+                    $('#featuredList').append(`
+                        <a href='${item.url}' target='_blank' class='item'>
+                            <div class='name'>${item.name}</div>
+                            <div class='info'>${item.description}</div>
 
-                        <div class='footer'>
-                            <div class='lang lc-${item.name}' data-lang='${item.languages[0]}'>
-                                ${item.languages[0]}
+                            <div class='footer'>
+                                <div class='lang lc-${item.name}' data-lang='${item.languages[0]}'>
+                                    ${item.languages[0]}
+                                </div>
+
+                                <div class='stats'>
+                                    <div class='fas fa-star'></div>${format(item.stars)} stars 
+                                    <div class='fas fa-code-fork'></div> ${format(item.forks)} forks
+                                </div>
                             </div>
+                        </a>
+                    `)
 
-                            <div class='stats'>
-                                <div class='fas fa-star'></div>${format(item.stars)} stars 
-                                <div class='fas fa-code-fork'></div> ${format(item.forks)} forks
-                            </div>
-                        </div>
-                    </a>
-                `)
+                    colors(`.lc-${item.name}`)
+                })
 
-                colors(`.lc-${item.name}`)
+                $('#featured').show()
             })
-
-            $('#featured').show()
-        })
+        }
     }
 
     let apis = e => {
-        fetch(`${apiUri}`).then(
-            json => json.json()
-        ).then(response => {
-            window.location.hash = 'apis'
+        if (window.location.pathname == '/') {
+            fetch(`${apiUri}`).then(
+                json => json.json()
+            ).then(response => {
+                window.location.hash = 'apis'
 
-            $('.featured-tabs').removeClass('actived')
-            $('#tabApis').toggleClass('actived')
+                $('.featured-tabs').removeClass('actived')
+                $('#tabApis').toggleClass('actived')
 
-            $('#featuredList').empty()
+                $('#featuredList').empty()
 
-            response.list.forEach(item => {
-                let title = item.name.charAt(0).toUpperCase() + item.name.slice(1)
+                response.list.forEach(item => {
+                    let title = item.name.charAt(0).toUpperCase() + item.name.slice(1)
 
-                $('#featuredList').append(`
-                    <a href='${item.wiki}' target='_blank' class='item'>
-                        <div class='name'>${title}</div>
-                    </a>
-                `)
+                    $('#featuredList').append(`
+                        <a href='${item.wiki}' target='_blank' class='item'>
+                            <div class='name'>${title}</div>
+                        </a>
+                    `)
+                })
+
+                $('#featured').show()
             })
-
-            $('#featured').show()
-        })
+        }
     }
 
     let crates = e => {
-        fetch(`https://crates.io/api/v1/crates?user_id=${user_id}`).then(
-            json => json.json()
-        ).then(response => {
-            window.location.hash = 'crates'
+        if (window.location.pathname == '/') {
+            fetch(`https://crates.io/api/v1/crates?user_id=${user_id}`).then(
+                json => json.json()
+            ).then(response => {
+                window.location.hash = 'crates'
 
-            $('.featured-tabs').removeClass('actived')
-            $('#tabCrates').toggleClass('actived')
+                $('.featured-tabs').removeClass('actived')
+                $('#tabCrates').toggleClass('actived')
 
-            $('#featuredList').empty()
+                $('#featuredList').empty()
 
-            response.crates.forEach(item => {
-                let title = item.name.charAt(0).toUpperCase() + item.name.slice(1)
+                response.crates.forEach(item => {
+                    let title = item.name.charAt(0).toUpperCase() + item.name.slice(1)
 
-                $('#featuredList').append(`
-                    <a href='https://crates.io/crates/${item.name}' target='_blank' class='item'>
-                        <div class='name'>${title}</div>
-                        <div class='info'>${item.description}</div>
-                        <div class='footer'>${format(item.downloads)} downloads • ${item.newest_version}</div>
-                    </a>
-                `)
+                    $('#featuredList').append(`
+                        <a href='https://crates.io/crates/${item.name}' target='_blank' class='item'>
+                            <div class='name'>${title}</div>
+                            <div class='info'>${item.description}</div>
+                            <div class='footer'>${format(item.downloads)} downloads • ${item.newest_version}</div>
+                        </a>
+                    `)
+                })
+
+                $('#featured').show()
             })
-
-            $('#featured').show()
-        })
+        }
     }
 
     let checkApi = e => {
-        if (window.location.hash) {
-            $('#featured').addClass('featured-caller')
-        } else {
-            $('#featured').removeClass('featured-caller')
-        }
+        if (window.location.pathname == '/') {
+            if (window.location.hash) {
+                $('#featured').addClass('featured-caller')
+            } else {
+                $('#featured').removeClass('featured-caller')
+            }
 
-        switch (window.location.hash) {
-            case '#apis':
-                apis()
-                break
+            switch (window.location.hash) {
+                case '#apis':
+                    apis()
+                    break
 
-            case '#pins':
-                pinned()
-                break
+                case '#pins':
+                    pinned()
+                    break
 
-            case '#crates':
-                crates()
-                break
-                
-            default:
-                pinned(true)
-                break
+                case '#crates':
+                    crates()
+                    break
+                    
+                default:
+                    pinned(true)
+                    break
+            }
         }
     }
 

@@ -1,23 +1,19 @@
 <header>
     <a href='{{ url_root }}' class='logo'></a>
     
-    {% if not is_post %}
-        <div class='tab actived'>Articles</div>
-        <div class='tab'>Projects</div>
-        <div class='tab'>Documentation's</div>
-        <div class='tab'>About</div>
-        <div class='tab'>My Links</div>
-    {% else %}
+    {% if not is_home %}
         <a href='{{ url_root }}' class='fa-solid fa-arrow-left icon'></a>
-        <div class='label' id='headerLabel'>{{ post_title }}</div>
     {% endif %}
+    
+    <a href='{{ url_root }}' class='tab actived'>Articles</a>
+    <div class='tab'>Projects</div>
+    <div class='tab'>Documentation's</div>
+    <div class='tab'>About</div>
+    <div class='tab'>My Links</div>
 
     <div class='nav'>
-        {% if not is_blog %}
-            <input type='text' placeholder='Search...' id='searchInput'>
-            <div class='fa-solid fa-search icon' id='searchToggleBtn'></div>
-        {% endif %}
-
+        <input type='text' placeholder='Search...' id='searchInput'>
+        <div class='fa-solid fa-search icon' id='searchToggleBtn'></div>
         <div class='fa-solid fa-arrow-up' id='scrollToTopBtn'></div>
     </div>
 </header>

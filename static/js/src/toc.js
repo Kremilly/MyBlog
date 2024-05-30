@@ -1,6 +1,6 @@
 $( e => {
 
-    var toc = $('#tocPage')
+    var toc = $('#featuredList')
     var headings = $('h1, h2, h3')
     var fragment = window.location.hash
 

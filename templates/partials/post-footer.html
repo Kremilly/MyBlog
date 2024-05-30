@@ -1,7 +1,10 @@
 <div class='footer'>
     <div class='tags'>
         {% for tag in post_tags %}
-            <a href='#'>{{ tag }}</a>
+            <a href='#'>
+                <div class='fas fa-tag'></div>
+                {{ tag }}
+            </a>
         {% endfor %}
     </div>
 

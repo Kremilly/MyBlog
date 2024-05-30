@@ -67,7 +67,7 @@
     margin-bottom: var(--spacing-xl);
 }
 
-.post-content > .footer .tags {
+.post-content > .footer > .tags {
     display: flex;
     align-items: center;
     margin-bottom: -2.8em;
@@ -87,6 +87,8 @@
 }
 
 .post-content > .footer > .tags > a:hover { text-decoration: underline; }
+
+.post-content > .footer .tags > a > .fas { margin-right: calc(var(--spacing-sm) / 2); }
 
 .post-content > .footer > .social {
     display: flex;

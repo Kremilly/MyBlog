@@ -53,9 +53,14 @@ header > .tab {
     text-align: center;
     line-height: 3.7em;
     padding-right: 1em;
+    text-decoration: none;
+    color: inherit !important;
 }
 
-header > .actived, header > .tab:hover { background: var(--color-border); }
+header > .actived, header > .tab:hover {
+    text-decoration: none;
+    background: var(--color-border);
+}
 
 header > .nav{
     float: right;
