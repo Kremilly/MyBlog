@@ -48,7 +48,7 @@ class Posts:
             list_posts.append({
                 'slug': slug,
                 'url': f'{url_root}/blog/{slug}',
-                'date': PostsMeta.post_metadata(file, 'Date'),
+                'date': PostsMeta.post_metadata_date(file),
                 'title': PostsMeta.post_metadata(file, 'Title'),
                 'description': PostsMeta.post_metadata(file, 'Description'),
             })

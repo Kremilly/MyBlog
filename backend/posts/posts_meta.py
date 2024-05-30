@@ -116,3 +116,7 @@ class PostsMeta:
                 )
             )
     
+    @classmethod
+    def post_metadata_date(cls, file:str) -> str:
+        return cls.post_metadata(file, 'Date').strftime('%a, %d %b %Y')
+    

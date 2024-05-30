@@ -39,7 +39,7 @@ def post(post:str):
         html_content=Posts.post(post),
         post_title=PostsMeta.post_head_title(post),
         post_tags=PostsMeta.post_metadata_tags(post),
-        post_date=PostsMeta.post_metadata(post, 'Date'),
+        post_date=PostsMeta.post_metadata_date(post),
     )
     
 @app.route('/blog/<post>/paimon')
