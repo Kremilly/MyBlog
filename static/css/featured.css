@@ -125,6 +125,15 @@
     padding-bottom: var(--spacing-md);
 }
 
+.featured > .featured-body > .item > .footer > .fas {
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+.featured > .featured-body > .item > .footer > .fa-star{ color: gold; }
+
+.featured > .featured-body > .item > .footer > .fa-code-fork{ color: #3769BE; }
+
 .featured > .featured-body > .item:last-child {
     border-bottom: none;
     border-bottom-right-radius: var(--border-radius);
