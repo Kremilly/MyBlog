@@ -13,6 +13,21 @@ const Apis = ( e => {
 		}
 	}
 
+    let colors = (element) => {
+        fetch(`https://gist.githubusercontent.com/kremilly/0e2b5ac9779857efcf0e3fd6f62cd093/raw/112c3af99ed5db18776192609215353a18c28e9d/languages-hex-colors.json`, {
+            method: 'GET',
+            cache: 'default',
+        }).then(
+            json => json.json()
+        ).then(response => {
+            _.forEach(response, (value, key) => {
+                if ($(element).attr('data-lang').toLowerCase() == key) {
+                    $(element).css('color', value)
+                }
+            })
+        })
+    }
+
     let pinned = (no_anchor = false) => {
         fetch(`${apiUri}/github?user=${username}`, {
             method: 'GET',
@@ -32,12 +47,21 @@ const Apis = ( e => {
                     <a href='${item.url}' target='_blank' class='item'>
                         <div class='name'>${item.name}</div>
                         <div class='info'>${item.description}</div>
-                        
+
                         <div class='footer'>
-                            ${item.languages[0]} • <div class='fas fa-star'></div>${format(item.stars)} stars • <div class='fas fa-code-fork'></div> ${format(item.forks)} forks
+                            <div class='lang lc-${item.name}' data-lang='${item.languages[0]}'>
+                                ${item.languages[0]}
+                            </div>
+
+                            <div class='stats'>
+                                <div class='fas fa-star'></div>${format(item.stars)} stars 
+                                <div class='fas fa-code-fork'></div> ${format(item.forks)} forks
+                            </div>
                         </div>
                     </a>
                 `)
+
+                colors(`.lc-${item.name}`)
             })
 
             $('#featured').show()
@@ -127,7 +151,8 @@ const Apis = ( e => {
         apis: () => { return apis() },
         crates: () => { return crates() },
         pinned: () => { return pinned() },
-        checkApi: () => { return checkApi() }
+        checkApi: () => { return checkApi() },
+        colors: (lang) => { return colors(lang) },
     }
 
 })()
