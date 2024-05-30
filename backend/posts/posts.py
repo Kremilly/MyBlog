@@ -98,9 +98,9 @@ class Posts:
         
         return Response(
             f"""<?xml version="1.0" encoding="UTF-8" ?>
-            <rss version="2.0">
+            <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" >
                 <channel>
-                    <title>Meu Blog</title>
+                    <title>{Settings.get('basic.site_name', 'string')}</title>
                     <link>{Raven.get_url_root()}</link>
                     <description>{Settings.get('basic.site_name', 'string')}: RSS feed</description>
                     <language>en-us</language>
