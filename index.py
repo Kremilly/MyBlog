@@ -2,7 +2,7 @@
 
 from flask import Flask, render_template
 
-from backend.internal.raven import Raven
+from backend.classes.raven import Raven
 
 from backend.posts.posts import Posts
 from backend.posts.paimon import Paimon
@@ -19,7 +19,7 @@ def home():
     return render_template(
         'index.html', 
         **Raven.common_template_args(),
-        posts_list=Posts.posts(Raven.get_url_root())
+        posts_list=Posts.posts()
     )
     
 @app.route('/docs/')
@@ -45,6 +45,10 @@ def post(post:str):
 @app.route('/blog/<post>/paimon')
 def paimon_post_docs(post:str):
     return Paimon.get(post)
+
+@app.route('/rss')
+def rss():
+    return Posts.rss()
 
 @app.context_processor
 def inject_route_name():

@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 
 import emoji_data_python, mistune
+
+from flask import Response
 from markupsafe import Markup
 
 from mistune.plugins.url import url
@@ -19,11 +21,14 @@ from backend.classes.settings import Settings
 
 from backend.posts.posts_meta import PostsMeta
 
+from backend.classes.raven import Raven
+
 class Posts:
     
     @classmethod
-    def posts(cls, url_root:str) -> dict:
+    def posts(cls) -> dict:
         list_posts = []
+        url_root = Raven.get_url_root()
         path = Settings.get('paths.contents.blog', 'string')
         posts = FilesUtils.scan_path(path)
         
@@ -76,4 +81,30 @@ class Posts:
         
         return Markup(
             markdown(md_content)
+        )
+
+    @classmethod
+    def rss(cls) -> str:
+        rss_items = ''
+        posts = cls.posts()
+        
+        for post in posts:
+            rss_items += f"""<item>
+                <title>{post['title']}</title>
+                <link>{post['url']}</link>
+                <description>{post['description']}</description>
+                <pubDate>{post['date'].strftime('%a, %d %b %Y')}</pubDate>
+            </item>"""
+        
+        return Response(
+            f"""<?xml version="1.0" encoding="UTF-8" ?>
+            <rss version="2.0">
+                <channel>
+                    <title>Meu Blog</title>
+                    <link>{Raven.get_url_root()}</link>
+                    <description>{Settings.get('basic.site_name', 'string')}: RSS feed</description>
+                    <language>en-us</language>
+                    {rss_items}
+                </channel>
+            </rss>""", mimetype='application/rss+xml'
         )
