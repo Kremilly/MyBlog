@@ -139,7 +139,7 @@
 
 .featured > .featured-body > .item > .footer > .stats > .fa-code-fork { color: #3769BE; }
 
-.featured > .featured-body > .item:last-child {
+.featured > .featured-body > .featured-item:last-child {
     border-bottom: none;
     border-bottom-right-radius: var(--border-radius);
 }

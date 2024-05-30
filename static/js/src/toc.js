@@ -21,7 +21,7 @@ $( e => {
             ).attr(
                 'href', '#' + heading.attr('id')
             ).attr(
-                'class', 'toc item-featured'
+                'class', 'toc featured-item'
             )
         )
     })
