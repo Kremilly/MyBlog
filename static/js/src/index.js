@@ -16,7 +16,7 @@ $( e => {
     $('.featured-search').on('input', function () {
         var searchText = $(this).val().toLowerCase()
 
-        $('.featured-body > .item-featured').each( function () {
+        $('.featured-body > .featured-item').each( function () {
             var listItemText = $(this).text().toLowerCase()
 
             if (listItemText.includes(searchText)) {
