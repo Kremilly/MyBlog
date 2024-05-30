@@ -21,12 +21,12 @@ $( e => {
             ).attr(
                 'href', '#' + heading.attr('id')
             ).attr(
-                'class', 'toc'
+                'class', 'toc item-featured'
             )
         )
     })
 
-    toc.on('click', 'a', function(event) {
+    toc.on('click', 'a', function () {
         var targetOffset = $(
             $(this).attr('href')
         ).offset().top

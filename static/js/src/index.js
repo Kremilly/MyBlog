@@ -11,12 +11,12 @@ $( e => {
 
     $(window).on('scroll', ScrollTo.checkScroll)
 
-    $('#readingTimePost').append(`${ ReadingTime.calculateReadingTime() } reading time`)
+    $('#readingTimePost').append(`${ ReadingTime.calculateReadingTime() } read`)
 
     $('.featured-search').on('input', function () {
         var searchText = $(this).val().toLowerCase()
 
-        $('.featured-body > .item, .featured-body > .toc').each( function () {
+        $('.featured-body > .item-featured').each( function () {
             var listItemText = $(this).text().toLowerCase()
 
             if (listItemText.includes(searchText)) {

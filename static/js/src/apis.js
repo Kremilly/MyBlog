@@ -45,7 +45,7 @@ const Apis = ( e => {
 
                 response.forEach(item => {
                     $('#featuredList').append(`
-                        <a href='${item.url}' target='_blank' class='item'>
+                        <a href='${item.url}' target='_blank' class='item item-featured'>
                             <div class='name'>${item.name}</div>
                             <div class='info'>${item.description}</div>
 
@@ -86,7 +86,7 @@ const Apis = ( e => {
                     let title = item.name.charAt(0).toUpperCase() + item.name.slice(1)
 
                     $('#featuredList').append(`
-                        <a href='${item.wiki}' target='_blank' class='item'>
+                        <a href='${item.wiki}' target='_blank' class='item item-featured'>
                             <div class='name'>${title}</div>
                         </a>
                     `)
@@ -113,7 +113,7 @@ const Apis = ( e => {
                     let title = item.name.charAt(0).toUpperCase() + item.name.slice(1)
 
                     $('#featuredList').append(`
-                        <a href='https://crates.io/crates/${item.name}' target='_blank' class='item'>
+                        <a href='https://crates.io/crates/${item.name}' target='_blank' class='item item-featured'>
                             <div class='name'>${title}</div>
                             <div class='info'>${item.description}</div>
                             <div class='footer'>${format(item.downloads)} downloads • ${item.newest_version}</div>
