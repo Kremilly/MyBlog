@@ -26,15 +26,17 @@ $( e => {
         )
     })
 
-    toc.on('click', 'a', function () {
-        var targetOffset = $(
-            $(this).attr('href')
-        ).offset().top
-
-        $('html, body').animate({
-            scrollTop: targetOffset - 50
-        }, 800)
-    })
+    if (window.location.pathname != '/') {
+        toc.on('click', 'a', function () {
+            var targetOffset = $(
+                $(this).attr('href')
+            ).offset().top
+    
+            $('html, body').animate({
+                scrollTop: targetOffset - 50
+            }, 800)
+        })
+    }
 
     if (fragment) {
         $('html, body').animate({

@@ -51,8 +51,8 @@ class Raven:
             
             'external_fonts': Fonts.load(),
             'external_js_libs': JS.external(),
-            'internal_js_libs': JS.internal(),
-            'internal_js_plugins': JS.plugins(),
+            'internal_js_libs': JS.internal('src'),
+            'internal_js_plugins': JS.internal('plugins'),
             
             'internal_css_libs': CSS.internal(),
             
