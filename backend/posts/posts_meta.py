@@ -1,27 +1,18 @@
 #!/usr/bin/python3
 
-import re, markdown2
+import re
 
 from bs4 import BeautifulSoup
 
 from backend.utils.files import FilesUtils
 
-class PostsMeta:
-    
-    @classmethod
-    def get_post_content(cls, file:str):
-        file_path = FilesUtils.get_file_path(file, 'blog')
-        
-        markdown_content = FilesUtils.read_content(file_path).content
-        
-        if markdown_content is not None:
-            return markdown2.markdown(markdown_content)
-        
-        return None
+from backend.classes.md_builder import MDBuilder
 
+class PostsMeta:
+   
     @classmethod
     def post_title(cls, file:str):
-        html_content = cls.get_post_content(file)
+        html_content = MDBuilder.render_metadata(file)
         
         if html_content is not None:
             index_h1 = html_content.find('<h1>')
@@ -39,7 +30,7 @@ class PostsMeta:
     
     @classmethod
     def post_cover(cls, file:str):
-        html_content = cls.get_post_content(file)
+        html_content = MDBuilder.render_metadata(file)
         
         if html_content is not None:
             img_match = re.search(r'<img[^>]*src="([^"]+)"[^>]*>', html_content)
@@ -55,7 +46,7 @@ class PostsMeta:
     
     @classmethod
     def post_description(cls, file:str):
-        html_content = cls.get_post_content(file)
+        html_content = MDBuilder.render_metadata(file)
         
         if html_content is not None:
             soup = BeautifulSoup(html_content, 'html.parser')
@@ -70,7 +61,7 @@ class PostsMeta:
     
     @classmethod
     def post_topics(cls, file:str) -> dict:
-        html_content = cls.get_post_content(file)
+        html_content = MDBuilder.render_metadata(file)
         
         if html_content is not None:
             headers = []
