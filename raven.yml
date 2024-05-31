@@ -1,12 +1,7 @@
 basic:
   site_name: 'Kremilly'
   favicon: 'favico.ico'
-
-format_dates:
-  time: '%H-%M-%S'
-  datetime: '%Y-%m-%d %H:%M:%S'
-  today_datetime: '%a, %b %d %Y - %I:%M:%S %p'
-
+  
 social_media:
   - GitHub: 'https://github.com/kremilly'
   - Leetcode: 'https://leetcode.com/kremilly'
@@ -18,15 +13,6 @@ profile:
   site_url: 'https://kremilly.com'
   avatar: 'https://avatars.githubusercontent.com/u/24691979?v=4'
 
-nav:
-  main:
-    - Home: './'
-    - Docs: './docs/'
-    - Blog: './blog/'
-    - About: './about/'
-    - Setup: './setup/'
-    - Projects: './projects/'
-
 google_fonts:
   - 'Montserrat:ital,wght@0,100..900;1,100..900'
   
@@ -37,9 +23,6 @@ external_js_libs:
   - 'https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js'
   - 'https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js'
   - 'https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js'
-
-api_integrations:
-  ghpinned: 'https://api.kremilly.com/github?user={github_user}'
 
 paths:
   contents: 
