@@ -64,7 +64,6 @@
     box-shadow: var(--box-shadow);
     padding-left: var(--spacing-md);
     background: var(--color-border);
-    margin-right: var(--spacing-md);
     padding-right: var(--spacing-md);
     padding-bottom: var(--spacing-md);
     border-radius: var(--border-radius);
