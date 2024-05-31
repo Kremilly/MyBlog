@@ -44,7 +44,6 @@ class MDBuilder:
     @classmethod
     def render_metadata(cls, file:str):
         file_path = FilesUtils.get_file_path(file, 'blog')
-        
         markdown_content = FilesUtils.read_content(file_path).content
         
         if markdown_content is not None:
@@ -54,7 +53,7 @@ class MDBuilder:
     
     @classmethod
     def count_words(cls, file:str) -> int:
-        html_content = MDBuilder.render_metadata(file)
+        html_content = cls.render_metadata(file)
         soup = BeautifulSoup(html_content, "html.parser")
         text_content = soup.get_text()
         
