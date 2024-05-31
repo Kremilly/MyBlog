@@ -1,7 +1,4 @@
-from backend.loaders.js import JS
-from backend.loaders.css import CSS
-from backend.loaders.fonts import Fonts
-
+from backend.classes.load import Load
 from backend.classes.settings import Settings
 
 from flask import request
@@ -49,12 +46,12 @@ class Raven:
         return {
             'url_root': cls.get_url_root(),
             
-            'external_fonts': Fonts.load(),
-            'external_js_libs': JS.external(),
-            'internal_js_libs': JS.internal('src'),
-            'internal_js_plugins': JS.internal('plugins'),
+            'external_fonts': Load.fonts(),
+            'internal_css_libs': Load.css(),
             
-            'internal_css_libs': CSS.internal(),
+            'external_js_libs': Load.js_cdn(),
+            'internal_js_libs': Load.js('src'),
+            'internal_js_plugins': Load.js('plugins'),
             
             'site_name': Settings.get('basic.site_name', 'string'),
         }
