@@ -1,4 +1,4 @@
-@keyframes featured-bg {
+@keyframes bg-color {
     0% { background: inherit; }
     100% { background: var(--color-bg); }
 }
@@ -12,7 +12,7 @@
     }
 }
 
-@keyframes featured-caller {
+@keyframes border-caller {
     0% { border-left-color: var(--color-link); }
     50% { border-left-color: var(--color-text); }
     75% { border-left-color: var(--color-link); }

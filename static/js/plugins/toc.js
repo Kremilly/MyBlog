@@ -38,7 +38,7 @@ $( e => {
         })
     }
 
-    if (fragment) {
+    if (fragment && window.location.pathname != '/') {
         $('html, body').animate({
             scrollTop: $(fragment).offset().top - 50
         }, 800)

@@ -21,7 +21,7 @@
     display: block;
 }
 
-.featured-caller { animation: featured-caller 1s ease-in-out forwards; }
+.featured-caller { animation: border-caller 1s ease-in-out forwards; }
 
 .featured > .featured-top {
     height: 2.5em;
@@ -144,6 +144,6 @@
     border-bottom-right-radius: var(--border-radius);
 }
 
-.featured > .featured-body > .toc:hover { animation: featured-bg .5s ease-in-out forwards; }
+.featured > .featured-body > .toc:hover { animation: bg-color .5s ease-in-out forwards; }
 
-.featured > .featured-body > .item:hover { animation: featured-bg .5s ease-in-out forwards; }
+.featured > .featured-body > .item:hover { animation: bg-color .5s ease-in-out forwards; }
