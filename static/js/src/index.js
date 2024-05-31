@@ -10,6 +10,7 @@ $( e => {
     $('#tabPins').on('click', Apis.pinned)
     $('#tabCrates').on('click', Apis.crates)
     $('#scrollToTopBtn').on('click', ScrollTo.top)
+    $('#postDownloadPdfBtn').on('click', Apis.downloadPdf)
 
     $('#postShareBtn').on('click', function () {
         $(this).toggleClass('actived')

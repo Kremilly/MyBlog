@@ -154,6 +154,24 @@ const Apis = ( e => {
         }
     }
 
+    let downloadPdf = e => {
+        fetch(`${ window.location.href }/export`).then(response => {
+            if (!response.ok) { throw new Error('Network response was not ok') }
+            return response.url
+        }).then( url => {
+            const a = document.createElement('a')
+
+            a.href = url;
+            a.download = 'arquivo.pdf'
+            document.body.appendChild(a)
+            a.click()
+
+            document.body.removeChild(a)
+        }).catch(error => {
+            console.error('There was an error with the fetch operation:', error)
+        })
+    }
+
     return {
         apiUri: apiUri,
         apis: () => { return apis() },
@@ -161,6 +179,7 @@ const Apis = ( e => {
         pinned: () => { return pinned() },
         checkApi: () => { return checkApi() },
         colors: (lang) => { return colors(lang) },
+        downloadPdf: () => { return downloadPdf() },
     }
 
 })()
