@@ -38,6 +38,7 @@ class Posts:
                 'url': f'{url_root}/blog/{slug}',
                 'date': PostsMeta.post_metadata_date(file),
                 'title': PostsMeta.post_metadata(file, 'Title'),
+                'read_time': PostsMeta.post_metadata_read_time(file),
                 'description': PostsMeta.post_metadata(file, 'Description'),
             })
             
@@ -64,7 +65,8 @@ class Posts:
                 <title>{post['title']}</title>
                 <link>{post['url']}</link>
                 <description>{post['description']}</description>
-                <pubDate>{post['date'].strftime('%a, %d %b %Y')}</pubDate>
+                <pubDate>{post['date']}</pubDate>
+                <read_time>{post['read_time']}</read_time>
             </item>"""
         
         return Response(

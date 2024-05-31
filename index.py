@@ -40,6 +40,7 @@ def post(post:str):
         post_title=PostsMeta.post_head_title(post),
         post_tags=PostsMeta.post_metadata_tags(post),
         post_date=PostsMeta.post_metadata_date(post),
+        post_read_time=PostsMeta.post_metadata_read_time(post),
     )
     
 @app.route('/blog/<post>/paimon')

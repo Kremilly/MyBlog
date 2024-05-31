@@ -2,6 +2,8 @@
 
 import markdown2, emoji_data_python, mistune
 
+from bs4 import BeautifulSoup
+
 from mistune.plugins.url import url
 from mistune.plugins.abbr import abbr
 from mistune.plugins.math import math
@@ -49,3 +51,12 @@ class MDBuilder:
             return markdown2.markdown(markdown_content)
         
         return None
+    
+    @classmethod
+    def count_words(cls, file:str) -> int:
+        html_content = MDBuilder.render_metadata(file)
+        soup = BeautifulSoup(html_content, "html.parser")
+        text_content = soup.get_text()
+        
+        return len(text_content.split())
+    

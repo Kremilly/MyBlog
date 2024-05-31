@@ -9,24 +9,6 @@ from backend.utils.files import FilesUtils
 from backend.classes.md_builder import MDBuilder
 
 class PostsMeta:
-   
-    @classmethod
-    def post_title(cls, file:str):
-        html_content = MDBuilder.render_metadata(file)
-        
-        if html_content is not None:
-            index_h1 = html_content.find('<h1>')
-            
-            if index_h1 != -1:
-                index_h1_end = html_content.find('</h1>', index_h1)
-                
-                page_title = html_content[
-                    index_h1+len('<h1>'):index_h1_end
-                ]
-            
-            return page_title
-        
-        return None
     
     @classmethod
     def post_cover(cls, file:str):
@@ -110,4 +92,14 @@ class PostsMeta:
     @classmethod
     def post_metadata_date(cls, file:str) -> str:
         return cls.post_metadata(file, 'Date').strftime('%a, %d %b %Y')
+    
+    @classmethod
+    def post_metadata_read_time(cls, file:str, words_per_minute:int = 200) -> str:
+        total_words = MDBuilder.count_words(file)
+        time_calculated = round(total_words / words_per_minute)
+
+        if time_calculated > 1:
+            return str(time_calculated) + ' minutes'
+
+        return 'Less than a minute'
     
