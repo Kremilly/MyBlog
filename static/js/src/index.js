@@ -3,6 +3,8 @@ $( e => {
     lazyload()
 
     Apis.checkApi()
+    
+    ScrollTo.checkScroll()
 
     $('#tabApis').on('click', Apis.apis)
     $('#tabPins').on('click', Apis.pinned)

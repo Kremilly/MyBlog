@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+from xhtml2pdf import pisa
 from flask import Response
 from markupsafe import Markup
 
@@ -47,7 +48,7 @@ class Posts:
         )
 
     @classmethod
-    def post(cls, file: str) -> str:
+    def post(cls, file:str) -> str:
         file_path = FilesUtils.get_file_path(file, 'blog')
         md_content = FilesUtils.read_content(file_path).content
 
@@ -80,4 +81,21 @@ class Posts:
                     {rss_items}
                 </channel>
             </rss>""", mimetype='application/xml'
+        )
+
+    @classmethod
+    def export_to_pdf(cls, file:str) -> str:
+        pdf_path = f'{file}.pdf'
+        file_path = FilesUtils.get_file_path(file, 'blog')
+        md_content = FilesUtils.read_content(file_path).content
+        html_content = MDBuilder.render(md_content)
+    
+        pisa_status = pisa.CreatePDF(html_content, dest_bytes=True)
+        
+        return Response(
+            pisa_status,
+            content_type='application/pdf',
+            headers={
+                'Content-Disposition': f'attachment; filename={pdf_path}'
+            }
         )

@@ -161,3 +161,8 @@ blg/
 # Ignore all run tests files
 *.test.py
 .vercel
+
+# Ignore all docs files
+*.pdf
+*.doc
+*.docx

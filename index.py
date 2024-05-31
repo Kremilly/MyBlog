@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect
 
 from backend.classes.raven import Raven
 
@@ -42,10 +42,15 @@ def post(post:str):
         post_date=PostsMeta.post_metadata_date(post),
         post_read_time=PostsMeta.post_metadata_read_time(post),
     )
-    
-@app.route('/blog/<post>/paimon')
-def paimon_post_docs(post:str):
-    return Paimon.get(post)
+
+@app.route('/blog/<post>/<action>')
+def post_actions(post:str, action:str):
+    if action == 'paimon':
+        return Paimon.get(post)
+    elif action == 'export':
+        return Posts.export_to_pdf(post)
+    else:
+        return redirect(f'{Raven.get_url_root()}/blog/{post}')
 
 @app.route('/rss')
 def rss():
