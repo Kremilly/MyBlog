@@ -11,9 +11,21 @@ $( e => {
     $('#tabCrates').on('click', Apis.crates)
     $('#scrollToTopBtn').on('click', ScrollTo.top)
 
-    $(window).on('scroll', ScrollTo.checkScroll)
+    $('#postShareBtn').on('click', function () {
+        $(this).toggleClass('actived')
+        $('#postShareBox').fadeToggle(250)
+    })
 
-    $('#readingTimePost').append(`${ ReadingTime.calculateReadingTime() } read`)
+    $('#postShareBoxInput').on('click', function () {
+        $(this).focus()
+        $(this).select()
+
+        navigator.clipboard.writeText(
+            $(this).val()
+        )
+    })
+
+    $(window).on('scroll', ScrollTo.checkScroll)
 
     $('.featured-search').on('input', function () {
         var searchText = $(this).val().toLowerCase()

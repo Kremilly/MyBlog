@@ -9,10 +9,26 @@
     </div>
 
     <div class='social'>
-        <a href='{{ post_url }}/export' class='fas fa-file-pdf'></a>
-        <a data-sharer='whatsapp' data-title='{{ post_title }}' data-url='{{ post_url }}' class='fab fa-whatsapp'></a>
-        <a data-sharer='facebook' data-title='{{ post_title }}' data-url='{{ post_url }}' class='fab fa-facebook'></a>
-        <a data-sharer='twitter' data-title='{{ post_title }}' data-url='{{ post_url }}' class='fab fa-x-twitter'></a>
-        <a data-sharer='linkedin' data-title='{{ post_title }}' data-url='{{ post_url }}' class='fab fa-linkedin'></a>
+        <div class='footer-btn' id='postShareBtn'>
+            <div class='fas fa-share'></div>
+            Share
+        </div>
+
+        <a href='{{ post_url }}/export' class='footer-btn'>
+            <div class='fas fa-file-pdf'></div>
+            Download
+        </a>
+    </div>
+
+    <div class='share' id='postShareBox'>
+        <div class="icons">
+            <a data-sharer='email' data-title='{{ post_title }}' data-url='{{ post_url }}' class='fas fa-envelope'></a>
+            <a data-sharer='whatsapp' data-title='{{ post_title }}' data-url='{{ post_url }}' class='fab fa-whatsapp'></a>
+            <a data-sharer='facebook' data-title='{{ post_title }}' data-url='{{ post_url }}' class='fab fa-facebook'></a>
+            <a data-sharer='twitter' data-title='{{ post_title }}' data-url='{{ post_url }}' class='fab fa-x-twitter'></a>
+            <a data-sharer='linkedin' data-title='{{ post_title }}' data-url='{{ post_url }}' class='fab fa-linkedin'></a>
+        </div>
+
+        <input type='text' value='{{ post_url }}' id='postShareBoxInput' readonly>
     </div>
 </div>
