@@ -62,7 +62,7 @@ header > .actived, header > .tab:hover {
     background: var(--color-border);
 }
 
-header > .nav{
+header > .nav {
     float: right;
     height: var(--header-size);
     line-height: var(--header-size);
@@ -84,15 +84,17 @@ header > .nav > input {
 
 header > .nav > input:hover, header > .nav > input:focus { background: var(--color-border); }
 
-header > .nav > div{
+header > .nav > .icon {
     width: 3em;
     float: left;
+    color: inherit;
     cursor: pointer;
     text-align: center;
+    text-decoration: none;
     line-height: calc(var(--header-size) - .05em);
 }
 
-header > .nav > div:hover, header > .nav > .actived{ background: var(--color-border); }
+header > .nav > .icon:hover, header > .nav > .actived { background: var(--color-border); }
 
 header > .icon {
     float: left;

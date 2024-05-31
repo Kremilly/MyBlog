@@ -34,7 +34,7 @@ external_js_libs:
   - 'https://code.jquery.com/jquery-3.7.1.min.js'
   - 'https://polyfill.io/v3/polyfill.min.js?features=es6'
   - 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
-  - 'https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js'
+  - 'https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js'
   - 'https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js'
   - 'https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js'
 
