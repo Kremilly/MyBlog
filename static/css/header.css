@@ -68,22 +68,6 @@ header > .nav {
     line-height: var(--header-size);
 }
 
-header > .nav > input {
-    float: left;
-    border: none;
-    display: none;
-    outline: none;
-    color: inherit;
-    font-weight: bold;
-    background: var(--color-pre-bg);
-    padding-left: var(--spacing-md);
-    padding-right: var(--spacing-md);
-    line-height: calc(var(--header-size) + .5em);
-    border-right: .1em solid var(--color-border);
-}
-
-header > .nav > input:hover, header > .nav > input:focus { background: var(--color-border); }
-
 header > .nav > .icon {
     width: 3em;
     float: left;
@@ -108,8 +92,6 @@ header > .icon {
     color: inherit !important;
     text-decoration: none !important;
 }
-
-header > .showed { background: var(--body-color); }
 
 header > .icon:hover { background: var(--color-border); }
 
