@@ -18,18 +18,18 @@ $( e => {
     })
 
     $('#postTagsBtn').on('click', function () {
-        $('.left-btn').removeClass('actived')
         $(this).toggleClass('actived')
+        $('#postFlesBtn').removeClass('actived')
 
-        $('.box').hide()
+        $('#postFilesBox').hide()
         $('#postTagsBox').slideToggle(250)
     })
 
     $('#postFilesBtn').on('click', function () {
-        $('.left-btn').removeClass('actived')
         $(this).toggleClass('actived')
+        $('#postTagsBtn').removeClass('actived')
 
-        $('.box').hide()
+        $('#postTagsBox').hide()
         $('#postFilesBox').slideToggle(250)
     })
 
