@@ -76,7 +76,11 @@ class PostsMeta:
     def post_metadata(cls, file:str, data:str) -> str:
         file_path = FilesUtils.get_file_path(file, 'blog')
         metadata = FilesUtils.read_content(file_path).metadata
-        return metadata[data]
+        
+        if data in metadata:
+            return metadata[data]
+        
+        return None
     
     @classmethod
     def post_metadata_tags(cls, file:str) -> str:
@@ -91,7 +95,9 @@ class PostsMeta:
     
     @classmethod
     def post_metadata_date(cls, file:str) -> str:
-        return cls.post_metadata(file, 'Date').strftime('%a, %d %b %Y')
+        return cls.post_metadata(
+            file, 'Date'
+        ).strftime('%a, %d %b %Y')
     
     @classmethod
     def post_metadata_read_time(cls, file:str, words_per_minute:int = 200) -> str:
@@ -103,3 +109,23 @@ class PostsMeta:
 
         return 'Less than a minute'
     
+    @classmethod
+    def post_metadata_files(cls, file:str) -> dict:
+        files = cls.post_metadata(file, 'Files')
+        
+        if files is not None:
+            list = sorted(
+                set(
+                    file.strip() for file in files.split(',')
+                )
+            )
+            
+            return {
+                'list': list,
+                'total': len(list),
+            }
+        
+        return {
+            'total': 0,
+            'list': None,
+        }

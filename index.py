@@ -38,8 +38,10 @@ def post(post:str):
         post_url=Raven.get_url(),
         html_content=Posts.post(post),
         post_title=PostsMeta.post_head_title(post),
+        
         post_tags=PostsMeta.post_metadata_tags(post),
         post_date=PostsMeta.post_metadata_date(post),
+        post_files=PostsMeta.post_metadata_files(post),
         post_read_time=PostsMeta.post_metadata_read_time(post),
     )
 

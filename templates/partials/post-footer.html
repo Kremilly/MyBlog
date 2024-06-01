@@ -1,10 +1,17 @@
 <div class='footer'>
     <div class='meta'>
         <div class='left'>
-            <div class='footer-btn' id='postTagsBtn'>
+            <div class='footer-btn left-btn' id='postTagsBtn'>
                 <div class='fas fa-tag'></div>
                 Tags
             </div>
+
+            {% if post_files.total > 0 %}
+                <div class='footer-btn left-btn' id='postFilesBtn'>
+                    <div class='fas fa-paperclip'></div>
+                    Files
+                </div>
+            {% endif %}
         </div>
 
         <div class='right'>
@@ -35,8 +42,18 @@
     <div class='box' id='postTagsBox'>
         <div class='body'>
             {% for tag in post_tags %}
-                <a href='#' class='tag'>{{ tag }}</a>
+                <a href='#' class='side'>{{ tag }}</a>
             {% endfor %}
         </div>
     </div>
+
+    {% if post_files.total > 0 %}
+        <div class='box' id='postFilesBox'>
+            <div class='body'>
+                {% for file in post_files.list %}
+                    <a href='{{ file }}' target='_blank' class='list'>{{ file.split('/')[-1] }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
 </div>

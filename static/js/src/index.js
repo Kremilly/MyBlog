@@ -18,8 +18,19 @@ $( e => {
     })
 
     $('#postTagsBtn').on('click', function () {
+        $('.left-btn').removeClass('actived')
         $(this).toggleClass('actived')
+
+        $('.box').hide()
         $('#postTagsBox').slideToggle(250)
+    })
+
+    $('#postFilesBtn').on('click', function () {
+        $('.left-btn').removeClass('actived')
+        $(this).toggleClass('actived')
+
+        $('.box').hide()
+        $('#postFilesBox').slideToggle(250)
     })
 
     $('#postShareBoxInput').on('click', function () {
