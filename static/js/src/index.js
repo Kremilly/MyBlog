@@ -1,21 +1,15 @@
 $( e => {
 
     lazyload()
-
     Apis.checkApi()
-    
     ScrollTo.checkScroll()
 
     $('#tabApis').on('click', Apis.apis)
     $('#tabPins').on('click', Apis.pinned)
     $('#tabCrates').on('click', Apis.crates)
+    $(window).on('scroll', ScrollTo.checkScroll)
     $('#scrollToTopBtn').on('click', ScrollTo.top)
     $('#postDownloadPdfBtn').on('click', Apis.downloadPdf)
-
-    $('#postShareBtn').on('click', function () {
-        $(this).toggleClass('actived')
-        $('#postShareBox').fadeToggle(250)
-    })
 
     $('#postTagsBtn').on('click', function () {
         $(this).toggleClass('actived')
@@ -25,6 +19,11 @@ $( e => {
         $('#postTagsBox').slideToggle(250)
     })
 
+    $('#postShareBtn').on('click', function () {
+        $(this).toggleClass('actived')
+        $('#postShareBox').slideToggle(250)
+    })
+
     $('#postFilesBtn').on('click', function () {
         $(this).toggleClass('actived')
         $('#postTagsBtn').removeClass('actived')
@@ -32,17 +31,6 @@ $( e => {
         $('#postTagsBox').hide()
         $('#postFilesBox').slideToggle(250)
     })
-
-    $('#postShareBoxInput').on('click', function () {
-        $(this).focus()
-        $(this).select()
-
-        navigator.clipboard.writeText(
-            $(this).val()
-        )
-    })
-
-    $(window).on('scroll', ScrollTo.checkScroll)
 
     $('.featured-search').on('input', function () {
         var searchText = $(this).val().toLowerCase()
@@ -56,6 +44,14 @@ $( e => {
                 $(this).hide()
             }
         })
+    })
+
+    $('#postShareBoxInput').on('click', function () {
+        $(this).focus()
+        $(this).select()
+
+        let inputVal = $(this).val()
+        navigator.clipboard.writeText(inputVal)
     })
 
 })
