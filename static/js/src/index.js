@@ -17,6 +17,11 @@ $( e => {
         $('#postShareBox').fadeToggle(250)
     })
 
+    $('#postTagsBtn').on('click', function () {
+        $(this).toggleClass('actived')
+        $('#postTagsBox').slideToggle(250)
+    })
+
     $('#postShareBoxInput').on('click', function () {
         $(this).focus()
         $(this).select()
