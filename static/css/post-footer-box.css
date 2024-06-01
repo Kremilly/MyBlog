@@ -27,11 +27,7 @@
 
 .post-content > .footer > .box > .header > .fas { margin-right: var(--spacing-sm); }
 
-.post-content > .footer > .box > .body {
-    overflow-y: auto;
-    max-height: 10.5em;
-    padding: var(--spacing-sm);
-}
+.post-content > .footer > .box > .body { padding: var(--spacing-sm); }
 
 .post-content > .footer > .box > .body > .tag {
     height: 2.5em;

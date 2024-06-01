@@ -8,10 +8,8 @@
     border-top: .1em solid var(--color-border);
 }
 
-.post-content > .footer > .meta > .social-media { margin: 0 var(--spacing-sm); }
-
-.post-content > .footer > .meta > .footer-btn, 
-.post-content > .footer > .meta > .share > .footer-btn {
+.post-content > .footer > .meta > .left > .footer-btn,
+.post-content > .footer > .meta > .right > .footer-btn {
     float: right;
     height: 3em;
     color: inherit;
@@ -26,18 +24,23 @@
     border-radius: var(--border-radius);
 }
 
-.post-content > .footer > .meta > .footer-btn > .fas, 
-.post-content > .footer > .meta > .share > .footer-btn > .fas {
+.post-content > .footer > .meta > .left > .footer-btn > .fas, 
+.post-content > .footer > .meta > .right > .footer-btn > .fas {
     margin-left: var(--spacing-sm);
     margin-right: var(--spacing-sm);
 }
 
-.post-content > .footer > .meta > .share > .footer-btn {
+.post-content > .footer > .meta > .left > .footer-btn {
+    float: left;
+    margin-right: var(--spacing-sm);
+}
+
+.post-content > .footer > .meta > .right > .footer-btn {
     float: left;
     margin-left: var(--spacing-sm);
 }
 
-.post-content > .footer > .meta > .actived, 
-.post-content > .footer > .meta > .share > .actived, 
-.post-content > .footer > .meta > .footer-btn:hover, 
-.post-content > .footer > .meta > .share > .footer-btn:hover { background: var(--color-border); }
+.post-content > .footer > .meta > .left > .actived, 
+.post-content > .footer > .meta > .right > .actived, 
+.post-content > .footer > .meta > .left > .footer-btn:hover, 
+.post-content > .footer > .meta > .right > .footer-btn:hover { background: var(--color-border); }
