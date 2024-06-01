@@ -75,58 +75,45 @@ class PostsMeta:
     @classmethod
     def post_metadata(cls, file:str, data:str) -> str:
         file_path = FilesUtils.get_file_path(file, 'blog')
-        metadata = FilesUtils.read_content(file_path).metadata
+        metadata = FilesUtils.read_content(file_path)
         
-        if data in metadata:
-            return metadata[data]
+        if metadata is not None:
+            if data in metadata:
+                return metadata[data]
         
         return None
     
     @classmethod
-    def post_metadata_tags(cls, file:str) -> str:
-        tags = cls.post_metadata(file, 'Tags')
-        
-        if tags is not None:
-            list = sorted(
-                set(
-                    tag.strip() for tag in tags.split(',')
-                )
-            )
-            
-            return {
-                'list': list,
-                'total': len(list),
-            }
-        
-        return {
-            'total': 0,
-            'list': None,
-        }
-    
-    @classmethod
     def post_metadata_date(cls, file:str) -> str:
-        return cls.post_metadata(
+        date = cls.post_metadata(
             file, 'Date'
-        ).strftime('%a, %d %b %Y')
+        )
+        
+        if date is not None:
+            return date.strftime('%a, %d %b %Y')
     
     @classmethod
     def post_metadata_read_time(cls, file:str, words_per_minute:int = 200) -> str:
         total_words = MDBuilder.count_words(file)
-        time_calculated = round(total_words / words_per_minute)
+        
+        if total_words is not None:
+            time_calculated = round(total_words / words_per_minute)
 
-        if time_calculated > 1:
-            return str(time_calculated) + ' minutes'
+            if time_calculated > 1:
+                return str(time_calculated) + ' minutes'
 
-        return 'Less than a minute'
+            return 'Less than a minute'
+        
+        return None
     
     @classmethod
-    def post_metadata_files(cls, file:str) -> dict:
-        files = cls.post_metadata(file, 'Files')
+    def post_metadata_lists(cls, file:str, type:str) -> dict:
+        items = cls.post_metadata(file, type.capitalize())
         
-        if files is not None:
+        if items is not None:
             list = sorted(
                 set(
-                    file.strip() for file in files.split(',')
+                    item.strip() for item in items.split(',')
                 )
             )
             
@@ -139,3 +126,4 @@ class PostsMeta:
             'total': 0,
             'list': None,
         }
+    

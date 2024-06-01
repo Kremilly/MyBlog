@@ -2,6 +2,7 @@
 
 import markdown2, emoji_data_python, mistune
 
+from flask import redirect
 from bs4 import BeautifulSoup
 
 from mistune.plugins.url import url
@@ -15,6 +16,7 @@ from mistune.plugins.def_list import def_list
 from mistune.plugins.footnotes import footnotes
 from mistune.plugins.task_lists import task_lists
 
+from backend.classes.raven import Raven
 from backend.utils.files import FilesUtils
 
 class MDBuilder:
@@ -37,25 +39,32 @@ class MDBuilder:
         ])
 
         if content is None:
-            content = '# Error 404'
+            redirect(Raven.get_url_root())
 
         return markdown(content)
 
     @classmethod
     def render_metadata(cls, file:str):
         file_path = FilesUtils.get_file_path(file, 'blog')
-        markdown_content = FilesUtils.read_content(file_path).content
+        markdown_content = FilesUtils.read_content(file_path)
         
         if markdown_content is not None:
-            return markdown2.markdown(markdown_content)
-        
+            if markdown_content is not None:
+                return markdown2.markdown(markdown_content.content)
+                
+            return None
+            
         return None
     
     @classmethod
     def count_words(cls, file:str) -> int:
         html_content = cls.render_metadata(file)
-        soup = BeautifulSoup(html_content, "html.parser")
-        text_content = soup.get_text()
         
-        return len(text_content.split())
+        if html_content is not None:
+            soup = BeautifulSoup(html_content, 'html.parser')
+            text = soup.get_text()
+            
+            return len(text.split())
+        
+        return None
     

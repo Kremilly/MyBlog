@@ -39,10 +39,10 @@ def post(post:str):
         html_content=Posts.post(post),
         post_title=PostsMeta.post_head_title(post),
         
-        post_tags=PostsMeta.post_metadata_tags(post),
         post_date=PostsMeta.post_metadata_date(post),
-        post_files=PostsMeta.post_metadata_files(post),
+        post_tags=PostsMeta.post_metadata_lists(post, 'tags'),
         post_read_time=PostsMeta.post_metadata_read_time(post),
+        post_files=PostsMeta.post_metadata_lists(post, 'files'),
     )
 
 @app.route('/blog/<post>/<action>')

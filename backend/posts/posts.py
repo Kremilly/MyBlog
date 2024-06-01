@@ -50,11 +50,10 @@ class Posts:
     @classmethod
     def post(cls, file:str) -> str:
         file_path = FilesUtils.get_file_path(file, 'blog')
-        md_content = FilesUtils.read_content(file_path).content
+        md_content = FilesUtils.read_content(file_path)
 
-        return Markup(
-            MDBuilder.render(md_content)
-        )
+        if md_content is not None:
+            return MDBuilder.render(md_content.content)
 
     @classmethod
     def rss(cls) -> str:
