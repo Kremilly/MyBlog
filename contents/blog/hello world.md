@@ -1,6 +1,6 @@
 ---
 Title: Hello world!
-Description: If you want to add your pinned repositories to your portfolio or website and can't find an API that works for this, then your problems are over. I've created an API that does exactly that, and its usage is extremely easy. Simply pass your GitHub username as a query parameter.
+Description: Esta é a primeira postagem oficial deste blog, pois a "primeira" havia sido apenas uma repostagem. Para inaugurar essa nova era, quero apresentar o que será publicado aqui, e exclusivamente aqui, de agora em diante.
 Date: 2024-06-01
 Tags: introduction, welcome, news, hello word
 ---
