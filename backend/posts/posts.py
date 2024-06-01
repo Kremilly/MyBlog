@@ -2,6 +2,7 @@
 
 from xhtml2pdf import pisa
 from flask import Response
+from markupsafe import Markup
 
 from backend.utils.files import FilesUtils
 
@@ -52,7 +53,9 @@ class Posts:
         md_content = FilesUtils.read_content(file_path)
 
         if md_content is not None:
-            return MDBuilder.render(md_content.content)
+            return Markup(
+                MDBuilder.render(md_content.content)
+            )
 
     @classmethod
     def rss(cls) -> str:
