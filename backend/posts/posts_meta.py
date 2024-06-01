@@ -87,11 +87,21 @@ class PostsMeta:
         tags = cls.post_metadata(file, 'Tags')
         
         if tags is not None:
-            return sorted(
+            list = sorted(
                 set(
                     tag.strip() for tag in tags.split(',')
                 )
             )
+            
+            return {
+                'list': list,
+                'total': len(list),
+            }
+        
+        return {
+            'total': 0,
+            'list': None,
+        }
     
     @classmethod
     def post_metadata_date(cls, file:str) -> str:

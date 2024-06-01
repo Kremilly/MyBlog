@@ -1,10 +1,12 @@
 <div class='footer'>
     <div class='meta'>
         <div class='left'>
-            <div class='footer-btn' id='postTagsBtn'>
-                <div class='fas fa-tag'></div>
-                Tags
-            </div>
+            {% if post_tags.total > 0 %}
+                <div class='footer-btn' id='postTagsBtn'>
+                    <div class='fas fa-tag'></div>
+                    Tags
+                </div>
+            {% endif %}
 
             {% if post_files.total > 0 %}
                 <div class='footer-btn' id='postFilesBtn'>
@@ -39,13 +41,15 @@
         <input type='text' value='{{ post_url }}' id='postShareBoxInput' readonly>
     </div>
 
-    <div class='box' id='postTagsBox'>
-        <div class='body'>
-            {% for tag in post_tags %}
-                <a href='#' class='side'>{{ tag }}</a>
-            {% endfor %}
+    {% if post_tags.total > 0 %}
+        <div class='box' id='postTagsBox'>
+            <div class='body'>
+                {% for tag in post_tags.list %}
+                    <a href='#' class='side'>{{ tag }}</a>
+                {% endfor %}
+            </div>
         </div>
-    </div>
+    {% endif %}
 
     {% if post_files.total > 0 %}
         <div class='box' id='postFilesBox'>
