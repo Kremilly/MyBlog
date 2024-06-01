@@ -27,7 +27,7 @@ class Paimon:
         return False
     
     @classmethod
-    def extract_links(cls, text: str) -> str:
+    def extract_links(cls, text:str) -> str:
         matches = re.findall(
             r'\[([^\]]+)\]\((https?|ftp|sftp)://([^\s\)]+)\)', text
         )
@@ -69,7 +69,7 @@ class Paimon:
         
         escape_post = escape(post)
         file_path = FilesUtils.get_file_path(escape_post, 'blog')
-        md_content = FilesUtils.read_content(file_path)
+        md_content = FilesUtils.read_content(file_path).content
         
         for token in md.parse(md_content):
             content.append(token)
