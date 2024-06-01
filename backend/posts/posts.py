@@ -2,7 +2,6 @@
 
 from xhtml2pdf import pisa
 from flask import Response
-from markupsafe import Markup
 
 from backend.utils.files import FilesUtils
 
