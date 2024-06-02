@@ -11,6 +11,20 @@ $( e => {
             heading.attr(
                 'id', heading.text().replace(
                     /\s+/g, '_'
+                ).replace(
+                    /[áàãâä]/gi, 'a'
+                ).replace(
+                    /[éèêë]/gi, 'e'
+                ).replace(
+                    /[íìîï]/gi, 'i'
+                ).replace(
+                    /[óòõôö]/gi, 'o'
+                ).replace(
+                    /[úùûü]/gi, 'u'
+                ).replace(
+                    /[ç]/gi, 'c'
+                ).replace(
+                    /[?!]/g, ''
                 )
             )
         }
