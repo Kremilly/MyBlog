@@ -116,7 +116,7 @@ const Apis = ( e => {
                         <a href='https://crates.io/crates/${item.name}' target='_blank' class='item featured-item'>
                             <div class='name'>${title}</div>
                             <div class='info'>${item.description}</div>
-                            <div class='footer'>${format(item.downloads)} downloads • ${item.newest_version}</div>
+                            <div class='footer'>${format(item.downloads)} downloads | ${item.newest_version}</div>
                         </a>
                     `)
                 })

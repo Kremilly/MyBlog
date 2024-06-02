@@ -48,6 +48,7 @@ class Raven:
             
             'external_fonts': Load.fonts(),
             'internal_css_libs': Load.css(),
+            'external_css_libs': Load.css_cdn(),
             
             'external_js_libs': Load.js_cdn(),
             'internal_js_libs': Load.js('src'),

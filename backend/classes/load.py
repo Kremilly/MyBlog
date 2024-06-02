@@ -68,3 +68,16 @@ class Load:
         return Markup(
             ''.join(scripts)
         )
+            
+    @classmethod
+    def css_cdn(cls) -> Markup:
+        scripts = []
+        libs = Settings.get(f'external_css_libs', 'list')
+
+        for lib in libs:
+            scripts.append(f"<link rel='stylesheet' href='{ lib }'>")
+        
+        scripts = set(scripts)
+        return Markup(
+            ''.join(scripts)
+        )

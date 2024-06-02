@@ -24,6 +24,9 @@ external_js_libs:
   - 'https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js'
   - 'https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js'
 
+external_css_libs:
+  - 'https://use.fontawesome.com/releases/v6.5.2/css/all.css'
+
 paths:
   contents: 
     docs: './contents/docs/'
