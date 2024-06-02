@@ -85,11 +85,9 @@ const Apis = ( e => {
                 $('#featuredList').empty()
 
                 response.list.forEach(item => {
-                    let title = item.name.charAt(0).toUpperCase() + item.name.slice(1)
-
                     $('#featuredList').append(`
                         <a href='${item.wiki}' target='_blank' class='item featured-item'>
-                            <div class='name'>${title}</div>
+                            <div class='name'>${_.capitalize(item.name)}</div>
                         </a>
                     `)
                 })
@@ -112,11 +110,9 @@ const Apis = ( e => {
                 $('#featuredList').empty()
 
                 response.crates.forEach(item => {
-                    let title = item.name.charAt(0).toUpperCase() + item.name.slice(1)
-
                     $('#featuredList').append(`
                         <a href='https://crates.io/crates/${item.name}' target='_blank' class='item featured-item'>
-                            <div class='name'>${title}</div>
+                            <div class='name'>${_.capitalize(item.name)}</div>
                             <div class='info'>${item.description}</div>
                             <div class='footer'>${format(item.downloads)} downloads | ${item.newest_version}</div>
                         </a>
