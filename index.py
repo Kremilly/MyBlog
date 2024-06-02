@@ -8,9 +8,9 @@ from backend.posts.posts import Posts
 from backend.posts.paimon import Paimon
 from backend.posts.posts_meta import PostsMeta
 
-from backend.classes.minify import Minify
+# from backend.classes.minify import Minify
 
-Minify.run()
+# Minify.run()
 
 app = Flask(__name__)
 
