@@ -5,18 +5,13 @@
 </head>
 <body>
     {% include 'partials/header.html' %}
+    {% include 'partials/projects-box.html' %}
 
     {% include 'partials/featured.html' %}
     {% include 'partials/posts-list.html' %}
     
     {{ external_js_libs }}
 
-    {% for js_file in internal_js_plugins %}
-        <script src="{{ url_root + url_for('static', filename=js_file) }}"></script>
-    {% endfor %}
-
-    {% for js_file in internal_js_libs %}
-        <script src="{{ url_root + url_for('static', filename=js_file) }}"></script>
-    {% endfor %}
+    {% include 'partials/scripts.html' %}
 </body>
 </html>

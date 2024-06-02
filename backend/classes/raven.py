@@ -1,7 +1,7 @@
 from backend.classes.load import Load
 from backend.classes.settings import Settings
 
-from flask import request
+from flask import jsonify, request
 
 class Raven:
     
@@ -56,3 +56,15 @@ class Raven:
             
             'site_name': Settings.get('basic.site_name', 'string'),
         }
+        
+    @classmethod
+    def projects(cls):
+        projects = []
+        
+        for profile in Settings.get('projects', 'list'):
+            projects.append({
+                'name': list(profile.keys())[0], 
+                'url': list(profile.values())[0]
+            })
+            
+        return jsonify(projects)

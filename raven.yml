@@ -8,6 +8,9 @@ social_media:
   - Exercism: 'https://exercism.org/profiles/kremilly'
   - BlueSky: 'https://bsky.app/profile/kremilly.com'
 
+projects:
+  - Linkscraper: 'https://linkscraper.kremilly.com'
+
 profile:
   name: 'Kremilly'
   site_url: 'https://kremilly.com'

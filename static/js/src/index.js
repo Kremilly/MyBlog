@@ -2,6 +2,7 @@ $( e => {
 
     lazyload()
     Apis.checkApi()
+    Projects.projects()
     ScrollTo.checkScroll()
 
     $('#tabApis').on('click', Apis.apis)
@@ -10,6 +11,11 @@ $( e => {
     $(window).on('scroll', ScrollTo.checkScroll)
     $('#scrollToTopBtn').on('click', ScrollTo.top)
     $('#postDownloadPdfBtn').on('click', Apis.downloadPdf)
+
+    $('#apisProjectsListBtn').on('click', Projects.apis)
+    $('#pinnedProjectsListBtn').on('click', Projects.pinned)
+    $('#cratesProjectsListBtn').on('click', Projects.crates)
+    $('#featuredProjectsListBtn').on('click', Projects.projects)
 
     $('#postTagsBtn').on('click', function () {
         $(this).toggleClass('actived')
@@ -22,6 +28,11 @@ $( e => {
     $('#postShareBtn').on('click', function () {
         $(this).toggleClass('actived')
         $('#postShareBox').slideToggle(250)
+    })
+
+    $('#projectsBoxBtn').on('click', function () {
+        $(this).toggleClass('actived')
+        $('#projectsBox').slideToggle(250)
     })
 
     $('#postFilesBtn').on('click', function () {

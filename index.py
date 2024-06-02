@@ -58,6 +58,10 @@ def post_actions(post:str, action:str):
 def rss():
     return Posts.rss()
 
+@app.route('/api/projects')
+def projects():
+    return Raven.projects()
+
 @app.context_processor
 def inject_route_name():
     return Raven.get_current_route()

@@ -1,13 +1,15 @@
 const Apis = ( e => {
     
-    let user_id = 232087
     let username = 'kremilly'
     let apiUri = 'https://api.kremilly.com'
+    let projectsUri = window.location.href.replace(window.location.href, '') + '/api/projects'	
+
+    let cratesPage = 'https://crates.io/crates/'
+    let cratesURI = 'https://crates.io/api/v1/crates?user_id=232087'
 
     let format = (number) => {
 		if (number >= 1000) {
-			const milhares = number / 1000
-			return milhares + 'k'
+			return number / 1000 + 'k'
 		} else {
 			return number.toString()
 		}
@@ -72,7 +74,7 @@ const Apis = ( e => {
 
     let apis = e => {
         if (window.location.pathname == '/') {
-            fetch(`${apiUri}`).then(
+            fetch(apiUri).then(
                 json => json.json()
             ).then(response => {
                 window.location.hash = 'apis'
@@ -99,7 +101,7 @@ const Apis = ( e => {
 
     let crates = e => {
         if (window.location.pathname == '/') {
-            fetch(`https://crates.io/api/v1/crates?user_id=${user_id}`).then(
+            fetch(cratesURI).then(
                 json => json.json()
             ).then(response => {
                 window.location.hash = 'crates'
@@ -176,14 +178,36 @@ const Apis = ( e => {
         })
     }
 
+    let projectsList = e => {
+        fetch(projectsUri).then(
+            json => json.json()
+        ).then(response => {
+            $('#projectsList').empty()
+
+            response.forEach(item => {
+                $('#projectsList').append(`
+                    <a href='${item.url}' target='_blank' class='item project-item'>
+                        ${item.name}
+                    </a>
+                `)
+            })
+        })
+    }
+
     return {
         apiUri: apiUri,
+        username: username,
+        cratesURI: cratesURI,
+        cratesPage: cratesPage,
+        projectsUri: projectsUri,
+
         apis: () => { return apis() },
         crates: () => { return crates() },
         pinned: () => { return pinned() },
         checkApi: () => { return checkApi() },
         colors: (lang) => { return colors(lang) },
         downloadPdf: () => { return downloadPdf() },
+        projectsList: () => { return projectsList() },
     }
 
 })()
