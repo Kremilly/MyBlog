@@ -40,7 +40,7 @@ python-frontmatter==1.1.0
 PyYAML==6.0.1
 qrcode==7.4.2
 reportlab==4.0.9
-requests==2.32.2
+requests==2.32.3
 six==1.16.0
 soupsieve==2.5
 svglib==1.5.1
