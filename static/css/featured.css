@@ -32,8 +32,8 @@
 }
 
 .featured > .featured-top > .featured-tabs {
+    width: 25%;
     float: left;
-    width: 33.3%;
     height: 2.5em;
     cursor: pointer;
     line-height: 2.5em;

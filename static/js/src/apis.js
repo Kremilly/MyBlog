@@ -144,6 +144,10 @@ const Apis = ( e => {
                 case '#crates':
                     crates()
                     break
+
+                case '#projects':
+                    projects()
+                    break
                     
                 default:
                     pinned(true)
@@ -174,19 +178,26 @@ const Apis = ( e => {
         })
     }
 
-    let projectsList = e => {
+    let projects = e => {
         fetch(projectsUri).then(
             json => json.json()
         ).then(response => {
-            $('#projectsList').empty()
+            window.location.hash = 'projects'
+
+            $('.featured-tabs').removeClass('actived')
+            $('#tabProjects').toggleClass('actived')
+
+            $('#featuredList').empty()
 
             response.forEach(item => {
-                $('#projectsList').append(`
-                    <a href='${item.url}' target='_blank' class='item project-item'>
-                        ${item.name}
+                $('#featuredList').append(`
+                    <a href='${item.url}' target='_blank' class='item featured-item'>
+                        <div class='name'>${_.capitalize(item.name)}</div>
                     </a>
                 `)
             })
+
+            $('#featured').show()
         })
     }
 
@@ -200,10 +211,10 @@ const Apis = ( e => {
         apis: () => { return apis() },
         crates: () => { return crates() },
         pinned: () => { return pinned() },
+        projects: () => { return projects() },
         checkApi: () => { return checkApi() },
         colors: (lang) => { return colors(lang) },
         downloadPdf: () => { return downloadPdf() },
-        projectsList: () => { return projectsList() },
     }
 
 })()

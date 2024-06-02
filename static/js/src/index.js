@@ -8,6 +8,8 @@ $( e => {
     $('#tabApis').on('click', Apis.apis)
     $('#tabPins').on('click', Apis.pinned)
     $('#tabCrates').on('click', Apis.crates)
+    $('#tabProjects').on('click', Apis.projects)
+
     $(window).on('scroll', ScrollTo.checkScroll)
     $('#scrollToTopBtn').on('click', ScrollTo.top)
     $('#postDownloadPdfBtn').on('click', Apis.downloadPdf)
