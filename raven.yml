@@ -31,9 +31,11 @@ paths:
     pages: './contents/pages/'
 
   static:
+    dist: './static/dist/'
+
     js:
-      src: './static/dist/'
+      src: './static/js/src/'
       plugins: './static/js/plugins/'
 
-    css: './static/dist/'
+    css: './static/css/'
     images: './static/images/'

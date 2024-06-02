@@ -12,7 +12,7 @@ class Load:
     def css(cls) -> set:
         styles = []
         
-        path = Settings.get('paths.static.css', 'string')
+        path = Settings.get('paths.static.dist', 'string')
         libs = FilesUtils.scan_path(path)
         
         for lib in libs:
@@ -42,7 +42,7 @@ class Load:
     def js(cls, path) -> set:
         scripts = []
         if path == 'src':
-            js_files_path = 'paths.static.js.src'
+            js_files_path = 'paths.static.dist'
         else:
             js_files_path = 'paths.static.js.plugins'
         
@@ -56,36 +56,6 @@ class Load:
             
         return set(scripts)
     
-    @classmethod
-    def js_content(cls) -> str:
-        scripts = ''
-        js_files_path = 'paths.static.js.src'
-        
-        path = Settings.get(js_files_path, 'string')
-        libs = FilesUtils.scan_path(path)
-        
-        for lib in libs:
-            if lib.endswith('.js'):
-                with open(lib, 'r') as file:
-                    scripts += file.read()
-        
-        return str(scripts)
-    
-    @classmethod
-    def css_content(cls) -> str:
-        styles = ''
-        js_files_path = 'paths.static.css'
-        
-        path = Settings.get(js_files_path, 'string')
-        libs = FilesUtils.scan_path(path)
-        
-        for lib in libs:
-            if lib.endswith('.css'):
-                with open(lib, 'r') as file:
-                    styles += file.read()
-        
-        return str(styles)
-  
     @classmethod
     def js_cdn(cls) -> Markup:
         scripts = []

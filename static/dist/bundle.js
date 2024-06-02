@@ -1,1 +1,27 @@
-{"errors":[{"status":422,"title":"Invalid Attribute","detail":"'input' must not be empty."}]}
+var e;const Apis=(t=>{let a=232087,s="kremilly",o="https://api.kremilly.com",i=t=>{if(!(t>=1e3))return t.toString();{let a=t/1e3;return a+"k"}},l=t=>{fetch("https://gist.githubusercontent.com/kremilly/0e2b5ac9779857efcf0e3fd6f62cd093/raw/112c3af99ed5db18776192609215353a18c28e9d/languages-hex-colors.json",{method:"GET",cache:"default"}).then(t=>t.json()).then(a=>{_.forEach(a,(a,s)=>{$(t).attr("data-lang").toLowerCase()==s&&$(t).css("color",a)})})},c=(t=!1)=>{"/"==window.location.pathname&&fetch(`${o}/github?user=${s}`,{method:"GET",cache:"default"}).then(t=>t.json()).then(a=>{t||(window.location.hash="pins"),$(".featured-tabs").removeClass("actived"),$("#tabPins").toggleClass("actived"),$("#featuredList").empty(),a.forEach(t=>{$("#featuredList").append(`
+                        <a href='${t.url}' target='_blank' class='item featured-item'>
+                            <div class='name'>${t.name}</div>
+                            <div class='info'>${t.description}</div>
+
+                            <div class='footer'>
+                                <div class='lang lc-${t.name}' data-lang='${t.languages[0]}'>
+                                    ${t.languages[0]}
+                                </div>
+
+                                <div class='stats'>
+                                    <div class='fas fa-star'></div>${i(t.stars)} stars 
+                                    <div class='fas fa-code-fork'></div> ${i(t.forks)} forks
+                                </div>
+                            </div>
+                        </a>
+                    `),l(`.lc-${t.name}`)}),$("#featured").show()})},r=t=>{"/"==window.location.pathname&&fetch(`${o}`).then(t=>t.json()).then(t=>{window.location.hash="apis",$(".featured-tabs").removeClass("actived"),$("#tabApis").toggleClass("actived"),$("#featuredList").empty(),t.list.forEach(t=>{let a=t.name.charAt(0).toUpperCase()+t.name.slice(1);$("#featuredList").append(`
+                        <a href='${t.wiki}' target='_blank' class='item featured-item'>
+                            <div class='name'>${a}</div>
+                        </a>
+                    `)}),$("#featured").show()})},n=t=>{"/"==window.location.pathname&&fetch(`https://crates.io/api/v1/crates?user_id=${a}`).then(t=>t.json()).then(t=>{window.location.hash="crates",$(".featured-tabs").removeClass("actived"),$("#tabCrates").toggleClass("actived"),$("#featuredList").empty(),t.crates.forEach(t=>{let a=t.name.charAt(0).toUpperCase()+t.name.slice(1);$("#featuredList").append(`
+                        <a href='https://crates.io/crates/${t.name}' target='_blank' class='item featured-item'>
+                            <div class='name'>${a}</div>
+                            <div class='info'>${t.description}</div>
+                            <div class='footer'>${i(t.downloads)} downloads \xe2€\xa2 ${t.newest_version}</div>
+                        </a>
+                    `)}),$("#featured").show()})},d=t=>{if("/"==window.location.pathname)switch(window.location.hash?$("#featured").addClass("featured-caller"):$("#featured").removeClass("featured-caller"),window.location.hash){case"#apis":r();break;case"#pins":c();break;case"#crates":n();break;default:c(!0)}},h=t=>{fetch(`${window.location.href.replace(window.location.hash,"")+"/export"}`).then(t=>{if(!t.ok)throw Error("Network response was not ok");return t.url}).then(t=>{let a=document.createElement("a");a.href=t,a.download="arquivo.pdf",document.body.appendChild(a),a.click(),document.body.removeChild(a)}).catch(t=>{console.error("There was an error with the fetch operation:",t)})};return{apiUri:o,apis:()=>r(),crates:()=>n(),pinned:()=>c(),checkApi:()=>d(),colors:t=>l(t),downloadPdf:()=>h()}})(),ScrollTo={top(t){window.scroll({top:0,left:0,behavior:"smooth"})},checkScroll(t){let a=document.getElementById("scrollToTopBtn");window.scrollY>0?a.style.display="block":a.style.display="none"}},Mermaid=(t=>{let a=t=>{mermaid.initialize({theme:"dark",securityLevel:"loose"});let a=document.querySelectorAll(".language-mermaid");a.forEach(t=>{t.classList.remove("language-mermaid"),t.classList.add("diagram-mermaid")}),a.forEach(t=>{let a=document.createElement("div");a.classList.add("mermaid"),a.textContent=t.textContent,t.textContent="",t.appendChild(a),mermaid.init(void 0,a)})};a()})();$(t=>{lazyload(),Apis.checkApi(),ScrollTo.checkScroll(),$("#tabApis").on("click",Apis.apis),$("#tabPins").on("click",Apis.pinned),$("#tabCrates").on("click",Apis.crates),$(window).on("scroll",ScrollTo.checkScroll),$("#scrollToTopBtn").on("click",ScrollTo.top),$("#postDownloadPdfBtn").on("click",Apis.downloadPdf),$("#postTagsBtn").on("click",function(){$(this).toggleClass("actived"),$("#postFlesBtn").removeClass("actived"),$("#postFilesBox").hide(),$("#postTagsBox").slideToggle(250)}),$("#postShareBtn").on("click",function(){$(this).toggleClass("actived"),$("#postShareBox").slideToggle(250)}),$("#postFilesBtn").on("click",function(){$(this).toggleClass("actived"),$("#postTagsBtn").removeClass("actived"),$("#postTagsBox").hide(),$("#postFilesBox").slideToggle(250)}),$(".featured-search").on("input",function(){var t=$(this).val().toLowerCase();$(".featured-body > .featured-item").each(function(){$(this).text().toLowerCase().includes(t)?$(this).show():$(this).hide()})}),$("#postShareBoxInput").on("click",function(){$(this).focus(),$(this).select();let t=$(this).val();navigator.clipboard.writeText(t)})});
