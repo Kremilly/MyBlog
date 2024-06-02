@@ -32,8 +32,8 @@ paths:
 
   static:
     js:
-      src: './static/js/src/'
+      src: './static/dist/'
       plugins: './static/js/plugins/'
 
-    css: './static/css/'
+    css: './static/dist/'
     images: './static/images/'
