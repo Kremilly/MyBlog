@@ -14,7 +14,7 @@ const Projects = ( e => {
 
             response.list.forEach(item => {
                 $('#projectsList').append(`
-                    <a href='${item.url}' target='_blank' class='item project-item'>
+                    <a href='${item.wiki}' target='_blank' class='item project-item'>
                         ${item.name}
                     </a>
                 `)
