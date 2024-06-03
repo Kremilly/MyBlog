@@ -16,7 +16,7 @@ Aqui estão algumas das principais razões para considerar o uso de Rust:
 4. **Interoperabilidade com C**: Rust pode ser facilmente interligada com código C, tornando-a adequada para reescrever partes críticas de sistemas existentes ou para criar extensões de alto desempenho para linguagens como Python.
 5. **Ferramentas Modernas**: Rust vem com um gerenciador de pacotes e build system chamado Cargo. Ele simplifica a compilação de projetos, gerenciamento de dependências e publicação de bibliotecas.
 6. **Evolução Rápida**: A comunidade Rust é ativa e está constantemente melhorando a linguagem, as bibliotecas e as ferramentas.
-7. **Comunidade Ativa e Acolhedora**: A comunidade Rust é conhecida por ser extremamente acolhedora e ativa. Existem muitos recursos, como o "The Rust Book", que ajudam os novos usuários a aprender a linguagem.
+7. **Comunidade Ativa e Acolhedora**: A comunidade Rust é conhecida por ser extremamente acolhedora e ativa. Existem muitos recursos, como o "[The Rust Book](https://doc.rust-lang.org/stable/book/)", que ajudam os novos usuários a aprender a linguagem.
 8. **Uso em Vários Domínios**: Rust está sendo adotada em várias áreas, desde sistemas embarcados até desenvolvimento web (por exemplo, com frameworks como Rocket e via WebAssembly).
 9. **Zero-cost Abstractions**: Assim como C++, Rust permite que os programadores escrevam abstrações sem penalidades de desempenho.
 10. **Empresas Adotando**: Grandes empresas, como Microsoft, Google e Facebook, têm mostrado interesse em Rust e têm explorado seu uso em diversos projetos.
