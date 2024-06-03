@@ -44,7 +44,7 @@ class Posts:
             })
             
         return sorted(
-            list_posts, key=lambda x: x['date'], reverse=True
+            list_posts, key=lambda x: x['date']
         )
 
     @classmethod
