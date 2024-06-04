@@ -4,11 +4,13 @@ Description: Rust, uma linguagem de programação altamente versátil e segura, 
 Date: 2024-06-03
 Tags: rust, desenvolvimento, backend, baixo-nivel, linguagem de programacao
 ---
-## Porque usar Rust?
+## O que é Rust?
 
-Rust, uma linguagem de programação altamente versátil e segura, tem capturado crescente interesse nos últimos anos. Sua sintaxe elegante e poderosas ferramentas de segurança tornam-na uma escolha popular entre desenvolvedores em busca de desempenho e confiabilidade. A comunidade vibrante e o suporte contínuo da Mozilla Foundation também contribuem para seu destaque no cenário da programação moderna.
+Rust foi criado em 2006 pela equipe de engenharia da Mozilla para abordar problemas críticos em desenvolvimento de software, especialmente aqueles relacionados à segurança de memória, concorrência, e desempenho e também altamente versátil, tem capturado crescente interesse nos últimos anos. Sua sintaxe elegante e poderosas ferramentas de segurança tornam-na uma escolha popular entre desenvolvedores em busca de desempenho e confiabilidade. A comunidade vibrante e o suporte contínuo da Mozilla Foundation também contribuem para seu destaque no cenário da programação moderna.
 
-Aqui estão algumas das principais razões para considerar o uso de Rust:
+## Pontos-fortes da linguagem
+
+Assimo como todas as linguagens de programação, Rust tem diversos pontos-fortes que fazem a lingugagem se destacar entre as demais linguagens do mercado. Aqui estão algumas das principais razões para considerar o uso de Rust:
 
 1. **Segurança de Memória**: Rust é projetada para eliminar erros de memória, como acessos fora dos limites de uma matriz e dereferências de ponteiro nulo, sem a necessidade de um coletor de lixo. Ela faz isso através de seu sistema de propriedade e empréstimo.
 2. **Concorrência**: Rust oferece ferramentas modernas para a programação concorrente. Graças ao seu sistema de propriedade, é mais difícil cometer erros comuns em programação concorrente, como condições de corrida.
@@ -20,6 +22,15 @@ Aqui estão algumas das principais razões para considerar o uso de Rust:
 8. **Uso em Vários Domínios**: Rust está sendo adotada em várias áreas, desde sistemas embarcados até desenvolvimento web (por exemplo, com frameworks como Rocket e via WebAssembly).
 9. **Zero-cost Abstractions**: Assim como C++, Rust permite que os programadores escrevam abstrações sem penalidades de desempenho.
 10. **Empresas Adotando**: Grandes empresas, como Microsoft, Google e Facebook, têm mostrado interesse em Rust e têm explorado seu uso em diversos projetos.
+
+## Onde Rust é usado?
+
+O Rust pode e é usado em qualquer sistema que requer um pouco mais de atenção ao manuseio de alocação e segurança de recursos da máquina que está rodando o código. Aqui, está uma pequena lista de exemplos de onde a linguagem está sendo usada:
+
+* Navegadores (por exemplo, o motor de renderização Servo)
+* Sistemas operacionais (por exemplo, Redox OS)
+* Blockchain (por exemplo, Polkadot)
+* Ferramentas de desenvolvimento (por exemplo, ripgrep, uma ferramenta de busca de texto)
 
 ## Vale lembrar que...
 
