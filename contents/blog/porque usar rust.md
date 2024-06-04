@@ -25,7 +25,7 @@ Assimo como todas as linguagens de programação, Rust tem diversos pontos-forte
 
 ## Onde Rust é usado?
 
-O Rust pode e é usado em qualquer sistema que requer um pouco mais de atenção ao manuseio de alocação e segurança de recursos da máquina que está rodando o código. Aqui, está uma pequena lista de exemplos de onde a linguagem está sendo usada:
+O Rust pode ser usado em qualquer sistema que requer um pouco mais de atenção ao manuseio de alocação e segurança de recursos da máquina que está rodando o código. Aqui, está uma pequena lista de exemplos de onde a linguagem está sendo usada:
 
 * Navegadores (por exemplo, o motor de renderização Servo)
 * Sistemas operacionais (por exemplo, Redox OS)
