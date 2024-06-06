@@ -93,7 +93,7 @@ class PostsMeta:
             return date.strftime('%a, %d %b %Y')
     
     @classmethod
-    def post_metadata_read_time(cls, file:str, words_per_minute:int = 200) -> str:
+    def post_metadata_read_time(cls, file:str, words_per_minute:int = 120) -> str:
         total_words = MDBuilder.count_words(file)
         
         if total_words is not None:
