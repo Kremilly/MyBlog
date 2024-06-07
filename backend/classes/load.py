@@ -12,7 +12,7 @@ class Load:
     def css(cls) -> set:
         styles = []
         
-        path = Settings.get('paths.static.css', 'string')
+        path = Settings.get('paths.static.dist', 'string')
         libs = FilesUtils.scan_path(path)
         
         for lib in libs:
