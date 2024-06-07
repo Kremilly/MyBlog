@@ -7,7 +7,6 @@
                     Tags
                 </div>
             {% endif %}
-
             {% if post_files.total > 0 %}
                 <div class='footer-btn' id='postFilesBtn'>
                     <div class='fas fa-paperclip'></div>
@@ -15,20 +14,17 @@
                 </div>
             {% endif %}
         </div>
-
         <div class='right'>
             <div class='footer-btn' id='postShareBtn'>
                 <div class='fas fa-share'></div>
                 Share
             </div>
-    
             <div class='footer-btn' id='postDownloadPdfBtn'>
                 <div class='fas fa-file-pdf'></div>
                 Download
             </div>
         </div>
     </div>
-
     <div class='share' id='postShareBox'>
         <div class='icons'>
             <a data-sharer='email' data-title='{{ post_title }}' data-url='{{ post_url }}' class='fas fa-envelope'></a>
@@ -37,10 +33,8 @@
             <a data-sharer='twitter' data-title='{{ post_title }}' data-url='{{ post_url }}' class='fab fa-x-twitter'></a>
             <a data-sharer='linkedin' data-title='{{ post_title }}' data-url='{{ post_url }}' class='fab fa-linkedin'></a>
         </div>
-
         <input type='text' value='{{ post_url }}' id='postShareBoxInput' readonly>
     </div>
-
     {% if post_tags.total > 0 %}
         <div class='box' id='postTagsBox'>
             <div class='body'>
@@ -50,7 +44,6 @@
             </div>
         </div>
     {% endif %}
-
     {% if post_files.total > 0 %}
         <div class='box' id='postFilesBox'>
             <div class='body'>
