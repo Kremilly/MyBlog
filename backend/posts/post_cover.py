@@ -3,13 +3,14 @@ import base64, requests
 from io import BytesIO
 from PIL import Image, ImageDraw, ImageFont
 
+from backend.classes.load import Load
 from backend.posts.posts_meta import PostsMeta
 
 class PostCover:
     
     @classmethod
     def download_font(cls):
-        url = "https://github.com/JulietaUla/Montserrat/raw/master/fonts/ttf/Montserrat-SemiBold.ttf"
+        url = Load.font_style('SemiBold')
         
         response = requests.get(url)
         response.raise_for_status()
@@ -22,16 +23,16 @@ class PostCover:
         
         try:
             font_file = cls.download_font()
-            font = ImageFont.truetype(font_file, font_size, encoding="utf-8")
+            font = ImageFont.truetype(font_file, font_size, encoding='utf-8')
         except Exception as e:
-            raise ValueError(f"Error loading font: {e}")
+            raise ValueError(f'Error loading font: {e}')
 
-        image_path = 'static/images/post-bg.png'
+        image_path = Load.image('post-bg.png')
         
         try:
-            image = Image.open(image_path).convert("RGB").resize((708, 297))
+            image = Image.open(image_path).convert('RGB').resize((708, 297))
         except OSError as e:
-            raise ValueError(f"Error opening image: {e}")
+            raise ValueError(f'Error opening image: {e}')
         
         draw = ImageDraw.Draw(image)
         text_bbox = draw.textbbox((0, 0), title, font=font)
@@ -53,14 +54,21 @@ class PostCover:
     @classmethod
     def image_to_base64(cls, image):
         buffered = BytesIO()
-        image.save(buffered, format="PNG")
-        img_str = base64.b64encode(buffered.getvalue()).decode("utf-8")
+        image.save(buffered, format='PNG')
+        
+        img_str = base64.b64encode(
+            buffered.getvalue()
+        ).decode('utf-8')
+        
         return f'data:image/png;base64,{img_str}'
 
     @classmethod
     def generate(cls, post):
-        title = PostsMeta.post_metadata(post, 'CoverTitle') if PostsMeta.post_metadata(post, 'CoverTitle') else PostsMeta.post_metadata(post, 'Title')
-        font_size = PostsMeta.post_metadata(post, 'CoverFontSize') if PostsMeta.post_metadata(post, 'CoverFontSize') else 36
+        cover_title = PostsMeta.post_metadata(post, 'CoverTitle')
+        cover_font_size = PostsMeta.post_metadata(post, 'CoverFontSize')
+        
+        font_size = cover_font_size if cover_font_size else 36
+        title = cover_title if cover_title else PostsMeta.post_metadata(post, 'Title')
         
         image = cls.add_title(title, font_size)
         return cls.image_to_base64(image)

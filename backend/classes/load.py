@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+from flask import url_for
 from markupsafe import Markup
 
 from backend.utils.files import FilesUtils
@@ -41,6 +42,17 @@ class Load:
             return google_fonts_uri
         
         return Markup(f"<link href='{ google_fonts_uri }' rel='stylesheet'>")
+    
+    @classmethod
+    def font_style(cls, style) -> str:
+        return f'https://github.com/JulietaUla/Montserrat/raw/master/fonts/ttf/Montserrat-{style}.ttf'
+    
+    @classmethod
+    def image(cls, image, is_url = False) -> str:
+        if is_url:
+            return url_for('static', filename=f'images/{image}')
+        
+        return f'static/images/{image}'
     
     @classmethod
     def js(cls, path) -> set:
