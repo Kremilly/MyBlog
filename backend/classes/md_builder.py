@@ -16,7 +16,7 @@ from mistune.plugins.def_list import def_list
 from mistune.plugins.footnotes import footnotes
 from mistune.plugins.task_lists import task_lists
 
-from backend.classes.raven import Raven
+from backend.classes.my_blog import MyBlog
 from backend.utils.files import FilesUtils
 
 class MDBuilder:
@@ -39,7 +39,7 @@ class MDBuilder:
         ])
 
         if content is None:
-            redirect(Raven.get_url_root())
+            redirect(MyBlog.get_url_root())
 
         return markdown(content)
 

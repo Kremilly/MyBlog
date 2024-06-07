@@ -6,7 +6,7 @@ from markupsafe import Markup
 
 from backend.utils.files import FilesUtils
 
-from backend.classes.raven import Raven
+from backend.classes.my_blog import MyBlog
 from backend.classes.settings import Settings
 from backend.classes.md_builder import MDBuilder
 
@@ -17,7 +17,7 @@ class Posts:
     @classmethod
     def posts(cls) -> dict:
         list_posts = []
-        url_root = Raven.get_url_root()
+        url_root = MyBlog.get_url_root()
         path = Settings.get('paths.contents.blog', 'string')
         posts = FilesUtils.scan_path(path)
         
@@ -76,7 +76,7 @@ class Posts:
             <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" >
                 <channel>
                     <title>{Settings.get('basic.site_name', 'string')}</title>
-                    <link>{Raven.get_url_root()}</link>
+                    <link>{MyBlog.get_url_root()}</link>
                     <description>{Settings.get('basic.site_name', 'string')}: RSS feed</description>
                     <language>en-us</language>
                     {rss_items}

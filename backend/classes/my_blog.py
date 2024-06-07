@@ -3,7 +3,7 @@ from backend.classes.settings import Settings
 
 from flask import jsonify, request
 
-class Raven:
+class MyBlog:
     
     @classmethod
     def get_path(cls):
