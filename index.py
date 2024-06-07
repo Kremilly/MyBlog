@@ -5,7 +5,6 @@ from flask import Flask, render_template, redirect
 from backend.classes.raven import Raven
 
 from backend.posts.posts import Posts
-from backend.posts.paimon import Paimon
 from backend.posts.posts_meta import PostsMeta
 
 app = Flask(__name__)
@@ -45,14 +44,9 @@ def post(post:str):
         post_files=PostsMeta.post_metadata_lists(post, 'files'),
     )
 
-@app.route('/blog/<post>/<action>')
-def post_actions(post:str, action:str):
-    if action == 'paimon':
-        return Paimon.get(post)
-    elif action == 'export':
-        return Posts.export_to_pdf(post)
-    else:
-        return redirect(f'{Raven.get_url_root()}/blog/{post}')
+@app.route('/blog/<post>/export')
+def post_actions(post:str):
+    return Posts.export_to_pdf(post)
 
 @app.route('/rss')
 def rss():

@@ -1,5 +1,0 @@
-path = "__EBOOKS_PATH__"
-
-downloads {
-    __EBOOKS_LIST__
-}
