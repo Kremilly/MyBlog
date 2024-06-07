@@ -79,8 +79,10 @@ const Projects = ( e => {
             $('#projectsList').empty()
 
             response.crates.forEach(item => {
+                console.log(item)
+
                 $('#projectsList').append(`
-                    <a href='${item.url}' target='_blank' class='item project-item'>
+                    <a href='https://crates.io/crates/${item.name}' target='_blank' class='item project-item'>
                         ${_.capitalize(item.name)}
                     </a>
                 `)
