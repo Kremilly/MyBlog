@@ -2,6 +2,7 @@
 Title: Sejam muito bem-vindos ao meu novo blog!
 Description: Esta é a primeira postagem oficial deste blog, pois a "primeira" havia sido apenas uma repostagem. Para inaugurar essa nova era, quero apresentar o que será publicado aqui, e exclusivamente aqui, de agora em diante.
 Date: 2024-06-01
+CoverTitle: Welcome to my Blog
 Tags: introduction, welcome, news, hello word
 ---
 ## Introdução

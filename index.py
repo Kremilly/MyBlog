@@ -5,6 +5,7 @@ from flask import Flask, render_template
 from backend.classes.my_blog import MyBlog
 
 from backend.posts.posts import Posts
+from backend.posts.post_cover import PostCover
 from backend.posts.posts_meta import PostsMeta
 
 app = Flask(__name__)
@@ -36,6 +37,7 @@ def post(post:str):
         
         post_url=MyBlog.get_url(),
         html_content=Posts.post(post),
+        post_cover=PostCover.generate(post),
         post_title=PostsMeta.post_head_title(post),
         
         post_date=PostsMeta.post_metadata_date(post),

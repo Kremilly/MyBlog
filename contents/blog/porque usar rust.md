@@ -2,6 +2,8 @@
 Title: Porque usar Rust?
 Description: Rust, uma linguagem de programação altamente versátil e segura, tem capturado crescente interesse nos últimos anos. Sua sintaxe elegante e poderosas ferramentas de segurança tornam-na uma escolha popular entre desenvolvedores em busca de desempenho e confiabilidade.
 Date: 2024-06-03
+CoverTitle: Porque Rust é tao usada?
+CoverFontSize: 42
 Tags: rust, desenvolvimento, backend, baixo-nivel, linguagem de programacao
 ---
 ## O que é Rust?

@@ -10,13 +10,25 @@
     border: .1em solid var(--color-border);
 }
 
+.post-content > .cover {
+    top: 0;
+    z-index: -1;
+    height: 300px;
+    margin: -2.7em;
+    background-position: center;
+    margin-bottom: var(--spacing-lg) * 2;
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    border-bottom: .1em solid var(--color-border);
+}
+
 .post-content > .header {
     height: 3em;
+    margin-top: 3em;
     line-height: 3em;
     text-align: center;
     margin-bottom: 3em;
     justify-content: center;
-    margin-top: calc(-1 * var(--spacing-lg));
 }
 
 .post-content > .header > a {

@@ -12,7 +12,7 @@ class Load:
     def css(cls) -> set:
         styles = []
         
-        path = Settings.get('paths.static.dist', 'string')
+        path = Settings.get('paths.static.css', 'string')
         libs = FilesUtils.scan_path(path)
         
         for lib in libs:
@@ -23,11 +23,12 @@ class Load:
         return set(styles)
 
     @classmethod
-    def fonts(cls) -> Markup:
+    def fonts(cls, only_url=False) -> Markup:
         list_fonts = Settings.get('google_fonts', 'list')
 
-        core = "<link rel='preconnect' href='https://fonts.googleapis.com'>"
-        core += "<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>"
+        if only_url is not True:
+            core = "<link rel='preconnect' href='https://fonts.googleapis.com'>"
+            core += "<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>"
 
         fonts = list_fonts[0]
         if len(list_fonts) > 1:
@@ -35,8 +36,11 @@ class Load:
                 fonts += f'&family={font}'
 
         google_fonts_uri = f'https://fonts.googleapis.com/css2?family={fonts}&display=swap'
-        core += f"<link href='{ google_fonts_uri }' rel='stylesheet'>"
-        return Markup(core)
+        
+        if only_url:
+            return google_fonts_uri
+        
+        return Markup(f"<link href='{ google_fonts_uri }' rel='stylesheet'>")
     
     @classmethod
     def js(cls, path) -> set:
