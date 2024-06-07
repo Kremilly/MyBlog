@@ -1,8 +1,10 @@
 <div align='center'>
-  <img src='https://github.com/kremilly/kremilly/raw/main/images/new-logo-apis.png' height='64' />
+    <img src='https://github.com/kremilly/kremilly/raw/main/images/new-logo-apis.png' height='64' />
+    <p></p>
+    My blog for technical and non-technic articles
 </div>
 
-My blog for technical and non-technic articles
+---
 
 > [!note]
 > This blog uses Markdown for generate their posts and pages, and uses some libraries for make this: [Mistune](https://mistune.lepture.com/en/latest/) and [MarkupSafe](https://markupsafe.palletsprojects.com/en/2.1.x/)
