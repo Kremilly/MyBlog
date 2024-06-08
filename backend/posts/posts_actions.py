@@ -46,7 +46,7 @@ class PostsActions:
         
         post_title = PostsMeta.post_metadata(file, 'Title')
         download_pdf = PostsMeta.post_metadata(file, 'DownloadPdf')
-        post_url = current_url.replace(f'/{current_url.split('/')[-1]}', '')
+        post_url = current_url.replace('/' + current_url.split('/')[-1], '')
         
         if download_pdf == 'enabled':
             pdf_path = f'{file}.pdf'
