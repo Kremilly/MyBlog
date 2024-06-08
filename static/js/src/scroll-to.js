@@ -1,6 +1,12 @@
 const ScrollTo = ( e => {
 
     let top = e => {
+        history.pushState(
+            null, 
+            null, 
+            window.location.href.split('#')[0]
+        )
+
         window.scroll({
             top: 0,
             left: 0,
