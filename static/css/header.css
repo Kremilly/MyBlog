@@ -6,6 +6,7 @@ header{
     position: fixed;
     z-index: 99999999999;
     box-sizing: border-box;
+    justify-content: center;
     color: var(--color-text);
     height: var(--header-size);
     box-shadow: var(--box-shadow);
@@ -13,20 +14,25 @@ header{
 }
 
 header > .logo {
+    left: 50%;
+    width: 8em;
     float: left;
 	height: 100%;
-    width: 2.5em;
 	outline: none;
 	cursor: pointer;
+    position: absolute;
 	margin-right: auto;
-    background-size: 70%;
+    background-size: 20%;
     box-sizing: border-box;
+    transform: translateX(-50%);
 	background-position: center;
     background-repeat: no-repeat;
     background-image: var(--logo);
 }
 
-header > .logo:hover { background-color: var(--color-border); }
+header > .logo:hover {
+    animation: logo-effect .25s ease-in-out forwards;
+}
 
 header > .fa-solid {
     height: var(--header-size);
