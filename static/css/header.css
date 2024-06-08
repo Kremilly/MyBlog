@@ -21,7 +21,6 @@ header > .logo {
 	outline: none;
 	cursor: pointer;
     position: absolute;
-	margin-right: auto;
     background-size: 20%;
     box-sizing: border-box;
     transform: translateX(-50%);
@@ -30,22 +29,20 @@ header > .logo {
     background-image: var(--logo);
 }
 
-header > .logo:hover {
-    animation: logo-effect .25s ease-in-out forwards;
-}
+header > .logo:hover { animation: logo-effect .3s ease-in-out forwards; }
 
-header > .fa-solid {
+header > .icon {
     height: var(--header-size);
     line-height: var(--header-size);
 }
 
-header > .label{
+header > .label {
     float: left;
     cursor: default;
     font-weight: 600;
     padding-left: 1em;
     padding-right: 1em;
-    line-height: calc(var(--header-size));
+    line-height: var(--header-size);
 }
 
 header > .tab {
