@@ -42,13 +42,17 @@ class PostsActions:
 
     @classmethod
     def export_to_pdf(cls, file:str) -> str:
+        post_url = MyBlog.get_url()
+        post_title = PostsMeta.post_metadata(file, 'Title')
         download_pdf = PostsMeta.post_metadata(file, 'DownloadPdf')
+        
+        credits = f'<br><a href="{ post_url }">Source: { post_title } (from: { post_url })</a>'
         
         if download_pdf == 'enabled':
             pdf_path = f'{file}.pdf'
             file_path = FilesUtils.get_file_path(file, 'blog')
             md_content = FilesUtils.read_content(file_path).content
-            html_content = MDBuilder.render(md_content)
+            html_content = f'<h1>{ post_title }</h1>{MDBuilder.render(md_content) + credits}'
         
             pisa_status = pisa.CreatePDF(html_content, dest_bytes=True)
             return Response(pisa_status, content_type='application/pdf', headers={
