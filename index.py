@@ -42,6 +42,7 @@ def post(post:str):
         post_cover=PostCover.generate(post),
         post_title=PostsMeta.post_head_title(post),
         post_description=PostsMeta.post_description(post),
+        post_qrcode=PostsMeta.post_metadata(post, 'QrCode'),
         post_export=PostsMeta.post_metadata(post, 'DownloadPdf'),
         
         post_date=PostsMeta.post_metadata_date(post),

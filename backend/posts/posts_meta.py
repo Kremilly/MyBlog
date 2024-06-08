@@ -6,25 +6,10 @@ from bs4 import BeautifulSoup
 
 from backend.utils.files import FilesUtils
 
+from backend.classes.my_blog import MyBlog
 from backend.classes.md_builder import MDBuilder
 
 class PostsMeta:
-    
-    @classmethod
-    def post_cover(cls, file:str):
-        html_content = MDBuilder.render_metadata(file)
-        
-        if html_content is not None:
-            img_match = re.search(r'<img[^>]*src="([^"]+)"[^>]*>', html_content)
-
-            if img_match:
-                img_src = img_match.group(1)
-                return img_src
-            
-            else:
-                return None
-            
-        return None
     
     @classmethod
     def post_description(cls, file:str):
@@ -78,6 +63,8 @@ class PostsMeta:
         metadata = FilesUtils.read_content(file_path)
         
         if metadata is not None:
+            metadata['QrCode'] = f'https://api.kremilly.com/qrcode?url={{ MyBlog.get_url() }}'
+            
             if data in metadata:
                 return metadata[data]
         
