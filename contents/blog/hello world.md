@@ -4,6 +4,7 @@ Description: Esta é a primeira postagem oficial deste blog, pois a "primeira" h
 Date: 2024-06-01
 CoverTitle: Welcome to my Blog
 Tags: introduction, welcome, news, hello word
+DownloadPdf: enabled
 ---
 ## Introdução
 

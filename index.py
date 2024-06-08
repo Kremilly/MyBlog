@@ -7,6 +7,7 @@ from backend.classes.my_blog import MyBlog
 from backend.posts.posts import Posts
 from backend.posts.post_cover import PostCover
 from backend.posts.posts_meta import PostsMeta
+from backend.posts.posts_actions import PostsActions
 
 app = Flask(__name__)
 
@@ -19,7 +20,7 @@ def home():
     return render_template(
         'index.html', 
         **MyBlog.common_template_args(),
-        posts_list=Posts.posts()
+        posts_list=Posts.list_posts()
     )
     
 @app.route('/docs/')
@@ -35,12 +36,13 @@ def post(post:str):
         'post.html', 
         **MyBlog.common_template_args(),
         
-        html_content=Posts.post(post),
+        html_content=Posts.get_post(post),
         
         post_url=MyBlog.get_url(),
         post_cover=PostCover.generate(post),
         post_title=PostsMeta.post_head_title(post),
         post_description=PostsMeta.post_description(post),
+        post_export=PostsMeta.post_metadata(post, 'DownloadPdf'),
         
         post_date=PostsMeta.post_metadata_date(post),
         post_tags=PostsMeta.post_metadata_lists(post, 'tags'),
@@ -50,11 +52,11 @@ def post(post:str):
 
 @app.route('/blog/<post>/export')
 def post_actions(post:str):
-    return Posts.export_to_pdf(post)
+    return PostsActions.export_to_pdf(post)
 
 @app.route('/rss')
 def rss():
-    return Posts.rss()
+    return PostsActions.rss()
 
 @app.route('/api/projects')
 def projects():

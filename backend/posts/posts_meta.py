@@ -90,7 +90,7 @@ class PostsMeta:
         )
         
         if date is not None:
-            return date.strftime('%a, %d %b %Y')
+            return date.strftime("%a, %b %d'%y")
     
     @classmethod
     def post_metadata_read_time(cls, file:str, words_per_minute:int = 120) -> str:

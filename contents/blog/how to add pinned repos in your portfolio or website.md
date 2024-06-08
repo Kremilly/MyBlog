@@ -1,10 +1,11 @@
 ---
 Title: How to add pinned repos in your portfolio or website?
 Description: If you want to add your pinned repositories to your portfolio or website and can't find an API that works for this, then your problems are over. I've created an API that does exactly that, and its usage is extremely easy. Simply pass your GitHub username as a query parameter.
-Date: 2024-05-27
+Date: 2023-11-23
 CoverTitle: GitHub Pinned API
 CoverFontSize: 36
 Tags: api, rest, github, python
+DownloadPdf: enabled
 ---
 ## Using the api on your project
 
