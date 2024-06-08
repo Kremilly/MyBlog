@@ -6,6 +6,8 @@ from PIL import Image, ImageDraw, ImageFont
 from backend.classes.load import Load
 from backend.posts.posts_meta import PostsMeta
 
+from backend.utils.colors import Colors
+
 class PostCover:
     
     @classmethod
@@ -23,7 +25,7 @@ class PostCover:
         return BytesIO(response.content)
 
     @classmethod
-    def add_title(cls, title, font_size, image_url):
+    def add_title(cls, title, font_size, image_url, colors=None):
         title = str(title)
         
         if len(title) >= 56:
@@ -50,10 +52,13 @@ class PostCover:
         y = (height - text_height) / 2
         
         shadow_offset = 3
-        shadow_color = (124, 89, 81)
-        draw.text((x + shadow_offset, y + shadow_offset), title, font=font, fill=shadow_color)
         
-        text_color = (253, 209, 130)
+        if colors == (None, None):
+            text_color, shadow_color = Colors.default_cover_colors()
+        else:
+            text_color, shadow_color = colors
+        
+        draw.text((x + shadow_offset, y + shadow_offset), title, font=font, fill=shadow_color)
         draw.text((x, y), title, font=font, fill=text_color)
         
         return image
@@ -70,14 +75,18 @@ class PostCover:
         return f'data:image/png;base64,{img_str}'
 
     @classmethod
-    def generate(cls, post):
+    def get(cls, post):
         cover_bg = PostsMeta.post_metadata(post, 'CoverBg')
         cover_title = PostsMeta.post_metadata(post, 'CoverTitle')
         cover_font_size = PostsMeta.post_metadata(post, 'CoverFontSize')
         
-        font_size = cover_font_size if cover_font_size else 36
-        image = cover_bg if cover_bg else Load.image('post-bg.png', True)
-        title = cover_title if cover_title else PostsMeta.post_metadata(post, 'Title')
+        title_color = PostsMeta.post_metadata(post, 'CoverTitleColor')
+        shadow_color = PostsMeta.post_metadata(post, 'CoverTitleShadowColor')
+        colors = Colors.rgb_to_tuple(title_color), Colors.rgb_to_tuple(shadow_color)
         
-        image = cls.add_title(title, font_size, image)
+        font_size = cover_font_size or 36
+        image = cover_bg or Load.image('post-bg.png', True)
+        title = cover_title or PostsMeta.post_metadata(post, 'Title')
+        
+        image = cls.add_title(title, font_size, image, colors)
         return cls.image_to_base64(image)

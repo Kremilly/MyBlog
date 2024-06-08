@@ -7,7 +7,6 @@ from bs4 import BeautifulSoup
 from backend.utils.files import FilesUtils
 
 from backend.classes.qrcode import QRCode
-from backend.classes.my_blog import MyBlog
 from backend.classes.md_builder import MDBuilder
 
 class PostsMeta:
@@ -67,7 +66,7 @@ class PostsMeta:
             metadata['QrCode'] = QRCode.get()
             
             if data in metadata:
-                return metadata[data]
+                return metadata.get(data)
         
         return None
     
