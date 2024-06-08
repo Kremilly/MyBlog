@@ -1,4 +1,5 @@
 from backend.classes.load import Load
+from backend.posts.profile import Profile
 from backend.classes.settings import Settings
 
 from flask import jsonify, request
@@ -52,6 +53,7 @@ class MyBlog:
             
             'external_js_libs': Load.js_cdn(),
             'internal_js_libs': Load.js('src'),
+            'github': Profile.github_profile(),
             'internal_js_plugins': Load.js('plugins'),
             
             'site_name': Settings.get('basic.site_name', 'string'),

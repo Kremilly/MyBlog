@@ -33,7 +33,7 @@ def docs():
 def post(post:str):
     return render_template(
         'post.html', 
-        **MyBlog.common_template_args(), 
+        **MyBlog.common_template_args(),
         
         post_url=MyBlog.get_url(),
         html_content=Posts.post(post),

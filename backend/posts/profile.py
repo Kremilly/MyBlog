@@ -38,4 +38,4 @@ class Profile:
         if url:
             return github_profile
         
-        return github_profile.replace('https://github.com/', '')
+        return github_profile.split('/')[-1]
