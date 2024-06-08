@@ -6,7 +6,7 @@ CoverTitle: Porque Rust é tão usada?
 CoverFontSize: 42
 Tags: rust, desenvolvimento, backend, baixo-nivel, linguagem de programacao
 ---
-## O que é Rust?
+## Criação da linguagem
 
 Rust foi criado em 2006 pela equipe de engenharia da Mozilla para abordar problemas críticos em desenvolvimento de software, especialmente aqueles relacionados à segurança de memória, concorrência, desempenho e também altamente versátil, tem capturado crescente interesse nos últimos anos. Sua sintaxe elegante e poderosas ferramentas de segurança tornam-na uma escolha popular entre desenvolvedores em busca de desempenho e confiabilidade. A comunidade vibrante e o suporte contínuo da Mozilla Foundation também contribuem para seu destaque no cenário da programação moderna.
 
