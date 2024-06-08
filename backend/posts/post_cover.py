@@ -10,7 +10,7 @@ class PostCover:
     
     @classmethod
     def download_font(cls):
-        url = Load.font_style('SemiBold')
+        url = Load.font_style('Bold')
         
         response = requests.get(url)
         response.raise_for_status()
@@ -24,6 +24,8 @@ class PostCover:
 
     @classmethod
     def add_title(cls, title, font_size, image_url):
+        title = str(title)
+        
         if len(title) >= 56:
             title = title[:53] + '...'
         
@@ -47,11 +49,11 @@ class PostCover:
         x = (width - text_width) / 2
         y = (height - text_height) / 2
         
-        shadow_color = (0, 0, 0)
-        shadow_offset = 2
+        shadow_offset = 3
+        shadow_color = (124, 89, 81)
         draw.text((x + shadow_offset, y + shadow_offset), title, font=font, fill=shadow_color)
         
-        text_color = (255, 255, 255)
+        text_color = (253, 209, 130)
         draw.text((x, y), title, font=font, fill=text_color)
         
         return image
