@@ -15,9 +15,15 @@ class PostCover:
         response = requests.get(url)
         response.raise_for_status()
         return BytesIO(response.content)
+    
+    @classmethod
+    def download_image(cls, url):
+        response = requests.get(url)
+        response.raise_for_status()
+        return BytesIO(response.content)
 
     @classmethod
-    def add_title(cls, title, font_size=20):
+    def add_title(cls, title, font_size, image_url):
         if len(title) >= 56:
             title = title[:53] + '...'
         
@@ -26,11 +32,10 @@ class PostCover:
             font = ImageFont.truetype(font_file, font_size, encoding='utf-8')
         except Exception as e:
             raise ValueError(f'Error loading font: {e}')
-
-        image_path = Load.image('post-bg.png')
         
         try:
-            image = Image.open(image_path).convert('RGB').resize((708, 297))
+            image_file = cls.download_image(image_url)
+            image = Image.open(image_file).convert('RGB').resize((800, 300))
         except OSError as e:
             raise ValueError(f'Error opening image: {e}')
         
@@ -64,11 +69,13 @@ class PostCover:
 
     @classmethod
     def generate(cls, post):
+        cover_bg = PostsMeta.post_metadata(post, 'CoverBg')
         cover_title = PostsMeta.post_metadata(post, 'CoverTitle')
         cover_font_size = PostsMeta.post_metadata(post, 'CoverFontSize')
         
         font_size = cover_font_size if cover_font_size else 36
+        image = cover_bg if cover_bg else Load.image('post-bg.png', True)
         title = cover_title if cover_title else PostsMeta.post_metadata(post, 'Title')
         
-        image = cls.add_title(title, font_size)
+        image = cls.add_title(title, font_size, image)
         return cls.image_to_base64(image)

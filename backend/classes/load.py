@@ -48,9 +48,9 @@ class Load:
         return f'https://github.com/JulietaUla/Montserrat/raw/master/fonts/ttf/Montserrat-{style}.ttf'
     
     @classmethod
-    def image(cls, image, is_url = False) -> str:
+    def image(cls, image, is_url=False) -> str:
         if is_url:
-            return url_for('static', filename=f'images/{image}')
+            return url_for('static', filename=f'images/{image}', _external=True)
         
         return f'static/images/{image}'
     
