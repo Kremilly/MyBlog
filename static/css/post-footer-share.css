@@ -13,14 +13,26 @@
     border: .1em solid var(--color-pre-bg);
 }
 
-.post-content > .footer > .share > .icons {
+.post-content > .footer > .share > .qrcode {
+    width: 5em;
+    float: left;
+    height: 4.25em;
+    margin-top: var(--spacing-sm);
+    margin-right: var(--spacing-md);
+    background: var(--color-pre-bg);
+    border-radius: var(--border-radius);
+}
+
+.post-content > .footer > .share > .content { float: left; }
+
+.post-content > .footer > .share > .content > .icons {
     height: 2.5em;
     font-size: 1.25em;
     text-align: center;
     line-height: 2.5em;
 }
 
-.post-content > .footer > .share > .icons > a {
+.post-content > .footer > .share > .content > .icons > a {
     float: left;
     width: 2.5em;
     height: 2.5em;
@@ -30,17 +42,17 @@
     text-decoration: none;
 }
 
-.post-content > .footer > .share > .icons > .fa-whatsapp:hover { color: #25D366; }
+.post-content > .footer > .share > .content > .icons > .fa-whatsapp:hover { color: #25D366; }
 
-.post-content > .footer > .share > .icons > .fa-facebook:hover { color: #3B5998; }
+.post-content > .footer > .share > .content > .icons > .fa-facebook:hover { color: #3B5998; }
 
-.post-content > .footer > .share > .icons > .fa-linkedin:hover { color: #0077B5; }
+.post-content > .footer > .share > .content > .icons > .fa-linkedin:hover { color: #0077B5; }
 
-.post-content > .footer > .share > .icons > .fa-x-twitter:hover { color: #000000; }
+.post-content > .footer > .share > .content > .icons > .fa-x-twitter:hover { color: #000000; }
 
-.post-content > .footer > .share > .icons > .fas:hover { color: var(--color-link-hover); }
+.post-content > .footer > .share > .content > .icons > .fas:hover { color: var(--color-link-hover); }
 
-.post-content > .footer > .share > input {
+.post-content > .footer > .share > .content > input {
     width: 100%;
     border: none;
     outline: none;
@@ -53,12 +65,12 @@
     border-radius: var(--border-radius);
 }
 
-.post-content > .footer > .share > input:hover {
+.post-content > .footer > .share > .content > input:hover {
     background: var(--color-bg);
     animation: border-slide .5s ease-in-out forwards;
 }
 
-.post-content > .footer > .share > input:focus {
+.post-content > .footer > .share > .content > input:focus {
     background: var(--color-bg);
     border-color: var(--color-link-hover);
     animation: border-slide .5s ease-in-out forwards;
