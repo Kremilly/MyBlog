@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 
 from backend.utils.files import FilesUtils
 
+from backend.classes.qrcode import QRCode
 from backend.classes.my_blog import MyBlog
 from backend.classes.md_builder import MDBuilder
 
@@ -63,7 +64,7 @@ class PostsMeta:
         metadata = FilesUtils.read_content(file_path)
         
         if metadata is not None:
-            metadata['QrCode'] = f'https://api.kremilly.com/qrcode?url={{ MyBlog.get_url() }}'
+            metadata['QrCode'] = QRCode.get()
             
             if data in metadata:
                 return metadata[data]
