@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 
-from xhtml2pdf import pisa
-from flask import Response
 from markupsafe import Markup
 
 from backend.utils.files import FilesUtils
@@ -46,4 +44,3 @@ class Posts:
             return Markup(
                 MDBuilder.render(md_content.content)
             )
-  
