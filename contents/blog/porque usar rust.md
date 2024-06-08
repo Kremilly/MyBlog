@@ -30,10 +30,10 @@ Assimo como todas as linguagens de programação, Rust tem diversos pontos-forte
 
 O Rust pode ser usado em qualquer sistema que requer um pouco mais de atenção ao manuseio de alocação e segurança de recursos da máquina que está rodando o código. Aqui, está uma pequena lista de exemplos de onde a linguagem está sendo usada:
 
-* Navegadores (por exemplo, o motor de renderização Servo)
-* Sistemas operacionais (por exemplo, Redox OS)
-* Blockchain (por exemplo, Polkadot)
-* Ferramentas de desenvolvimento (por exemplo, ripgrep, uma ferramenta de busca de texto)
+* Navegadores (por exemplo, o motor de renderização [Servo](https://servo.org/))
+* Sistemas operacionais (por exemplo, [Redox OS](https://www.redox-os.org/))
+* Blockchain (por exemplo, [Polkadot](https://polkadot.network/))
+* Ferramentas de desenvolvimento (por exemplo, [ripgrep](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://github.com/BurntSushi/ripgrep), uma ferramenta de busca de texto)
 
 ## Vale lembrar que...
 
