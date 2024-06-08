@@ -43,4 +43,7 @@
 .post-content > .footer > .meta > .left > .actived, 
 .post-content > .footer > .meta > .right > .actived, 
 .post-content > .footer > .meta > .left > .footer-btn:hover, 
-.post-content > .footer > .meta > .right > .footer-btn:hover { background: var(--color-border); }
+.post-content > .footer > .meta > .right > .footer-btn:hover {
+    background: var(--color-border);
+    animation: bg-color .5s ease-in-out forwards;
+}
