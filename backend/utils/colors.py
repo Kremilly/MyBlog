@@ -2,7 +2,7 @@ class Colors:
     
     @classmethod
     def default_cover_colors(cls):
-        return (253, 209, 130), (124, 89, 81)
+        return (124, 89, 81), (253, 209, 130)
     
     @classmethod
     def rgb_to_tuple(cls, rgb_color):

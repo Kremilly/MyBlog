@@ -39,7 +39,7 @@ def post(post:str):
         html_content=Posts.get_post(post),
         
         post_url=MyBlog.get_url(),
-        post_cover=PostCover.get(post),
+        post_cover=PostCover.generate(post),
         post_title=PostsMeta.post_head_title(post),
         post_description=PostsMeta.post_description(post),
         post_qrcode=PostsMeta.post_metadata(post, 'QrCode'),
