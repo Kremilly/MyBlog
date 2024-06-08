@@ -35,10 +35,12 @@ def post(post:str):
         'post.html', 
         **MyBlog.common_template_args(),
         
-        post_url=MyBlog.get_url(),
         html_content=Posts.post(post),
+        
+        post_url=MyBlog.get_url(),
         post_cover=PostCover.generate(post),
         post_title=PostsMeta.post_head_title(post),
+        post_description=PostsMeta.post_description(post),
         
         post_date=PostsMeta.post_metadata_date(post),
         post_tags=PostsMeta.post_metadata_lists(post, 'tags'),
