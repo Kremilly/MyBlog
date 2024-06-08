@@ -5,7 +5,7 @@ Date: 2024-06-03
 CoverTitle: Porque Rust é tão usada?
 CoverFontSize: 42
 Tags: rust, desenvolvimento, backend, baixo-nivel, linguagem de programacao
-DownloadPdf: disabled
+DownloadPdf: enabled
 ---
 ## Criação da linguagem
 
