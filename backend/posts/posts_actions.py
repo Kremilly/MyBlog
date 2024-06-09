@@ -9,6 +9,7 @@ from backend.classes.my_blog import MyBlog
 from backend.classes.settings import Settings
 from backend.classes.md_builder import MDBuilder
 
+from backend.posts.posts import Posts
 from backend.posts.posts_meta import PostsMeta
 
 class PostsActions:
@@ -16,7 +17,7 @@ class PostsActions:
     @classmethod
     def rss(cls) -> str:
         rss_items = ''
-        posts = cls.list_posts()
+        posts = Posts.list_posts()
         
         for post in posts:
             rss_items += f"""<item>
