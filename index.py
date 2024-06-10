@@ -4,11 +4,11 @@ from flask import Flask, render_template
 
 from backend.classes.my_blog import MyBlog
 
-from backend.posts.posts import Posts
-from backend.posts.links import Links
-from backend.posts.post_cover import PostCover
-from backend.posts.posts_meta import PostsMeta
-from backend.posts.posts_actions import PostsActions
+from backend.actions.posts import Posts
+from backend.actions.links import Links
+from backend.actions.post_cover import PostCover
+from backend.actions.posts_meta import PostsMeta
+from backend.actions.posts_actions import PostsActions
 
 app = Flask(__name__)
 

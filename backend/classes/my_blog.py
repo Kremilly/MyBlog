@@ -1,5 +1,5 @@
 from backend.classes.load import Load
-from backend.posts.links import Links
+from backend.actions.links import Links
 from backend.classes.settings import Settings
 
 from flask import jsonify, request

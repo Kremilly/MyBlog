@@ -8,7 +8,7 @@ from backend.classes.my_blog import MyBlog
 from backend.classes.settings import Settings
 from backend.classes.md_builder import MDBuilder
 
-from backend.posts.posts_meta import PostsMeta
+from backend.actions.posts_meta import PostsMeta
 
 class Posts:
     

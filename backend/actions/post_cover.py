@@ -5,7 +5,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 from backend.classes.load import Load
 from backend.utils.colors import Colors
-from backend.posts.posts_meta import PostsMeta
+from backend.actions.posts_meta import PostsMeta
 
 class PostCover:
     
