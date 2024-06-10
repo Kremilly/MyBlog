@@ -159,3 +159,7 @@ blockquote > p > em > code {
     padding: 0 0 0 0;
     vertical-align: -0.15em;
 }
+
+.mermaid { text-align: center; }
+
+.diagram-mermaid { border: 0 !important; }
