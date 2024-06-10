@@ -65,6 +65,53 @@ header > .actived, header > .tab:hover {
     background: var(--color-border);
 }
 
+header > .menu {
+    float: left;
+    width: auto;
+    cursor: pointer;
+    font-size: .8em;
+    font-weight: 600;
+    text-align: center;
+    line-height: 3.7em;
+    text-decoration: none;
+    color: inherit !important;
+    border-left: 0 solid var(--color-text);
+}
+
+header > .menu > .fas {
+    float: left;
+    width: 3.7em;
+    line-height: 3.7em;
+}
+
+header > .menu > .text {
+    float: left;
+    display: none;
+    padding-right: 1em;
+}
+
+header > .menu:hover { animation: only-border-left-slide .3s ease-in-out forwards; }
+
+header > .menu:hover > .text {
+    display: block;
+    animation: pdd-left .3s ease-in-out forwards;
+}
+
+header > .menu:hover { background: var(--color-border); }
+
+header > .actived-menu {
+    background: var(--color-border) !important;
+    border-left: .5em solid var(--color-text) !important;
+}
+
+header > .actived-menu > .text {
+    display: block !important;
+    font-weight: 700 !important;
+    padding-left: 1em !important;
+}
+
+header > .actived-logo { animation: logo-effect .3s ease-in-out forwards; }
+
 header > .nav {
     float: right;
     height: var(--header-size);

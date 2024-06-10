@@ -1,14 +1,16 @@
 <header>
-    <a href='{{ url_root }}' class='logo'></a>
-    <a href='{{ url_root }}' class='tab'>Blog</a>
-    <div class='tab' id='projectsBoxBtn'>Projects</div>
-    <div class='tab'>About</div>
+    <div class='menu' id='toggleMenuBox'>
+        <div class='fas fa-bars'></div>
+        <div class='text'>Menu</div>
+    </div>
+
+    <a href='{{ url_root }}' class='logo' id='projectsBoxBtn'></a>
     
     <div class='nav'>
-        <a href='{{ url_root }}/rss' target='_blank' class='fa-solid fa-rss icon' title='Feed RSS'></a>
-        <a href='{{ github }}' target='_blank' class='fa-brands fa-github icon' title='GitHub page'></a>
         <div class='fa-solid fa-arrow-up icon' id='scrollToTopBtn'></div>
     </div>
 </header>
+
+{% include 'partials/menu-box.html' %}
 
 {% include 'partials/projects-box.html' %}

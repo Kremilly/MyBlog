@@ -1,5 +1,5 @@
 <div class='projects-box' id='projectsBox'>
-    <div class='top'>
+    <div class='filters'>
         <div class='fas fa-star icon actived' id='featuredProjectsListBtn'></div>
         <div class='fab fa-github icon' id='pinnedProjectsListBtn'></div>
         <div class='fab fa-rust icon' id='cratesProjectsListBtn'></div>
@@ -7,4 +7,16 @@
     </div>
     
     <div class='body' id='projectsList'></div>
+
+    <div class='bottom'>
+        <a href='{{ url_root }}/rss' target='_blank' class='item'>
+            <div class='fas fa-rss icon'></div>
+            <div class='text'>Feed RSS</div>
+        </a>
+
+        <a href='{{ github }}' target='_blank' class='item'>
+            <div class='fab fa-github icon'></div>
+            <div class='text'>GitHub</div>
+        </a>
+    </div>
 </div>

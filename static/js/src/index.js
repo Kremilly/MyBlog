@@ -5,6 +5,8 @@ $( e => {
     Projects.projects()
     ScrollTo.checkScroll()
 
+    var hideMenuTimeout
+
     $('#tabApis').on('click', Apis.apis)
     $('#tabPins').on('click', Apis.pinned)
     $('#tabCrates').on('click', Apis.crates)
@@ -19,6 +21,28 @@ $( e => {
     $('#cratesProjectsListBtn').on('click', Projects.crates)
     $('#featuredProjectsListBtn').on('click', Projects.projects)
 
+    $('#toggleMenuBox, #menuBox').hover(function () {
+        clearTimeout(hideMenuTimeout)
+        $('#toggleMenuBox').addClass('actived-menu')
+        $('#menuBox').stop(true, true).fadeIn(250)
+    }, function () {
+        hideMenuTimeout = setTimeout(function() {
+            $('#toggleMenuBox').removeClass('actived-menu')
+            $('#menuBox').stop(true, true).fadeOut(250)
+        }, 300)
+    })
+
+    $('#projectsBoxBtn, #projectsBox').hover(function () {
+        clearTimeout(hideMenuTimeout)
+        $('#projectsBoxBtn').addClass('actived-logo')
+        $('#projectsBox').stop(true, true).fadeIn(250)
+    }, function () {
+        hideMenuTimeout = setTimeout(function() {
+            $('#projectsBoxBtn').removeClass('actived-logo')
+            $('#projectsBox').stop(true, true).fadeOut(250)
+        }, 300)
+    })
+
     $('#postTagsBtn').on('click', function () {
         $(this).toggleClass('actived')
         $('#postFlesBtn').removeClass('actived')
@@ -30,11 +54,6 @@ $( e => {
     $('#postShareBtn').on('click', function () {
         $(this).toggleClass('actived')
         $('#postShareBox').slideToggle(250)
-    })
-
-    $('#projectsBoxBtn').on('click', function () {
-        $(this).toggleClass('actived')
-        $('#projectsBox').slideToggle(250)
     })
 
     $('#postFilesBtn').on('click', function () {

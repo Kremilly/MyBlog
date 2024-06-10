@@ -3,15 +3,30 @@
     100% { background: var(--color-bg); }
 }
 
+@keyframes pdd-left {
+    0% {
+        padding-left: 0;
+        font-weight: normal;
+    }
+
+    50% { padding-left: .5em; }
+
+    100% {
+        font-weight: 700;
+        padding-left: 1em;
+    }
+}
+
 @keyframes logo-effect {
     0% {
-        background-size: 30%;
         background-color: inherit;
         background-image: var(--logo-hover);
     }
 
     100% {
-        background-size: 80%;
+        width: 17em;
+        background-size: 50%;
+        box-shadow: var(--box-shadow);
         background-image: var(--logo-hover);
         background-color: var(--color-border);
     }
@@ -31,4 +46,21 @@
     50% { border-left-color: var(--color-text); }
     75% { border-left-color: var(--color-link); }
     100% { border-left-color: var(--color-text); }
+}
+
+@keyframes border-and-bg {
+    0% {
+        background: inherit;
+        border-left-width: 0;
+    }
+
+    100% {
+        border-left-width: .5em;
+        background: var(--color-bg);
+    }
+}
+
+@keyframes only-border-left-slide {
+    0% { border-left-width: 0; }
+    100% { border-left-width: .5em; }
 }
