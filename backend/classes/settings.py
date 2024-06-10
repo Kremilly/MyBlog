@@ -11,7 +11,7 @@ class SettingsException(Exception):
 
 class Settings:
     
-    configs_file = './raven.yml'
+    configs_file = './configs.yml'
 
     @classmethod
     def search_property_in_file(cls, prop):
@@ -68,6 +68,20 @@ class Settings:
                 value = value[part]
 
             return cls.is_valid(prop, value, data_type)
+
+        except FileNotFoundError:
+            raise SettingsException(f"File '{cls.configs_file.replace('./', '')}' not found.")
+
+        except yaml.YAMLError as e:
+            raise SettingsException(f'Error while parsing the YAML file.: {e}')
+        
+    @classmethod
+    def check_list(cls, list_name):
+        try:
+            with open(cls.configs_file, 'r') as content:
+                data = yaml.safe_load(content)
+
+            return list_name in data and isinstance(data[list_name], list)
 
         except FileNotFoundError:
             raise SettingsException(f"File '{cls.configs_file.replace('./', '')}' not found.")

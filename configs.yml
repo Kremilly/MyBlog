@@ -1,6 +1,5 @@
 basic:
   site_name: 'Kremilly'
-  favicon: 'favico.ico'
   
 social_media:
   - GitHub: 'https://github.com/kremilly'

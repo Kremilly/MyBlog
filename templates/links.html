@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    {% include 'partials/head-tags.html' %}
+</head>
+<body>
+    {% include 'partials/header.html' %}
+
+    <div class='links-content'>
+        <div class='header'>
+            <div class='text'>
+                <div class='fas fa-globe icon'></div>
+                My Links
+            </div>
+
+            <div class='social-media'>
+                {% for link in social_media %}
+                    <a href='{{ link.url }}' target='_blank' title='{{ link.name }}' class='social-icon'>
+                        <img src='{{ link.favico }}' alt=''>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class='list'>
+            {% if list_links.total > 0 %}
+                {% for link in list_links.links %}
+                    <a href="{{ link.url }}" target="_blank">
+                        <div class="title">{{ link.name }}</div>
+
+                        <div class="title-page">
+                            <img src="{{ link.favico }}" alt="">
+                            {{ link.title }}
+                        </div>
+                    </a>
+                {% endfor %}
+            {% else %}
+                <div class='none'>
+                    <div class='text'>No links found...</div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {{ external_js_libs }}
+    
+    {% include 'partials/scripts.html' %}
+</body>
+</html>

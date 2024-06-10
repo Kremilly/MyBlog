@@ -5,6 +5,7 @@ from flask import Flask, render_template
 from backend.classes.my_blog import MyBlog
 
 from backend.posts.posts import Posts
+from backend.posts.links import Links
 from backend.posts.post_cover import PostCover
 from backend.posts.posts_meta import PostsMeta
 from backend.posts.posts_actions import PostsActions
@@ -23,11 +24,14 @@ def home():
         posts_list=Posts.list_posts()
     )
     
-@app.route('/docs/')
-def docs():
+@app.route('/links')
+def links():
     return render_template(
-        'index.html', 
-        **MyBlog.common_template_args()
+        'links.html', 
+        **MyBlog.common_template_args(),
+        
+        list_links=Links.list_links(),
+        social_media=Links.social_media(),
     )
 
 @app.route('/blog/<post>')
