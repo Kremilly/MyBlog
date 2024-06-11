@@ -9,9 +9,7 @@ social_media:
 
 projects:
   - Linkscraper: 'https://linkscraper.kremilly.com'
-
-links:
-  - Scimon Docs: 'https://scibun.github.io/ScimonDocs/'
+  - Scimon: 'https://scibun.github.io/ScimonDocs/'
 
 profile:
   name: 'Kremilly'
