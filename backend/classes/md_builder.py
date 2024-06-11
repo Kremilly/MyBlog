@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import markdown2, emoji_data_python, mistune
+import emoji_data_python, mistune
 
 from flask import redirect
 from bs4 import BeautifulSoup
@@ -50,7 +50,7 @@ class MDBuilder:
         
         if markdown_content is not None:
             if markdown_content is not None:
-                return markdown2.markdown(markdown_content.content)
+                return cls.render(markdown_content.content)
                 
             return None
             
