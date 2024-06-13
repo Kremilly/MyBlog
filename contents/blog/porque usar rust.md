@@ -33,7 +33,7 @@ O Rust pode ser usado em qualquer sistema que requer um pouco mais de atenção 
 * Navegadores (por exemplo, o motor de renderização [Servo](https://servo.org/))
 * Sistemas operacionais (por exemplo, [Redox OS](https://www.redox-os.org/))
 * Blockchain (por exemplo, [Polkadot](https://polkadot.network/))
-* Ferramentas de desenvolvimento (por exemplo, [ripgrep](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://github.com/BurntSushi/ripgrep), uma ferramenta de busca de texto)
+* Ferramentas de desenvolvimento (por exemplo, [ripgrep](https://github.com/BurntSushi/ripgrep), uma ferramenta de busca de texto)
 
 ## Vale lembrar que...
 
