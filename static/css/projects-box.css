@@ -51,6 +51,7 @@
     margin-left: -1em;
     margin-right: -1em;
     padding: var(--spacing-md);
+    box-shadow: inset var(--box-shadow-inverted);
 }
 
 .projects-box > .body > .item {
@@ -80,6 +81,7 @@
     box-sizing: border-box;
     padding-top: var(--spacing-sm);
     justify-content: space-between;
+    border-top: .1em solid var(--color-border);
 }
 
 .projects-box > .bottom > .item {

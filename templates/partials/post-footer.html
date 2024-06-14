@@ -37,9 +37,11 @@
     </div>
 
     <div class='share' id='postShareBox'>
-        <div class='qrcode'>
-            <img src='{{ post_qrcode }}' />
-        </div>
+        {% if is_post %}
+            <div class='qrcode'>
+                <img src='{{ post_qrcode }}' />
+            </div>
+        {% endif %}
 
         <div class='content'>
             <div class='icons'>
