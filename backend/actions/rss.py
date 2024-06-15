@@ -1,13 +1,9 @@
 #!/usr/bin/python3
 
-from xhtml2pdf import pisa
 from flask import Response
-
-from backend.utils.files import FilesUtils
 
 from backend.classes.my_blog import MyBlog
 from backend.classes.settings import Settings
-from backend.classes.md_builder import MDBuilder
 
 from backend.posts.posts import Posts
 
