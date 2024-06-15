@@ -1,5 +1,5 @@
 <div align='center'>
-  <img src='https://github.com/kremilly/kremilly/raw/main/images/new-logo-name.png' height='64' />
+  <img src='https://github.com/kremilly/kremilly/raw/main/images/new-logo-name.png' />
 </div>
 
 <p align='center'>
