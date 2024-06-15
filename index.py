@@ -10,6 +10,9 @@ from backend.actions.post_cover import PostCover
 from backend.actions.posts_meta import PostsMeta
 from backend.actions.posts_actions import PostsActions
 
+from backend.docs.docs import Docs
+from backend.docs.docs_meta import DocsMeta
+
 app = Flask(__name__)
 
 @app.errorhandler(404)
@@ -42,11 +45,12 @@ def post(post:str):
         
         html_content=Posts.get_post(post),
         
-        post_url=MyBlog.get_url(),
+        url=MyBlog.get_url(),
+        title=PostsMeta.post_head_title(post),
+        qrcode=PostsMeta.post_metadata(post, 'QrCode'),
+        
         post_cover=PostCover.generate(post),
-        post_title=PostsMeta.post_head_title(post),
         post_description=PostsMeta.post_description(post),
-        post_qrcode=PostsMeta.post_metadata(post, 'QrCode'),
         post_export=PostsMeta.post_metadata(post, 'DownloadPdf'),
         
         post_date=PostsMeta.post_metadata_date(post),
@@ -63,6 +67,19 @@ def post_actions(post:str):
 def rss():
     return PostsActions.rss()
 
+@app.route('/docs/<api>')
+def doc(api:str):
+    return render_template(
+        'post.html', 
+        **MyBlog.common_template_args(),
+        
+        html_content=Docs.get_doc(api),
+        
+        url=MyBlog.get_url(),
+        title=DocsMeta.doc_metadata(api, 'Title'),
+        qrcode=DocsMeta.doc_metadata(api, 'QrCode'),
+    )
+
 @app.route('/api/projects')
 def projects():
     return MyBlog.projects()
@@ -76,8 +93,13 @@ def inject_route_post():
     return MyBlog.check_if_post()
 
 @app.context_processor
+def inject_route_doc():
+    return MyBlog.check_if_docs()
+
+@app.context_processor
 def inject_route_home():
     return MyBlog.check_if_home()
 
 if __name__ == '__main__':
     app.run(debug=True)
+ 

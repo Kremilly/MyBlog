@@ -4,7 +4,7 @@
     <div class='featured' id='featured'>
 {% endif %}
 
-    {% if not is_post %}
+    {% if is_home %}
         <div class='featured-top'>
             <a href='#pins' class='fab fa-github actived featured-tabs' id='tabPins'></a>
             <a href='#crates' class='fab fa-rust featured-tabs' id='tabCrates'></a>
@@ -13,7 +13,7 @@
         </div>
     {% endif %}
 
-    {% if is_post %}
+    {% if is_post or is_doc %}
         <div class='featured-toc-header'>Topics</div>
         <input type='search' placeholder='Search...' class='featured-search no-border-top' id='searchTopicsFeatured'>
     {% else %}

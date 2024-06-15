@@ -6,20 +6,23 @@
     {% endif %}
     
     <div class='header'>
-        <a href='{{ post_url }}'>{{ post_title }}</a>
-        <div class='meta'>
-            <div class='author'>{{ post_author }}</div>
+        <a href='{{ post_url }}'>{{ title }}</a>
 
-            <div class='reading-time'>
-                <div class='fas fa-clock icon'></div>
-                {{ post_read_time }} read time
-            </div>
+        {% if is_post %}
+            <div class='meta'>
+                <div class='author'>{{ post_author }}</div>
 
-            <div class='date'>
-                <div class='fas fa-calendar icon'></div>
-                {{ post_date }}
+                <div class='reading-time'>
+                    <div class='fas fa-clock icon'></div>
+                    {{ post_read_time }} read time
+                </div>
+
+                <div class='date'>
+                    <div class='fas fa-calendar icon'></div>
+                    {{ post_date }}
+                </div>
             </div>
-        </div>
+        {% endif %}
     </div>
 
     <div class='content'>

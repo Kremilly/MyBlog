@@ -35,6 +35,11 @@ class MyBlog:
         return dict(is_post=is_post)
     
     @classmethod
+    def check_if_docs(cls):
+        is_doc = 'docs' in cls.get_path()
+        return dict(is_doc=is_doc)
+    
+    @classmethod
     def get_url_root(cls):
         return request.url_root[:-1]
         
