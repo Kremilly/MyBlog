@@ -1,18 +1,13 @@
 <div align='center'>
-    <img src='https://github.com/kremilly/kremilly/raw/main/images/new-logo-apis.png' height='64' />
-    <p></p>
-    My blog for technical and non-technic articles
+  <img src='https://github.com/kremilly/kremilly/raw/main/images/new-logo-name.png' height='64' />
 </div>
-
 
 <p align='center'>
   <a href='https://flask.palletsprojects.com/en/3.0.x'><img src='https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white' /></a>
   <a href='https://python.org'><img src='https://img.shields.io/badge/Python-000000?style=for-the-badge&logo=python&logoColor=white' /></a>
   <a href='https://vercel.com'><img src='https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white' /></a>
-  <a href='https://kremilly.com'><img src='https://img.shields.io/badge/Kremilly.com-000000?style=for-the-badge&logo=About.me&logoColor=white' /></a>
+  <a href='https://kremilly.com/#apis'><img src='https://img.shields.io/badge/Kremilly.com-000000?style=for-the-badge&logo=About.me&logoColor=white' /></a>
 </p>
-
----
 
 > [!note]
 > This blog uses Markdown for generate their posts and pages, and uses some libraries for make this: [Mistune](https://mistune.lepture.com/en/latest/) and [MarkupSafe](https://markupsafe.palletsprojects.com/en/2.1.x/)
