@@ -5,7 +5,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 from backend.classes.load import Load
 from backend.utils.colors import Colors
-from backend.actions.posts_meta import PostsMeta
+from backend.posts.posts_meta import PostsMeta
 
 class PostCover:
     
@@ -72,13 +72,13 @@ class PostCover:
 
     @classmethod
     def generate(cls, post):
-        cover_bg = PostsMeta.post_metadata(post, 'CoverBg')
-        cover_title = PostsMeta.post_metadata(post, 'CoverTitle')
-        cover_font_size = PostsMeta.post_metadata(post, 'CoverFontSize')
+        cover_bg = PostsMeta.get(post, 'CoverBg')
+        cover_title = PostsMeta.get(post, 'CoverTitle')
+        cover_font_size = PostsMeta.get(post, 'CoverFontSize')
         
         font_size = cover_font_size if cover_font_size else 36
         image = cover_bg if cover_bg else Load.image('post-bg.png', True)
-        title = cover_title if cover_title else PostsMeta.post_metadata(post, 'Title')
+        title = cover_title if cover_title else PostsMeta.get(post, 'Title')
         
         image = cls.add_title(title, font_size, image)
         return cls.image_to_base64(image)

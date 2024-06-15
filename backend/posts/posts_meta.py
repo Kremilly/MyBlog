@@ -12,7 +12,7 @@ from backend.classes.md_builder import MDBuilder
 class PostsMeta:
     
     @classmethod
-    def post_description(cls, file:str):
+    def get_description(cls, file:str):
         html_content = MDBuilder.render_metadata(file)
         
         if html_content is not None:
@@ -49,8 +49,8 @@ class PostsMeta:
             return headers
 
     @classmethod
-    def post_head_title(cls, file:str)-> str:
-        post_title = cls.post_metadata(file, 'Title')
+    def get_head_title(cls, file:str)-> str:
+        post_title = cls.get(file, 'Title')
         
         if post_title is not None:
             return post_title
@@ -58,7 +58,7 @@ class PostsMeta:
         return '404: Not found'
     
     @classmethod
-    def post_metadata(cls, file:str, data:str) -> str:
+    def get(cls, file:str, data:str) -> str:
         file_path = FilesUtils.get_file_path(file, 'blog')
         metadata = FilesUtils.read_content(file_path)
         
@@ -71,8 +71,8 @@ class PostsMeta:
         return None
     
     @classmethod
-    def post_metadata_date(cls, file:str) -> str:
-        date = cls.post_metadata(
+    def get_date(cls, file:str) -> str:
+        date = cls.get(
             file, 'Date'
         )
         
@@ -80,7 +80,7 @@ class PostsMeta:
             return date.strftime("%a, %b %d'%y")
     
     @classmethod
-    def post_metadata_read_time(cls, file:str, words_per_minute:int = 120) -> str:
+    def get_read_time(cls, file:str, words_per_minute:int = 120) -> str:
         total_words = MDBuilder.count_words(file)
         
         if total_words is not None:
@@ -94,8 +94,8 @@ class PostsMeta:
         return None
     
     @classmethod
-    def post_metadata_lists(cls, file:str, type:str) -> dict:
-        items = cls.post_metadata(file, type.capitalize())
+    def get_lists(cls, file:str, type:str) -> dict:
+        items = cls.get(file, type.capitalize())
         
         if items is not None:
             list = sorted(

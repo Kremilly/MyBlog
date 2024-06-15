@@ -4,14 +4,15 @@ from flask import Flask, render_template
 
 from backend.classes.my_blog import MyBlog
 
-from backend.actions.posts import Posts
-from backend.actions.links import Links
-from backend.actions.post_cover import PostCover
-from backend.actions.posts_meta import PostsMeta
-from backend.actions.posts_actions import PostsActions
+from backend.posts.posts import Posts
+from backend.posts.post_cover import PostCover
+from backend.posts.posts_meta import PostsMeta
 
 from backend.docs.docs import Docs
 from backend.docs.docs_meta import DocsMeta
+
+from backend.actions.rss import RSS
+from backend.actions.links import Links
 
 app = Flask(__name__)
 
@@ -46,26 +47,26 @@ def post(post:str):
         html_content=Posts.get_post(post),
         
         url=MyBlog.get_url(),
-        title=PostsMeta.post_head_title(post),
-        qrcode=PostsMeta.post_metadata(post, 'QrCode'),
+        qrcode=PostsMeta.get(post, 'QrCode'),
+        title=PostsMeta.get_head_title(post),
         
         post_cover=PostCover.generate(post),
-        post_description=PostsMeta.post_description(post),
-        post_export=PostsMeta.post_metadata(post, 'DownloadPdf'),
+        post_description=PostsMeta.get_description(post),
+        post_export=PostsMeta.get(post, 'DownloadPdf'),
         
-        post_date=PostsMeta.post_metadata_date(post),
-        post_tags=PostsMeta.post_metadata_lists(post, 'tags'),
-        post_read_time=PostsMeta.post_metadata_read_time(post),
-        post_files=PostsMeta.post_metadata_lists(post, 'files'),
+        post_date=PostsMeta.get_date(post),
+        post_tags=PostsMeta.get_lists(post, 'tags'),
+        post_read_time=PostsMeta.get_read_time(post),
+        post_files=PostsMeta.get_lists(post, 'files'),
     )
 
 @app.route('/blog/<post>/export')
 def post_actions(post:str):
-    return PostsActions.export_to_pdf(post)
+    return Posts.export_to_pdf(post)
 
 @app.route('/rss')
 def rss():
-    return PostsActions.rss()
+    return RSS.posts()
 
 @app.route('/docs/<api>')
 def doc(api:str):
@@ -76,8 +77,8 @@ def doc(api:str):
         html_content=Docs.get_doc(api),
         
         url=MyBlog.get_url(),
-        title=DocsMeta.doc_metadata(api, 'Title'),
-        qrcode=DocsMeta.doc_metadata(api, 'QrCode'),
+        title=DocsMeta.doc_get(api, 'Title'),
+        qrcode=DocsMeta.doc_get(api, 'QrCode'),
     )
 
 @app.route('/api/projects')
