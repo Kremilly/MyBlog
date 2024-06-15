@@ -20,7 +20,6 @@ fetch('api.kremilly.com/wikipedia?location=en&term=Microsoft&thumb_size=256&shor
 })
 ```
 
-> [!note]
 > *See [here](https://github.com/kremilly/MyApis/tree/main/examples/wikipedia) others examples in others languages and using Axios.js*
 
 #### Simple output of request:
