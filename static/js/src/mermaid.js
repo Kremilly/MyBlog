@@ -4,28 +4,28 @@ const Mermaid = ( e => {
         mermaid.initialize({
             theme: 'dark',
             securityLevel: 'loose',
-        })
+        });
     
-        let mermaidCodeBlocks = document.querySelectorAll('.language-mermaid')
-    
-        mermaidCodeBlocks.forEach( block => {
-            block.classList.remove('language-mermaid')
-            block.classList.add('diagram-mermaid')
-        })
+        let mermaidCodeBlocks = document.querySelectorAll('.language-mermaid');
     
         mermaidCodeBlocks.forEach( block => {
-            let diagramDiv = document.createElement('div')
-            diagramDiv.classList.add('mermaid')
+            block.classList.remove('language-mermaid');
+            block.classList.add('diagram-mermaid');
+        });
+    
+        mermaidCodeBlocks.forEach( block => {
+            let diagramDiv = document.createElement('div');
+            diagramDiv.classList.add('mermaid');
             
-            diagramDiv.textContent = block.textContent
+            diagramDiv.textContent = block.textContent;
     
-            block.textContent = ''
-            block.appendChild(diagramDiv)
+            block.textContent = '';
+            block.appendChild(diagramDiv);
     
-            mermaid.init(undefined, diagramDiv)
-        })
-    }
+            mermaid.init(undefined, diagramDiv);
+        });
+    };
 
-    load()
+    load();
 
-})()
+})();

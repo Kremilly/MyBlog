@@ -52,8 +52,8 @@ def post(post:str):
         title=PostsMeta.get_head_title(post),
         
         post_cover=PostCover.generate(post),
-        post_description=PostsMeta.get_description(post),
         post_export=PostsMeta.get(post, 'DownloadPdf'),
+        post_description=PostsMeta.get_description(post),
         
         post_date=PostsMeta.get_date(post),
         post_tags=PostsMeta.get_lists(post, 'tags'),
