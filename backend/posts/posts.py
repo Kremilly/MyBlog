@@ -4,6 +4,7 @@ from xhtml2pdf import pisa
 from flask import Response
 from markupsafe import Markup
 
+from backend.utils.routes import Routes
 from backend.utils.files import FilesUtils
 
 from backend.classes.my_blog import MyBlog
@@ -51,16 +52,17 @@ class Posts:
     def export_to_pdf(cls, file:str) -> str:
         current_url = MyBlog.get_url()
         
-        post_title = PostsMeta.get(file, 'Title')
+        title = PostsMeta.get(file, 'Title')
         download_pdf = PostsMeta.get(file, 'DownloadPdf')
-        post_url = current_url.replace('/' + current_url.split('/')[-1], '')
+        url = current_url.replace('/' + current_url.split('/')[-1], '')
+        route = Routes.get_route(url)
         
         if download_pdf == 'enabled':
             pdf_path = f'{file}.pdf'
-            file_path = FilesUtils.get_file_path(file, 'blog')
+            file_path = FilesUtils.get_file_path(file, route)
             md_content = FilesUtils.read_content(file_path).content
-            credits = f'<br><a href="{ post_url }">Source: { post_title }</a>'
-            html_content = f'<h1>{ post_title }</h1>{MDBuilder.render(md_content) + credits}'
+            credits = f'<br><a href="{ url }">Source: { title }</a>'
+            html_content = f'<h1>{ title }</h1>{MDBuilder.render(md_content) + credits}'
         
             pisa_status = pisa.CreatePDF(html_content, dest_bytes=True)
             return Response(pisa_status, content_type='application/pdf', headers={

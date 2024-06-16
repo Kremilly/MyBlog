@@ -13,6 +13,7 @@ from backend.docs.docs_meta import DocsMeta
 
 from backend.actions.rss import RSS
 from backend.actions.links import Links
+from backend.actions.export import Export
 
 app = Flask(__name__)
 
@@ -61,12 +62,8 @@ def post(post:str):
     )
 
 @app.route('/blog/<post>/export')
-def post_actions(post:str):
-    return Posts.export_to_pdf(post)
-
-@app.route('/rss')
-def rss():
-    return RSS.posts()
+def export_post(post:str):
+    return Export.run(post)
 
 @app.route('/docs/<api>')
 def doc(api:str):
@@ -80,6 +77,14 @@ def doc(api:str):
         title=DocsMeta.get(api, 'Title'),
         qrcode=DocsMeta.get(api, 'QrCode'),
     )
+
+@app.route('/docs/<api>/export')
+def export_doc(api:str):
+    return Export.run(api, True)
+
+@app.route('/rss')
+def rss():
+    return RSS.posts()
 
 @app.route('/api/projects')
 def projects():
@@ -103,4 +108,3 @@ def inject_route_home():
 
 if __name__ == '__main__':
     app.run(debug=True)
- 

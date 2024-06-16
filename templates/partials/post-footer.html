@@ -27,7 +27,7 @@
                 Share
             </div>
 
-            {% if post_export == 'enabled' or post_export == None %}
+            {% if post_export == 'enabled' or post_export == None or is_doc %}
                 <div class='footer-btn' id='postDownloadPdfBtn'>
                     <div class='fas fa-file-pdf'></div>
                     Download
