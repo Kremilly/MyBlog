@@ -15,6 +15,7 @@
     z-index: -1;
     height: 300px;
     margin: -2.7em;
+    margin-bottom: 2.7em;
     background-position: center;
     margin-bottom: var(--spacing-lg) * 2;
     border-top-left-radius: var(--border-radius);

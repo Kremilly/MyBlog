@@ -31,6 +31,21 @@
     box-sizing: border-box;
 }
 
+*::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: var(--border-radius);
+}
+
+*::-webkit-scrollbar {
+	width: 8px;
+	background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    border-radius: var(--border-radius);
+	background-color: var(--color-pre-fg);
+}
+
 body {
     line-height: 1.6;
     color: var(--color-text);
