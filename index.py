@@ -77,8 +77,8 @@ def doc(api:str):
         html_content=Docs.get_doc(api),
         
         url=MyBlog.get_url(),
-        title=DocsMeta.doc_get(api, 'Title'),
-        qrcode=DocsMeta.doc_get(api, 'QrCode'),
+        title=DocsMeta.get(api, 'Title'),
+        qrcode=DocsMeta.get(api, 'QrCode'),
     )
 
 @app.route('/api/projects')

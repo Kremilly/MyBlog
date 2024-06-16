@@ -7,7 +7,7 @@ from backend.classes.qrcode import QRCode
 class DocsMeta:
     
     @classmethod
-    def doc_metadata(cls, file:str, data:str) -> str:
+    def get(cls, file:str, data:str) -> str:
         file_path = FilesUtils.get_file_path(file, 'docs')
         metadata = FilesUtils.read_content(file_path)
         
