@@ -12,9 +12,9 @@
 > [!note]
 > This blog uses Markdown for generate their posts and pages, and uses some libraries for make this: [Mistune](https://mistune.lepture.com/en/latest/) and [MarkupSafe](https://markupsafe.palletsprojects.com/en/2.1.x/)
 
-Blog Plugins (until now):
+Blog Plugins:
 
-* [X] GitHub Pinned Repositories ([docs](https://github.com/kremilly/MyApis/wiki/github))
+* [X] GitHub Pinned Repositories ([docs](https://kremilly.com/docs/github))
 * [X] ToC
 * [X] LazyLoad ([docs](https://github.com/verlok/vanilla-lazyload))
 * [X] Sharer.js ([docs](https://ellisonleao.github.io/sharer.js/))
