@@ -10,12 +10,12 @@
 .no-border-right { border-right: none !important; }
 .no-border-bottom { border-bottom: none !important; }
 
-.border-top-left-radius { border-top-left-radius: var(--border-radius); }
-.border-top-right-radius { border-top-right-radius: var(--border-radius); }
-.border-bottom-left-radius { border-bottom-left-radius: var(--border-radius); }
-.border-bottom-right-radius { border-bottom-right-radius: var(--border-radius); }
-
 .no-border-top-left-radius { border-top-left-radius: 0 !important; }
 .no-border-top-right-radius { border-top-right-radius: 0 !important; }
 .no-border-bottom-left-radius { border-bottom-left-radius: 0 !important; }
 .no-border-bottom-right-radius { border-bottom-right-radius: 0 !important; }
+
+.border-top-left-radius { border-top-left-radius: var(--border-radius); }
+.border-top-right-radius { border-top-right-radius: var(--border-radius); }
+.border-bottom-left-radius { border-bottom-left-radius: var(--border-radius); }
+.border-bottom-right-radius { border-bottom-right-radius: var(--border-radius); }
