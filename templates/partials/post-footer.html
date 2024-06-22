@@ -4,33 +4,33 @@
             {% if is_post and post_tags.total > 0 %}
                 <div class='footer-btn' id='postTagsBtn'>
                     <div class='fas fa-tag'></div>
-                    Tags
+                    <div class='text'>Tags</div>
                 </div>
             {% endif %}
 
             {% if is_post and post_files.total > 0 %}
                 <div class='footer-btn' id='postFilesBtn'>
                     <div class='fas fa-paperclip'></div>
-                    Files
+                    <div class='text'>Files</div>
                 </div>
             {% endif %}
             
             <div class='footer-btn' id='postReadAlsoBtn'>
                 <div class='fas fa-blog'></div>
-                Read also...
+                <div class='text'>Read also...</div>
             </div>
         </div>
 
         <div class='right'>
             <div class='footer-btn' id='postShareBtn'>
                 <div class='fas fa-share'></div>
-                Share
+                <div class='text'>Share</div>
             </div>
 
             {% if post_export == 'enabled' or post_export == None or is_doc %}
                 <div class='footer-btn' id='postDownloadPdfBtn'>
                     <div class='fas fa-file-pdf'></div>
-                    Download
+                    <div class='text'>Download</div>
                 </div>
             {% endif %}
         </div>
@@ -60,7 +60,7 @@
                 {% for post in post_posts_recommends %}
                     <a href='{{ post.url }}' class='list'>
                         {{ post.title }}
-                        <div class='read-time'>{{ post.date }}</div>
+                        <div class='right'>{{ post.date }}</div>
                     </a>
                 {% endfor %}
             </div>

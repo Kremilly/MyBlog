@@ -55,6 +55,7 @@ def post(post:str):
         post_export=PostsMeta.get(post, 'DownloadPdf'),
         post_description=PostsMeta.get_description(post),
         
+        post_links=Posts.list_links(post),
         post_date=PostsMeta.get_date(post),
         post_tags=PostsMeta.get_lists(post, 'tags'),
         post_read_time=PostsMeta.get_read_time(post),

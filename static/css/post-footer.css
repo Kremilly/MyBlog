@@ -10,8 +10,8 @@
 
 .post-content > .footer > .meta > .left > .footer-btn,
 .post-content > .footer > .meta > .right > .footer-btn {
-    float: right;
     height: 3em;
+    float: right;
     color: inherit;
     cursor: pointer;
     font-size: .8em;
@@ -20,14 +20,21 @@
     text-align: center;
     text-decoration: none;
     margin-top: var(--spacing-sm);
+    padding-left: var(--spacing-md);
     padding-right: var(--spacing-md);
     border-radius: var(--border-radius);
 }
 
 .post-content > .footer > .meta > .left > .footer-btn > .fas, 
 .post-content > .footer > .meta > .right > .footer-btn > .fas {
-    margin-left: var(--spacing-sm);
-    margin-right: var(--spacing-sm);
+    float: left;
+    line-height: 3em;
+}
+
+.post-content > .footer > .meta > .left > .footer-btn > .text, 
+.post-content > .footer > .meta > .right > .footer-btn > .text {
+    float: left;
+    display: none;
 }
 
 .post-content > .footer > .meta > .left > .footer-btn {
@@ -38,6 +45,22 @@
 .post-content > .footer > .meta > .right > .footer-btn {
     float: left;
     margin-left: var(--spacing-sm);
+}
+
+.post-content > .footer > .meta > .left > .actived, 
+.post-content > .footer > .meta > .right > .actived, 
+.post-content > .footer > .meta > .left > .footer-btn:hover, 
+.post-content > .footer > .meta > .right > .footer-btn:hover {
+    background: var(--color-border);
+    animation: bg-color .5s ease-in-out forwards;
+}
+
+.post-content > .footer > .meta > .left > .actived > .text, 
+.post-content > .footer > .meta > .right > .actived > .text, 
+.post-content > .footer > .meta > .left > .footer-btn:hover > .text, 
+.post-content > .footer > .meta > .right > .footer-btn:hover > .text {
+    display: block;
+    animation: margin-right .5s ease-in-out forwards;
 }
 
 .post-content > .footer > .meta > .left > .actived, 

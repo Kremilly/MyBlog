@@ -1,10 +1,8 @@
 #!/usr/bin/python3
 
-from xhtml2pdf import pisa
-from flask import Response
 from markupsafe import Markup
+from bs4 import BeautifulSoup
 
-from backend.utils.routes import Routes
 from backend.utils.files import FilesUtils
 
 from backend.classes.my_blog import MyBlog
@@ -54,13 +52,39 @@ class Posts:
                     'url': f'{url_root}/blog/{slug}',
                     'date': PostsMeta.get_date(file),
                     'title': PostsMeta.get(file, 'Title'),
-                    'read_time': PostsMeta.get_read_time(file),
                 })
             
         return sorted(
             list_posts, key=lambda x: x['date']
         )[:5]
-
+    
+    @classmethod
+    def list_links(cls, post:str) -> dict:
+        list_links = []
+        
+        file_path = FilesUtils.get_file_path(post, 'blog')
+        html_content = MDBuilder.render(
+            FilesUtils.read_content(file_path)
+        )
+        
+        soup = BeautifulSoup(html_content, 'html.parser')
+        links = soup.find_all('a')
+        
+        for link in links:
+            href = link.get('href')
+            text = link.get_text(strip=True)
+            
+            if href:
+                list_links.add({
+                    'url': href,
+                    'text': text,
+                })
+        
+        return {
+            'list': list_links,
+            'total': len(list_links),
+        }
+        
     @classmethod
     def get_post(cls, file:str) -> str:
         file_path = FilesUtils.get_file_path(file, 'blog')
@@ -70,25 +94,3 @@ class Posts:
             return Markup(
                 MDBuilder.render(md_content.content)
             )
-
-    @classmethod
-    def export_to_pdf(cls, file:str) -> str:
-        current_url = MyBlog.get_url()
-        
-        title = PostsMeta.get(file, 'Title')
-        download_pdf = PostsMeta.get(file, 'DownloadPdf')
-        url = current_url.replace('/' + current_url.split('/')[-1], '')
-        route = Routes.get_route(url)
-        
-        if download_pdf == 'enabled':
-            pdf_path = f'{file}.pdf'
-            file_path = FilesUtils.get_file_path(file, route)
-            md_content = FilesUtils.read_content(file_path).content
-            credits = f'<br><a href="{ url }">Source: { title }</a>'
-            html_content = f'<h1>{ title }</h1>{MDBuilder.render(md_content) + credits}'
-        
-            pisa_status = pisa.CreatePDF(html_content, dest_bytes=True)
-            return Response(pisa_status, content_type='application/pdf', headers={
-                'Content-Disposition': f'attachment; filename={pdf_path}'
-            })
-    
