@@ -77,11 +77,8 @@
     {% if is_post and post_links.total > 0 %}
         <div class='box' id='postLinksBox'>
             <div class='body'>
-                {% for post in post_posts_recommends %}
-                    <a href='{{ post.url }}' class='list'>
-                        {{ post.title }}
-                        <div class='right'>{{ post.date }}</div>
-                    </a>
+                {% for link in post_links.list %}
+                    <a href='{{ link.url }}' target='_blank' class='list'>{{ link.text }}</a>
                 {% endfor %}
             </div>
         </div>

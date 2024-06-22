@@ -59,30 +59,32 @@ class Posts:
         )[:5]
     
     @classmethod
-    def list_links(cls, post:str) -> dict:
+    def list_links(cls, post: str) -> dict:
         list_links = []
-        
+
         file_path = FilesUtils.get_file_path(post, 'blog')
         html_content = MDBuilder.render(
             FilesUtils.read_content(file_path).content
         )
-        
+
         soup = BeautifulSoup(html_content, 'html.parser')
         links = soup.find_all('a')
-        
+
         for link in links:
             href = link.get('href')
             text = link.get_text(strip=True)
-            
+
             if href:
                 list_links.append({
                     'url': href,
                     'text': text,
                 })
-        
+
+        unique_links = {link['url']: link for link in list_links}.values()
+
         return {
-            'links': list_links,
-            'total': len(list_links),
+            'list': list(unique_links),
+            'total': len(unique_links),
         }
         
     @classmethod
