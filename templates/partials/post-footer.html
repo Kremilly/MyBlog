@@ -14,6 +14,13 @@
                     <div class='text'>Files</div>
                 </div>
             {% endif %}
+
+            {% if is_post and post_links.total > 0 %}
+                <div class='footer-btn' id='postLinksBtn'>
+                    <div class='fas fa-link'></div>
+                    <div class='text'>Links</div>
+                </div>
+            {% endif %}
             
             <div class='footer-btn' id='postReadAlsoBtn'>
                 <div class='fas fa-blog'></div>
@@ -56,6 +63,19 @@
 
     {% if is_post %}
         <div class='box' id='postReadAlsoBox'>
+            <div class='body'>
+                {% for post in post_posts_recommends %}
+                    <a href='{{ post.url }}' class='list'>
+                        {{ post.title }}
+                        <div class='right'>{{ post.date }}</div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+    {% if is_post and post_links.total > 0 %}
+        <div class='box' id='postLinksBox'>
             <div class='body'>
                 {% for post in post_posts_recommends %}
                     <a href='{{ post.url }}' class='list'>

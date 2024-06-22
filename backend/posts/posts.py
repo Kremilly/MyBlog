@@ -64,7 +64,7 @@ class Posts:
         
         file_path = FilesUtils.get_file_path(post, 'blog')
         html_content = MDBuilder.render(
-            FilesUtils.read_content(file_path)
+            FilesUtils.read_content(file_path).content
         )
         
         soup = BeautifulSoup(html_content, 'html.parser')
@@ -75,13 +75,13 @@ class Posts:
             text = link.get_text(strip=True)
             
             if href:
-                list_links.add({
+                list_links.append({
                     'url': href,
                     'text': text,
                 })
         
         return {
-            'list': list_links,
+            'links': list_links,
             'total': len(list_links),
         }
         
