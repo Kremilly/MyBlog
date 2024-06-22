@@ -56,6 +56,8 @@
     padding-right: var(--spacing-md);
 }
 
+.post-content > .footer > .box > .body > .list > .read-time { float: right; }
+
 .post-content > .footer > .box > .body > .list:hover {
     border-radius: var(--border-radius);
     animation: bg-color .5s ease-in-out forwards;

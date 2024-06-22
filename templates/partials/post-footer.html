@@ -15,12 +15,10 @@
                 </div>
             {% endif %}
             
-            {% if is_post %}
-                <!--<div class='footer-btn' id='postReadAlsoBtn'>
-                    <div class='fas fa-blog'></div>
-                    Read also...
-                </div>-->
-            {% endif %}
+            <div class='footer-btn' id='postReadAlsoBtn'>
+                <div class='fas fa-blog'></div>
+                Read also...
+            </div>
         </div>
 
         <div class='right'>
@@ -55,6 +53,19 @@
             <input type='text' value='{{ url }}' id='postShareBoxInput' readonly>
         </div>
     </div>
+
+    {% if is_post %}
+        <div class='box' id='postReadAlsoBox'>
+            <div class='body'>
+                {% for post in post_posts_recommends %}
+                    <a href='{{ post.url }}' class='list'>
+                        {{ post.title }}
+                        <div class='read-time'>{{ post.read_time }}</div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
 
     {% if is_post and post_tags.total > 0 %}
         <div class='box' id='postTagsBox'>

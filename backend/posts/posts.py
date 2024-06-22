@@ -37,6 +37,29 @@ class Posts:
         return sorted(
             list_posts, key=lambda x: x['date']
         )
+    
+    @classmethod
+    def list_posts_recommends(cls, post:str) -> dict:
+        list_posts = []
+        url_root = MyBlog.get_url_root()
+        path = Settings.get('paths.contents.blog', 'string')
+        slug_post = post.split('/')[-1].replace('+', '-').replace(' ', '-').replace('.md', '')
+        
+        for post in FilesUtils.scan_path(path):
+            file = post.split('/')[-1].replace('.md', '')
+            slug = post.split('/')[-1].replace('+', '-').replace(' ', '-').replace('.md', '')
+            
+            if slug != slug_post:
+                list_posts.append({
+                    'url': f'{url_root}/blog/{slug}',
+                    'date': PostsMeta.get_date(file),
+                    'title': PostsMeta.get(file, 'Title'),
+                    'read_time': PostsMeta.get_read_time(file),
+                })
+            
+        return sorted(
+            list_posts, key=lambda x: x['date']
+        )[:5]
 
     @classmethod
     def get_post(cls, file:str) -> str:

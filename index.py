@@ -59,6 +59,7 @@ def post(post:str):
         post_tags=PostsMeta.get_lists(post, 'tags'),
         post_read_time=PostsMeta.get_read_time(post),
         post_files=PostsMeta.get_lists(post, 'files'),
+        post_posts_recommends=Posts.list_posts_recommends(post),
     )
 
 @app.route('/blog/<post>/export')
