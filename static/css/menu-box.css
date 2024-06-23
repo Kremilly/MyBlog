@@ -43,7 +43,7 @@
     animation: border-slide .5s ease-in-out forwards;
 }
 
-.separator {
+.menu-box > .separator {
     width: 100%;
     height: .1em;
     opacity: .75;
