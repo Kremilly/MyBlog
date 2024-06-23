@@ -51,13 +51,19 @@
         <div class='content'>
             <div class='icons'>
                 <a data-sharer='email' data-title='{{ title }}' data-url='{{ url }}' class='fas fa-envelope'></a>
-                <a data-sharer='whatsapp' data-title='{{ title }}' data-url='{{ url }}' class='fab fa-whatsapp'></a>
                 <a data-sharer='facebook' data-title='{{ title }}' data-url='{{ url }}' class='fab fa-facebook'></a>
                 <a data-sharer='twitter' data-title='{{ title }}' data-url='{{ url }}' class='fab fa-x-twitter'></a>
                 <a data-sharer='linkedin' data-title='{{ title }}' data-url='{{ url }}' class='fab fa-linkedin'></a>
+                <a data-sharer='whatsapp' data-title='{{ title }}' data-url='{{ url }}' class='fab fa-whatsapp'></a>
+                <a data-sharer='telegram' data-title='{{ title }}' data-url='{{ url }}' class='fab fa-telegram'></a>
             </div>
     
             <input type='text' value='{{ url }}' id='postShareBoxInput' readonly>
+
+            <div class='btn' data-sharer='pocket' data-title='{{ title }}' data-url='{{ url }}'>
+                <div class='fab fa-get-pocket icon'></div>
+                Save in Pocket
+            </div>
         </div>
     </div>
 

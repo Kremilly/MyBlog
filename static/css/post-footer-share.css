@@ -2,7 +2,7 @@
     float: right;
     display: none;
     position: relative;
-    margin-top: -7.25em;
+    margin-top: -9.85em;
     box-sizing: border-box;
     box-shadow: var(--box-shadow);
     padding-left: var(--spacing-md);
@@ -48,6 +48,8 @@
 
 .post-content > .footer > .share > .content > .icons > .fa-linkedin:hover { color: #0077B5; }
 
+.post-content > .footer > .share > .content > .icons > .fa-telegram:hover { color: #1C93E3; }
+
 .post-content > .footer > .share > .content > .icons > .fa-x-twitter:hover { color: #000000; }
 
 .post-content > .footer > .share > .content > .icons > .fas:hover { color: var(--color-link-hover); }
@@ -73,5 +75,33 @@
 .post-content > .footer > .share > .content > input:focus {
     background: var(--color-bg);
     border-color: var(--color-link-hover);
+    animation: border-slide .5s ease-in-out forwards;
+}
+
+.post-content > .footer > .share > .content > .btn {
+    width: 100%;
+    border: none;
+    outline: none;
+    color: inherit;
+    cursor: pointer;
+    font-size: .85em;
+    font-weight: 600;
+    text-align: center;
+    line-height: 2.5em;
+    margin-top: var(--spacing-sm);
+    background: var(--color-pre-bg);
+    padding-left: var(--spacing-sm);
+    padding-right: var(--spacing-sm);
+    border-left: .1em solid transparent;
+    border-radius: var(--border-radius);
+}
+
+.post-content > .footer > .share > .content > .btn > .icon {
+    float: left;
+    line-height: 2.5em;
+}
+
+.post-content > .footer > .share > .content > .btn:hover {
+    background: var(--color-bg);
     animation: border-slide .5s ease-in-out forwards;
 }
