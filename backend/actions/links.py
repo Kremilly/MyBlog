@@ -26,6 +26,15 @@ class Links:
             return soup.title.string
         
         return 'Untitled'
+    
+    @classmethod
+    def get_favico(cls, url:str, api:str) -> str:
+        domain = urlparse(url).netloc
+        
+        if api == 'duckduckgo':
+            return f'https://icons.duckduckgo.com/ip3/{domain}.ico'
+        
+        return f'https://www.google.com/s2/favicons?domain={domain}&size=32'
 
     @classmethod
     def list_links(cls) -> list:
@@ -36,13 +45,12 @@ class Links:
             for link in links:
                 name = list(link.keys())[0]
                 url = list(link.values())[0]
-                domain = urlparse(url).netloc
                 
                 items.append({
                     'url': url,
                     'name': name,
                     'title': cls.get_title(url),
-                    'favico': f'https://icons.duckduckgo.com/ip3/{domain}.ico',
+                    'favico': cls.get_favico(url, 'duckduckgo')
                 })
                 
             return {

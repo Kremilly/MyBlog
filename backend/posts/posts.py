@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 
 from backend.utils.files import FilesUtils
 
+from backend.actions.links import Links
 from backend.classes.my_blog import MyBlog
 from backend.classes.settings import Settings
 from backend.classes.md_builder import MDBuilder
@@ -78,6 +79,7 @@ class Posts:
                 list_links.append({
                     'url': href,
                     'text': text,
+                    'favico': Links.get_favico(href, None),
                 })
 
         unique_links = {link['url']: link for link in list_links}.values()

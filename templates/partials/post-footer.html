@@ -78,7 +78,11 @@
         <div class='box' id='postLinksBox'>
             <div class='body'>
                 {% for link in post_links.list %}
-                    <a href='{{ link.url }}' target='_blank' class='list'>{{ link.text }}</a>
+                    <a href='{{ link.url }}' target='_blank' class='list'>
+                        <img src='{{ link.favico }}' class='favicon' alt='icon' />
+                        {{ link.text }}
+                        <div class='fas fa-arrow-up-right-from-square'></div>
+                    </a>
                 {% endfor %}
             </div>
         </div>

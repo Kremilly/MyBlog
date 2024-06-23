@@ -63,6 +63,25 @@
     border-radius: var(--border-radius);
 }
 
+.post-content > .footer > .box > .body > .list > .favicon {
+    float: left;
+    width: 1.5em;
+    height: 1.5em;
+    line-height: 3em;
+    margin-top: .7em;
+    margin-right: var(--spacing-md);
+}
+
+.post-content > .footer > .box > .body > .list > .fas {
+    float: right;
+    display: none;
+}
+
 .post-content > .footer > .box > .body > .list > .right { float: right; }
 
 .post-content > .footer > .box > .body > .list:hover { animation: bg-color .5s ease-in-out forwards; }
+
+.post-content > .footer > .box > .body > .list:hover > .fas {
+    display: block;
+    line-height: 3em;
+}
