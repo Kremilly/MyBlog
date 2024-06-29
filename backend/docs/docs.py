@@ -28,7 +28,9 @@ class Docs:
                 'title': DocsMeta.get(file, 'Title'),
             })
             
-        return list_docs
+        return sorted(
+            list_docs, key=lambda x: x['title']
+        )
 
     @classmethod
     def get_doc(cls, file:str) -> str:
