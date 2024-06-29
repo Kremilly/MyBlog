@@ -8,17 +8,3 @@
   <a href='https://vercel.com'><img src='https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white' /></a>
   <a href='https://kremilly.com'><img src='https://img.shields.io/badge/Kremilly.com-000000?style=for-the-badge&logo=About.me&logoColor=white' /></a>
 </p>
-
-> [!note]
-> This blog uses Markdown for generate their posts and pages, and uses some libraries for make this: [Mistune](https://mistune.lepture.com/en/latest/) and [MarkupSafe](https://markupsafe.palletsprojects.com/en/2.1.x/)
-
-<!--Blog Plugins:
-
-* [X] GitHub Pinned Repositories ([docs](https://kremilly.com/docs/github))
-* [X] ToC
-* [X] LazyLoad ([docs](https://github.com/verlok/vanilla-lazyload))
-* [X] Sharer.js ([docs](https://ellisonleao.github.io/sharer.js/))
-* [X] ReadingTime
-* [X] Mermaid Diagram Render ([docs](https://mermaid.js.org/))
-* [X] Math Formulas Render ([docs](https://www.mathjax.org/))
-* [X] Code Syntax ([docs](https://prismjs.com/index.html))
