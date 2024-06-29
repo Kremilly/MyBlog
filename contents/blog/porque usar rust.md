@@ -13,7 +13,7 @@ Rust foi criado em 2006 pela equipe de engenharia da Mozilla para abordar proble
 
 ## Pontos-fortes da linguagem
 
-Assimo como todas as linguagens de programação, Rust tem diversos pontos-fortes que fazem a linguagem se destacar entre as demais linguagens do mercado. Aqui estão algumas das principais razões para considerar o uso de Rust:
+Assim como todas as linguagens de programação, Rust tem diversos pontos-fortes que fazem a linguagem se destacar entre as demais linguagens do mercado. Aqui estão algumas das principais razões para considerar o uso de Rust:
 
 1. **Segurança de Memória**: Rust é projetada para eliminar erros de memória, como acessos fora dos limites de uma matriz e dereferências de ponteiro nulo, sem a necessidade de um coletor de lixo. Ela faz isso através de seu sistema de propriedade e empréstimo.
 2. **Concorrência**: Rust oferece ferramentas modernas para a programação concorrente. Graças ao seu sistema de propriedade, é mais difícil cometer erros comuns em programação concorrente, como condições de corrida.
