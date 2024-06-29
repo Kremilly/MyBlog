@@ -51,7 +51,7 @@ $( e => {
     });
 
     $('#menuBoxTogglePagesBtn').on('click', function () {
-        $(this).toggleClass('actived');
+        $(this).addClass('actived');
         $('#menuBoxToggleDocsBtn').removeClass('actived');
         
         $('#menuBoxToggleDocs').slideUp(250);
@@ -59,7 +59,7 @@ $( e => {
     });
     
     $('#menuBoxToggleDocsBtn').on('click', function () {
-        $(this).toggleClass('actived');
+        $(this).addClass('actived');
         $('#menuBoxTogglePagesBtn').removeClass('actived');
         
         $('#menuBoxTogglePages').slideUp(250);
