@@ -98,3 +98,13 @@ class Posts:
             return Markup(
                 MDBuilder.render(md_content.content)
             )
+        
+    @classmethod
+    def check_post_exists(cls, file:str) -> str:
+        file_path = FilesUtils.get_file_path(file, 'blog')
+        md_content = FilesUtils.read_content(file_path)
+
+        if md_content is None:
+            return False
+        
+        return True

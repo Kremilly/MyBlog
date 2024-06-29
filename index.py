@@ -17,10 +17,6 @@ from backend.actions.export import Export
 
 app = Flask(__name__)
 
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template('errors/404.html'), 404
-
 @app.route('/')
 def home():
     return render_template(
@@ -44,28 +40,31 @@ def links():
 
 @app.route('/blog/<post>')
 def post(post:str):
-    return render_template(
-        'post.html', 
-        **MyBlog.common_template_args(),
-        
-        list_docs=Docs.list_docs(),
-        html_content=Posts.get_post(post),
-        
-        url=MyBlog.get_url(),
-        qrcode=PostsMeta.get(post, 'QrCode'),
-        title=PostsMeta.get_head_title(post),
-        
-        post_cover=PostCover.generate(post),
-        post_export=PostsMeta.get(post, 'DownloadPdf'),
-        post_description=PostsMeta.get_description(post),
-        
-        post_links=Posts.list_links(post),
-        post_date=PostsMeta.get_date(post),
-        post_tags=PostsMeta.get_lists(post, 'tags'),
-        post_read_time=PostsMeta.get_read_time(post),
-        post_files=PostsMeta.get_lists(post, 'files'),
-        post_posts_recommends=Posts.list_posts_recommends(post),
-    )
+    if Posts.check_post_exists(post):
+        return render_template(
+            'post.html', 
+            **MyBlog.common_template_args(),
+            
+            list_docs=Docs.list_docs(),
+            html_content=Posts.get_post(post),
+            
+            url=MyBlog.get_url(),
+            qrcode=PostsMeta.get(post, 'QrCode'),
+            title=PostsMeta.get_head_title(post),
+            
+            post_cover=PostCover.generate(post),
+            post_export=PostsMeta.get(post, 'DownloadPdf'),
+            post_description=PostsMeta.get_description(post),
+            
+            post_links=Posts.list_links(post),
+            post_date=PostsMeta.get_date(post),
+            post_tags=PostsMeta.get_lists(post, 'tags'),
+            post_read_time=PostsMeta.get_read_time(post),
+            post_files=PostsMeta.get_lists(post, 'files'),
+            post_posts_recommends=Posts.list_posts_recommends(post),
+        )
+    
+    return render_template('errors/404.html'), 404
 
 @app.route('/blog/<post>/export')
 def export_post(post:str):
@@ -73,17 +72,20 @@ def export_post(post:str):
 
 @app.route('/docs/<api>')
 def doc(api:str):
-    return render_template(
-        'post.html', 
-        **MyBlog.common_template_args(),
-        
-        list_docs=Docs.list_docs(),
-        html_content=Docs.get_doc(api),
-        
-        url=MyBlog.get_url(),
-        title=DocsMeta.get(api, 'Title'),
-        qrcode=DocsMeta.get(api, 'QrCode'),
-    )
+    if Docs.check_doc_exists(api):
+        return render_template(
+            'post.html', 
+            **MyBlog.common_template_args(),
+            
+            list_docs=Docs.list_docs(),
+            html_content=Docs.get_doc(api),
+            
+            url=MyBlog.get_url(),
+            title=DocsMeta.get(api, 'Title'),
+            qrcode=DocsMeta.get(api, 'QrCode'),
+        )
+    
+    return render_template('errors/404.html'), 404
 
 @app.route('/docs/<api>/export')
 def export_doc(api:str):

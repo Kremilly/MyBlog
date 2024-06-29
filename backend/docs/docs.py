@@ -39,3 +39,13 @@ class Docs:
             return Markup(
                 MDBuilder.render(md_content.content)
             )
+
+    @classmethod
+    def check_doc_exists(cls, file:str) -> str:
+        file_path = FilesUtils.get_file_path(file, 'docs')
+        md_content = FilesUtils.read_content(file_path)
+
+        if md_content is not None:
+            return False
+        
+        return True

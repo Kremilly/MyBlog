@@ -63,7 +63,6 @@ class MyBlog:
             'internal_js_plugins': Load.js('plugins'),
             
             'docs': Settings.get('paths.contents.docs', 'string'),
-            
             'site_name': Settings.get('basic.site_name', 'string'),
         }
         
