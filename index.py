@@ -26,7 +26,9 @@ def home():
     return render_template(
         'index.html', 
         **MyBlog.common_template_args(),
-        posts_list=Posts.list_posts()
+        
+        list_docs=Docs.list_docs(),
+        list_posts=Posts.list_posts()
     )
     
 @app.route('/links')
@@ -35,6 +37,7 @@ def links():
         'links.html', 
         **MyBlog.common_template_args(),
         
+        list_docs=Docs.list_docs(),
         list_links=Links.list_links(),
         social_media=Links.social_media(),
     )
@@ -45,6 +48,7 @@ def post(post:str):
         'post.html', 
         **MyBlog.common_template_args(),
         
+        list_docs=Docs.list_docs(),
         html_content=Posts.get_post(post),
         
         url=MyBlog.get_url(),
@@ -73,6 +77,7 @@ def doc(api:str):
         'post.html', 
         **MyBlog.common_template_args(),
         
+        list_docs=Docs.list_docs(),
         html_content=Docs.get_doc(api),
         
         url=MyBlog.get_url(),

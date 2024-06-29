@@ -25,12 +25,10 @@ class Docs:
             list_docs.append({
                 'slug': slug,
                 'url': f'{url_root}/docs/{slug}',
-                'title': DocsMeta.doc_metadata(file, 'Title'),
+                'title': DocsMeta.get(file, 'Title'),
             })
             
-        return sorted(
-            list_docs, key=lambda x: x['date']
-        )
+        return list_docs
 
     @classmethod
     def get_doc(cls, file:str) -> str:
