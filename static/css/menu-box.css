@@ -59,7 +59,7 @@
 .menu-box > .list {
     padding: 1em;
     overflow: auto;
-    max-height: 12em;
+    max-height: 14em;
     margin-left: -1em;
     margin-right: -1em;
     margin-top: var(--spacing-sm);
