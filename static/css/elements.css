@@ -106,10 +106,10 @@ input[type="checkbox"] {
 }
 
 img {
-    width: 100%;
     height: auto;
-    display: block;
+    max-width: 100%;
     box-sizing: initial;
+    display: inline-block;
     border-radius: var(--border-radius);
 }
 
