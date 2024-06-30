@@ -47,7 +47,7 @@ class Docs:
         file_path = FilesUtils.get_file_path(file, 'docs')
         md_content = FilesUtils.read_content(file_path)
 
-        if md_content is not None:
+        if md_content is None:
             return False
         
         return True
