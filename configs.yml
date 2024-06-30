@@ -40,7 +40,7 @@ paths:
 
     js:
       src: './static/js/src/'
-      plugins: './dist/plugins/'
+      plugins: './static/js/plugins/'
 
     css: './static/css/'
     images: './static/images/'
