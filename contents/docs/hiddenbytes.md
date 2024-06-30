@@ -1,5 +1,5 @@
 ---
-Title: 
+Title: HiddenBytes
 ---
 ![](https://img.shields.io/crates/v/hiddenbytes?style=flat-square&logo=rust)
 
