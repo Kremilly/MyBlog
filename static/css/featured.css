@@ -1,7 +1,7 @@
 .featured {
     top: 70px;
     float: left;
-    width: 300px;
+    width: 16em;
     margin: auto;
     display: none;
     position: sticky;
