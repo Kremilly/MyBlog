@@ -34,7 +34,6 @@ $( e => {
         });
     });
 
-
     headers.each( function () {
         var header = $(this);
 
@@ -45,7 +44,6 @@ $( e => {
 
         var link = $('<a/>')
                         .text(header.text())
-                        .attr('class', 'toc')
                         .attr('href', '#' + header.attr('id'));
 
         tocList.append(link);
