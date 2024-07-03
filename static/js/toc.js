@@ -4,6 +4,17 @@ $( e => {
     var headers = $('h1, h2, h3');
     var currentHash = window.location.hash;
 
+    let cleanTocHeader = (text) => {
+        return text.replace(/\s+/g, '_')
+                   .replace(/[áàãâä]/gi, 'a')
+                   .replace(/[éèêë]/gi, 'e')
+                   .replace(/[íìîï]/gi, 'i')
+                   .replace(/[óòõôö]/gi, 'o')
+                   .replace(/[úùûü]/gi, 'u')
+                   .replace(/[ç]/gi, 'c')
+                   .replace(/[?!.,;:']/g, '');
+    };
+
     $('#tocBoxBtn').click( function () {
         $(this).toggleClass('actived');
         $('#tocBox').slideToggle(250);
@@ -28,15 +39,7 @@ $( e => {
         var header = $(this);
 
         if (!header.attr('id')) {
-            var sanitizedId = header.text().replace(/\s+/g, '_')
-                                           .replace(/[áàãâä]/gi, 'a')
-                                           .replace(/[éèêë]/gi, 'e')
-                                           .replace(/[íìîï]/gi, 'i')
-                                           .replace(/[óòõôö]/gi, 'o')
-                                           .replace(/[úùûü]/gi, 'u')
-                                           .replace(/[ç]/gi, 'c')
-                                           .replace(/[?!.,;:']/g, '');
-
+            var sanitizedId = cleanTocHeader(header.text());
             header.attr('id', sanitizedId);
         }
 
