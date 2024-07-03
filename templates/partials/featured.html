@@ -1,24 +1,13 @@
-{% if not is_home %}
-    <div class='featured featured-topics' id='featured'>
-{% else %}
+{% if is_home %}
     <div class='featured' id='featured'>
-{% endif %}
-
-    {% if is_home %}
         <div class='featured-top'>
             <a href='#pins' class='fab fa-github actived featured-tabs' id='tabPins'></a>
             <a href='#crates' class='fab fa-rust featured-tabs' id='tabCrates'></a>
             <a href='#apis' class='fas fa-cloud featured-tabs' id='tabApis'></a>
             <a href='#projects' class='fas fa-star featured-tabs' id='tabProjects'></a>
         </div>
-    {% endif %}
-
-    {% if is_post or is_doc %}
-        <div class='featured-toc-header'>Topics</div>
-        <input type='search' placeholder='Search...' class='featured-search no-border-top' id='searchTopicsFeatured'>
-    {% else %}
+        
         <input type='search' placeholder='Search...' class='featured-search' id='searchItemsFeatured'>
-    {% endif %}
-    
-    <div class='featured-body' id='featuredList'></div>
-</div>
+        <div class='featured-body' id='featuredList'></div>
+    </div>
+{% endif %}
