@@ -9,10 +9,10 @@ $( e => {
         $('#tocBox').slideToggle(250);
     });
 
-    $('.search').on('input', function () {
+    $('#searchToc').on('input', function () {
         var searchText = $(this).val().toLowerCase();
 
-        $('.list').each( function () {
+        $('#tocList > a').each( function () {
             var listItemText = $(this).text().toLowerCase();
 
             if (listItemText.includes(searchText)) {
