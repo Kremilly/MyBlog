@@ -1,8 +1,11 @@
 $( e => {
 
-    var tocList = $('#tocList');
-    var headers = $('h1, h2, h3');
-    var currentHash = window.location.hash;
+    let paddingTop = 60;
+    let timerAnimate = 800;
+    
+    let tocList = $('#tocList');
+    let headers = $('h1, h2, h3');
+    let currentHash = window.location.hash;
 
     let cleanTocHeader = (text) => {
         return text.replace(/\s+/g, '_')
@@ -21,10 +24,10 @@ $( e => {
     });
 
     $('#searchToc').on('input', function () {
-        var searchText = $(this).val().toLowerCase();
+        let searchText = $(this).val().toLowerCase();
 
         $('#tocList > a').each( function () {
-            var listItemText = $(this).text().toLowerCase();
+            let listItemText = $(this).text().toLowerCase();
 
             if (listItemText.includes(searchText)) {
                 $(this).show();
@@ -35,36 +38,38 @@ $( e => {
     });
 
     headers.each( function () {
-        var header = $(this);
+        let header = $(this);
 
         if (!header.attr('id')) {
-            var sanitizedId = cleanTocHeader(header.text());
+            let sanitizedId = cleanTocHeader(header.text());
             header.attr('id', sanitizedId);
         }
 
-        var link = $('<a/>')
-                        .text(header.text())
-                        .attr('href', '#' + header.attr('id'));
+        let link = $('<a/>').text(
+            header.text()
+        ).attr(
+            'href', '#' + header.attr('id')
+        );
 
         tocList.append(link);
     });
 
-    if (window.location.pathname !== '/') {
+    if (window.location.pathname !== '/') { 
         tocList.on('click', 'a', function () {
-            var targetOffset = $(
+            let targetOffset = $(
                 $(this).attr('href')
             ).offset().top;
 
             $('html, body').animate({
-                scrollTop: targetOffset - 50
-            }, 800);
+                scrollTop: targetOffset - paddingTop
+            }, timerAnimate);
         });
     }
 
     if (currentHash && window.location.pathname !== '/') {
         $('html, body').animate({
-            scrollTop: $(currentHash).offset().top - 50
-        }, 800);
+            scrollTop: $(currentHash).offset().top - paddingTop
+        }, timerAnimate);
     }
 
 });
