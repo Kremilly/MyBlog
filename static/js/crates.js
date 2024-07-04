@@ -35,7 +35,7 @@ const Crates = ( _ => {
     };
 
     let projects = _ => {
-        fetch(Apis.cratesURI).then(
+        fetch(cratesURI).then(
             json => json.json()
         ).then(response => {
             $('#cratesProjectsListBtn').addClass('actived');
