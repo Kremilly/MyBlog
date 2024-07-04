@@ -4,7 +4,7 @@ const GitHub = ( _ => {
     let apiUri = 'https://api.kremilly.com';
 
     let projects = _ => {
-        fetch(`${Apis.apiUri}/github?user=${ Apis.username }`).then(
+        fetch(`${Apis.apiUri}/github?user=${ username }`).then(
             json => json.json()
         ).then(response => {
             $('#pinnedProjectsListBtn').addClass('actived');
