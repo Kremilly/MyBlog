@@ -24,7 +24,6 @@ external_js_libs:
   - 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
   - 'https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js'
   - 'https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js'
-  - 'https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js'
 
 external_css_libs:
   - 'https://use.fontawesome.com/releases/v6.5.2/css/all.css'

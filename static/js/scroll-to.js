@@ -1,6 +1,6 @@
-const ScrollTo = ( e => {
+const ScrollTo = ( _ => {
 
-    let top = e => {
+    let top = _ => {
         history.pushState(
             null, 
             null, 
@@ -14,7 +14,7 @@ const ScrollTo = ( e => {
         });
     };
 
-    let checkScroll = e => {
+    let checkScroll = _ => {
         let scrollToTopBtn = document.getElementById('scrollToTopBtn');
         
         if (window.scrollY > 0) {

@@ -1,4 +1,4 @@
-$( e => {
+$( _ => {
 
     let paddingTop = 60;
     let timerAnimate = 800;
@@ -6,17 +6,6 @@ $( e => {
     let tocList = $('#tocList');
     let headers = $('h1, h2, h3');
     let currentHash = window.location.hash;
-
-    let cleanTocHeader = (text) => {
-        return text.replace(/\s+/g, '_')
-                   .replace(/[áàãâä]/gi, 'a')
-                   .replace(/[éèêë]/gi, 'e')
-                   .replace(/[íìîï]/gi, 'i')
-                   .replace(/[óòõôö]/gi, 'o')
-                   .replace(/[úùûü]/gi, 'u')
-                   .replace(/[ç]/gi, 'c')
-                   .replace(/[?!.,;:']/g, '');
-    };
 
     $('#tocBoxBtn').click( function () {
         $(this).toggleClass('actived');
@@ -41,7 +30,7 @@ $( e => {
         let header = $(this);
 
         if (!header.attr('id')) {
-            let sanitizedId = cleanTocHeader(header.text());
+            let sanitizedId = Utils.removeAccents(header.text());
             header.attr('id', sanitizedId);
         }
 
