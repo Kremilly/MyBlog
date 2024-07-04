@@ -44,7 +44,7 @@ const Apis = ( _ => {
             response.list.forEach(item => {
                 $('#projectsList').append(`
                     <a href='${item.wiki}' target='_blank' class='item project-item'>
-                        ${_.capitalize(item.name)}
+                        ${ Utils.capitalize(item.name) }
                     </a>
                 `);
             });
