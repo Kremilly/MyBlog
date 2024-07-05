@@ -3,8 +3,10 @@
     <title>{{ site_name }}</title>
 {% elif is_post %}
     <title>{{ site_name }}: Blog > {{ title }}</title>
-{% else %}
+{% elif is_doc %}
     <title>{{ site_name }}: Docs > {{ title }}</title>
+{% else %}
+    <title>{{ site_name }}: {{ title }}</title>
 {% endif %}
 
 <meta name='viewport' content='width=device-width, initial-scale=1.0'>

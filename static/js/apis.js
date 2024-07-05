@@ -61,7 +61,7 @@ const Apis = ( _ => {
 
             switch (window.location.hash) {
                 case '#apis':
-                    this.featured();
+                    featured();
                     break;
 
                 case '#pins':
