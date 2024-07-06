@@ -29,7 +29,7 @@ class Docs:
             })
             
         return sorted(
-            list_docs, key=lambda x: x['title']
+            list_docs, key=lambda x: x['slug']
         )
 
     @classmethod
