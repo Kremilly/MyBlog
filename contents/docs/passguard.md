@@ -1,5 +1,5 @@
 ---
-Title: PassGaurd
+Title: PassGuard
 ---
 ![img](https://img.shields.io/crates/v/passguard?style=flat-square&logo=rust)
 
