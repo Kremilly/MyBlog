@@ -1,5 +1,6 @@
 ---
 Title: HiddenBytes
+Package: cargo install hiddenbytes
 ---
 ![](https://img.shields.io/crates/v/hiddenbytes?style=flat-square&logo=rust)
 

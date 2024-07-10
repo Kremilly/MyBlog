@@ -1,5 +1,6 @@
 ---
 Title: IPInfo
+Package: cargo install ipinfo-cli
 ---
 ![img](https://img.shields.io/crates/v/ipinfo-cli?style=flat-square&logo=rust)
 

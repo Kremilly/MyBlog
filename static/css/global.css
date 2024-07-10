@@ -1,3 +1,5 @@
+.pointer { cursor: pointer; }
+
 .border { border: .1em solid var(--color) !important; }
 .no-border-top { border-top: .1em solid var(--color-border) !important; }
 .no-border-left { border-left: .1em solid var(--color-border) !important; }

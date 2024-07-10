@@ -8,7 +8,10 @@ $( _ => {
     let currentHash = window.location.hash;
 
     $('#tocBoxBtn').click( function () {
+        $('#pkgBoxBtn').removeClass('actived');
         $(this).toggleClass('actived');
+
+        $('#pkgBox').slideUp();
         $('#tocBox').slideToggle(250);
     });
 

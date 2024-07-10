@@ -83,6 +83,9 @@ def doc(api:str):
             html_content=Docs.get_doc(api),
             
             url=MyBlog.get_url(),
+            
+            package=DocsMeta.get(api, 'Package'),
+            
             title=DocsMeta.get(api, 'Title'),
             qrcode=DocsMeta.get(api, 'QrCode'),
         )

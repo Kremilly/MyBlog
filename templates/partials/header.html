@@ -7,7 +7,11 @@
     <a href='{{ url_root }}' class='logo' id='projectsBoxBtn'></a>
     
     <div class='nav'>
-        {% if is_post or is_doc %}
+        {% if is_post or is_doc %}    
+            {% if package %}
+                <div class='fa-solid fa-download icon' id='pkgBoxBtn'></div>
+            {% endif %}
+
             <div class='fa-solid fa-list icon' id='tocBoxBtn'></div>
         {% endif %}
 
@@ -16,6 +20,8 @@
 </header>
 
 {% include 'partials/toc-box.html' %}
+
+{% include 'partials/pkg-box.html' %}
 
 {% include 'partials/menu-box.html' %}
 
