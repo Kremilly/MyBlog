@@ -2,29 +2,6 @@ const Projects = ( _ => {
 
     let projectsUri = window.location.href.replace(window.location.href, '') + '/api/projects';
 
-    let featured = _ => {
-        fetch(projectsUri).then(
-            json => json.json()
-        ).then(response => {
-            window.location.hash = 'projects';
-
-            $('.featured-tabs').removeClass('actived');
-            $('#tabProjects').toggleClass('actived');
-
-            $('#featuredList').empty();
-
-            response.forEach(item => {
-                $('#featuredList').append(`
-                    <a href='${item.url}' target='_blank' class='item featured-item'>
-                        <div class='name'>${ Utils.capitalize(item.name) }</div>
-                    </a>
-                `);
-            });
-
-            $('#featured').show();
-        })
-    };
-
     let projects = _ => {
         fetch(projectsUri).then(
             json => json.json()
@@ -48,7 +25,6 @@ const Projects = ( _ => {
     };
 
     return {
-        featured: () => { return featured() },
         projects: () => { return projects() },
     };
 
