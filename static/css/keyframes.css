@@ -42,7 +42,7 @@
     }
 
     100% {
-        width: 17em;
+        width: 21em;
         background-size: 50%;
         box-shadow: var(--box-shadow);
         background-image: var(--logo-hover);

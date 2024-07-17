@@ -39,6 +39,19 @@ def links():
         list_links=Links.list_links(),
         social_media=Links.social_media(),
     )
+    
+@app.route('/projects')
+def list_projects():
+    return render_template(
+        'projects.html', 
+        **MyBlog.common_template_args(),
+        
+        title='Links',
+        
+        list_docs=Docs.list_docs(),
+        list_links=Links.list_links(),
+        social_media=Links.social_media(),
+    )
 
 @app.route('/blog/<post>')
 def post(post:str):

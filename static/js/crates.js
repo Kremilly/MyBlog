@@ -50,6 +50,7 @@ const Crates = ( _ => {
                 $('#projectsList').append(`
                     <a href='https://crates.io/crates/${item.name}' target='_blank' class='item project-item'>
                         ${ Utils.capitalize(item.name) }
+                        <div class='description'>${ item.description }</div>
                     </a>
                 `);
             });

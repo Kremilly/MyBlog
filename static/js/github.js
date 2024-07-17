@@ -19,6 +19,8 @@ const GitHub = ( _ => {
                 $('#projectsList').append(`
                     <a href='${item.url}' target='_blank' class='item project-item'>
                         ${item.name}
+                        <div class="lang ${item.languages[0].toLowerCase()}">${item.languages[0]}</div>
+                        <div class='description'>${ item.description }</div>
                     </a>
                 `);
             });

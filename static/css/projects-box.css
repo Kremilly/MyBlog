@@ -1,7 +1,7 @@
 .projects-box {
     top: 0;
     left: 50%;
-    width: 17em;
+    width: 21em;
     display: none;
     position: fixed;
     z-index: 999999;
@@ -67,12 +67,33 @@
     border-radius: var(--border-radius);
 }
 
+.projects-box > .body > .item > .description {
+    display: none;
+    font-size: .8em;
+    font-weight: 500;
+    line-height: 1.8 !important;
+    padding-bottom: var(--spacing-sm);
+}
+
+.projects-box > .body > .item > .lang {
+    float: right;
+    display: none;
+    font-size: .8em;
+    font-weight: 600;
+    line-height: 1.8 !important;
+    margin-top: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
+}
+
 .projects-box > .body > .item:hover {
     box-shadow: var(--box-shadow);
     background: var(--color-border);
     border-left: 0 solid transparent;
     animation: border-slide .5s ease-in-out forwards;
 }
+
+.projects-box > .body > .item:hover > .lang,
+.projects-box > .body > .item:hover > .description { display: block; }
 
 .projects-box > .bottom {
     width: 100%;

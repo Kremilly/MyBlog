@@ -1,7 +1,7 @@
 ---
 Title: Não use Polyfill.js!
 Description: Polyfill.js é uma biblioteca em JavaScript que fornece suporte para recursos mais recentes do JavaScript e da Web em navegadores que não os suportam nativamente. Isso é especialmente útil para garantir que o código funcione de maneira consistente em todos os navegadores, incluindo versões mais antigas que podem não ter implementado as últimas funcionalidades da linguagem ou da API Web.
-Date: 2024-06-30
+Date: 2024-07-15
 CoverTitle: Polyfill.js foi infectada!
 CoverFontSize: 42
 Tags: segurança, vulnerabilidade, hacking
