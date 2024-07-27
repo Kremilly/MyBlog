@@ -5,9 +5,35 @@ from flask import Response
 from backend.classes.my_blog import MyBlog
 from backend.classes.settings import Settings
 
+from backend.docs.docs import Docs
 from backend.posts.posts import Posts
 
 class RSS:
+    
+    @classmethod
+    def docs(cls) -> str:
+        rss_items = ''
+        posts = Docs.list_docs()
+        
+        for post in posts:
+            rss_items += f"""<item>
+                <title>{post['title']}</title>
+                <link>{post['url']}</link>
+                <slug>{post['slug']}</slug>
+            </item>"""
+        
+        return Response(
+            f"""<?xml version="1.0" encoding="UTF-8" ?>
+            <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" >
+                <channel>
+                    <title>{Settings.get('basic.site_name', 'string')}: Docs</title>
+                    <link>{MyBlog.get_url_root()}</link>
+                    <description>{Settings.get('basic.site_name', 'string')}: RSS feed > Docs</description>
+                    <language>en-us</language>
+                    {rss_items}
+                </channel>
+            </rss>""", mimetype='application/xml'
+        )
     
     @classmethod
     def posts(cls) -> str:

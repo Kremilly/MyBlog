@@ -113,6 +113,10 @@ def export_doc(api:str):
 def rss():
     return RSS.posts()
 
+@app.route('/rss/docs')
+def rss_docs():
+    return RSS.docs()
+
 @app.route('/api/projects')
 def projects():
     return MyBlog.projects()
