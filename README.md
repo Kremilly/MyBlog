@@ -9,8 +9,8 @@
   <a href='https://kremilly.com'><img src='https://img.shields.io/badge/Kremilly.com-000000?style=for-the-badge&logo=About.me&logoColor=white' /></a>
 </p>
 
-<p>Kremilly API's</p>
+<p>Kremilly: Docs</p>
 
 <ul>
-  <!-- APIS-LIST:START --><li><a href='https://kremilly.com/docs/cve'>cve</a><br></li><li><a href='https://kremilly.com/docs/devto'>devto</a><br></li><li><a href='https://kremilly.com/docs/github'>github</a><br></li><li><a href='https://kremilly.com/docs/pdfinfo'>pdfinfo</a><br></li><li><a href='https://kremilly.com/docs/pdfscrape'>pdfscrape</a><br></li><li><a href='https://kremilly.com/docs/pdfthumb'>pdfthumb</a><br></li><li><a href='https://kremilly.com/docs/qrcode'>qrcode</a><br></li><li><a href='https://kremilly.com/docs/statslangs'>statslangs</a><br></li><li><a href='https://kremilly.com/docs/wikipedia'>wikipedia</a><br></li><!-- APIS-LIST:END -->
+  <!-- DOCS-LIST:START --><!-- DOCS-LIST:END -->
 </ul>
