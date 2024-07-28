@@ -38,9 +38,6 @@ class MDBuilder:
             strikethrough, subscript, superscript, mark, insert,
         ])
 
-        if content is None:
-            redirect(MyBlog.get_url_root())
-
         return markdown(content)
 
     @classmethod

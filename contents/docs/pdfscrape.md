@@ -1,5 +1,6 @@
 ---
 Title: PDFScrape
+Category: API
 ---
 ## Example of request
 

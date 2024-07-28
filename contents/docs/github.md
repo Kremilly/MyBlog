@@ -1,5 +1,6 @@
 ---
 Title: GitHub
+Category: API
 ---
 ## Using the api on your project
 

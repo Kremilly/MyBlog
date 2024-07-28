@@ -1,5 +1,6 @@
 ---
 Title: PDFInfo
+Category: API
 ---
 ## Example of request
 

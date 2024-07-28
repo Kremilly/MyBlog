@@ -1,5 +1,6 @@
 ---
 Title: Minix
+Category: Crate
 Package: cargo install minix
 ---
 ![img](https://img.shields.io/crates/v/minix?style=flat-square&logo=rust)

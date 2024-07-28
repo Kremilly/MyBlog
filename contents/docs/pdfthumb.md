@@ -1,5 +1,6 @@
 ---
 Title: PDFThumb
+Category: API
 ---
 Generate as PDF Thumbnail for remote document
 

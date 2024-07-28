@@ -1,5 +1,6 @@
 ---
 Title: PageShot
+Category: Crate
 Package: cargo install pageshot
 ---
 ![img](https://img.shields.io/crates/v/pageshot?style=flat-square&logo=rust)

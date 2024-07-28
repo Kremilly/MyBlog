@@ -20,6 +20,7 @@ class RSS:
                 <title>{post['title']}</title>
                 <link>{post['url']}</link>
                 <slug>{post['slug']}</slug>
+                <category>{post['category']}</category>
             </item>"""
         
         return Response(

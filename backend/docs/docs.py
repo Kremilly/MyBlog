@@ -26,6 +26,7 @@ class Docs:
                 'slug': slug,
                 'url': f'{url_root}/docs/{slug}',
                 'title': DocsMeta.get(file, 'Title'),
+                'category': DocsMeta.get(file, 'Category'),
             })
             
         return sorted(

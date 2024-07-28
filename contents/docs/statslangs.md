@@ -1,5 +1,6 @@
 ---
 Title: Statslangs
+Category: API
 ---
 Explore Your GitHub Language Statistics: Discover Your Most Used Languages
 

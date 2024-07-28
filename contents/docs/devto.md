@@ -1,5 +1,6 @@
 ---
 Title: Devto
+Category: API
 ---
 This API can be useful for developers who want to integrate a user's articles into their own websites or applications, providing a convenient way to access and display the content of a specific user.
 

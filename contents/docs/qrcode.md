@@ -1,5 +1,6 @@
 ---
 Title: QRCode
+Category: API
 ---
 Generate a QR Code for remote document
 
