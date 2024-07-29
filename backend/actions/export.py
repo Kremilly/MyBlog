@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 
-import io
-
 from xhtml2pdf import pisa
 from flask import Response
 
