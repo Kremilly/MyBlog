@@ -62,6 +62,7 @@ def post(post:str):
             
             list_docs=Docs.list_docs(),
             html_content=Posts.get_post(post),
+            source_code=Posts.get_source_post(post),
             
             url=MyBlog.get_url(),
             qrcode=PostsMeta.get(post, 'QrCode'),
@@ -84,6 +85,10 @@ def post(post:str):
 @app.route('/blog/<post>/export')
 def export_post(post:str):
     return Export.run(post)
+
+@app.route('/blog/<post>/raw')
+def source_post(post:str):
+    return Posts.get_source_post(post)
 
 @app.route('/docs/<api>')
 def doc(api:str):

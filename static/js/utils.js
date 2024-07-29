@@ -36,34 +36,17 @@ const Utils = ( _ => {
                    .replace(/[?!.,;:']/g, '');
     };
 
-    let downloadPdf = _ => {
-        let endpoint = window.location.href.replace(
-            window.location.hash, ''
-        ) + '/export';
-
-        fetch(`${ endpoint }`).then(response => {
-            if (!response.ok) { throw new Error('Network response was not ok') }
-            return response.url
-        }).then( url => {
-            const a = document.createElement('a');
-
-            a.href = url;
-            a.download = 'arquivo.pdf';
-            document.body.appendChild(a);
-            a.click();
-
-            document.body.removeChild(a);
-        }).catch(error => {
-            console.error('There was an error with the fetch operation:', error);
-        });
-    };
-
     let capitalize = text => {
         return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
     };
 
+    let getSlug = _ => {
+        var pathname = window.location.pathname;
+        return slug = pathname.split('/').pop();
+    };
+
     return {
-        downloadPdf: _ => { return downloadPdf() },
+        getSlug: _ => { return getSlug() },
         format: (number) => { return format(number) },
         capitalize: (text) => { return capitalize(text) },
         langColor: (language) => { return langColor(language) },

@@ -31,3 +31,7 @@
     
     {% include 'partials/post-footer.html' %}
 </article>
+
+{% if is_post %}
+    {% include 'partials/source-code.html' %}
+{% endif %}

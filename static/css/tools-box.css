@@ -1,0 +1,45 @@
+.tools-box {
+    top: 0;
+    right: 0;
+    width: 15em;
+    display: none;
+    overflow: auto;
+    position: fixed;
+    z-index: 999999;
+    box-sizing: border-box;
+    color: var(--color-text);
+    padding: var(--spacing-md);
+    box-shadow: var(--box-shadow);
+    margin-top: var(--header-size);
+    background: var(--color-pre-bg);
+    border-left: .1em solid var(--color-border);
+    border-bottom: .1em solid var(--color-border);
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+}
+
+.tools-box > a {
+    width: 100%;
+    height: 100%;
+    display: block;
+    color: inherit;
+    cursor: pointer;
+    font-size: .8em;
+    font-weight: 600;
+    line-height: 3em;
+    padding-left: 1em;
+    padding-right: 1em;
+    text-decoration: none;
+    box-sizing: border-box;
+    border-radius: var(--border-radius);
+    border-left: 0 solid var(--color-text);
+}
+
+.tools-box > a:hover {
+    color: inherit;
+    text-decoration: none;
+    box-shadow: var(--box-shadow);
+    background: var(--color-border);
+    border-left: 0 solid transparent;
+    animation: border-slide .5s ease-in-out forwards;
+}

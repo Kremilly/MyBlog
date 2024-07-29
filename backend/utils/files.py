@@ -45,6 +45,18 @@ class FilesUtils:
         return html_content
     
     @classmethod
+    def read_raw_content(cls, file:str):
+        html_content = ""
+        
+        if os.path.exists(file):
+            with open(file, encoding='utf-8') as content:
+                html_content = content.read()
+        else:
+            html_content = None
+            
+        return html_content
+    
+    @classmethod
     def get_creation_date_file(cls, file_path:str):
         if os.path.exists(file_path):
             file_date = os.path.getctime(file_path)

@@ -1,0 +1,67 @@
+.modal {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: fixed;
+    z-index: 9999999999999999;
+    box-shadow: var(--box-shadow);
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal > .modal-content > .header {
+    width: 100%;
+    height: 3em;
+}
+
+.modal > .modal-content > .header > .label {
+    float: left;
+    font-weight: 600;
+    line-height: 3em;
+    padding-left: var(--spacing-md);
+}
+
+.modal > .modal-content > .header > .fas {
+    width: 3em;
+    float: right;
+    cursor: pointer;
+    line-height: 3em;
+    text-align: center;
+}
+
+.modal > .modal-content > .header > .fas:hover {
+    background: #af0a0a;
+    color: var(--color-text);
+}
+
+.modal > .modal-content {
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    max-width: 36em;
+    max-height: 80%;
+    overflow-y: auto;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    border-radius: var(--border-radius);
+    background-color: var(--color-pre-bg);
+}
+
+.modal > .modal-content > .source-code {
+    height: 18em;
+    resize: none;
+    outline: none;
+    width: 40.8em;
+    color: inherit;
+    overflow: auto;
+    white-space: pre;
+    font-family: monospace;
+    margin: var(--spacing-md);
+    padding: var(--spacing-sm);
+    background: var(--color-bg);
+    margin-top: var(--spacing-sm);
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+    border: .1em solid var(--border-color);
+}

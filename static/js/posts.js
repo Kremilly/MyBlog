@@ -2,7 +2,7 @@ $( _ => {
 
     lazyload();
     
-    $('#postDownloadPdfBtn').on('click', Utils.downloadPdf);
+    $('#postDownloadPdfBtn').on('click', Addons.downloadPdf);
 
     $('#postShareBtn').on('click', function () {
         $(this).toggleClass('actived');
