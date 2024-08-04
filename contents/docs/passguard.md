@@ -17,11 +17,9 @@ This Rust-based password and passphrase generator offers a versatile solution fo
 
 ## Install
 
-To Install using [crates.io](https://crates.io/)
+To Install using [crates.io](https://crates.io/):
 
-```shell
-cargo install passguard
-```
+> [!install] cargo install passguard
 
 ## Example Usage
 

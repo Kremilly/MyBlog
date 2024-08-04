@@ -20,9 +20,7 @@ Capture screenshots of web pages from specified URL using Rust. Customize viewpo
 
 To build and run PageShot, make sure you have Rust and Cargo installed. Clone this repository and use Cargo to build the project:
 
-```sh
-cargo install pageshot
-```
+> [!install] cargo install pageshot
 
 ## Usage
 

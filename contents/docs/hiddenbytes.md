@@ -9,9 +9,9 @@ HiddenBytes is a personal tool for exploring image steganography techniques and 
 
 ## Installation
 
-```shell
-cargo install hiddenbytes
-```
+To Install using [crates.io](https://crates.io):
+
+> [!install] cargo install hiddenbytes
 
 ## Usage
 
