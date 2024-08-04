@@ -20,7 +20,7 @@ from backend.utils.files import FilesUtils
 class MDBuilder:
     
     @classmethod
-    def replace_alert(cls, match):
+    def replace_alert(cls, match) -> str:
         alert_type = match.group(1).lower()
         md_content = cls.render(match.group(2).strip())
         
@@ -41,7 +41,7 @@ class MDBuilder:
         return f'<div class="{alert_class}">{md_content}</div>'
 
     @classmethod
-    def render_alerts(cls, content):
+    def render_alerts(cls, content) -> str:
         alert_pattern = re.compile(r'> \[!(note|warning|tip|caution|important|install)\](.*)')
         
         return re.sub(
