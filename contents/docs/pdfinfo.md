@@ -19,7 +19,7 @@ fetch('https://api.kremilly.com/pdfinfo?pdf=YOUR_PDF_URL').then(
 })
 ```
 
-> *See [here](https://github.com/kremilly/MyApis/tree/main/examples/wikipedia) others examples in others languages and using Axios.js*
+> [!note] *See [here](https://github.com/kremilly/MyApis/tree/main/examples/wikipedia) others examples in others languages and using Axios.js*
 
 #### Simple output of request:
 

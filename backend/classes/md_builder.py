@@ -24,6 +24,9 @@ class MDBuilder:
         alert_type = match.group(1).lower()
         alert_content = match.group(2).strip()
         
+        md_content = emoji_data_python.replace_colons(alert_content)
+        md_content = cls.render(md_content)
+        
         alert_class = {
             'tip': 'tip',
             'note': 'note',
@@ -35,10 +38,10 @@ class MDBuilder:
         
         if alert_class == 'install':
             return f"""<div class='{alert_class}'>
-                <div class='alert-install-content' onclick='Utils.copy(this);'>{alert_content}</div>
+                <div class='alert-install-content' onclick='Utils.copy(this);'>{md_content}</div>
             </div> """
         
-        return f'<div class="{alert_class}">{alert_content}</div>'
+        return f'<div class="{alert_class}">{md_content}</div>'
 
     @classmethod
     def render_alerts(cls, content):

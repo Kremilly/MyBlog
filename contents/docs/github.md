@@ -12,7 +12,7 @@ If you want to add your pinned repositories to your portfolio or website and can
 https://api.kremilly.com/github?user=YOUR_USERNAME
 ```
 
-> *Replace `YOUR_USERNAME` with your GitHub username*
+> [!note] *Replace `YOUR_USERNAME` with your GitHub username*
 
 ### A simple example of use in JavaScript
 
@@ -25,9 +25,9 @@ fetch('https://api.kremilly.com/github?user=kremilly').then(
 })
 ```
 
-> *The API will return a JSON with all your pinned repositories (if any; otherwise, it will return an empty JSON)*
+> [!note] *The API will return a JSON with all your pinned repositories (if any; otherwise, it will return an empty JSON)*
 
-> *See [here](https://github.com/kremilly/MyApis/tree/main/examples/github) others examples in others languages and using Axios.js*
+> [!note] *See [here](https://github.com/kremilly/MyApis/tree/main/examples/github) others examples in others languages and using Axios.js*
 
 #### Simple output of request:
 

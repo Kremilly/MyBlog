@@ -10,7 +10,7 @@ Explore Your GitHub Language Statistics: Discover Your Most Used Languages
 https://api.kremilly.com/statslangs?user=YOUR_USERNAME
 ```
 
-> *Replace `YOUR_USERNAME` with your GitHub username*
+> [!note] *Replace `YOUR_USERNAME` with your GitHub username*
 
 ### A simple example of use in JavaScript
 

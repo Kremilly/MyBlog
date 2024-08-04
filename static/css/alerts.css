@@ -8,6 +8,7 @@
     padding: var(--spacing-md);
     box-shadow: var(--box-shadow);
     background: var(--color-border);
+    padding-bottom: var(--spacing-xs);
     border-radius: var(--border-radius);
 }
 
