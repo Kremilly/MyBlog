@@ -68,10 +68,21 @@
 }
 
 .install {
-    border-left: .5em solid var(--color-link);
+    border-left: .5em solid var(--color-text);
 }
 
 .install::before {
     content: "Install";
-    color: var(--color-link);
+    color: var(--color-text);
+}
+
+.install > .alert-install-content {
+    margin-right: auto;
+    display: inline-block;
+    font-family: 'Consolas';
+}
+
+.install > .alert-install-content:hover {
+    cursor: pointer;
+    text-decoration: underline;
 }

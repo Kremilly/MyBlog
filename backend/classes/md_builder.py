@@ -33,6 +33,11 @@ class MDBuilder:
             'important': 'important'
         }.get(alert_type, 'note')
         
+        if alert_class == 'install':
+            return f"""<div class='{alert_class}'>
+                <div class='alert-install-content' onclick='Utils.copy(this);'>{alert_content}</div>
+            </div> """
+        
         return f'<div class="{alert_class}">{alert_content}</div>'
 
     @classmethod

@@ -45,8 +45,20 @@ const Utils = ( _ => {
         return slug = pathname.split('/').pop();
     };
 
+    let copy = element => {
+        const range = document.createRange();
+        range.selectNodeContents(element);
+
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range); 
+
+        navigator.clipboard.writeText(selection.toString());
+    };
+
     return {
         getSlug: _ => { return getSlug() },
+        copy: (element) => { return copy(element) },
         format: (number) => { return format(number) },
         capitalize: (text) => { return capitalize(text) },
         langColor: (language) => { return langColor(language) },
