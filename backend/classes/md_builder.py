@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 
-import emoji_data_python, mistune
+import re, emoji_data_python, mistune
 
-from flask import redirect
 from bs4 import BeautifulSoup
 
 from mistune.plugins.url import url
@@ -16,14 +15,38 @@ from mistune.plugins.def_list import def_list
 from mistune.plugins.footnotes import footnotes
 from mistune.plugins.task_lists import task_lists
 
-from backend.classes.my_blog import MyBlog
 from backend.utils.files import FilesUtils
 
 class MDBuilder:
+    
+    @classmethod
+    def replace_alert(cls, match):
+        alert_type = match.group(1).lower()
+        alert_content = match.group(2).strip()
+        
+        alert_class = {
+            'tip': 'tip',
+            'note': 'note',
+            'install': 'install',
+            'caution': 'caution',
+            'warning': 'warning',
+            'important': 'important'
+        }.get(alert_type, 'note')
+        
+        return f'<div class="{alert_class}">{alert_content}</div>'
+
+    @classmethod
+    def render_alerts(cls, content):
+        alert_pattern = re.compile(r'> \[!(note|warning|tip|caution|important|install)\](.*)')
+        
+        return re.sub(
+            alert_pattern, cls.replace_alert, content
+        )
         
     @classmethod
     def render(cls, content: str) -> str:
         content = emoji_data_python.replace_colons(content)
+        content = cls.render_alerts(content)
         
         renderer = mistune.HTMLRenderer(escape=False)
         markdown = mistune.Markdown(renderer, plugins=[

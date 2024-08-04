@@ -1,5 +1,6 @@
 .tip,
 .note,
+.install,
 .warning,
 .caution,
 .important {
@@ -12,6 +13,7 @@
 
 .tip::before,
 .note::before,
+.install::before,
 .warning::before,
 .caution::before,
 .important::before {
@@ -63,4 +65,13 @@
 .caution::before {
     content: "Caution";
     color: var(--color-github-caution);
+}
+
+.install {
+    border-left: .5em solid var(--color-link);
+}
+
+.install::before {
+    content: "Install";
+    color: var(--color-link);
 }

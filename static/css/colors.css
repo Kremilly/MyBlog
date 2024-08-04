@@ -1,0 +1,20 @@
+:root {
+    --color-text: #dcdcdc;
+    --color-bg: #1e1e1e;
+    --color-link: #6fc3df;
+    --color-link-hover: #8cd6ff;
+    --color-border: #333333;
+    --color-muted: #808080;
+    --color-quote: #606060;
+    --color-pre-bg: #292929;
+    --color-pre-fg: #dcdcdc;
+    --color-github-note: #4ec0ff;
+    --color-github-warning: #ea9d04;
+    --color-github-caution: #f85149;
+    --color-github-tip: #2ea043;
+    --color-github-important: #8957e5;
+    --color-install-pkg: #ffc933;
+    
+    --box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+    --box-shadow-inverted: rgba(0, 0, 0, 0.08) 0px -4px -12px;
+}
