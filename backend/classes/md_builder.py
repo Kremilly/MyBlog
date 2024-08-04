@@ -22,10 +22,7 @@ class MDBuilder:
     @classmethod
     def replace_alert(cls, match):
         alert_type = match.group(1).lower()
-        alert_content = match.group(2).strip()
-        
-        md_content = emoji_data_python.replace_colons(alert_content)
-        md_content = cls.render(md_content)
+        md_content = cls.render(match.group(2).strip())
         
         alert_class = {
             'tip': 'tip',
