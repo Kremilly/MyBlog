@@ -10,6 +10,11 @@
     --color-quote: #606060;
     --color-pre-bg: #292929;
     --color-pre-fg: #dcdcdc;
+    --color-github-note: #4ec0ff;
+    --color-github-warning: #ea9d04;
+    --color-github-caution: #f85149;
+    --color-github-tip: #2ea043;
+    --color-github-important: #8957e5;
     --spacing-sm: 8px;
     --spacing-md: 16px;
     --spacing-lg: 24px;

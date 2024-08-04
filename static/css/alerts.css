@@ -1,0 +1,66 @@
+.tip,
+.note,
+.warning,
+.caution,
+.important {
+    margin: var(--spacing-sm);
+    padding: var(--spacing-md);
+    box-shadow: var(--box-shadow);
+    background: var(--color-border);
+    border-radius: var(--border-radius);
+}
+
+.tip::before,
+.note::before,
+.warning::before,
+.caution::before,
+.important::before {
+    display: block;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+}
+
+.note {
+    border-left: .5em solid var(--color-github-note);
+}
+
+.note::before {
+    content: "Note";
+    color: var(--color-github-note);
+}
+
+.warning {
+    border-left: .5em solid var(--color-github-warning);
+}
+
+.warning::before {
+    content: "Warning";
+    color: var(--color-github-warning);
+}
+
+.important {
+    border-left: .5em solid var(--color-github-important);
+}
+
+.important::before {
+    content: "Important";
+    color: var(--color-github-important);
+}
+
+.tip {
+    border-left: .5em solid var(--color-github-tip);
+}
+
+.tip::before {
+    content: "Tip";
+    color: var(--color-github-tip);
+}
+
+.caution {
+    border-left: .5em solid var(--color-github-caution);
+}
+
+.caution::before {
+    content: "Caution";
+    color: var(--color-github-caution);
+}
