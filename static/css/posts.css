@@ -1,6 +1,6 @@
 .posts {
-    width: 800px;
     margin: auto;
+    max-width: 900px;
     margin-top: 60px;
 }
 

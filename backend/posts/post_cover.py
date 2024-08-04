@@ -38,7 +38,7 @@ class PostCover:
         
         try:
             image_file = cls.download_image(image_url)
-            image = Image.open(image_file).convert('RGB').resize((800, 300))
+            image = Image.open(image_file).convert('RGB').resize((900, 300))
         except OSError as e:
             raise ValueError(f'Error opening image: {e}')
         
