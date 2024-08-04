@@ -90,6 +90,10 @@ def export_post(post:str):
 def source_post(post:str):
     return Posts.get_source_post(post)
 
+@app.route('/docs/<api>/raw')
+def source_doc(api:str):
+    return Docs.get_source_doc(api)
+
 @app.route('/docs/<api>')
 def doc(api:str):
     if Docs.check_doc_exists(api):

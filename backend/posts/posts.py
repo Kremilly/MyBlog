@@ -106,7 +106,9 @@ class Posts:
         md_content = FilesUtils.read_raw_content(file_path)
 
         if md_content is not None:
-            return Response(md_content, mimetype='text/plain', content_type='text/plain; charset=utf-8')
+            return Response(
+                md_content, mimetype='text/plain', content_type='text/plain; charset=utf-8'
+            )
         
     @classmethod
     def check_post_exists(cls, file:str) -> str:

@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+from flask import Response
 from markupsafe import Markup
 
 from backend.utils.files import FilesUtils
@@ -42,7 +43,17 @@ class Docs:
             return Markup(
                 MDBuilder.render(md_content.content)
             )
+   
+    @classmethod
+    def get_source_doc(cls, file:str) -> str:
+        file_path = FilesUtils.get_file_path(file, 'docs')
+        md_content = FilesUtils.read_raw_content(file_path)
 
+        if md_content is not None:
+            return Response(
+                md_content, mimetype='text/plain', content_type='text/plain; charset=utf-8'
+            )
+      
     @classmethod
     def check_doc_exists(cls, file:str) -> str:
         file_path = FilesUtils.get_file_path(file, 'docs')
