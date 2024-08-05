@@ -6,7 +6,6 @@
 .important {
     margin: var(--spacing-sm);
     padding: var(--spacing-md);
-    box-shadow: var(--box-shadow);
     background: var(--color-border);
     padding-bottom: var(--spacing-xs);
     border-radius: var(--border-radius);
@@ -86,4 +85,19 @@
 .install > .alert-install-content:hover {
     cursor: pointer;
     text-decoration: underline;
+}
+
+.install > .alert-install-count {
+    opacity: .75;
+    float: right;
+    cursor: default;
+    font-weight: 600;
+    margin-top: -36px;
+    color: var(--color-text);
+    margin-left: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+}
+
+.install > .alert-install-count > .icon {
+    margin-right: var(--spacing-sm);
 }

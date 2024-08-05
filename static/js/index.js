@@ -1,6 +1,7 @@
 $( _ => {
 
     ScrollTo.checkScroll();
+    Crates.countDownloads();
 
     var hideMenuTimeout;
 

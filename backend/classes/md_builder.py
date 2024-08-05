@@ -22,7 +22,8 @@ class MDBuilder:
     @classmethod
     def replace_alert(cls, match:str) -> str:
         alert_type = match.group(1).lower()
-        md_content = cls.render(match.group(2).strip())
+        plain_content = match.group(2).strip()
+        md_content = cls.render(plain_content)
         
         alert_class = {
             'tip': 'tip',
@@ -34,8 +35,12 @@ class MDBuilder:
         }.get(alert_type, 'note')
         
         if alert_class == 'install':
+            pkg_type = plain_content.split(' ')[0]
+            pkg_name = plain_content.split(' ')[-1]
+            
             return f"""<div class='{alert_class}'>
-                <div class='alert-install-content' onclick='Utils.copy(this);'>{md_content}</div>
+                <div class='alert-install-content' onclick='Utils.copy(this);' title='Click to copy'>{md_content}</div>
+                <div class='alert-install-count' data-pkg-type='{pkg_type}' data-pkg='{pkg_name}'></div>
             </div> """
         
         return f'<div class="{alert_class}">{md_content}</div>'

@@ -2,6 +2,7 @@ const Crates = ( _ => {
 
     let cratesPage = 'https://crates.io/crates/';
     let cratesURI = 'https://crates.io/api/v1/crates?user_id=232087';
+    let crateURI = 'https://crates.io/api/v1/crates/';
 
     let featured = _ => {
         if (window.location.pathname == '/') {
@@ -57,12 +58,36 @@ const Crates = ( _ => {
         });
     };
 
+    let countDownloads = _ => {
+        if ($('.install').length) {
+            $('.alert-install-count').each( function () {
+                let $this = $(this);
+                let pkgName = $this.data('pkg');
+                let pkgType = $this.data('pkg-type');
+
+                if (pkgType == 'cargo') {
+                    fetch(crateURI + pkgName).then(
+                        json => json.json()
+                    ).then( response => {
+                        let totalDownloads = Utils.format(response.crate.downloads);
+                        
+                        $(this).html(`
+                            <div class='fas fa-download icon'></div>
+                            ${totalDownloads}    
+                        `);
+                    });
+                }
+            });
+        }
+    };
+
     return {
         cratesURI: cratesURI,
         cratesPage: cratesPage,
 
         featured: () => { return featured() },
         projects: () => { return projects() },
+        countDownloads: () => { return countDownloads() },
     };
 
 })();

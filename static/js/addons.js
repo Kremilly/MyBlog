@@ -43,9 +43,11 @@ const Addons = ( _ => {
             window.location.hash, ''
         ) + '/raw';
 
-        fetch(endpoint).then(text => text.text()).then(content => {
-            $('#sourceCodePage').val(content)
-        });
+        if (endpoint.includes('/docs') || endpoint.includes('/blog')) {
+            fetch(endpoint).then(text => text.text()).then(content => {
+                $('#sourceCodePage').val(content)
+            });
+        }
     };
 
     return {
