@@ -14,7 +14,7 @@ https://api.kremilly.com/wikipedia?location=en&term=Microsoft&thumb_size=256&sho
 
 ```javascript
 // Replace "Microsoft" for your article on Wikipedia
-fetch('api.kremilly.com/wikipedia?location=en&term=Microsoft&thumb_size=256&short_summary=true').then(
+fetch('https://api.kremilly.com/wikipedia?location=en&term=Microsoft&thumb_size=256&short_summary=true').then(
    json => json.json()
 ).then(callback => { 
    console.log(callback) 
