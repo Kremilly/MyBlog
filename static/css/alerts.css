@@ -86,7 +86,7 @@
 
 .install > .alert-install-content:hover {
     cursor: pointer;
-    text-decoration: underline;
+    color: var(--color-link-hover);
 }
 
 .install > .alert-install-count {
@@ -129,5 +129,6 @@
 }
 
 .wikipedia > .wikipedia-page-content:hover {
+    cursor: pointer;
     color: var(--color-link-hover);
 }
