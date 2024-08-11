@@ -3,11 +3,12 @@
 .install,
 .warning,
 .caution,
+.wikipedia,
 .important {
     margin: var(--spacing-sm);
     padding: var(--spacing-md);
     background: var(--color-border);
-    padding-bottom: var(--spacing-xs);
+    padding-bottom: var(--spacing-sm);
     border-radius: var(--border-radius);
 }
 
@@ -16,6 +17,7 @@
 .install::before,
 .warning::before,
 .caution::before,
+.wikipedia::before,
 .important::before {
     display: block;
     font-weight: 600;
@@ -100,4 +102,32 @@
 
 .install > .alert-install-count > .icon {
     margin-right: var(--spacing-sm);
+}
+
+.wikipedia {
+    border-left: .5em solid var(--color-wikipedia);
+}
+
+.wikipedia::before {
+    content: "Wikipedia";
+    color: var(--color-wikipedia);
+}
+
+.wikipedia > .wikipedia-page-content {
+    color: inherit;
+    text-decoration: none;
+}
+
+.wikipedia > .icon {
+    float: right;
+    cursor: default;
+    font-weight: 600;
+    margin-top: -36px;
+    color: var(--color-text);
+    margin-left: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+}
+
+.wikipedia > .wikipedia-page-content:hover {
+    color: var(--color-link-hover);
 }

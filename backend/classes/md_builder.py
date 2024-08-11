@@ -31,7 +31,8 @@ class MDBuilder:
             'install': 'install',
             'caution': 'caution',
             'warning': 'warning',
-            'important': 'important'
+            'important': 'important',
+            'wikipedia': 'wikipedia',
         }.get(alert_type, 'note')
         
         if alert_class == 'install':
@@ -41,13 +42,19 @@ class MDBuilder:
             return f"""<div class='{alert_class}'>
                 <div class='alert-install-content' onclick='Utils.copy(this);' title='Click to copy'>{md_content}</div>
                 <div class='alert-install-count' data-pkg-type='{pkg_type}' data-pkg='{pkg_name}'></div>
-            </div> """
+            </div>"""
+            
+        if alert_class == 'wikipedia':
+            return f"""<div class='{alert_class}'>
+                <div class='fab fa-wikipedia-w icon'></div>
+                <a href='#' target='_blank' class='wikipedia-page-content'>{md_content}</a>
+            </div>"""
         
         return f'<div class="{alert_class}">{md_content}</div>'
 
     @classmethod
     def render_alerts(cls, content:str) -> str:
-        alert_pattern = re.compile(r'> \[!(note|warning|tip|caution|important|install)\](.*)')
+        alert_pattern = re.compile(r'> \[!(note|warning|tip|caution|important|install|wikipedia)\](.*)')
         
         return re.sub(
             alert_pattern, cls.replace_alert, content

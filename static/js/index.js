@@ -1,5 +1,6 @@
 $( _ => {
 
+    Wikipedia.get();
     ScrollTo.checkScroll();
     Crates.countDownloads();
 
