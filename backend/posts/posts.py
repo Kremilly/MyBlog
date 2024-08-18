@@ -36,6 +36,7 @@ class Posts:
                 'url': f'{url_root}/blog/{slug}',
                 'title': PostsMeta.get(file, 'Title'),
                 'read_time': PostsMeta.get_read_time(file),
+                'tags': PostsMeta.get(file, 'Tags').split(','),
                 'description': PostsMeta.get(file, 'Description'),
             })
 

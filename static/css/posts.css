@@ -62,3 +62,16 @@
     border-left: 0 solid transparent;
     animation: border-slide .5s ease-in-out forwards;
 }
+
+.posts > a > li > .tag {
+    height: 3em;
+    color: inherit;
+    font-size: .8em;
+    font-weight: 600;
+    line-height: 3em;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: var(--spacing-md);
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+}

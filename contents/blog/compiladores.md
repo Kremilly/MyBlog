@@ -4,7 +4,7 @@ Description: Um compilador é um programa de computador que traduz código-fonte
 Date: 2024-08-18
 CoverTitle: Compiladores
 CoverFontSize: 42
-Tags: low-level, compilers, architecture
+Tags: baixo-nivel, compiladores, arquitetura, codigo-fonte
 DownloadPdf: enabled
 ---
 Um compilador é um programa de computador que traduz código-fonte escrito em uma linguagem de programação de alto nível (como C, C++, Java) para uma linguagem de baixo nível, geralmente código de máquina que um computador pode executar diretamente, ou para um código intermediário que é posteriormente interpretado ou compilado em código de máquina.
