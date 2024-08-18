@@ -4,7 +4,7 @@ $( _ => {
     ScrollTo.checkScroll();
     Crates.countDownloads();
 
-    var hideMenuTimeout;
+    let hideMenuTimeout;
 
     $(window).on('scroll', ScrollTo.checkScroll);
     $('#scrollToTopBtn').on('click', ScrollTo.top);
@@ -52,6 +52,20 @@ $( _ => {
         
         $('#menuBoxTogglePages').slideUp(250);
         $('#menuBoxToggleDocs').slideDown(250);
+    });
+
+    $('#postsSearch').on('input', function () {
+        let searchText = $(this).val().toLowerCase();
+
+        $('.posts > a > .article').each( function () {
+            let listItemText = $(this).text().toLowerCase();
+
+            if (listItemText.includes(searchText)) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
     });
 
 });

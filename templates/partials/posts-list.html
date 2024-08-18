@@ -1,4 +1,6 @@
 <ul class='posts'>
+    <input type='text' id='postsSearch' placeholder='Search posts...'>
+    
     {% for post in list_posts %}
         <a href='{{ post.url }}'>
             <li class='article'>
