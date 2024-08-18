@@ -75,3 +75,14 @@
     padding-left: var(--spacing-md);
     padding-right: var(--spacing-md);
 }
+
+.posts > .no-results {
+    padding: 20px;
+    cursor: default;
+    list-style: none;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    background: var(--color-pre-bg);
+    border-radius: var(--border-radius);
+    border-left: .1em solid var(--border-color);
+}
