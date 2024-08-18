@@ -3,6 +3,7 @@
 from flask import Response
 from markupsafe import Markup
 from bs4 import BeautifulSoup
+from datetime import datetime
 
 from backend.utils.files import FilesUtils
 
@@ -20,22 +21,26 @@ class Posts:
         list_posts = []
         url_root = MyBlog.get_url_root()
         path = Settings.get('paths.contents.blog', 'string')
-        
+
         for post in FilesUtils.scan_path(path):
             file = post.split('/')[-1].replace('.md', '')
             slug = post.split('/')[-1].replace('+', '-').replace(' ', '-').replace('.md', '')
-            
+
+            date_str = PostsMeta.get_date(file)
+            date_obj = datetime.strptime(date_str, '%a, %b %d\'%y')
+
             list_posts.append({
                 'slug': slug,
+                'date': date_obj,
+                'date_fmt': date_str,
                 'url': f'{url_root}/blog/{slug}',
-                'date': PostsMeta.get_date(file),
                 'title': PostsMeta.get(file, 'Title'),
                 'read_time': PostsMeta.get_read_time(file),
                 'description': PostsMeta.get(file, 'Description'),
             })
-            
+
         return sorted(
-            list_posts, key=lambda x: x['date'], reverse=False
+            list_posts, key=lambda x: x['date'], reverse=True
         )
     
     @classmethod
