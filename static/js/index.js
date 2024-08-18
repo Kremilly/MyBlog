@@ -82,7 +82,7 @@ $( _ => {
             history.replaceState(null, '', url.pathname + url.search);
         }
 
-        $('.posts > a > .article').each( function () {
+        $('.posts > .article').each( function () {
             $('.posts > .no-results').remove();
             let listItemText = $(this).text().toLowerCase();
 
@@ -91,7 +91,7 @@ $( _ => {
             } else {
                 $(this).hide();
                 
-                if ($('.posts > a > .article:visible').length == 0) {
+                if ($('.posts > .article:visible').length == 0) {
                     $('.posts > .no-results').remove();
                     
                     $('.posts').append(`

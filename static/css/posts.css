@@ -22,12 +22,7 @@
     animation: border-slide .5s ease-in-out forwards;
 }
 
-.posts > a {
-    text-decoration: none !important;
-    color: var(--color-pre-fg) !important;
-}
-
-.posts > a > li {
+.posts > li {
     padding: 20px;
     cursor: pointer;
     list-style: none;
@@ -38,32 +33,42 @@
     border-left: .1em solid transparent;
 }
 
-.posts > a > li > h2 {
+.posts > li > a {
+    text-decoration: none;
+    color: var(--color-pre-fg) !important;
+}
+
+.posts > li > a:hover > h2 {
+    text-decoration: underline;
+}
+
+.posts > li > h2 {
     margin: 0;
+    color: inherit;
     font-size: 1.5em;
     padding-top: .5em;
     padding-bottom: .5em;
     color: var(--color-pre-fg);
 }
 
-.posts > a > li > p {
+.posts > li > p {
     margin: 0;
     color: var(--color-pre-fg);
 }
 
-.posts > a > li > .date {
+.posts > li > .date {
     font-size: .8em;
     color: var(--color-pre-fg);
 }
 
-.posts > a > li:hover {
+.posts > li:hover {
     box-shadow: var(--box-shadow);
     background: var(--color-border);
     border-left: 0 solid transparent;
     animation: border-slide .5s ease-in-out forwards;
 }
 
-.posts > a > li > .tag {
+.posts > li > .tag {
     height: 3em;
     color: inherit;
     font-size: .8em;
@@ -74,6 +79,11 @@
     margin-top: var(--spacing-md);
     padding-left: var(--spacing-md);
     padding-right: var(--spacing-md);
+}
+
+.posts > li > .tag:hover {
+    border-radius: var(--border-radius);
+    animation: bg-color .5s ease-in-out forwards;
 }
 
 .posts > .no-results {

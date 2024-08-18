@@ -2,16 +2,17 @@
     <input type='search' id='postsSearch' placeholder='Search posts...'>
 
     {% for post in list_posts %}
-        <a href='{{ post.url }}'>
-            <li class='article'>
-                <div class='date'>{{ post.date_fmt }}</div>
+        <li class='article'>
+            <div class='date'>{{ post.date_fmt }}</div>
+            <a href='{{ post.url }}'>
                 <h2>{{ post.title }}</h2>
-                <p>{{ post.description }}</p>
+            </a>
 
-                {% for tag in post.tags %}
-                    <div class='tag'>{{ tag }}</div>
-                {% endfor %}
-            </li>
-        </a>
+            <p>{{ post.description }}</p>
+
+            {% for tag in post.tags %}
+                <a href='?search={{ tag.strip() }}' class='tag'>{{ tag.strip() }}</a>
+            {% endfor %}
+        </li>
     {% endfor %}
 </ul>
