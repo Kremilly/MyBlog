@@ -7,7 +7,7 @@ $( _ => {
     let hideMenuTimeout;
 
     setTimeout( function () {
-        let searchParam = new URL(window.location).searchParams.get('search');
+        let searchParam = new URL(window.location).searchParams.get('q');
 
         if (searchParam) {
             const inputElement = $('#postsSearch');
@@ -74,12 +74,12 @@ $( _ => {
 
     $('#postsSearch').on('input', function () {
         let searchText = $(this).val().toLowerCase();
-        history.replaceState(null, '', `?search=${searchText}`);
+        history.replaceState(null, '', `?q=${searchText}`);
 
         if (!searchText) {
             let url = new URL(window.location);
-            url.searchParams.delete('search');
-            history.replaceState(null, '', url.pathname + url.search);
+            url.searchParams.delete('q');
+            history.replaceState(null, '', url.pathname + url.q);
         }
 
         $('.posts > .article').each( function () {
