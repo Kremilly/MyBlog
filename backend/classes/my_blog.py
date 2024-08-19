@@ -36,8 +36,15 @@ class MyBlog:
     
     @classmethod
     def check_if_docs(cls):
-        is_doc = 'docs' in cls.get_path()
-        return dict(is_doc=is_doc)
+        path_parts = cls.get_path().split('/')
+        check_is_doc = path_parts[-1] != 'docs'
+        return dict(is_doc=check_is_doc)
+    
+    @classmethod
+    def check_if_doc_post(cls):
+        path_parts = cls.get_path().split('/')
+        check_is_doc_post = len(path_parts) > 2
+        return dict(is_doc_post=check_is_doc_post)
     
     @classmethod
     def get_url_root(cls):

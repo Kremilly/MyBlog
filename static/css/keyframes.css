@@ -43,11 +43,8 @@
 
     100% {
         width: 12em;
-        height: 2.5em;
-        margin-top: .25em;
         background-size: 60%;
         box-shadow: var(--box-shadow);
-        border-radius: var(--border-radius);
         background-image: var(--logo-hover);
         background-color: var(--color-border);
     }

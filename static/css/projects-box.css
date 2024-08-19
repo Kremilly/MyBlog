@@ -4,7 +4,7 @@
     width: 21em;
     display: none;
     position: fixed;
-    z-index: 999999;
+    z-index: 999999999999;
     box-sizing: border-box;
     border-top: 0 !important;
     color: var(--color-text);

@@ -5,6 +5,7 @@ $( _ => {
     Crates.countDownloads();
 
     let hideMenuTimeout;
+    let pathParts = window.location.pathname.split('/');
 
     setTimeout( function () {
         let searchParam = new URL(window.location).searchParams.get('q');
@@ -24,26 +25,28 @@ $( _ => {
         }
     }, 10);
 
+    if (pathParts.length > 0) {
+        switch (pathParts[1]) {
+            case '':
+            case 'blog':
+                $('#blog-tab-menu').addClass('actived');
+                break;
+
+            case 'docs':
+                $('#docs-tab-menu').addClass('actived');
+                break;
+
+            case 'links':
+                $('#links-tab-menu').addClass('actived');
+                break;
+
+            default:
+                break;
+        }
+    }
+
     $(window).on('scroll', ScrollTo.checkScroll);
     $('#scrollToTopBtn').on('click', ScrollTo.top);
-
-    $('#toggleMenuBox, #menuBox').hover( function () {
-        clearTimeout(hideMenuTimeout);
-
-        $('#menuBoxToggleDocs').hide();
-        $('#menuBoxTogglePages').show();
-        
-        $('#menuBoxTogglePagesBtn').addClass('actived');
-        $('#menuBoxToggleDocsBtn').removeClass('actived');
-
-        $('#toggleMenuBox').addClass('actived-menu');
-        $('#menuBox').stop(true, true).fadeIn(250);
-    }, function () {
-        hideMenuTimeout = setTimeout(function() {
-            $('#toggleMenuBox').removeClass('actived-menu');
-            $('#menuBox').stop(true, true).fadeOut(250);
-        }, 300);
-    });
 
     $('#projectsBoxBtn, #projectsBox').hover( function () {
         clearTimeout(hideMenuTimeout);

@@ -27,6 +27,16 @@ def home():
         list_posts=Posts.list_posts()
     )
     
+@app.route('/docs')
+def docs():
+    return render_template(
+        'docs.html', 
+        **MyBlog.common_template_args(),
+        
+        list_docs=Docs.list_docs(),
+        list_posts=Posts.list_posts()
+    )
+    
 @app.route('/links')
 def links():
     return render_template(
@@ -141,6 +151,10 @@ def inject_route_post():
 @app.context_processor
 def inject_route_doc():
     return MyBlog.check_if_docs()
+
+@app.context_processor
+def inject_route_doc_post():
+    return MyBlog.check_if_doc_post()
 
 @app.context_processor
 def inject_route_home():

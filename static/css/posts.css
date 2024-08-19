@@ -2,12 +2,46 @@
     margin: auto;
     max-width: 900px;
     margin-top: 60px;
+    padding-left: 0 !important;
+}
+
+.posts > .section {
+    width: 100%;
+    outline: none;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    padding: var(--spacing-sm);
+    color: var(--color-pre-fg);
+    background: var(--color-pre-bg);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--color-border);
+}
+
+.posts > .section > .tab {
+    height: 3em;
+    color: inherit;
+    font-size: .8em;
+    cursor: pointer;
+    font-weight: 600;
+    line-height: 3em;
+    text-decoration: none;
+    display: inline-block;
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+    border-radius: var(--border-radius);
+}
+
+.posts > .section > .tab:hover, .posts > .section > .actived {
+    border-radius: var(--border-radius);
+    animation: bg-color .5s ease-in-out forwards;
 }
 
 .posts > input {
     width: 100%;
-    padding: 10px;
     outline: none;
+    padding: 12px;
     font-weight: 600;
     margin-bottom: 20px;
     box-sizing: border-box;
@@ -20,6 +54,10 @@
 .posts > input:hover, .posts > input:focus {
     background: var(--color-border);
     animation: border-slide .5s ease-in-out forwards;
+}
+
+.posts > ul {
+    padding: 0px !important;
 }
 
 .posts > li {

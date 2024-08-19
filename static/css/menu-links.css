@@ -1,0 +1,40 @@
+.menu-links {
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999999;
+    position: fixed;
+    font-weight: 600;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    box-sizing: border-box;
+    padding: var(--spacing-sm);
+    color: var(--color-pre-fg);
+    box-shadow: var(--box-shadow);
+    margin-top: var(--header-size);
+    background: var(--color-pre-bg);
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+    border-radius: var(--border-radius);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.menu-links > .tab {
+    color: inherit;
+    font-size: .8em;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    height: var(--header-size);
+    line-height: var(--header-size);
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+    border-radius: var(--border-radius);
+}
+
+.menu-links > .tab:hover, .menu-links > .actived {
+    border-radius: var(--border-radius);
+    animation: bg-color .5s ease-in-out forwards;
+}

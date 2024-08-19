@@ -1,0 +1,14 @@
+<ul class='posts'>
+    <input type='search' id='postsSearch' placeholder='Search docs...'>
+
+    {% for doc in list_docs %}
+        <li class='article'>
+            <div class='date'>{{ doc.category }}</div>
+            <a href='{{ doc.url }}'>
+                <h2>{{ doc.title }}</h2>
+            </a>
+
+            <p>{{ doc.description }}</p>
+        </li>
+    {% endfor %}
+</ul>

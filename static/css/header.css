@@ -9,7 +9,6 @@ header{
     justify-content: center;
     color: var(--color-text);
     height: var(--header-size);
-    box-shadow: var(--box-shadow);
     background: var(--color-pre-bg);
 }
 
