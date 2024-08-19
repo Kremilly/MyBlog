@@ -1,8 +1,9 @@
 ---
 Title: CVE
+Description: The CVE API provides access to information about known security vulnerabilities in software, access information about known security vulnerabilities in software.
 Category: API
 ---
-The CVE API provides access to information about known security vulnerabilities in software.
+The CVE API provides access to information about known security vulnerabilities in software, access information about known security vulnerabilities in software.
 
 ## Example of request
 

@@ -1,5 +1,6 @@
 ---
 Title: Wikipedia
+Description: A simple Wikipedia Rest API
 Category: API
 ---
 A simple Wikipedia Rest API

@@ -1,8 +1,9 @@
 ---
 Title: Statslangs
+Description: Explore Your GitHub Language Statistics, discover your most used languages.
 Category: API
 ---
-Explore Your GitHub Language Statistics: Discover Your Most Used Languages
+Explore Your GitHub Language Statistics: Discover Your Most Used Languages.
 
 ### Example of request
 

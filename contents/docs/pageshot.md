@@ -1,6 +1,7 @@
 ---
 Title: PageShot
 Category: Crate
+Description: Capture screenshots of web pages from specified URL using Rust. Customize viewport dimensions and save the resulting image in PNG format. You can customize the viewport dimensions and save the resulting image in PNG format.
 Package: cargo install pageshot
 ---
 ![img](https://img.shields.io/crates/v/pageshot?style=flat-square&logo=rust)

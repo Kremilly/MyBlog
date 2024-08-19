@@ -1,5 +1,6 @@
 ---
 Title: PDFInfo
+Description: Extract information from PDF files, such as the number of pages, file size, and whether the file is password-protected.
 Category: API
 ---
 ## Example of request

@@ -1,6 +1,7 @@
 ---
 Title: PassGuard
 Category: Crate
+Description: This Rust-based password and passphrase generator offers a versatile solution for creating secure, customizable passwords. With support for password size and include uppercase, numbers and symbols.
 Package: cargo install passguard
 ---
 ![img](https://img.shields.io/crates/v/passguard?style=flat-square&logo=rust)

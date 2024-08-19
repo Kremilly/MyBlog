@@ -1,6 +1,7 @@
 ---
 Title: IPInfo
 Category: Crate
+Description: Empower your IP data retrieval tasks by leveraging Rust's capabilities to effortlessly extract comprehensive IP information from URLs, enhancing efficiency and precision in data processing workflows.
 Package: cargo install ipinfo-cli
 ---
 ![img](https://img.shields.io/crates/v/ipinfo-cli?style=flat-square&logo=rust)

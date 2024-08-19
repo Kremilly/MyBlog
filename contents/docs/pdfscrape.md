@@ -1,7 +1,10 @@
 ---
 Title: PDFScrape
+Description: The PDFScrape API provides access to information about PDF files, access information about PDF files.
 Category: API
 ---
+The PDFScrape API provides access to information about PDF files, access information about PDF files.
+
 ## Example of request
 
 ```shell

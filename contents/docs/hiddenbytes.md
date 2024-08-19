@@ -1,6 +1,7 @@
 ---
 Title: HiddenBytes
 Category: Crate
+Description: A personal tool for exploring image steganography techniques and algorithms, ideal for experimenting with hiding information in images.
 Package: cargo install hiddenbytes
 ---
 ![](https://img.shields.io/crates/v/hiddenbytes?style=flat-square&logo=rust)
