@@ -4,12 +4,14 @@ header{
     bottom: 0;
     width: 100%;
     position: fixed;
-    z-index: 99999999999;
+    z-index: 999999999;
     box-sizing: border-box;
     justify-content: center;
     color: var(--color-text);
     height: var(--header-size);
+    box-shadow: var(--box-shadow);
     background: var(--color-pre-bg);
+    border-bottom: 1px solid var(--color-border);
 }
 
 header > .logo {
