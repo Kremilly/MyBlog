@@ -28,6 +28,14 @@
     <div class='content'>
         {{ html_content }}
     </div>
+
+    {% if is_post and post_tags.total > 0 %}
+        <div class='tags'>
+            {% for tag in post_tags.list %}
+                <a href='{{ url_root + "?q=" + tag }}' class='tag'>{{ tag }}</a>
+            {% endfor %}
+        </div>
+    {% endif %}
     
     {% include 'partials/post-footer.html' %}
 </article>

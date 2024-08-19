@@ -1,13 +1,6 @@
 <div class='footer'>
     <div class='meta'>
         <div class='left'>
-            {% if is_post and post_tags.total > 0 %}
-                <div class='footer-btn' id='postTagsBtn'>
-                    <div class='fas fa-tag'></div>
-                    <div class='text'>Tags</div>
-                </div>
-            {% endif %}
-
             {% if is_post and post_files.total > 0 %}
                 <div class='footer-btn' id='postFilesBtn'>
                     <div class='fas fa-paperclip'></div>
@@ -91,16 +84,6 @@
                         {{ link.text }}
                         <div class='fas fa-arrow-up-right-from-square'></div>
                     </a>
-                {% endfor %}
-            </div>
-        </div>
-    {% endif %}
-
-    {% if is_post and post_tags.total > 0 %}
-        <div class='box' id='postTagsBox'>
-            <div class='body'>
-                {% for tag in post_tags.list %}
-                    <a href='{{ url_root + "?q=" + tag }}' class='side'>{{ tag }}</a>
                 {% endfor %}
             </div>
         </div>

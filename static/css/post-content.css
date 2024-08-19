@@ -21,3 +21,40 @@
     border-top-left-radius: var(--border-radius);
     border-top-right-radius: var(--border-radius);
 }
+
+.post-content > .tags {
+    position: static;
+    box-sizing: border-box;
+    padding: var(--spacing-sm);
+    box-shadow: var(--box-shadow);
+    background: var(--color-border);
+    margin-bottom: var(--spacing-md);
+    border-radius: var(--border-radius);
+    border: .1em solid var(--color-pre-bg);
+}
+
+.post-content > .tags::before {
+    display: block;
+    content: "Tags";
+    font-size: .9em;
+    font-weight: 600;
+    padding-left: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.post-content > .tags > .tag {
+    height: 3em;
+    color: inherit;
+    font-size: .8em;
+    font-weight: 600;
+    line-height: 3em;
+    text-decoration: none;
+    display: inline-block;
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+}
+
+.post-content > .tags > .tag:hover {
+    border-radius: var(--border-radius);
+    animation: bg-color .5s ease-in-out forwards;
+}
