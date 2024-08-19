@@ -87,9 +87,9 @@ class PostsMeta:
             time_calculated = round(total_words / words_per_minute)
 
             if time_calculated > 1:
-                return str(time_calculated) + ' minutes'
+                return str(time_calculated) + ' minutos'
 
-            return 'Less than a minute'
+            return 'Menos de um minuto'
         
         return None
     
