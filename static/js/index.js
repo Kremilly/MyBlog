@@ -79,7 +79,7 @@ $( _ => {
         if (!searchText) {
             let url = new URL(window.location);
             url.searchParams.delete('q');
-            history.replaceState(null, '', url.pathname + url.q);
+            history.replaceState(null, '', url.pathname + url.search);
         }
 
         $('.posts > .article').each( function () {
