@@ -45,7 +45,6 @@ def links():
         
         title='Links',
         
-        list_docs=Docs.list_docs(),
         list_links=Links.list_links(),
         social_media=Links.social_media(),
     )
@@ -58,7 +57,6 @@ def list_projects():
         
         title='Links',
         
-        list_docs=Docs.list_docs(),
         list_links=Links.list_links(),
         social_media=Links.social_media(),
     )
@@ -70,7 +68,6 @@ def post(post:str):
             'post.html', 
             **MyBlog.common_template_args(),
             
-            list_docs=Docs.list_docs(),
             html_content=Posts.get_post(post),
             source_code=Posts.get_source_post(post),
             
@@ -111,11 +108,8 @@ def doc(api:str):
             'post.html', 
             **MyBlog.common_template_args(),
             
-            list_docs=Docs.list_docs(),
-            html_content=Docs.get_doc(api),
-            
             url=MyBlog.get_url(),
-            
+            html_content=Docs.get_doc(api),
             package=DocsMeta.get(api, 'Package'),
             
             title=DocsMeta.get(api, 'Title'),
