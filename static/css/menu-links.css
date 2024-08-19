@@ -16,8 +16,9 @@
     background: var(--color-pre-bg);
     padding-left: var(--spacing-md);
     padding-right: var(--spacing-md);
-    border-radius: var(--border-radius);
     border-bottom: 1px solid var(--color-border);
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
 }
 
 .menu-links > .tab {
