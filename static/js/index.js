@@ -74,7 +74,8 @@ $( _ => {
 
     $('#postsSearch').on('input', function () {
         let searchText = $(this).val().toLowerCase();
-        history.replaceState(null, '', `?q=${searchText}`);
+        let encodedSearchText = encodeURIComponent(searchText).replace(/%20/g, "+");
+        history.replaceState(null, '', `?q=${encodedSearchText}`);
 
         if (!searchText) {
             let url = new URL(window.location);

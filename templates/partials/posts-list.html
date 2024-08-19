@@ -11,7 +11,7 @@
             <p>{{ post.description }}</p>
 
             {% for tag in post.tags %}
-                <a href='?q={{ tag.strip() }}' class='tag'>{{ tag.strip() }}</a>
+                <a href='?q={{ tag.strip().replace(" ", "+") }}' class='tag'>{{ tag.strip() }}</a>
             {% endfor %}
         </li>
     {% endfor %}
