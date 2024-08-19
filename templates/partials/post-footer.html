@@ -100,7 +100,7 @@
         <div class='box' id='postTagsBox'>
             <div class='body'>
                 {% for tag in post_tags.list %}
-                    <a href='#' class='side'>{{ tag }}</a>
+                    <a href='{{ url_root + "?q=" + tag }}' class='side'>{{ tag }}</a>
                 {% endfor %}
             </div>
         </div>
