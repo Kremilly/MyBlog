@@ -4,7 +4,7 @@
     width: 18em;
     display: none;
     position: fixed;
-    z-index: 999999;
+    z-index: 999999999999;
     box-sizing: border-box;
     color: var(--color-text);
     padding: var(--spacing-md);
