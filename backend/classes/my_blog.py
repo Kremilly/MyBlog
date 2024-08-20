@@ -79,8 +79,9 @@ class MyBlog:
         
         for profile in Settings.get('projects', 'list'):
             projects.append({
-                'name': list(profile.keys())[0], 
-                'url': list(profile.values())[0]
+                'name': profile.get('name', 'Unknown'),
+                'url': profile.get('url', 'Unknown'),
+                'description': profile.get('description', 'No description available')
             })
             
         return jsonify(projects)

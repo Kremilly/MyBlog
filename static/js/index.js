@@ -40,6 +40,10 @@ $( _ => {
                 $('#links-tab-menu').addClass('actived');
                 break;
 
+            case 'projects':
+                $('#projects-tab-menu').addClass('actived');
+                break;
+
             default:
                 break;
         }
