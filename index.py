@@ -33,6 +33,7 @@ def docs():
         'docs.html', 
         **MyBlog.common_template_args(),
         
+        title='Docs',
         list_docs=Docs.list_docs(),
         list_posts=Posts.list_posts()
     )
