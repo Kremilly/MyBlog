@@ -3,32 +3,7 @@ let $ = jQuery;
 const Apis = ( _ => {
 
     let apiUri = 'https://api.kremilly.com';
-
-    let featured = _ => {
-        if (window.location.pathname == '/') {
-            fetch(apiUri).then(
-                json => json.json()
-            ).then(response => {
-                window.location.hash = 'apis';
-
-                $('.featured-tabs').removeClass('actived');
-                $('#tabApis').toggleClass('actived');
-
-                $('#featuredList').empty();
-
-                response.list.forEach(item => {
-                    $('#featuredList').append(`
-                        <a href='${item.wiki}' target='_blank' class='item featured-item'>
-                            <div class='name'>${ Utils.capitalize(item.name) }</div>
-                        </a>
-                    `);
-                });
-
-                $('#featured').show();
-            });
-        }
-    };
-
+    
     let projects = _ => {
         fetch(apiUri).then(
             json => json.json()
