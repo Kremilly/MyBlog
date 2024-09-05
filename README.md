@@ -14,9 +14,19 @@
   <a href='https://kremilly.com/links'>Links</a>
 </p>
 
+## Technologies
+
+<ul>
+    <li>Python</li>
+    <li>Flask</li>
+    <li>Mistune</li>
+    <li>xhtml2pdf</li>
+    <li>Markdown</li>
+</ul>
+
 <details>
   <summary>
-    📚 <b><a href='https://kremilly.com/docs' target='_blank'>Documentation's</a></b>
+    📚 <b>Documentation's</b>
   </summary>
 
   <ul>
