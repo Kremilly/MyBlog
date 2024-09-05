@@ -2,7 +2,6 @@
     display: flex;
     margin-left: auto;
     justify-content: flex-end;
-    margin-top: var(--spacing-md);
     margin-bottom: var(--spacing-md);
 }
 
