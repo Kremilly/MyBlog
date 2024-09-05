@@ -46,6 +46,7 @@
     box-sizing: border-box;
     color: var(--color-pre-fg);
     background: var(--color-pre-bg);
+    margin-bottom: var(--spacing-md);
     border-radius: var(--border-radius);
     border: 1px solid var(--color-border);
 }
