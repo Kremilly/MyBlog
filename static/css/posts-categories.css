@@ -1,0 +1,30 @@
+.posts > .categories {
+    display: flex;
+    margin-left: auto;
+    justify-content: flex-end;
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.posts > .categories > .category {
+    width: auto;
+    color: inherit;
+    min-width: 6em;
+    cursor: pointer;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    padding: var(--spacing-sm);
+    color: var(--color-pre-fg);
+    margin-left: var(--spacing-md);
+    background: var(--color-pre-bg);
+    border-radius: var(--border-radius);
+    border-left: .1em solid transparent;
+}
+
+.posts > .categories > .category:hover {
+    box-shadow: var(--box-shadow);
+    background: var(--color-border);
+    border-left: 0 solid transparent;
+    animation: border-slide .5s ease-in-out forwards;
+}

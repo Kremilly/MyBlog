@@ -35,7 +35,8 @@ def docs():
         
         title='Docs',
         list_docs=Docs.list_docs(),
-        list_posts=Posts.list_posts()
+        list_posts=Posts.list_posts(),
+        list_categories=Docs.list_categories(),
     )
     
 @app.route('/links')

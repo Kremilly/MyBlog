@@ -34,6 +34,21 @@ class Docs:
         return sorted(
             list_docs, key=lambda x: x['slug']
         )
+        
+    @classmethod
+    def list_categories(cls) -> list:
+        categories = set()
+        path = Settings.get('paths.contents.docs', 'string')
+        
+        for doc in FilesUtils.scan_path(path):
+            file = doc.split('/')[-1].replace('.md', '')
+            category = DocsMeta.get(file, 'Category')
+            
+            if category:
+                categories.add(category)
+        
+        return sorted(categories)
+
 
     @classmethod
     def get_doc(cls, file:str) -> str:
