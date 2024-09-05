@@ -9,6 +9,12 @@
   <a href='https://kremilly.com'><img src='https://img.shields.io/badge/Kremilly.com-000000?style=for-the-badge&logo=About.me&logoColor=white' /></a>
 </p>
 
+<p align='center'>
+  <a href='https://kremilly.com'>Home</a> | 
+  <a href='https://kremilly.com/docs'>Documentation's</a> | 
+  <a href='https://kremilly.com/links'>Links</a>
+</p>
+
 <p>📚 <b>Docs</b></p>
 
 <ul>
