@@ -2,11 +2,7 @@
     <a href='{{ url_root }}' class='logo' id='projectsBoxBtn'></a>
     
     <div class='nav'>
-        {% if is_home != True and is_doc_post %}    
-            {% if package %}
-                <div class='fa-solid fa-download icon' id='pkgBoxBtn'></div>
-            {% endif %}
-
+        {% if is_home != True and is_doc_post %}
             <div class='fa-solid fa-list icon' id='tocBoxBtn'></div>
             <div class='fa-solid fa-screwdriver-wrench icon' id='toolsBoxBtn'></div>
         {% endif %}
