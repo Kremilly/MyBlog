@@ -37,7 +37,7 @@ class Docs:
         
     @classmethod
     def list_categories(cls) -> list:
-        categories = set()
+        category_counts = {}
         path = Settings.get('paths.contents.docs', 'string')
         
         for doc in FilesUtils.scan_path(path):
@@ -45,9 +45,16 @@ class Docs:
             category = DocsMeta.get(file, 'Category')
             
             if category:
-                categories.add(category)
+                if category in category_counts:
+                    category_counts[category] += 1
+                else:
+                    category_counts[category] = 1
         
-        return sorted(categories)
+        categories_list = [
+            {'name': name, 'total': total} for name, total in category_counts.items()
+        ]
+        
+        return sorted(categories_list, key=lambda x: x['name'])
 
 
     @classmethod
