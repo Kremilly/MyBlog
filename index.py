@@ -91,13 +91,13 @@ def post(post:str):
     
     return render_template('errors/404.html'), 404
 
-@app.route('/blog/<post>/export')
-def export_post(post:str):
-    return Export.run(post)
+@app.route('/blog/<item>/export')
+def export_item(item:str):
+    return Export.run(item)
 
-@app.route('/blog/<post>/raw')
-def source_post(post:str):
-    return Posts.get_source_post(post)
+@app.route('/blog/<item>/raw')
+def source_item(item:str):
+    return Posts.get_source_post(item)
 
 @app.route('/docs/<api>/raw')
 def source_doc(api:str):
