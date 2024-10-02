@@ -16,7 +16,7 @@
     <link rel='stylesheet' href='{{ url_for('static', filename=css_file, _external=True) }}'>
 {% endfor %}
 
-{% if is_post %}
+{% if is_post or is_doc %}
     <meta property="og:image" content="{{ post_cover }}" />
     <meta property="og:description" content="{{ post_description }}" />
 {% endif %}
