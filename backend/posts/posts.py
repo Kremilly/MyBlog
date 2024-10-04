@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
-from flask import Response
+from flask import Response, jsonify
+
 from markupsafe import Markup
 from bs4 import BeautifulSoup
 from datetime import datetime
@@ -43,6 +44,36 @@ class Posts:
         return sorted(
             list_posts, key=lambda x: x['date'], reverse=True
         )
+        
+    @classmethod
+    def list_posts_json(cls) -> dict:
+        list_posts = []
+        url_root = MyBlog.get_url_root()
+        path = Settings.get('paths.contents.blog', 'string')
+
+        for post in FilesUtils.scan_path(path):
+            file = post.split('/')[-1].replace('.md', '')
+            slug = post.split('/')[-1].replace('+', '-').replace(' ', '-').replace('.md', '')
+
+            date_str = PostsMeta.get_date(file)
+            date_obj = datetime.strptime(date_str, '%a, %b %d\'%y')
+
+            list_posts.append({
+                'slug': slug,
+                'date': date_obj,
+                'date_fmt': date_str,
+                'url': f'{url_root}/blog/{slug}',
+                'title': PostsMeta.get(file, 'Title'),
+                'read_time': PostsMeta.get_read_time(file),
+                'tags': PostsMeta.get(file, 'Tags').split(','),
+                'description': PostsMeta.get(file, 'Description'),
+            })
+
+        posts = sorted(
+            list_posts, key=lambda x: x['date'], reverse=True
+        )
+        
+        return jsonify(posts), 299
     
     @classmethod
     def list_posts_recommends(cls, post:str) -> dict:
@@ -115,6 +146,8 @@ class Posts:
             return Response(
                 md_content, mimetype='text/plain', content_type='text/plain; charset=utf-8'
             )
+        
+        return '', 404
         
     @classmethod
     def check_post_exists(cls, file:str) -> str:

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect
 
 from backend.classes.my_blog import MyBlog
 
@@ -17,6 +17,15 @@ from backend.actions.export import Export
 
 app = Flask(__name__)
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template(
+        'errors/404.html',
+        **MyBlog.common_template_args(),
+        
+        url=MyBlog.get_url(),
+    ), 404
+
 @app.route('/')
 def home():
     return render_template(
@@ -25,7 +34,7 @@ def home():
         
         list_docs=Docs.list_docs(),
         list_posts=Posts.list_posts()
-    )
+    ), 200
     
 @app.route('/docs')
 def docs():
@@ -38,7 +47,7 @@ def docs():
         list_docs=Docs.list_docs(),
         list_posts=Posts.list_posts(),
         list_categories=Docs.list_categories(),
-    )
+    ), 200
     
 @app.route('/links')
 def links():
@@ -50,7 +59,7 @@ def links():
         
         list_links=Links.list_links(),
         social_media=Links.social_media(),
-    )
+    ), 200
 
 @app.route('/blog/<post>')
 def post(post:str):
@@ -76,9 +85,9 @@ def post(post:str):
             post_read_time=PostsMeta.get_read_time(post),
             post_files=PostsMeta.get_lists(post, 'files'),
             post_posts_recommends=Posts.list_posts_recommends(post),
-        )
+        ), 200
     
-    return render_template('errors/404.html'), 404
+    return redirect('/404'), 302
 
 @app.route('/blog/<item>/export')
 def export_item(item:str):
@@ -105,9 +114,9 @@ def doc(api:str):
             
             title=DocsMeta.get(api, 'Title'),
             qrcode=DocsMeta.get(api, 'QrCode'),
-        )
+        ), 200
     
-    return render_template('errors/404.html'), 404
+    return redirect('/404'), 302
 
 @app.route('/docs/<api>/export')
 def export_doc(api:str):
@@ -124,6 +133,14 @@ def rss_docs():
 @app.route('/api/projects')
 def projects():
     return MyBlog.projects()
+
+@app.route('/api/posts')
+def api_posts():
+    return Posts.list_posts_json()
+
+@app.route('/api/docs')
+def api_docs():
+    return Docs.list_docs_json()
 
 @app.context_processor
 def inject_route_name():

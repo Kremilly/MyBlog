@@ -4,6 +4,8 @@ $( _ => {
     ScrollTo.checkScroll();
     Crates.countDownloads();
 
+    Error404.posts();
+
     let hideMenuTimeout;
     let pathParts = window.location.pathname.split('/');
 
@@ -109,5 +111,22 @@ $( _ => {
             }
         });
     });
+
+    $('#searchItemError404').on('input', function () {
+        let searchText = $(this).val().toLowerCase();
+        
+        $('#itemsContentError > li > a').each( function () {
+            let listItemText = $(this).text().toLowerCase();
+
+            if (listItemText.includes(searchText)) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    });
+
+    $('#docsTabError404').on('click', Error404.docs);
+    $('#blogTabError404').on('click', Error404.posts);
 
 });

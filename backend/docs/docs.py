@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
-from flask import Response
+from flask import Response, jsonify
+
 from markupsafe import Markup
 
 from backend.utils.files import FilesUtils
@@ -34,6 +35,30 @@ class Docs:
         return sorted(
             list_docs, key=lambda x: x['slug']
         )
+    
+    @classmethod
+    def list_docs_json(cls) -> dict:
+        list_docs = []
+        url_root = MyBlog.get_url_root()
+        path = Settings.get('paths.contents.docs', 'string')
+        
+        for doc in FilesUtils.scan_path(path):
+            file = doc.split('/')[-1].replace('.md', '')
+            slug = doc.split('/')[-1].replace('+', '-').replace(' ', '-').replace('.md', '')
+            
+            list_docs.append({
+                'slug': slug,
+                'url': f'{url_root}/docs/{slug}',
+                'title': DocsMeta.get(file, 'Title'),
+                'category': DocsMeta.get(file, 'Category'),
+                'description': DocsMeta.get(file, 'Description'),
+            })
+            
+        docs = sorted(
+            list_docs, key=lambda x: x['slug']
+        )
+        
+        return jsonify(docs), 200
         
     @classmethod
     def list_categories(cls) -> list:
@@ -76,6 +101,8 @@ class Docs:
             return Response(
                 md_content, mimetype='text/plain', content_type='text/plain; charset=utf-8'
             )
+            
+        return '', 404
       
     @classmethod
     def check_doc_exists(cls, file:str) -> str:
