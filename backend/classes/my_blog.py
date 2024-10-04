@@ -47,6 +47,12 @@ class MyBlog:
         return dict(is_doc_post=check_is_doc_post)
     
     @classmethod
+    def check_if_links(cls):
+        path_parts = cls.get_path().split('/')
+        check_is_links = path_parts[-1] != 'links'
+        return dict(is_links=check_is_links)
+    
+    @classmethod
     def get_url_root(cls):
         return request.url_root[:-1]
         

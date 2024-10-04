@@ -33,7 +33,8 @@ def docs():
         'docs.html', 
         **MyBlog.common_template_args(),
         
-        title='Docs',
+        title='Docs Hub',
+        
         list_docs=Docs.list_docs(),
         list_posts=Posts.list_posts(),
         list_categories=Docs.list_categories(),
@@ -139,6 +140,10 @@ def inject_route_doc():
 @app.context_processor
 def inject_route_doc_post():
     return MyBlog.check_if_doc_post()
+
+@app.context_processor
+def inject_route_links_post():
+    return MyBlog.check_if_links()
 
 @app.context_processor
 def inject_route_home():
