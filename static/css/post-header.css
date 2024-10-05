@@ -1,6 +1,6 @@
 .post-content > .header {
-    height: 3em;
-    line-height: 3em;
+    height: 2.5em;
+    line-height: 2.5em;
     text-align: center;
     margin-bottom: 3em;
     justify-content: center;
@@ -34,9 +34,11 @@
     cursor: default;
 }
 
-.post-content > .header > .meta > .reading-time {
+.post-content > .header > .meta > .item {
     float: left;
     cursor: default;
+    margin-right: var(--spacing-sm);
+    padding-right: var(--spacing-sm);
 }
 
 .post-content > .header > .meta .icon {

@@ -4,6 +4,9 @@ $( _ => {
     ScrollTo.checkScroll();
     Crates.countDownloads();
 
+    Stats.add();
+    Stats.get();
+
     Error404.posts();
 
     let hideMenuTimeout;
