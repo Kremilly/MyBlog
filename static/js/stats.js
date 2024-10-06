@@ -37,7 +37,7 @@ const Stats = ( _ => {
             ).then(response => {
                 $('#stats-post').html(`
                     <div class='fas fa-chart-simple icon'></div>
-                    ${ response.acessos + ' acessos' }
+                    ${ Utils.format(response.acessos) + ' acessos' }
                 `);
             });
         }

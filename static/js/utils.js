@@ -1,12 +1,17 @@
 const Utils = ( _ => {
 
     let format = number => {
-		if (number >= 1000) {
-			return (number / 1000).toFixed(2) + 'k';
-		} else {
-			return number.toString();
-		}
-	};
+        switch (true) {
+            case number >= 1e9:
+                return (number / 1e9).toFixed(2) + 'B';
+            case number >= 1e6:
+                return (number / 1e6).toFixed(2) + 'M';
+            case number >= 1000:
+                return (number / 1000).toFixed(2) + 'k';
+            default:
+                return number.toString();
+        }
+    };
 
     let setCookie = (name, value, days) => {
         const date = new Date();
