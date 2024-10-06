@@ -2,13 +2,14 @@ const Stats = ( _ => {
 
     let cookieName = 'stats';
     let referer = window.location.pathname.split('/');
+    let uri = 'https://kremilly.accounts-3ae.workers.dev/views';
 
     let add = _ => {
         if (!Utils.getCookie(cookieName) || Utils.getCookie(cookieName) != referer[2]) {
             if (referer[1] === 'blog' || referer[1] === 'docs') {
                 let referer = window.location.pathname.split('/');
 
-                fetch(`https://kremilly.accounts-3ae.workers.dev/views/${ referer[2] }?tipo=${ referer[1] }`, {
+                fetch(`${ uri }/${ referer[2] }?tipo=${ referer[1] }`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -26,7 +27,7 @@ const Stats = ( _ => {
         let referer = window.location.pathname.split('/');
 
         if (referer[1] === 'blog' || referer[1] === 'docs') {
-            fetch(`https://kremilly.accounts-3ae.workers.dev/views/${ referer[2] }?tipo=${ referer[1] }`, {
+            fetch(`${ uri }/${ referer[2] }`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
