@@ -1,4 +1,3 @@
-from flask import Flask
 from flask import Flask, Blueprint, render_template, redirect
 
 from backend.classes.my_blog import MyBlog
