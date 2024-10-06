@@ -6,7 +6,7 @@ const Stats = ( _ => {
 
     let add = _ => {
         if (!Utils.getCookie(cookieName) || Utils.getCookie(cookieName) != referer[2]) {
-            if (referer[1] === 'blog' || referer[1] === 'docs') {
+            if (referer[1] === 'blog') {
                 let referer = window.location.pathname.split('/');
 
                 fetch(`${ uri }/${ referer[2] }?tipo=${ referer[1] }`, {
@@ -26,7 +26,7 @@ const Stats = ( _ => {
     let get = _ => {
         let referer = window.location.pathname.split('/');
 
-        if (referer[1] === 'blog' || referer[1] === 'docs') {
+        if (referer[1] === 'blog') {
             fetch(`${ uri }/${ referer[2] }`, {
                 method: 'GET',
                 headers: {
