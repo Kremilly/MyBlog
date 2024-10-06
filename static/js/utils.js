@@ -3,11 +3,11 @@ const Utils = ( _ => {
     let format = number => {
         switch (true) {
             case number >= 1e9:
-                return (number / 1e9).toFixed(2) + 'B';
+                return Math.floor(number / 1e9) + 'B';
             case number >= 1e6:
-                return (number / 1e6).toFixed(2) + 'M';
+                return Math.floor(number / 1e6) + 'M';
             case number >= 1000:
-                return (number / 1000).toFixed(2) + 'k';
+                return Math.floor(number / 1000) + 'k';
             default:
                 return number.toString();
         }
