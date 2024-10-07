@@ -1,8 +1,9 @@
 from flask import Flask, Blueprint, render_template, redirect
 
-from backend.classes.my_blog import MyBlog
-from backend.posts.posts import Posts
 from backend.docs.docs import Docs
+from backend.posts.posts import Posts
+
+from backend.classes.my_blog import MyBlog
 
 api = Blueprint('api', __name__)
 
