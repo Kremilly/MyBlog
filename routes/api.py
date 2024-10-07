@@ -1,7 +1,9 @@
-from flask import Flask, Blueprint, render_template, redirect
+from flask import Flask, Blueprint
 
 from backend.docs.docs import Docs
 from backend.posts.posts import Posts
+
+from backend.stats.stats_add import StatsAdd
 
 from backend.classes.my_blog import MyBlog
 
@@ -18,3 +20,7 @@ def api_posts():
 @api.route('/api/docs')
 def api_docs():
     return Docs.list_docs_json()
+
+@api.route('/api/stats/add', methods=['POST'])
+def add_stats():
+    return StatsAdd.run()
