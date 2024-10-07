@@ -15,30 +15,6 @@ from backend.actions.export import Export
 
 web = Blueprint('web', __name__)
 
-@web.context_processor
-def inject_route_name():
-    return MyBlog.get_current_route()
-
-@web.context_processor
-def inject_route_post():
-    return MyBlog.check_if_post()
-
-@web.context_processor
-def inject_route_doc():
-    return MyBlog.check_if_docs()
-
-@web.context_processor
-def inject_route_doc_post():
-    return MyBlog.check_if_doc_post()
-
-@web.context_processor
-def inject_route_links_post():
-    return MyBlog.check_if_links()
-
-@web.context_processor
-def inject_route_home():
-    return MyBlog.check_if_home()
-
 @web.errorhandler(404)
 def page_not_found(e):
     return render_template(
