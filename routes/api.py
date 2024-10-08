@@ -1,11 +1,13 @@
 from flask import Flask, Blueprint
 
+from backend.classes.my_blog import MyBlog
+
 from backend.docs.docs import Docs
 from backend.posts.posts import Posts
 
 from backend.stats.stats_add import StatsAdd
 
-from backend.classes.my_blog import MyBlog
+from backend.api.youtube_chapters import YouTubeChapters
 
 api = Blueprint('api', __name__)
 
@@ -24,3 +26,7 @@ def api_docs():
 @api.route('/api/stats/add', methods=['POST'])
 def add_stats():
     return StatsAdd.run()
+
+@api.route('/api/plugins/ytc', methods=['GET'])
+def get_chapters():
+    return YouTubeChapters.get_chapters()
