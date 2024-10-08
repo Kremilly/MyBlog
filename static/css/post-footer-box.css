@@ -52,12 +52,13 @@
 
 .post-content > .footer > .box > .body > .list {
     height: 3em;
-    display: block;
+    display: flex;
     color: inherit;
     font-size: .8em;
     font-weight: 600;
     line-height: 3em;
     text-decoration: none;
+    justify-content: space-between;
     padding-left: var(--spacing-md);
     padding-right: var(--spacing-md);
     border-radius: var(--border-radius);
@@ -75,6 +76,11 @@
 .post-content > .footer > .box > .body > .list > .fas {
     float: right;
     display: none;
+}
+
+.post-content > .footer > .box > .body > .list > .left {
+    flex: 1;
+    float: left;
 }
 
 .post-content > .footer > .box > .body > .list > .right { float: right; }
