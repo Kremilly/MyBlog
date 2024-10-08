@@ -29,4 +29,4 @@ def add_stats():
 
 @api.route('/api/plugins/ytc', methods=['GET'])
 def get_chapters():
-    return YouTubeChapters.get_chapters()
+    return YouTubeChapters.get_summary()
