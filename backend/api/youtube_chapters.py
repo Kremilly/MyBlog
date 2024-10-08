@@ -13,11 +13,7 @@ class YouTubeChapters:
     @classmethod
     def get_video_info(cls) -> dict:
         response = requests.get(
-            f'https://www.googleapis.com/youtube/v3/videos?part=snippet&id={
-                request.args.get("v")
-            }&key={
-                os.getenv("YT_API_KEY")
-            }'
+            f'https://www.googleapis.com/youtube/v3/videos?part=snippet&id={request.args.get("v")}&key={os.getenv("YT_API_KEY")}'
         )
         
         if response.status_code == HTTPStatus.OK:
