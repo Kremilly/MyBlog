@@ -1,4 +1,4 @@
-import os, yt_dlp, json
+import requests, re, json, os, json
 
 from http import HTTPStatus
 from dotenv import load_dotenv
@@ -9,29 +9,26 @@ class YouTubeChapters:
     @classmethod
     def __init__(cls):
         load_dotenv()
+    
+    @classmethod
+    def get_video_info(cls) -> dict:
+        response = requests.get(
+            f'https://www.googleapis.com/youtube/v3/videos?part=snippet&id={
+                request.args.get("v")
+            }&key={
+                os.getenv("YT_API_KEY")
+            }'
+        )
+        
+        if response.status_code == HTTPStatus.OK:
+            return response.json()
+        
+        return None
 
     @classmethod
-    def get_video_info(cls, video_url: str) -> dict:
-        ydl_opts = {
-            'quiet': True,
-            'skip_download': True,
-            'format': 'best'
-        }
-
-        try:
-            with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-                info_dict = ydl.extract_info(video_url, download=False)
-                return info_dict
-            
-        except Exception as e:
-            print(f"Erro ao obter informações do vídeo: {str(e)}")
-            return None
-
-    @classmethod
-    def get_link_with_timestamp(cls, seconds: int) -> str:
-        video_id = request.args.get("v")
-        return f'https://www.youtube.com/watch?v={video_id}&t={seconds}s'
-
+    def get_link_with_timestamp(cls, timestamp: str) -> str:
+        return f'https://www.youtube.com/watch?v={request.args.get("v")}&t={timestamp}s'
+    
     @classmethod
     def convert_to_seconds(cls, timestamp: str) -> int:
         parts = timestamp.split(':')
@@ -58,32 +55,46 @@ class YouTubeChapters:
         return f"{minutes:02}:{seconds:02}"
 
     @classmethod
-    def extract_chapters(cls, info_dict: dict) -> list:
+    def extract_chapters(cls, description: str) -> list:
         chapters_data = []
 
-        if 'chapters' in info_dict:
-            chapters = info_dict['chapters']
-            for chapter in chapters:
-                start_seconds = chapter['start_time']
-                end_seconds = chapter['end_time']
+        pattern_with_end = r'(.+?): (\d{1,2}:\d{2}) - (\d{1,2}:\d{2})'
+        chapters_with_end = re.findall(pattern_with_end, description)
 
-                chapters_data.append({
-                    'title': chapter['title'].strip(),
-                    'start_time': cls.convert_seconds_to_timestamp(start_seconds),
-                    'end_time': cls.convert_seconds_to_timestamp(end_seconds),
-                    'start_time_seconds': f'{start_seconds}s',
-                    'end_time_seconds': f'{end_seconds}s',
-                    'link_start': cls.get_link_with_timestamp(start_seconds),
-                    'link_end': cls.get_link_with_timestamp(end_seconds)
-                })
-                
+        for title, start_time, end_time in chapters_with_end:
+            start_seconds = cls.convert_to_seconds(start_time)
+            end_seconds = cls.convert_to_seconds(end_time)
+            
+            chapters_data.append({
+                'title': title.strip(),
+                'start_time': start_time,
+                'end_time': end_time,
+                'start_time_seconds': f'{start_seconds}s',
+                'end_time_seconds': f'{end_seconds}s',
+                'link_start': cls.get_link_with_timestamp(start_seconds),
+                'link_end': cls.get_link_with_timestamp(end_seconds)
+            })
+        
+        pattern_with_start = r'(\d{1,2}:\d{2}) (.+)'
+        chapters_with_start = re.findall(pattern_with_start, description)
+
+        for start_time, title in chapters_with_start:
+            start_seconds = cls.convert_to_seconds(start_time)
+            
+            chapters_data.append({
+                'title': title.strip(),
+                'start_time': start_time,
+                'start_time_seconds': f'{start_seconds}s',
+                'link_start': cls.get_link_with_timestamp(start_seconds)
+            })
+
         return chapters_data
-
+    
     @classmethod
     def get_summary(cls) -> Response:
-        video_info = cls.get_video_info(f'https://www.youtube.com/watch?v={request.args.get("v")}')
+        video_info = cls.get_video_info()
         
-        if not video_info:
+        if not video_info or 'items' not in video_info or len(video_info['items']) == 0:
             return Response(
                 json.dumps({
                     'summary': False,
@@ -94,7 +105,8 @@ class YouTubeChapters:
                 mimetype='application/json'
             )
 
-        summary_data = cls.extract_chapters(video_info)
+        description = video_info['items'][0].get('snippet', {}).get('description', '')
+        summary_data = cls.extract_chapters(description)
 
         if summary_data:
             return Response(
