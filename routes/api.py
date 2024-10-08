@@ -9,15 +9,15 @@ from backend.classes.my_blog import MyBlog
 
 api = Blueprint('api', __name__)
 
-@api.route('/api/projects')
+@api.route('/api/projects', methods=['GET'])
 def projects():
     return MyBlog.projects()
 
-@api.route('/api/posts')
+@api.route('/api/posts', methods=['GET'])
 def api_posts():
     return Posts.list_posts_json()
 
-@api.route('/api/docs')
+@api.route('/api/docs', methods=['GET'])
 def api_docs():
     return Docs.list_docs_json()
 
