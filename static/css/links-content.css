@@ -1,6 +1,6 @@
 .links-content {
-    width: 600px;
     margin: auto;
+    max-width: 600px;
     margin-top: 80px;
     box-sizing: border-box;
     padding: var(--spacing-lg);
