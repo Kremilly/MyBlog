@@ -2,7 +2,7 @@ const YTC = ( _ => {
     
     let players = {}, hasVideo = false;
 
-    const init = _ => {
+    let init = _ => {
         if ($('.youtube').length > 0) {
             let tag = document.createElement('script');
             tag.src = "https://www.youtube.com/iframe_api";
@@ -19,8 +19,8 @@ const YTC = ( _ => {
         var elements = document.querySelectorAll("[id^='player-']");
         
         elements.forEach( function (element) {
-            var videoId = element.getAttribute('data-video');
-            var playerId = element.id;
+            let videoId = element.getAttribute('data-video');
+            let playerId = element.id;
     
             players[playerId] = new YT.Player(playerId, {
                 height: '390',
@@ -34,11 +34,11 @@ const YTC = ( _ => {
     };
 
     let onYouTubeChaptersAPIReady = _ => {
-        var elements = document.querySelectorAll("[id^='summary-']");
+        let elements = document.querySelectorAll("[id^='summary-']");
         
         elements.forEach( function(element) {
-            var summaryId = '#' + element.id;
-            var videoId = element.getAttribute('data-video');
+            let summaryId = '#' + element.id;
+            let videoId = element.getAttribute('data-video');
 
             fetch(`https://kremilly.com/api/plugins/ytc?v=${ videoId }`).then(
                 json => json.json()
@@ -48,7 +48,7 @@ const YTC = ( _ => {
                 if (callback.summary != false) {
                     callback.summary.forEach( chapter => {
                         $(summaryId).append(`
-                            <div class='chapter'>
+                            <div class='chapter' data-time='${ chapter.start_time_seconds.replace('s', '') }'>
                                 <div class='left'>${ chapter.title }</div>
                                 <div class='right'>${ chapter.start_time }</div>
                             </div>
@@ -64,22 +64,20 @@ const YTC = ( _ => {
     };
 
     let onPlayerReady = event => {
-        var player = event.target;
-        var seekToButton = document.getElementById('seekTo64');
-
-        if (seekToButton) {
-            seekToButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                player.seekTo(64);
+        let player = event.target;
+    
+        document.querySelectorAll('.chapter').forEach( function(chapter) {
+            chapter.addEventListener('click', function () {
+                let time = this.getAttribute('data-time');
+    
+                player.seekTo(time);
                 player.playVideo();
             });
-        }
+        });
     };
 
     return {
         init: _ => { return init() },
-        hasVideo: _ => { return hasVideo },
-        onYouTubeChaptersAPIReady: _ => { return onYouTubeChaptersAPIReady() }
     };
 
 })();
