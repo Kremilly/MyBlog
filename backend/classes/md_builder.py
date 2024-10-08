@@ -15,6 +15,7 @@ from mistune.plugins.def_list import def_list
 from mistune.plugins.footnotes import footnotes
 from mistune.plugins.task_lists import task_lists
 
+from backend.utils.random import Random
 from backend.utils.files import FilesUtils
 
 class MDBuilder:
@@ -31,6 +32,7 @@ class MDBuilder:
             'install': 'install',
             'caution': 'caution',
             'warning': 'warning',
+            'youtube': 'youtube',
             'important': 'important',
             'wikipedia': 'wikipedia',
         }.get(alert_type, 'note')
@@ -49,12 +51,21 @@ class MDBuilder:
                 <div class='fab fa-wikipedia-w icon'></div>
                 <a href='#' target='_blank' class='wikipedia-page-content'>{md_content}</a>
             </div>"""
+            
+        if alert_class == 'youtube':
+            youtube_url = plain_content.strip()
+            random_id = Random(8, 16).string()
+            
+            player = f"""<div class='{alert_class}' id='player-{random_id}' data-video='{youtube_url}'></div>"""
+            summary = f"""<div class='video-summary' id='summary-{random_id}' data-video='{youtube_url}'></div>"""
+            
+            return f"""{player}{summary}"""
         
         return f'<div class="{alert_class}">{md_content}</div>'
 
     @classmethod
     def render_alerts(cls, content:str) -> str:
-        alert_pattern = re.compile(r'> \[!(note|warning|tip|caution|important|install|wikipedia)\](.*)')
+        alert_pattern = re.compile(r'> \[!(note|warning|tip|caution|important|install|wikipedia|youtube)\](.*)')
         
         return re.sub(
             alert_pattern, cls.replace_alert, content

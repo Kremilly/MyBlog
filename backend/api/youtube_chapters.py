@@ -97,7 +97,7 @@ class YouTubeChapters:
                     'message': 'Video information not found'
                 }, ensure_ascii=False),
                 
-                status=HTTPStatus.NOT_FOUND,
+                status=HTTPStatus.OK,
                 mimetype='application/json'
             )
 
@@ -121,6 +121,6 @@ class YouTubeChapters:
                 'message': 'No summary found'
             }, ensure_ascii=False),
             
-            status=HTTPStatus.NOT_FOUND,
+            status=HTTPStatus.OK,
             mimetype='application/json'
         )

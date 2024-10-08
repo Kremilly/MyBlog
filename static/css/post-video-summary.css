@@ -1,0 +1,41 @@
+.post-content > .content > .video-summary {
+    position: static;
+    box-sizing: border-box;
+    padding: var(--spacing-sm);
+    box-shadow: var(--box-shadow);
+    background: var(--color-border);
+    margin-bottom: var(--spacing-md);
+    border-radius: var(--border-radius);
+    border: .1em solid var(--color-pre-bg);
+}
+
+.post-content > .content > .video-summary::before {
+    font-size: .9em;
+    font-weight: 600;
+    content: "Chapters";
+    padding-left: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.post-content > .content > .video-summary > .chapter {
+    height: 3em;
+    display: flex;
+    color: inherit;
+    cursor: pointer;
+    font-size: .8em;
+    font-weight: 600;
+    line-height: 3em;
+    text-decoration: none;
+    justify-content: space-between;
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+}
+
+.post-content > .content > .video-summary > .chapter > .left { float: left; }
+
+.post-content > .content > .video-summary > .chapter > .right { float: right; }
+
+.post-content > .content > .video-summary > .chapter:hover {
+    border-radius: var(--border-radius);
+    animation: bg-color .5s ease-in-out forwards;
+}

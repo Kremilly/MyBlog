@@ -7,6 +7,8 @@ $( _ => {
     Stats.add();
     Stats.get();
 
+    YTC.init();
+
     Error404.posts();
 
     let hideMenuTimeout;
@@ -16,12 +18,11 @@ $( _ => {
         let searchParam = new URL(window.location).searchParams.get('q');
 
         if (searchParam) {
-            const inputElement = $('#postsSearch');
-
+            let inputElement = $('#postsSearch');
             inputElement.val(searchParam);
 
             inputElement.each( function () {
-                const event = new Event('input', {
+                let event = new Event('input', {
                     bubbles: true
                 });
                 
