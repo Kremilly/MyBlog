@@ -4,7 +4,7 @@ from flask import request, jsonify
 from backend.utils.http import Http
 from backend.utils.random import Random
 
-from backend.models.acesso import Acesso 
+from backend.models.access import Acesso 
 from backend.classes.connection import Connection
 
 class StatsAdd:

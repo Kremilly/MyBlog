@@ -6,7 +6,7 @@ Base = declarative_base()
 
 class Acesso(Base):
     
-    __tablename__ = 'acessos'
+    __tablename__ = 'access'
     
     slug = Column(String, primary_key=True)
     fingerprint = Column(String)
