@@ -19,7 +19,7 @@ class StatsAdd:
     
     @classmethod  
     def run(cls) -> jsonify:
-        data = request.args
+        data = request.json
         
         if not hasattr(cls, 'session'):
             cls.init_connection()
@@ -33,7 +33,7 @@ class StatsAdd:
             ip=Http.get_client_ip(),
             browser=data.get('browser'),
             device=data.get('device'),
-            device_type=data.get('device_type'),
+            arch=data.get('arch'),
             user_agent=data.get('user_agent')
         )
         

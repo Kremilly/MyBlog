@@ -16,5 +16,5 @@ class Acesso(Base):
     ip = Column(String)
     browser = Column(String)
     device = Column(String)
-    device_type = Column(String)
+    arch = Column(String)
     user_agent = Column(String)
