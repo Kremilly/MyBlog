@@ -1,5 +1,4 @@
 const YTC = ( _ => {   
-    
     let players = {}, hasVideo = false;
 
     let init = _ => {
@@ -33,25 +32,68 @@ const YTC = ( _ => {
         });
     };
 
+    let shortVideoLink = (videoId, timestamp = 0) => {
+        if (timestamp == 0) {
+            return `https://youtu.be/${ videoId }`;
+        }
+
+        return `https://youtu.be/${ videoId }?t=${ timestamp }`;
+    };
+
+    let adjustInputWidth = (input) => {
+        const measureSpan = document.createElement('span');
+        measureSpan.style.visibility = 'hidden';
+        measureSpan.style.position = 'absolute';
+        measureSpan.style.whiteSpace = 'nowrap';
+        measureSpan.textContent = input.value;
+        document.body.appendChild(measureSpan);
+
+        measureSpan.style.fontSize = getComputedStyle(input).fontSize;
+        measureSpan.style.fontWeight = getComputedStyle(input).fontWeight;
+        measureSpan.style.fontFamily = getComputedStyle(input).fontFamily;
+
+        input.style.width = `${measureSpan.offsetWidth + 16}px`;
+        document.body.removeChild(measureSpan);
+    };
+
     let onYouTubeChaptersAPIReady = async () => {
         let elements = document.querySelectorAll("[id^='summary-']");
     
         for (let element of elements) {
             let summaryId = `#${element.id}`;
+            let inputId = `${summaryId.replace('#', '')}-search`;
+
             let videoId = element.getAttribute('data-video');
             let playerId = element.id.replace('summary', 'player');
     
             try {
                 let response = await fetch(`https://kremilly.com/api/plugins/ytc?v=${videoId}`);
                 let callback = await response.json();
-    
-                let summaryElement = document.querySelector(summaryId);
+                let shortVideoUrl = shortVideoLink(videoId);
+
                 $(summaryId).empty();
     
                 if (callback.summary && callback.summary.length > 0) {
+                    $(summaryId).append(`
+                        <input type='text' id='${ inputId }' value='${ shortVideoUrl }' readonly>
+
+                        <div class='body'></div>
+                    `);
+
+                    let input = document.getElementById(inputId);
+                    adjustInputWidth(input);
+
                     callback.summary.forEach( chapter => {
-                        $(summaryId).append(`
-                            <div class="chapter" data-time="${ chapter.start_time_seconds.replace('s', '') }" data-player="${playerId}">
+                        $(summaryId + ' > .body').append(`
+                            <div class="chapter" data-time="${ 
+                                chapter.start_time_seconds.replace('s', '') 
+                            }" data-link-start="${
+                                shortVideoLink(videoId, chapter.start_time_seconds)
+                            }" data-link-input='${
+                                inputId
+                            }' data-player="${
+                                playerId
+                            }">
                                 <div class="left">${ chapter.title }</div>
                                 <div class="right">${ chapter.start_time }</div>
                             </div>
@@ -75,7 +117,14 @@ const YTC = ( _ => {
         document.querySelectorAll(`.chapter[data-player="${playerId}"]`).forEach( function(chapter) {
             chapter.addEventListener('click', function () {
                 let time = this.getAttribute('data-time');
+                let input = this.getAttribute('data-link-input');
+                let input_start_link = this.getAttribute('data-link-start');
+
+                $(`#${ input }`).val(input_start_link);
                 
+                let inputElement = document.getElementById(input);
+                adjustInputWidth(inputElement);
+
                 player.seekTo(time);
                 player.playVideo();
             });
