@@ -1,5 +1,4 @@
-import requests, re, json, os, json
-
+import requests, re, json, os
 from http import HTTPStatus
 from dotenv import load_dotenv
 from flask import Response, request
@@ -54,10 +53,15 @@ class YouTubeChapters:
     def extract_chapters(cls, description: str) -> list:
         chapters_data = []
 
+        # Regex para capítulos com início e fim (HH:MM - HH:MM)
         pattern_with_end = r'(.+?): (\d{1,2}:\d{2}) - (\d{1,2}:\d{2})'
         chapters_with_end = re.findall(pattern_with_end, description)
 
         for title, start_time, end_time in chapters_with_end:
+            # Ignora capítulos que começam com '-'
+            if title.strip().startswith('-'):
+                continue
+            
             start_seconds = cls.convert_to_seconds(start_time)
             end_seconds = cls.convert_to_seconds(end_time)
             
@@ -71,10 +75,15 @@ class YouTubeChapters:
                 'link_end': cls.get_link_with_timestamp(end_seconds)
             })
         
+        # Regex para capítulos com apenas início (HH:MM título)
         pattern_with_start = r'(\d{1,2}:\d{2}) (.+)'
         chapters_with_start = re.findall(pattern_with_start, description)
 
         for start_time, title in chapters_with_start:
+            # Ignora capítulos que começam com '-'
+            if title.strip().startswith('-'):
+                continue
+            
             start_seconds = cls.convert_to_seconds(start_time)
             
             chapters_data.append({
