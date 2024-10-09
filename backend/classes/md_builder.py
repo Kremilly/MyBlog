@@ -16,6 +16,7 @@ from mistune.plugins.footnotes import footnotes
 from mistune.plugins.task_lists import task_lists
 
 from backend.utils.random import Random
+from backend.utils.extract import Extract
 from backend.utils.files import FilesUtils
 
 class MDBuilder:
@@ -53,8 +54,8 @@ class MDBuilder:
             </div>"""
             
         if alert_class == 'youtube':
-            youtube_url = plain_content.strip()
             random_id = Random(8, 16).string()
+            youtube_url = Extract.video_id(plain_content.strip())
             
             player = f"""<div class='{alert_class}' id='player-{random_id}' data-video='{youtube_url}'></div>"""
             summary = f"""<div class='video-summary' id='summary-{random_id}' data-video='{youtube_url}'></div>"""

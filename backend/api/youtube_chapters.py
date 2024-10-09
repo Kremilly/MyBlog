@@ -1,4 +1,5 @@
 import requests, re, json, os
+
 from http import HTTPStatus
 from dotenv import load_dotenv
 from flask import Response, request
@@ -8,6 +9,15 @@ class YouTubeChapters:
     @classmethod
     def __init__(cls):
         load_dotenv()
+        
+    @classmethod
+    def extract_video_id(url: str) -> str:
+        match = re.search(r"v=([a-zA-Z0-9_-]+)", url)
+        
+        if match:
+            return match.group(1)
+        
+        return None
     
     @classmethod
     def get_video_info(cls) -> dict:
@@ -53,12 +63,10 @@ class YouTubeChapters:
     def extract_chapters(cls, description: str) -> list:
         chapters_data = []
 
-        # Regex para capítulos com início e fim (HH:MM - HH:MM)
         pattern_with_end = r'(.+?): (\d{1,2}:\d{2}) - (\d{1,2}:\d{2})'
         chapters_with_end = re.findall(pattern_with_end, description)
 
         for title, start_time, end_time in chapters_with_end:
-            # Ignora capítulos que começam com '-'
             if title.strip().startswith('-'):
                 continue
             
