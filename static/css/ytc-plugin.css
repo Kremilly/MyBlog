@@ -31,7 +31,10 @@
     animation: bg-color .5s ease-in-out forwards; 
 }
 
-.post-content > .content > .ytc-plugin > .controls { float: right; }
+.post-content > .content > .ytc-plugin > .controls {
+    float: right;
+    margin-right: var(--spacing-sm);
+}
 
 .post-content > .content > .ytc-plugin > .controls > .icon {
     width: 26px;
@@ -63,7 +66,6 @@
     font-weight: 600;
     background: transparent;
     padding-left: var(--spacing-sm);
-    margin-right: var(--spacing-sm);
     padding-right: var(--spacing-sm);
     margin-bottom: var(--spacing-md);
     border-radius: var(--border-radius);

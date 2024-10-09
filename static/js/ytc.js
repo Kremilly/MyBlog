@@ -1,5 +1,8 @@
 const YTC = ( _ => {   
-    let players = {}, hasVideo = false;
+
+    let players = {}, 
+        chapterTimestamps = {},
+        currentChapterIndex = {};
 
     let init = _ => {
         if ($('.youtube').length > 0) {
@@ -26,7 +29,8 @@ const YTC = ( _ => {
                 height: '404',
                 videoId: videoId,
                 events: {
-                    'onReady': onPlayerReady
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
                 }
             });
         });
@@ -58,12 +62,14 @@ const YTC = ( _ => {
     };
 
     let titleChaptersToggle = el => {
-        $($(el).attr('data-summary-id') + ' > .body').slideToggle(250);
         $($(el).attr('data-summary-id') + ' > .title').toggleClass('title-active');
+        $($(el).attr('data-summary-id') + ' > .body').slideToggle(250);
     };
 
     let onYouTubeChaptersAPIReady = async () => {
-        for (let element of document.querySelectorAll("[id^='summary-']")) {
+        let elements = document.querySelectorAll("[id^='summary-']");
+    
+        for (let element of elements) {
             let summaryId = `#${element.id}`;
             let inputId = `${summaryId.replace('#', '')}-time`;
 
@@ -75,6 +81,7 @@ const YTC = ( _ => {
                 let callback = await response.json();
                 let shortVideoUrl = shortVideoLink(videoId);
 
+                currentChapterIndex[playerId] = 0;
                 $(summaryId).empty();
     
                 if (callback.summary && callback.summary.length > 0) {
@@ -83,6 +90,9 @@ const YTC = ( _ => {
 
                         <div class='controls'>
                             <input type='text' id='${ inputId }' value='${ shortVideoUrl }' readonly>
+
+                            <div id='prev-${playerId}' class='fas fa-backward icon'></div>
+                            <div id='next-${playerId}' class='fas fa-forward icon'></div>
                         </div>
     
                         <div class='body'></div>
@@ -91,7 +101,11 @@ const YTC = ( _ => {
                     let input = document.getElementById(inputId);
                     adjustInputWidth(input);
 
-                    callback.summary.forEach( chapter => {
+                    if (!chapterTimestamps[playerId]) {
+                        chapterTimestamps[playerId] = [];
+                    }
+
+                    callback.summary.forEach( (chapter, index) => {
                         $(summaryId + ' > .body').append(`
                             <div class="chapter" data-time="${ 
                                 chapter.start_time_seconds.replace('s', '') 
@@ -101,13 +115,18 @@ const YTC = ( _ => {
                                 inputId
                             }' data-player="${
                                 playerId
-                            }">
+                            }"' data-index="${index}">
                                 <div class="left">${ chapter.title }</div>
                                 <div class="right">${ chapter.start_time }</div>
                             </div>
                         `);
+
+                        chapterTimestamps[playerId].push(
+                            parseInt(chapter.start_time_seconds.replace('s', ''))
+                        );
                     });
-    
+
+                    setupChapterNavigation(playerId);
                     $(summaryId).show();
                 } else {
                     $(summaryId).hide();
@@ -116,7 +135,7 @@ const YTC = ( _ => {
                 console.error('Error fetching chapter data:', error);
             }
         }
-    };    
+    };
 
     let onPlayerReady = event => {
         let player = event.target;
@@ -124,19 +143,76 @@ const YTC = ( _ => {
     
         document.querySelectorAll(`.chapter[data-player="${playerId}"]`).forEach( function(chapter) {
             chapter.addEventListener('click', function () {
-                let time = this.getAttribute('data-time');
-                let input = this.getAttribute('data-link-input');
-                let input_start_link = this.getAttribute('data-link-start');
-
-                $(`#${ input }`).val(input_start_link);
+                currentChapterIndex[playerId] = parseInt(this.getAttribute('data-index'));
                 
-                let inputElement = document.getElementById(input);
-                adjustInputWidth(inputElement);
-
-                player.seekTo(time);
-                player.playVideo();
+                setupChapterNavigation(playerId);
+                goToTimestamp(playerId, player);
             });
         });
+    };
+
+    let setupChapterNavigation = (playerId) => {
+        let player = players[playerId];
+        let prevButton = document.getElementById(`prev-${playerId}`);
+        let nextButton = document.getElementById(`next-${playerId}`);
+
+        const updateButtonState = () => {
+            if (currentChapterIndex[playerId] <= 0) {
+                prevButton.style.display = 'none';
+            } else {
+                prevButton.style.display = 'inline-block';
+            }
+
+            if (currentChapterIndex[playerId] >= chapterTimestamps[playerId].length - 1) {
+                nextButton.style.display = 'none';
+            } else {
+                nextButton.style.display = 'inline-block';
+            }
+        };
+
+        updateButtonState();
+
+        prevButton.addEventListener('click', () => {
+            if (currentChapterIndex[playerId] > 0) {
+                currentChapterIndex[playerId]--;
+
+                goToTimestamp(playerId, player);
+                updateButtonState(); 
+            }
+        });
+
+        nextButton.addEventListener('click', () => {
+            if (currentChapterIndex[playerId] < chapterTimestamps[playerId].length - 1) {
+                currentChapterIndex[playerId]++;
+
+                goToTimestamp(playerId, player);
+                updateButtonState();
+            }
+        });
+    };
+
+    let goToTimestamp = (playerId, player) => {
+        let timestamp = chapterTimestamps[playerId][
+            currentChapterIndex[playerId]
+        ];
+
+        if (timestamp !== undefined) {
+            player.seekTo(timestamp);
+            player.playVideo();
+        }
+    };
+
+    let onPlayerStateChange = event => {
+        let player = event.target;
+        let playerId = player.getIframe().id;
+        
+        if (event.data === YT.PlayerState.ENDED) {
+            if (currentChapterIndex[playerId] < chapterTimestamps[playerId].length - 1) {
+                currentChapterIndex[playerId]++;
+
+                goToTimestamp(playerId, player);
+            }
+        }
     };
 
     return {
