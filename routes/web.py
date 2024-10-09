@@ -39,8 +39,8 @@ def inject_route_links_post():
 def inject_route_home():
     return MyBlog.check_if_home()
 
-@web.errorhandler(404)
-def page_not_found(e):
+@web.route('/404')
+def page_not_found():
     return render_template(
         'errors/404.html',
         **MyBlog.common_template_args(),
