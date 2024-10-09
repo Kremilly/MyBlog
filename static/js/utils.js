@@ -4,26 +4,16 @@ const Utils = ( _ => {
         switch (true) {
             case number >= 1e9:
                 return Math.floor(number / 1e9) + 'B';
+
             case number >= 1e6:
                 return Math.floor(number / 1e6) + 'M';
+
             case number >= 1000:
                 return Math.floor(number / 1000) + 'k';
+
             default:
                 return number.toString();
         }
-    };
-
-    let setCookie = (name, value, days) => {
-        const date = new Date();
-
-        date.setTime(
-            date.getTime() + (
-                days * 24 * 60 * 60 * 1000
-            )
-        );
-
-        const expires = "expires=" + date.toUTCString();
-        document.cookie = name + "=" + value + ";" + expires + ";path=/";
     };
 
     let langColor = language => {
@@ -63,11 +53,6 @@ const Utils = ( _ => {
         return slug = pathname.split('/').pop();
     };
 
-    let getCookie = name => {
-        const cookie = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
-        return cookie ? cookie[2] : null;
-    };
-
     let copy = element => {
         const range = document.createRange();
         range.selectNodeContents(element);
@@ -83,11 +68,9 @@ const Utils = ( _ => {
         getSlug: _ => { return getSlug() },
         copy: (element) => { return copy(element) },
         format: (number) => { return format(number) },
-        getCookie: (name) => { return getCookie(name) },
         capitalize: (text) => { return capitalize(text) },
         langColor: (language) => { return langColor(language) },
         removeAccents: (text) => { return removeAccents(text) },
-        setCookie: (name, value, days) => { return setCookie(name, value, days) },
     };
 
 })();

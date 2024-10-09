@@ -5,7 +5,7 @@ const Stats = ( _ => {
     let uri = 'https://kremilly.accounts-3ae.workers.dev/views';
 
     let add = _ => {
-        if (!Utils.getCookie(cookieName) || Utils.getCookie(cookieName) != referer[2]) {
+        if (!Cookies.get(cookieName) || Cookies.get(cookieName) != referer[2]) {
             if (referer[1] === 'blog') {
                 let referer = window.location.pathname.split('/');
 
@@ -17,7 +17,7 @@ const Stats = ( _ => {
                 }).then(
                     response => response.json()
                 ).then(response => {
-                    Utils.setCookie(cookieName, referer[2], 1);
+                    Cookies.set(cookieName, referer[2], 1);
                 });
             }
         }
