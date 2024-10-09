@@ -3,11 +3,12 @@
     position: static;
     min-height: 46px;
     box-sizing: border-box;
-    padding: var(--spacing-sm);
     box-shadow: var(--box-shadow);
     margin-top: var(--spacing-sm);
+    padding-top: var(--spacing-sm);
     background: var(--color-border);
     margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
     border-radius: var(--border-radius);
     border: .1em solid var(--color-pre-bg);
 }
@@ -19,6 +20,7 @@
     font-size: .9em;
     font-weight: 600;
     margin-top: var(--spacing-xs);
+    margin-left: var(--spacing-sm);
     padding-left: var(--spacing-sm);
     padding-right: var(--spacing-sm);
     border-radius: var(--border-radius);
@@ -61,6 +63,7 @@
     font-weight: 600;
     background: transparent;
     padding-left: var(--spacing-sm);
+    margin-right: var(--spacing-sm);
     padding-right: var(--spacing-sm);
     margin-bottom: var(--spacing-md);
     border-radius: var(--border-radius);
@@ -76,6 +79,7 @@
     display: none;
     overflow-y: auto;
     max-height: 190px;
+    padding: var(--spacing-sm);
     margin-top: var(--spacing-md);
 }
 

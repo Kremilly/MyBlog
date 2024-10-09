@@ -63,9 +63,7 @@ const YTC = ( _ => {
     };
 
     let onYouTubeChaptersAPIReady = async () => {
-        let elements = document.querySelectorAll("[id^='summary-']");
-    
-        for (let element of elements) {
+        for (let element of document.querySelectorAll("[id^='summary-']")) {
             let summaryId = `#${element.id}`;
             let inputId = `${summaryId.replace('#', '')}-time`;
 
