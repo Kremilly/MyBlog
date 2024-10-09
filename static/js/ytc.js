@@ -36,31 +36,6 @@ const YTC = ( _ => {
         });
     };
 
-    let shortVideoLink = (videoId, timestamp = 0) => {
-        if (timestamp == 0) {
-            return `https://youtu.be/${ videoId }`;
-        }
-
-        return `https://youtu.be/${ videoId }?t=${ timestamp }`;
-    };
-
-    let adjustInputWidth = (input) => {
-        const measureSpan = document.createElement('span');
-        measureSpan.style.visibility = 'hidden';
-        measureSpan.style.position = 'absolute';
-        measureSpan.style.whiteSpace = 'nowrap';
-
-        measureSpan.textContent = input.value;
-        document.body.appendChild(measureSpan);
-
-        measureSpan.style.fontSize = getComputedStyle(input).fontSize;
-        measureSpan.style.fontWeight = getComputedStyle(input).fontWeight;
-        measureSpan.style.fontFamily = getComputedStyle(input).fontFamily;
-
-        input.style.width = `${measureSpan.offsetWidth + 16}px`;
-        document.body.removeChild(measureSpan);
-    };
-
     let titleChaptersToggle = el => {
         $($(el).attr('data-summary-id') + ' > .title').toggleClass('title-active');
         $($(el).attr('data-summary-id') + ' > .body').slideToggle(250);
@@ -79,7 +54,6 @@ const YTC = ( _ => {
             try {
                 let response = await fetch(`https://kremilly.com/api/plugins/ytc?v=${videoId}`);
                 let callback = await response.json();
-                let shortVideoUrl = shortVideoLink(videoId);
 
                 currentChapterIndex[playerId] = 0;
                 $(summaryId).empty();
@@ -89,7 +63,7 @@ const YTC = ( _ => {
                         <div class='title' data-summary-id='${ summaryId }' onclick='YTC.titleChaptersToggle(this);'>Capítulos</div>
 
                         <div class='controls'>
-                            <input type='text' id='${ inputId }' value='${ shortVideoUrl }' readonly>
+                            <div class='chapter-label'>Teste</div>
 
                             <div id='prev-${playerId}' class='fas fa-backward icon'></div>
                             <div id='next-${playerId}' class='fas fa-forward icon'></div>
@@ -99,7 +73,6 @@ const YTC = ( _ => {
                     `);
 
                     let input = document.getElementById(inputId);
-                    adjustInputWidth(input);
 
                     if (!chapterTimestamps[playerId]) {
                         chapterTimestamps[playerId] = [];
@@ -109,11 +82,7 @@ const YTC = ( _ => {
                         $(summaryId + ' > .body').append(`
                             <div class="chapter" data-time="${ 
                                 chapter.start_time_seconds.replace('s', '') 
-                            }" data-link-start="${
-                                shortVideoLink(videoId, chapter.start_time_seconds)
-                            }" data-link-input='${
-                                inputId
-                            }' data-player="${
+                            }" data-player="${
                                 playerId
                             }"' data-index="${index}">
                                 <div class="left">${ chapter.title }</div>
@@ -126,6 +95,7 @@ const YTC = ( _ => {
                         );
                     });
 
+                    chapterTitle(playerId, true); 
                     setupChapterNavigation(playerId);
                     $(summaryId).show();
                 } else {
@@ -191,10 +161,28 @@ const YTC = ( _ => {
         });
     };
 
+    let chapterTitle = (playerId, indexZero = false) =>  {
+        let chapterElement;
+
+        if (indexZero != true) {
+            chapterElement = document.querySelector(`.chapter[data-player="${playerId}"][data-index="${currentChapterIndex[playerId]}"]`);
+        } else {
+            chapterElement = document.querySelector(`.chapter[data-player="${playerId}"][data-index="0"]`);
+        }
+
+        if (chapterElement) {
+            $('#' + playerId.replace('player', 'summary') + ' > .controls > .chapter-label').text(
+                chapterElement.querySelector('.left').textContent
+            );
+        }
+    };
+
     let goToTimestamp = (playerId, player) => {
         let timestamp = chapterTimestamps[playerId][
             currentChapterIndex[playerId]
         ];
+
+        chapterTitle(playerId);       
 
         if (timestamp !== undefined) {
             player.seekTo(timestamp);

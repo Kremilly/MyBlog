@@ -55,25 +55,16 @@
     animation: bg-color .5s ease-in-out forwards; 
 }
 
-.post-content > .content > .ytc-plugin > .controls > input {
-    width: 32%;
+.post-content > .content > .ytc-plugin > .controls > .chapter-label {
     float: left;
     height: 26px;
-    border: none;
-    outline: none;
     color: inherit;
     font-size: .8em;
     font-weight: 600;
-    background: transparent;
+    line-height: 26px;
     padding-left: var(--spacing-sm);
     padding-right: var(--spacing-sm);
-    margin-bottom: var(--spacing-md);
     border-radius: var(--border-radius);
-}
-
-.post-content > .content > .ytc-plugin > .controls > input:hover, 
-.post-content > .content > .ytc-plugin > .controls > input:focus {
-    animation: bg-color .5s ease-in-out forwards;
 }
 
 .post-content > .content > .ytc-plugin > .body {
