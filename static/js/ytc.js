@@ -107,10 +107,13 @@ const YTC = ( _ => {
     
         document.querySelectorAll(`.chapter[data-player="${playerId}"]`).forEach( function(chapter) {
             chapter.addEventListener('click', function () {
+                $('.chapter').removeClass('active');
+                $(this).addClass('active');
+
                 currentChapterIndex[playerId] = parseInt(
                     this.getAttribute('data-index')
                 );
-                
+
                 goToTimestamp(playerId, player);
             });
         });
@@ -121,11 +124,17 @@ const YTC = ( _ => {
 
         if (indexZero != true) {
             chapterElement = document.querySelector(`
-                .chapter[data-player="${playerId}"][data-index="${currentChapterIndex[playerId]}"]
+                .chapter[data-player="${
+                    playerId
+                }"][data-index="${
+                    currentChapterIndex[playerId]
+                }"]
             `);
         } else {
             chapterElement = document.querySelector(`
-                .chapter[data-player="${playerId}"][data-index="0"]
+                .chapter[data-player="${
+                    playerId
+                }"][data-index="0"]
             `);
         }
 
