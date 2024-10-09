@@ -63,7 +63,7 @@ const YTC = ( _ => {
                         <div class='title' data-summary-id='${ summaryId }' onclick='YTC.titleChaptersToggle(this);'>Capítulos</div>
 
                         <div class='controls'>
-                            <div class='chapter-label'>Teste</div>
+                            <div class='chapter-label'></div>
 
                             <div id='prev-${playerId}' class='fas fa-backward icon'></div>
                             <div id='next-${playerId}' class='fas fa-forward icon'></div>
@@ -84,7 +84,7 @@ const YTC = ( _ => {
                                 chapter.start_time_seconds.replace('s', '') 
                             }" data-player="${
                                 playerId
-                            }"' data-index="${index}">
+                            }" data-index="${index}">
                                 <div class="left">${ chapter.title }</div>
                                 <div class="right">${ chapter.start_time }</div>
                             </div>
@@ -128,15 +128,15 @@ const YTC = ( _ => {
 
         const updateButtonState = () => {
             if (currentChapterIndex[playerId] <= 0) {
-                $(`#prev-${playerId}`).hide();
+                prevButton.style.display = 'none';
             } else {
-                $(`#prev-${playerId}`).show();
+                prevButton.style.display = 'inline-block';
             }
 
             if (currentChapterIndex[playerId] >= chapterTimestamps[playerId].length - 1) {
-                $(`#next-${playerId}`).hide();
+                nextButton.style.display = 'none';
             } else {
-                $(`#prev-${playerId}`).show();
+                nextButton.style.display = 'inline-block';
             }
         };
 
