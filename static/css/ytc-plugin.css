@@ -1,29 +1,60 @@
 .post-content > .content > .ytc-plugin {
+    display: none;
     position: static;
+    min-height: 46px;
     box-sizing: border-box;
     padding: var(--spacing-sm);
     box-shadow: var(--box-shadow);
+    margin-top: var(--spacing-sm);
     background: var(--color-border);
     margin-bottom: var(--spacing-md);
     border-radius: var(--border-radius);
     border: .1em solid var(--color-pre-bg);
 }
 
-.post-content > .content > .ytc-plugin::before {
+.post-content > .content > .ytc-plugin > .title {
     float: left;
     display: block;
+    cursor: pointer;
     font-size: .9em;
     font-weight: 600;
-    content: "Capítulos";
+    margin-top: var(--spacing-xs);
     padding-left: var(--spacing-sm);
-    margin-bottom: var(--spacing-md);
+    padding-right: var(--spacing-sm);
+    border-radius: var(--border-radius);
 }
 
-.post-content > .content > .ytc-plugin > input {
+.post-content > .content > .ytc-plugin > .title-active,
+.post-content > .content > .ytc-plugin > .title:hover { 
+    animation: bg-color .5s ease-in-out forwards; 
+}
+
+.post-content > .content > .ytc-plugin > .controls { float: right; }
+
+.post-content > .content > .ytc-plugin > .controls > .icon {
+    width: 26px;
+    float: left;
+    border: none;
+    outline: none;
+    color: inherit;
+    cursor: pointer;
+    font-size: .8em;
+    line-height: 26px;
+    text-align: center;
+    margin-left: var(--spacing-xs);
+    border-radius: var(--border-radius);
+}
+
+.post-content > .content > .ytc-plugin > .controls > .active,
+.post-content > .content > .ytc-plugin > .controls > .icon:hover { 
+    animation: bg-color .5s ease-in-out forwards; 
+}
+
+.post-content > .content > .ytc-plugin > .controls > input {
     width: 32%;
+    float: left;
     height: 26px;
     border: none;
-    float: right;
     outline: none;
     color: inherit;
     font-size: .8em;
@@ -35,17 +66,17 @@
     border-radius: var(--border-radius);
 }
 
-.post-content > .content > .ytc-plugin > input:hover, 
-.post-content > .content > .ytc-plugin > input:focus {
+.post-content > .content > .ytc-plugin > .controls > input:hover, 
+.post-content > .content > .ytc-plugin > .controls > input:focus {
     animation: bg-color .5s ease-in-out forwards;
 }
 
 .post-content > .content > .ytc-plugin > .body {
     width: 100%;
-    display: block;
-    margin-top: 42px;
+    display: none;
     overflow-y: auto;
     max-height: 190px;
+    margin-top: var(--spacing-md);
 }
 
 .post-content > .content > .ytc-plugin > .body > .chapter {

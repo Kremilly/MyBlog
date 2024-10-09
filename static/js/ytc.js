@@ -45,6 +45,7 @@ const YTC = ( _ => {
         measureSpan.style.visibility = 'hidden';
         measureSpan.style.position = 'absolute';
         measureSpan.style.whiteSpace = 'nowrap';
+
         measureSpan.textContent = input.value;
         document.body.appendChild(measureSpan);
 
@@ -56,12 +57,17 @@ const YTC = ( _ => {
         document.body.removeChild(measureSpan);
     };
 
+    let titleChaptersToggle = el => {
+        $($(el).attr('data-summary-id') + ' > .body').slideToggle(250);
+        $($(el).attr('data-summary-id') + ' > .title').toggleClass('title-active');
+    };
+
     let onYouTubeChaptersAPIReady = async () => {
         let elements = document.querySelectorAll("[id^='summary-']");
     
         for (let element of elements) {
             let summaryId = `#${element.id}`;
-            let inputId = `${summaryId.replace('#', '')}-search`;
+            let inputId = `${summaryId.replace('#', '')}-time`;
 
             let videoId = element.getAttribute('data-video');
             let playerId = element.id.replace('summary', 'player');
@@ -75,8 +81,12 @@ const YTC = ( _ => {
     
                 if (callback.summary && callback.summary.length > 0) {
                     $(summaryId).append(`
-                        <input type='text' id='${ inputId }' value='${ shortVideoUrl }' readonly>
+                        <div class='title' data-summary-id='${ summaryId }' onclick='YTC.titleChaptersToggle(this);'>Capítulos</div>
 
+                        <div class='controls'>
+                            <input type='text' id='${ inputId }' value='${ shortVideoUrl }' readonly>
+                        </div>
+    
                         <div class='body'></div>
                     `);
 
@@ -132,7 +142,8 @@ const YTC = ( _ => {
     };
 
     return {
-        init: _ => { return init() },
+        init: _ => { return init(); },
+        titleChaptersToggle: el => { return titleChaptersToggle(el) },
     };
 
 })();
