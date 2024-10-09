@@ -41,7 +41,7 @@ const YTC = ( _ => {
         $($(el).attr('data-summary-id') + ' > .body').slideToggle(250);
     };
 
-    let onYouTubeChaptersAPIReady = async () => {
+    let onYouTubeChaptersAPIReady = async _ => {
         let elements = document.querySelectorAll("[id^='summary-']");
     
         for (let element of elements) {
@@ -121,7 +121,7 @@ const YTC = ( _ => {
         });
     };
 
-    let setupChapterNavigation = (playerId) => {
+    let setupChapterNavigation = playerId => {
         let player = players[playerId];
         let prevButton = document.getElementById(`prev-${playerId}`);
         let nextButton = document.getElementById(`next-${playerId}`);
@@ -197,7 +197,6 @@ const YTC = ( _ => {
         if (event.data === YT.PlayerState.ENDED) {
             if (currentChapterIndex[playerId] < chapterTimestamps[playerId].length - 1) {
                 currentChapterIndex[playerId]++;
-
                 goToTimestamp(playerId, player);
             }
         }
