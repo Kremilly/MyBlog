@@ -82,8 +82,6 @@ const YTC = ( _ => {
     let onPlayerReady = event => {
         let player = event.target;
         let playerId = player.getIframe().id;
-
-        console.log('Player ID:', playerId);
     
         document.querySelectorAll(`.chapter[data-player="${playerId}"]`).forEach(function(chapter) {
             chapter.addEventListener('click', function() {
