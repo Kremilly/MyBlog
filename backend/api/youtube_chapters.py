@@ -9,21 +9,12 @@ class YouTubeChapters:
     @classmethod
     def __init__(cls):
         load_dotenv()
-        
-    @classmethod
-    def extract_video_id(url: str) -> str:
-        match = re.search(r"v=([a-zA-Z0-9_-]+)", url)
-        
-        if match:
-            return match.group(1)
-        
-        return None
     
     @classmethod
     def get_video_info(cls) -> dict:
-        response = requests.get(
-            f'https://www.googleapis.com/youtube/v3/videos?part=snippet&id={request.args.get("v")}&key={os.getenv("YT_API_KEY")}'
-        )
+        video_id = request.args.get("v")
+        yt_api_key = os.getenv("YT_API_KEY")
+        response = requests.get(f'https://www.googleapis.com/youtube/v3/videos?part=snippet&id={ video_id }&key={ yt_api_key }')
         
         if response.status_code == HTTPStatus.OK:
             return response.json()
@@ -83,12 +74,10 @@ class YouTubeChapters:
                 'link_end': cls.get_link_with_timestamp(end_seconds)
             })
         
-        # Regex para capítulos com apenas início (HH:MM título)
         pattern_with_start = r'(\d{1,2}:\d{2}) (.+)'
         chapters_with_start = re.findall(pattern_with_start, description)
 
         for start_time, title in chapters_with_start:
-            # Ignora capítulos que começam com '-'
             if title.strip().startswith('-'):
                 continue
             
