@@ -1,4 +1,4 @@
-.post-content > .content > .video-summary {
+.post-content > .content > .ytc-plugin {
     position: static;
     box-sizing: border-box;
     padding: var(--spacing-sm);
@@ -9,15 +9,15 @@
     border: .1em solid var(--color-pre-bg);
 }
 
-.post-content > .content > .video-summary::before {
+.post-content > .content > .ytc-plugin::before {
     font-size: .9em;
     font-weight: 600;
-    content: "Chapters";
+    content: "Capítulos";
     padding-left: var(--spacing-sm);
     margin-bottom: var(--spacing-md);
 }
 
-.post-content > .content > .video-summary > .chapter {
+.post-content > .content > .ytc-plugin > .chapter {
     height: 3em;
     display: flex;
     color: inherit;
@@ -31,11 +31,11 @@
     padding-right: var(--spacing-md);
 }
 
-.post-content > .content > .video-summary > .chapter > .left { float: left; }
+.post-content > .content > .ytc-plugin > .chapter > .left { float: left; }
 
-.post-content > .content > .video-summary > .chapter > .right { float: right; }
+.post-content > .content > .ytc-plugin > .chapter > .right { float: right; }
 
-.post-content > .content > .video-summary > .chapter:hover {
+.post-content > .content > .ytc-plugin > .chapter:hover {
     border-radius: var(--border-radius);
     animation: bg-color .5s ease-in-out forwards;
 }

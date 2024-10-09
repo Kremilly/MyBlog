@@ -58,7 +58,7 @@ class MDBuilder:
             youtube_url = Extract.video_id(plain_content.strip())
             
             player = f"""<div class='{alert_class}' id='player-{random_id}' data-video='{youtube_url}'></div>"""
-            summary = f"""<div class='video-summary' id='summary-{random_id}' data-video='{youtube_url}'></div>"""
+            summary = f"""<div class='ytc-plugin' id='summary-{random_id}' data-video='{youtube_url}'></div>"""
             
             return f"""{player}{summary}"""
         
