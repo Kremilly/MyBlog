@@ -64,9 +64,6 @@ const YTC = ( _ => {
 
                         <div class='controls'>
                             <div class='chapter-label'></div>
-
-                            <div id='prev-${playerId}' class='fas fa-backward icon'></div>
-                            <div id='next-${playerId}' class='fas fa-forward icon'></div>
                         </div>
     
                         <div class='body'></div>
@@ -79,12 +76,10 @@ const YTC = ( _ => {
                     }
 
                     callback.summary.forEach( (chapter, index) => {
+                        let timestamp = chapter.start_time_seconds.replace('s', '');
+
                         $(summaryId + ' > .body').append(`
-                            <div class="chapter" data-time="${ 
-                                chapter.start_time_seconds.replace('s', '') 
-                            }" data-player="${
-                                playerId
-                            }" data-index="${index}">
+                            <div class="chapter" data-time="${ timestamp }" data-player="${ playerId }" data-index="${ index }">
                                 <div class="left">${ chapter.title }</div>
                                 <div class="right">${ chapter.start_time }</div>
                             </div>
@@ -96,7 +91,6 @@ const YTC = ( _ => {
                     });
 
                     chapterTitle(playerId, true); 
-                    setupChapterNavigation(playerId);
                     $(summaryId).show();
                 } else {
                     $(summaryId).hide();
@@ -113,51 +107,12 @@ const YTC = ( _ => {
     
         document.querySelectorAll(`.chapter[data-player="${playerId}"]`).forEach( function(chapter) {
             chapter.addEventListener('click', function () {
-                currentChapterIndex[playerId] = parseInt(this.getAttribute('data-index'));
+                currentChapterIndex[playerId] = parseInt(
+                    this.getAttribute('data-index')
+                );
                 
-                setupChapterNavigation(playerId);
                 goToTimestamp(playerId, player);
             });
-        });
-    };
-
-    let setupChapterNavigation = playerId => {
-        let player = players[playerId];
-        let prevButton = document.getElementById(`prev-${playerId}`);
-        let nextButton = document.getElementById(`next-${playerId}`);
-
-        const updateButtonState = () => {
-            if (currentChapterIndex[playerId] <= 0) {
-                prevButton.style.display = 'none';
-            } else {
-                prevButton.style.display = 'inline-block';
-            }
-
-            if (currentChapterIndex[playerId] >= chapterTimestamps[playerId].length - 1) {
-                nextButton.style.display = 'none';
-            } else {
-                nextButton.style.display = 'inline-block';
-            }
-        };
-
-        updateButtonState();
-
-        prevButton.addEventListener('click', () => {
-            if (currentChapterIndex[playerId] > 0) {
-                currentChapterIndex[playerId]--;
-
-                goToTimestamp(playerId, player);
-                updateButtonState(); 
-            }
-        });
-
-        nextButton.addEventListener('click', () => {
-            if (currentChapterIndex[playerId] < chapterTimestamps[playerId].length - 1) {
-                currentChapterIndex[playerId]++;
-
-                goToTimestamp(playerId, player);
-                updateButtonState();
-            }
         });
     };
 
@@ -165,9 +120,13 @@ const YTC = ( _ => {
         let chapterElement;
 
         if (indexZero != true) {
-            chapterElement = document.querySelector(`.chapter[data-player="${playerId}"][data-index="${currentChapterIndex[playerId]}"]`);
+            chapterElement = document.querySelector(`
+                .chapter[data-player="${playerId}"][data-index="${currentChapterIndex[playerId]}"]
+            `);
         } else {
-            chapterElement = document.querySelector(`.chapter[data-player="${playerId}"][data-index="0"]`);
+            chapterElement = document.querySelector(`
+                .chapter[data-player="${playerId}"][data-index="0"]
+            `);
         }
 
         if (chapterElement) {
