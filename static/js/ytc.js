@@ -128,15 +128,15 @@ const YTC = ( _ => {
 
         const updateButtonState = () => {
             if (currentChapterIndex[playerId] <= 0) {
-                prevButton.style.display = 'none';
+                $(`#prev-${playerId}`).hide();
             } else {
-                prevButton.style.display = 'inline-block';
+                $(`#prev-${playerId}`).show();
             }
 
             if (currentChapterIndex[playerId] >= chapterTimestamps[playerId].length - 1) {
-                nextButton.style.display = 'none';
+                $(`#next-${playerId}`).hide();
             } else {
-                nextButton.style.display = 'inline-block';
+                $(`#prev-${playerId}`).show();
             }
         };
 
