@@ -107,9 +107,6 @@ const YTC = ( _ => {
     
         document.querySelectorAll(`.chapter[data-player="${playerId}"]`).forEach( function(chapter) {
             chapter.addEventListener('click', function () {
-                $('.chapter').removeClass('active');
-                $(this).addClass('active');
-
                 currentChapterIndex[playerId] = parseInt(
                     this.getAttribute('data-index')
                 );

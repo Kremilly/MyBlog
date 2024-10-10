@@ -88,14 +88,11 @@
     justify-content: space-between;
     padding-left: var(--spacing-md);
     padding-right: var(--spacing-md);
+    border-radius: var(--border-radius);
 }
 
 .post-content > .content > .ytc-plugin > .body > .chapter > .left { float: left; }
 
 .post-content > .content > .ytc-plugin > .body > .chapter > .right { float: right; }
 
-.post-content > .content > .ytc-plugin > .body > .active,
-.post-content > .content > .ytc-plugin > .body > .chapter:hover {
-    border-radius: var(--border-radius);
-    animation: bg-color .5s ease-in-out forwards;
-}
+.post-content > .content > .ytc-plugin > .body > .chapter:hover { animation: bg-color .5s ease-in-out forwards; }
