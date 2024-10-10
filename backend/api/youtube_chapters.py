@@ -6,13 +6,45 @@ from flask import Response, request
 
 class YouTubeChapters:
     
+    video_id = None
+    
+    patterns = [
+        (r'(\d{1,2}:\d{2})\s*-\s*(.*)', 2),  # Capture the start_time and title (pattern without end_time)
+        (r'(.*?):\s*(\d{1,2}:\d{2})', 2),    # Pattern with title and start
+        (r'(\d{1,2}:\d{2})\s+(.*)', 2)       # Pattern with start followed by title
+    ]
+    
     @classmethod
-    def __init__(cls):
+    def get_video_id(cls) -> str:
+        url = request.args.get("v")
+        
+        if 'https://youtu.be' in url:
+            return url.split('/')[-1].split('?')[0]
+
+        if 'watch?v=' in url:
+            return url.split('v=')[-1].split('&')[0]
+
+        video_id_match = re.search(
+            r'(?:v=|\/)([0-9A-Za-z_-]{11})', url
+        )
+        
+        if video_id_match:
+            return video_id_match.group(1)
+
+        return url
+    
+    @classmethod
+    def __init__(cls, custom_patterns: list = None):
         load_dotenv()
+        cls.video_id = cls.get_video_id()
+        
+        if custom_patterns:
+            cls.patterns.append(custom_patterns)
     
     @classmethod
     def get_video_info(cls) -> dict:
-        video_id = request.args.get("v")
+        video_id = cls.get_video_id()
+        
         yt_api_key = os.getenv("YT_API_KEY")
         response = requests.get(f'https://www.googleapis.com/youtube/v3/videos?part=snippet&id={ video_id }&key={ yt_api_key }')
         
@@ -38,14 +70,9 @@ class YouTubeChapters:
     def extract_chapters(cls, description: str) -> list:
         chapters_data = []
 
-        patterns = [
-            (r'(\d{1,2}:\d{2})\s*-\s*(.*)', 2),  # Capture the start_time and title (pattern without end_time)
-            (r'(.*?):\s*(\d{1,2}:\d{2})', 2),    # Pattern with title and start
-            (r'(\d{1,2}:\d{2})\s+(.*)', 2)       # Pattern with start followed by title
-        ]
-
-        for pattern, group_count in patterns:
+        for pattern, group_count in cls.patterns:
             matches = re.findall(pattern, description)
+            
             for match in matches:
                 if group_count == 2:
                     start_time, title = match
@@ -55,7 +82,7 @@ class YouTubeChapters:
                         'title': title.strip(),
                         'start_time': start_time,
                         'start_time_seconds': f'{start_seconds}s',
-                        'link_start': cls.get_link_with_timestamp(start_seconds)
+                        'link_start': cls.get_ink_video(start_seconds)
                     })
 
         return chapters_data
@@ -78,7 +105,10 @@ class YouTubeChapters:
             return 0
 
     @classmethod
-    def get_link_with_timestamp(cls, timestamp: int) -> str:
+    def get_ink_video(cls, timestamp:int = None) -> str:
+        if timestamp is None:
+            return f'https://youtu.be/{request.args.get('v')}'
+        
         return f'https://youtu.be/{request.args.get('v')}?t={timestamp}s'
     
     @classmethod
@@ -96,14 +126,22 @@ class YouTubeChapters:
                 mimetype='application/json'
             )
 
+        video_link = cls.get_ink_video()
+        title = video_info['items'][0].get('snippet', {}).get('title', '')
         description = video_info['items'][0].get('snippet', {}).get('description', '')
+        channel_title = video_info['items'][0].get('snippet', {}).get('channelTitle', '')
+        thumbnail = video_info['items'][0].get('snippet', {}).get('thumbnails', {}).get('medium', {}).get('url', '')
+        
         summary_data = cls.extract_chapters(description)
-
         if summary_data:
             return Response(
                 json.dumps({
+                    'title': title,
+                    'link': video_link,
+                    'thumbnail': thumbnail,
+                    'channel': channel_title,
                     'summary': summary_data,
-                    'total': len(summary_data)
+                    'total_chapters': len(summary_data)
                 }, ensure_ascii=False),
                 
                 status=HTTPStatus.OK,
