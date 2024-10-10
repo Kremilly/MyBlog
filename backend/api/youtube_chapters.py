@@ -22,25 +22,9 @@ class YouTubeChapters:
         return None
 
     @classmethod
-    def get_link_with_timestamp(cls, timestamp: str) -> str:
-        return f'https://www.youtube.com/watch?v={request.args.get("v")}&t={timestamp}s'
-    
-    @classmethod
-    def convert_to_seconds(cls, timestamp: str) -> int:
-        parts = timestamp.split(':')
-        parts = [int(p) for p in parts]
-        
-        if len(parts) == 3:  # Format HH:MM:SS
-            return parts[0] * 3600 + parts[1] * 60 + parts[2]
-        
-        if len(parts) == 2:  # Format MM:SS
-            return parts[0] * 60 + parts[1]
-        
-        return 0
-
-    @classmethod
     def convert_seconds_to_timestamp(cls, seconds: int) -> str:
         seconds = int(seconds)
+        
         hours = seconds // 3600
         minutes = (seconds % 3600) // 60
         seconds = seconds % 60
@@ -54,43 +38,48 @@ class YouTubeChapters:
     def extract_chapters(cls, description: str) -> list:
         chapters_data = []
 
-        pattern_with_end = r'(.+?): (\d{1,2}:\d{2}) - (\d{1,2}:\d{2})'
-        chapters_with_end = re.findall(pattern_with_end, description)
+        patterns = [
+            (r'(\d{1,2}:\d{2})\s*-\s*(.*)', 2),  # Capture the start_time and title (pattern without end_time)
+            (r'(.*?):\s*(\d{1,2}:\d{2})', 2),    # Pattern with title and start
+            (r'(\d{1,2}:\d{2})\s+(.*)', 2)       # Pattern with start followed by title
+        ]
 
-        for title, start_time, end_time in chapters_with_end:
-            if title.strip().startswith('-'):
-                continue
-            
-            start_seconds = cls.convert_to_seconds(start_time)
-            end_seconds = cls.convert_to_seconds(end_time)
-            
-            chapters_data.append({
-                'title': title.strip(),
-                'start_time': start_time,
-                'end_time': end_time,
-                'start_time_seconds': f'{start_seconds}s',
-                'end_time_seconds': f'{end_seconds}s',
-                'link_start': cls.get_link_with_timestamp(start_seconds),
-                'link_end': cls.get_link_with_timestamp(end_seconds)
-            })
-        
-        pattern_with_start = r'(\d{1,2}:\d{2}) (.+)'
-        chapters_with_start = re.findall(pattern_with_start, description)
-
-        for start_time, title in chapters_with_start:
-            if title.strip().startswith('-'):
-                continue
-            
-            start_seconds = cls.convert_to_seconds(start_time)
-            
-            chapters_data.append({
-                'title': title.strip(),
-                'start_time': start_time,
-                'start_time_seconds': f'{start_seconds}s',
-                'link_start': cls.get_link_with_timestamp(start_seconds)
-            })
+        for pattern, group_count in patterns:
+            matches = re.findall(pattern, description)
+            for match in matches:
+                if group_count == 2:
+                    start_time, title = match
+                    start_seconds = cls.convert_to_seconds(start_time)
+                    
+                    chapters_data.append({
+                        'title': title.strip(),
+                        'start_time': start_time,
+                        'start_time_seconds': f'{start_seconds}s',
+                        'link_start': cls.get_link_with_timestamp(start_seconds)
+                    })
 
         return chapters_data
+
+    @classmethod
+    def convert_to_seconds(cls, timestamp: str) -> int:
+        try:
+            parts = timestamp.split(':')
+            parts = [int(p) for p in parts]
+
+            if len(parts) == 3:  # Format HH:MM:SS
+                return parts[0] * 3600 + parts[1] * 60 + parts[2]
+            
+            elif len(parts) == 2:  # Format H:MM ou HH:MM
+                return parts[0] * 60 + parts[1]
+            else:
+                raise ValueError(f"Timestamp invalid: {timestamp}")
+
+        except ValueError as e:
+            return 0
+
+    @classmethod
+    def get_link_with_timestamp(cls, timestamp: int) -> str:
+        return f'https://youtu.be/{request.args.get('v')}?t={timestamp}s'
     
     @classmethod
     def get_summary(cls) -> Response:
