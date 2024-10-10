@@ -105,9 +105,9 @@ class YouTubeChapters:
     @classmethod
     def get_ink_video(cls, timestamp:int = None) -> str:
         if timestamp is None:
-            return f'https://youtu.be/{request.args.get('v')}'
+            return f'https://youtu.be/{cls.get_video_id()}'
         
-        return f'https://youtu.be/{request.args.get('v')}?t={timestamp}s'
+        return f'https://youtu.be/{cls.get_video_id()}?t={timestamp}s'
     
     @classmethod
     def get_summary(cls) -> Response:
