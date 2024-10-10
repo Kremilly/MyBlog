@@ -6,8 +6,6 @@ from flask import Response, request
 
 class YouTubeChapters:
     
-    video_id = None
-    
     patterns = [
         (r'(\d{1,2}:\d{2})\s*-\s*(.*)', 2),  # Capture the start_time and title (pattern without end_time)
         (r'(.*?):\s*(\d{1,2}:\d{2})', 2),    # Pattern with title and start
