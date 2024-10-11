@@ -51,12 +51,12 @@ Tokens identificados podem incluir: `int`, `main`, `()`, `{`, `a`, `=`, `10`, `;
 
 Uma árvore sintática é construída representando a estrutura do programa:
 
-```
-Function: main
-  - Declaration: int a = 10
-  - Declaration: int b = 20
-  - Declaration: int c = a + b
-  - Return: c
+```mermaid
+graph TD
+    A[Function: main] --> B[Declaration: int a = 10]
+    B --> C[Declaration: int b = 20]
+    C --> D[Declaration: int c = a + b]
+    D --> E[Return: c]
 ```
 
 ### Análise Semântica
