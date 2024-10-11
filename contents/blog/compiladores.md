@@ -61,11 +61,11 @@ graph TD
 
 ### Análise Semântica
 
-Verificação dos tipos de `a`, `b` e `c`, e das operações realizadas entre eles.
+Verificação dos tipos de $a$, $b$ e $c$, e das operações realizadas entre eles.
 
 ### Otimização
 
-O compilador pode identificar que `a` e `b` são constantes e otimizar a expressão `c = a + b` para `c = 30`.
+O compilador pode identificar que $a$ e $b$ são constantes e otimizar a expressão $c = a + b$ para $c = 30$.
 
 ### Geração de Código
 
