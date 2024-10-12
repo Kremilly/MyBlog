@@ -34,7 +34,6 @@ class YouTubeChapters:
     @classmethod
     def __init__(cls, custom_patterns: list = None):
         load_dotenv()
-        cls.video_id = cls.get_video_id()
         
         if custom_patterns:
             cls.patterns.append(custom_patterns)
@@ -72,16 +71,15 @@ class YouTubeChapters:
             matches = re.findall(pattern, description)
             
             for match in matches:
-                if group_count == 2:
-                    start_time, title = match
-                    start_seconds = cls.convert_to_seconds(start_time)
-                    
-                    chapters_data.append({
-                        'title': title.strip(),
-                        'start_time': start_time,
-                        'start_time_seconds': f'{start_seconds}s',
-                        'link_start': cls.get_ink_video(start_seconds)
-                    })
+                start_time, title = match
+                start_seconds = cls.convert_to_seconds(start_time)
+                
+                chapters_data.append({
+                    'title': title.strip(),
+                    'start_time': start_time,
+                    'start_time_seconds': f'{start_seconds}s',
+                    'link_start': cls.get_ink_video(start_seconds)
+                })
 
         return chapters_data
 
