@@ -32,6 +32,7 @@
     display: block;
     color: inherit;
     font-weight: bold;
+    margin-top: -.5em;
     line-height: 2.5em;
     text-decoration: none;
     background: var(--color-bg);
@@ -39,7 +40,7 @@
     padding-right: var(--spacing-md);
     margin-bottom: var(--spacing-sm);
     border-radius: var(--border-radius);
-    border: .1em solid var(--color-border);
+    border: 1px solid var(--color-border);
 }
 
 .toc-box > .list {

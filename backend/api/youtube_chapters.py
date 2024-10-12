@@ -103,7 +103,7 @@ class YouTubeChapters:
             return 0
 
     @classmethod
-    def get_ink_video(cls, timestamp:int = None) -> str:
+    def get_ink_video(cls, timestamp: int = None) -> str:
         if timestamp is None:
             return f'https://youtu.be/{cls.get_video_id()}'
         
