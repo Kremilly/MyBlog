@@ -86,7 +86,9 @@ const YTC = ( _ => {
                         `);
 
                         chapterTimestamps[playerId].push(
-                            parseInt(chapter.start_time_seconds.replace('s', ''))
+                            parseInt(
+                                chapter.start_time_seconds.replace('s', '')
+                            )
                         );
                     });
 

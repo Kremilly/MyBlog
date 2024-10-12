@@ -6,7 +6,7 @@ from flask import Response, request
 
 class YouTubeChapters:
     
-    patterns = [
+    video_patterns = [
         (r'(\d{1,2}:\d{2})\s*-\s*(.*)', 2),  # Capture the start_time and title (pattern without end_time)
         (r'(.*?):\s*(\d{1,2}:\d{2})', 2),    # Pattern with title and start
         (r'(\d{1,2}:\d{2})\s+(.*)', 2)       # Pattern with start followed by title
@@ -36,7 +36,7 @@ class YouTubeChapters:
         load_dotenv()
         
         if custom_patterns:
-            cls.patterns.append(custom_patterns)
+            cls.video_patterns.append(custom_patterns)
     
     @classmethod
     def get_video_info(cls) -> dict:
@@ -67,7 +67,7 @@ class YouTubeChapters:
     def extract_chapters(cls, description: str) -> list:
         chapters_data = []
 
-        for pattern, group_count in cls.patterns:
+        for pattern, group_count in cls.video_patterns:
             matches = re.findall(pattern, description)
             
             for match in matches:
