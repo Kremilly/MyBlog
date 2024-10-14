@@ -7,9 +7,7 @@ from flask import Response, request
 class YouTubeChapters:
     
     video_patterns = [
-        (r'(\d{1,2}:\d{2})\s*-\s*(.*)', 2),  # Capture the start_time and title (pattern without end_time)
-        (r'(.*?):\s*(\d{1,2}:\d{2})', 2),    # Pattern with title and start
-        (r'(\d{1,2}:\d{2})\s+(.*)', 2)       # Pattern with start followed by title
+        (r'(\d{1,2}:\d{2})\s+(.+)', 2)  # Padrão para "MM:SS Título" ou "H:MM Título"
     ]
     
     @classmethod
@@ -43,7 +41,7 @@ class YouTubeChapters:
         video_id = cls.get_video_id()
         
         yt_api_key = os.getenv("YT_API_KEY")
-        response = requests.get(f'https://www.googleapis.com/youtube/v3/videos?part=snippet&id={ video_id }&key={ yt_api_key }')
+        response = requests.get(f'https://www.googleapis.com/youtube/v3/videos?part=snippet&id={video_id}&key={yt_api_key}')
         
         if response.status_code == HTTPStatus.OK:
             return response.json()
@@ -52,8 +50,6 @@ class YouTubeChapters:
 
     @classmethod
     def convert_seconds_to_timestamp(cls, seconds: int) -> str:
-        seconds = int(seconds)
-        
         hours = seconds // 3600
         minutes = (seconds % 3600) // 60
         seconds = seconds % 60
@@ -67,45 +63,44 @@ class YouTubeChapters:
     def extract_chapters(cls, description: str) -> list:
         chapters_data = []
 
+        # Usar os padrões definidos na lista de video_patterns
         for pattern, group_count in cls.video_patterns:
             matches = re.findall(pattern, description)
             
             for match in matches:
-                start_time, title = match
-                start_seconds = cls.convert_to_seconds(start_time)
-                
-                chapters_data.append({
-                    'title': title.strip(),
-                    'start_time': start_time,
-                    'start_time_seconds': f'{start_seconds}s',
-                    'link_start': cls.get_ink_video(start_seconds)
-                })
+                if len(match) == 2:
+                    start_time, title = match
+                    start_seconds = cls.convert_to_seconds(start_time)
+                    
+                    chapters_data.append({
+                        'title': title.strip(),
+                        'start_time': start_time.strip(),
+                        'start_time_seconds': f'{start_seconds}s',
+                        'link_start': cls.get_ink_video(start_seconds)
+                    })
 
         return chapters_data
 
     @classmethod
     def convert_to_seconds(cls, timestamp: str) -> int:
-        try:
-            parts = timestamp.split(':')
-            parts = [int(p) for p in parts]
+        parts = timestamp.split(':')
+        parts = [int(p) for p in parts]
 
-            if len(parts) == 3:  # Format HH:MM:SS
-                return parts[0] * 3600 + parts[1] * 60 + parts[2]
-            
-            elif len(parts) == 2:  # Format H:MM ou HH:MM
-                return parts[0] * 60 + parts[1]
-            else:
-                raise ValueError(f"Timestamp invalid: {timestamp}")
-
-        except ValueError as e:
-            return 0
+        if len(parts) == 3:  # Formato HH:MM:SS
+            return parts[0] * 3600 + parts[1] * 60 + parts[2]
+        
+        elif len(parts) == 2:  # Formato MM:SS
+            return parts[0] * 60 + parts[1]
+        
+        return 0
 
     @classmethod
     def get_ink_video(cls, timestamp: int = None) -> str:
+        video_id = cls.get_video_id()
         if timestamp is None:
-            return f'https://youtu.be/{cls.get_video_id()}'
+            return f'https://youtu.be/{video_id}'
         
-        return f'https://youtu.be/{cls.get_video_id()}?t={timestamp}s'
+        return f'https://youtu.be/{video_id}?t={timestamp}s'
     
     @classmethod
     def get_summary(cls) -> Response:
@@ -115,7 +110,7 @@ class YouTubeChapters:
             return Response(
                 json.dumps({
                     'summary': False,
-                    'message': 'Video information not found'
+                    'message': 'Informações do vídeo não encontradas'
                 }, ensure_ascii=False),
                 
                 status=HTTPStatus.OK,
@@ -147,7 +142,7 @@ class YouTubeChapters:
         return Response(
             json.dumps({
                 'summary': False,
-                'message': 'No summary found'
+                'message': 'Nenhum resumo encontrado'
             }, ensure_ascii=False),
             
             status=HTTPStatus.OK,
