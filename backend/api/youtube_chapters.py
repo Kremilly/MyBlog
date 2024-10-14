@@ -160,6 +160,7 @@ class YouTubeChapters:
                     'thumbnail': thumbnail,
                     'channel': channel_title,
                     'summary': summary_data,
+                    'description': description,
                     'total_chapters': len(summary_data)
                 }, ensure_ascii=False),
                 
