@@ -7,7 +7,10 @@ from flask import Response, request
 class YouTubeChapters:
     
     video_patterns = [
-        (r'(\d{1,2}:\d{2})\s+(.+)', 2)  # Padrão para "MM:SS Título" ou "H:MM Título"
+        re.compile(r'(\d{1,2}:\d{2}:\d{2})\s*[-–]?\s*(.+)'),  # Formato HH:MM:SS
+        re.compile(r'(\d{1,2}:\d{2})\s*[-–]?\s*(.+)'),        # Formato MM:SS
+        re.compile(r'(.+?)\s*[:\-–]\s*(\d{1,2}:\d{2})'),      # Título seguido de MM:SS
+        re.compile(r'(\d{1,2}:\d{2})\s*(.+)'),                # MM:SS seguido de título
     ]
     
     @classmethod
@@ -41,7 +44,7 @@ class YouTubeChapters:
         video_id = cls.get_video_id()
         
         yt_api_key = os.getenv("YT_API_KEY")
-        response = requests.get(f'https://www.googleapis.com/youtube/v3/videos?part=snippet&id={video_id}&key={yt_api_key}')
+        response = requests.get(f'https://www.googleapis.com/youtube/v3/videos?part=snippet&id={ video_id }&key={ yt_api_key }')
         
         if response.status_code == HTTPStatus.OK:
             return response.json()
@@ -50,6 +53,8 @@ class YouTubeChapters:
 
     @classmethod
     def convert_seconds_to_timestamp(cls, seconds: int) -> str:
+        seconds = int(seconds)
+        
         hours = seconds // 3600
         minutes = (seconds % 3600) // 60
         seconds = seconds % 60
@@ -62,45 +67,64 @@ class YouTubeChapters:
     @classmethod
     def extract_chapters(cls, description: str) -> list:
         chapters_data = []
+        seen_times = set()
+        
+        for pattern in cls.video_patterns:
+            matches = pattern.findall(description)
 
-        # Usar os padrões definidos na lista de video_patterns
-        for pattern, group_count in cls.video_patterns:
-            matches = re.findall(pattern, description)
-            
             for match in matches:
-                if len(match) == 2:
-                    start_time, title = match
-                    start_seconds = cls.convert_to_seconds(start_time)
+                start_time = match[0] if len(match) == 2 else match[1]
+                
+                if cls.is_valid_timestamp(start_time):
+                    text = match[1] if len(match) == 2 else match[0]
                     
-                    chapters_data.append({
-                        'title': title.strip(),
-                        'start_time': start_time.strip(),
-                        'start_time_seconds': f'{start_seconds}s',
-                        'link_start': cls.get_ink_video(start_seconds)
-                    })
+                    title = cls.remove_seconds_from_title(text)
+                    start_seconds = cls.convert_to_seconds(start_time)
+
+                    if start_time not in seen_times:
+                        chapters_data.append({
+                            'title': title.strip(),
+                            'start_time': start_time.strip(),
+                            'start_time_seconds': f'{start_seconds}s',
+                            'link_start': cls.get_link_video(start_seconds)
+                        })
+                        
+                        seen_times.add(start_time)
 
         return chapters_data
 
-    @classmethod
-    def convert_to_seconds(cls, timestamp: str) -> int:
+    @staticmethod
+    def convert_to_seconds(timestamp: str) -> int:
         parts = timestamp.split(':')
-        parts = [int(p) for p in parts]
-
-        if len(parts) == 3:  # Formato HH:MM:SS
-            return parts[0] * 3600 + parts[1] * 60 + parts[2]
+        parts = [int(part) for part in parts if part.isdigit()]
         
-        elif len(parts) == 2:  # Formato MM:SS
+        if len(parts) == 3:
+            return parts[0] * 3600 + parts[1] * 60 + parts[2]
+        elif len(parts) == 2:
             return parts[0] * 60 + parts[1]
         
         return 0
+        
+    @staticmethod
+    def remove_seconds_from_title(title: str) -> str:
+        return re.sub(
+            r':\d{2}', '', title
+        )
+
+    @staticmethod
+    def is_valid_timestamp(timestamp: str) -> bool:
+        return bool(
+            re.match(
+                r'^\d{1,2}:\d{2}(:\d{2})?$', timestamp
+            )
+        )
 
     @classmethod
-    def get_ink_video(cls, timestamp: int = None) -> str:
-        video_id = cls.get_video_id()
+    def get_link_video(cls, timestamp: int = None) -> str:
         if timestamp is None:
-            return f'https://youtu.be/{video_id}'
+            return f'https://youtu.be/{cls.get_video_id()}'
         
-        return f'https://youtu.be/{video_id}?t={timestamp}s'
+        return f'https://youtu.be/{cls.get_video_id()}?t={timestamp}s'
     
     @classmethod
     def get_summary(cls) -> Response:
@@ -110,14 +134,14 @@ class YouTubeChapters:
             return Response(
                 json.dumps({
                     'summary': False,
-                    'message': 'Informações do vídeo não encontradas'
+                    'message': 'Video information not found'
                 }, ensure_ascii=False),
                 
                 status=HTTPStatus.OK,
                 mimetype='application/json'
             )
 
-        video_link = cls.get_ink_video()
+        video_link = cls.get_link_video()
         title = video_info['items'][0].get('snippet', {}).get('title', '')
         description = video_info['items'][0].get('snippet', {}).get('description', '')
         channel_title = video_info['items'][0].get('snippet', {}).get('channelTitle', '')
@@ -142,7 +166,7 @@ class YouTubeChapters:
         return Response(
             json.dumps({
                 'summary': False,
-                'message': 'Nenhum resumo encontrado'
+                'message': 'No summary found'
             }, ensure_ascii=False),
             
             status=HTTPStatus.OK,
