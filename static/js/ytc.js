@@ -39,59 +39,74 @@ const YTC = ( _ => {
     let titleChaptersToggle = el => {
         $($(el).attr('data-summary-id') + ' > .title').toggleClass('title-active');
         $($(el).attr('data-summary-id') + ' > .body').slideToggle(250);
+
+        $($(el).attr('data-summary-id') + ' > .controls > input').fadeToggle(250);
     };
 
+    let searchChapters = el => {
+        let searchText = $(el).val().toLowerCase();
+        let summaryId = $(el).closest('[id^="summary-"]').attr('id').replace('-search', '');
+    
+        $(`#${summaryId} > .body > .chapter`).each(function () {
+            let chapterText = $(this).find('.left').text().toLowerCase(); 
+            
+            if (chapterText.includes(searchText)) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    };
+    
     let onYouTubeChaptersAPIReady = async _ => {
         let elements = document.querySelectorAll("[id^='summary-']");
-    
+        
         for (let element of elements) {
             let summaryId = `#${element.id}`;
-            let inputId = `${summaryId.replace('#', '')}-time`;
-
+            let inputId = `${element.id}-search`; 
             let videoId = element.getAttribute('data-video');
             let playerId = element.id.replace('summary', 'player');
-    
+        
             try {
                 let response = await fetch(`https://kremilly.com/api/plugins/ytc?v=${videoId}`);
                 let callback = await response.json();
-
+    
                 currentChapterIndex[playerId] = 0;
                 $(summaryId).empty();
-    
+        
                 if (callback.summary && callback.summary.length > 0) {
                     $(summaryId).append(`
                         <div class='title' data-summary-id='${ summaryId }' onclick='YTC.titleChaptersToggle(this);'>Capítulos</div>
-
+    
                         <div class='controls'>
+                            <input type='search' id="${inputId}" placeholder='Buscar capítulos' oninput='YTC.searchChapters(this);'>
                             <div class='chapter-label'></div>
                         </div>
     
                         <div class='body'></div>
                     `);
-
+    
                     let input = document.getElementById(inputId);
-
+    
                     if (!chapterTimestamps[playerId]) {
                         chapterTimestamps[playerId] = [];
                     }
-
-                    callback.summary.forEach( (chapter, index) => {
+    
+                    callback.summary.forEach((chapter, index) => {
                         let timestamp = chapter.start_time_seconds.replace('s', '');
-
+    
                         $(summaryId + ' > .body').append(`
                             <div class="chapter" data-time="${ timestamp }" data-player="${ playerId }" data-index="${ index }">
-                                <div class="left">${ chapter.title }</div>
+                                <div class="left">${ limitTextSize(chapter.title, 92) }</div>
                                 <div class="right">${ chapter.start_time }</div>
                             </div>
                         `);
-
+    
                         chapterTimestamps[playerId].push(
-                            parseInt(
-                                chapter.start_time_seconds.replace('s', '')
-                            )
+                            parseInt(chapter.start_time_seconds.replace('s', ''))
                         );
                     });
-
+    
                     chapterTitle(playerId, true); 
                     $(summaryId).show();
                 } else {
@@ -118,6 +133,14 @@ const YTC = ( _ => {
         });
     };
 
+    let limitTextSize = (text, maxLength) => {
+        if (text.length > maxLength) {
+            return text.substring(0, maxLength) + '...';
+        } else {
+            return text;
+        }
+    };
+
     let chapterTitle = (playerId, indexZero = false) =>  {
         let chapterElement;
 
@@ -139,7 +162,9 @@ const YTC = ( _ => {
 
         if (chapterElement) {
             $('#' + playerId.replace('player', 'summary') + ' > .controls > .chapter-label').text(
-                chapterElement.querySelector('.left').textContent
+                limitTextSize(
+                    chapterElement.querySelector('.left').textContent, 48
+                )
             );
         }
     };
@@ -171,6 +196,7 @@ const YTC = ( _ => {
 
     return {
         init: _ => { return init(); },
+        searchChapters: el => { return searchChapters(el) },
         titleChaptersToggle: el => { return titleChaptersToggle(el) },
     };
 
