@@ -65,8 +65,7 @@ class YouTubeChapters:
                             })
                             
                             seen_chapters.add(chapter_key)
-                            
-        chapters_data.sort(key=lambda x: x['start_time_seconds'])
+
         return chapters_data
 
     @staticmethod
