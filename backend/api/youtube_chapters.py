@@ -67,7 +67,7 @@ class YouTubeChapters:
     @classmethod
     def extract_chapters(cls, description: str) -> list:
         chapters_data = []
-        seen_times = set()
+        seen_chapters = set()  # Usado para rastrear capítulos únicos
         
         for pattern in cls.video_patterns:
             matches = pattern.findall(description)
@@ -77,11 +77,13 @@ class YouTubeChapters:
                 
                 if cls.is_valid_timestamp(start_time):
                     text = match[1] if len(match) == 2 else match[0]
-                    
                     title = cls.remove_seconds_from_title(text)
                     start_seconds = cls.convert_to_seconds(start_time)
 
-                    if start_time not in seen_times:
+                    # Cria uma chave única baseada no título e no timestamp para evitar duplicação
+                    chapter_key = (title.strip().lower(), start_seconds)
+                    
+                    if chapter_key not in seen_chapters:
                         chapters_data.append({
                             'title': title.strip(),
                             'start_time': start_time.strip(),
@@ -89,8 +91,9 @@ class YouTubeChapters:
                             'link_start': cls.get_link_video(start_seconds)
                         })
                         
-                        seen_times.add(start_time)
+                        seen_chapters.add(chapter_key)  # Marca o capítulo como já visto
 
+        # Ordena os capítulos pelo 'start_time_seconds'
         chapters_data.sort(key=lambda x: x['start_time_seconds'])
         return chapters_data
 
