@@ -58,6 +58,23 @@ const Crates = ( _ => {
         });
     };
 
+    let projects_page = _ => {
+        fetch(cratesURI).then(
+            json => json.json()
+        ).then(response => {
+            $('#cratesListPage').empty();
+
+            response.crates.forEach(item => {
+                $('#cratesListPage').append(`
+                    <a href='https://crates.io/crates/${item.name}' target='_blank' class='project'>
+                        <h2>${ Utils.capitalize(item.name) }</h2>
+                        <p>${ item.description }</p>
+                    </a>
+                `);
+            });
+        });
+    };
+
     let countDownloads = _ => {
         if ($('.install').length) {
             $('.alert-install-count').each( function () {
@@ -87,6 +104,7 @@ const Crates = ( _ => {
 
         featured: () => { return featured() },
         projects: () => { return projects() },
+        projects_page: () => { return projects_page() },
         countDownloads: () => { return countDownloads() },
     };
 

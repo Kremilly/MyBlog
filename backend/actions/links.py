@@ -93,3 +93,18 @@ class Links:
             return github_profile
         
         return github_profile.split('/')[-1]
+    
+    @classmethod
+    def crates_profile(cls, url:bool=True) -> str:
+        profile = []
+        social_media = Settings.get('social_media', 'list')
+        
+        for profile in social_media:
+            if 'Crates' in profile:
+                github_profile = profile['Crates']
+                break
+
+        if url:
+            return github_profile
+        
+        return github_profile.split('/')[-1]

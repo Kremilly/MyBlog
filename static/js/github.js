@@ -67,10 +67,32 @@ const GitHub = ( _ => {
         }
     };
 
+    let projects_page = _ => {
+        fetch(`${apiUri}/github?user=${username}`, {
+            method: 'GET',
+            cache: 'default',
+        }).then(
+            json => json.json()
+        ).then(response => {
+            $('#reposListPage').empty();
+
+            response.forEach(item => {
+                $('#reposListPage').append(`
+                    <a href="${item.url}" target='_blank' class="project">
+                        <h2>${ item.name }</h2>
+                        <div class="lang ${item.languages[0].toLowerCase()}">${item.languages[0]}</div>
+                        <p>${ item.description }</p>
+                    </a>
+                `);
+            });
+        });
+    };
+
     return {
         username: username,
         projects: () => { return projects() },
         featured: () => { return featured() },
+        projects_page: () => { return projects_page() }
     };
 
 })();

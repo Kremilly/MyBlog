@@ -25,8 +25,26 @@ const Projects = ( _ => {
         });
     };
 
+    let projects_page = _ => {
+        fetch(projectsUri).then(
+            json => json.json()
+        ).then(response => {
+            $('#projectsListPage').empty();
+
+            response.forEach(item => {
+                $('#projectsListPage').append(`
+                    <a href="${item.url}" target='_blank' class="project">
+                        <h2>${ item.name }</h2>
+                        <p>${ item.description }</p>
+                    </a>
+                `);
+            });
+        });
+    };
+
     return {
         projects: () => { return projects() },
+        projects_page: () => { return projects_page() }
     };
 
 })();

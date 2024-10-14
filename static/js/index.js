@@ -11,6 +11,23 @@ $( _ => {
 
     Error404.posts();
 
+    if ($('.container-projects').length > 0) {
+        Crates.projects_page();
+        GitHub.projects_page();
+        Projects.projects_page();
+
+        $('#reposListPage').slideToggle(250);
+        $('#cratesListPage').slideToggle(250);
+
+        $('#toggleReposListPage').on('click', function () {
+            $('#reposListPage').slideToggle(250);
+        });
+
+        $('#toggleCratesListPage').on('click', function () {
+            $('#cratesListPage').slideToggle(250);
+        });
+    }
+
     let hideMenuTimeout;
     let pathParts = window.location.pathname.split('/');
 
@@ -40,6 +57,10 @@ $( _ => {
 
             case 'docs':
                 $('#docs-tab-menu').addClass('actived');
+                break;
+
+            case 'projects':
+                $('#projects-tab-menu').addClass('actived');
                 break;
 
             case 'links':

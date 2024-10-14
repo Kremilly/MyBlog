@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    {% include 'partials/head-tags.html' %}
+</head>
+<body>
+    {% include 'partials/header.html' %}
+
+    {% include 'partials/menu-links.html' %}
+
+    <div class="container-projects">
+        <div class="label">Projetos</div>
+        <div class="projects" id="projectsListPage"></div>
+
+        <div class="label">
+            <a href='{{ github }}' target='_blank'>GitHub</a>
+            <div class="right" id="toggleReposListPage">Show/Hide</div>
+        </div>
+
+        <div class="projects" id="reposListPage"></div>
+
+        <div class="label">
+            <a href='{{ crates }}' target='_blank'>Crates</a>
+            <div class="right" id="toggleCratesListPage">Show/Hide</div>
+        </div>
+        
+        <div class="projects" id="cratesListPage"></div>
+    </div>
+    
+    {% include 'partials/scripts.html' %}
+</body>
+</html>
