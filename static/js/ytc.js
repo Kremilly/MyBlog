@@ -17,30 +17,6 @@ const YTC = ( _ => {
         }
     };
 
-    const parseChapters = (description) => {
-        const lines = description.split("\n")
-        const regex = /(\d{0,2}:?\d{1,2}:\d{2})/g
-        const chapters = []
-      
-        for (const line of lines) {
-            const matches = line.match(regex)
-                if (matches) {
-                    const ts = matches[0]
-                    const title = line
-                    .split(" ")
-                    .filter((l) => !l.includes(ts))
-                    .join(" ")
-            
-                    chapters.push({
-                    timestamp: ts,
-                    title: title,
-                })
-            }
-        }
-      
-        return chapters
-    };
-
     let onYouTubeIframeAPIReady = _ => {
         var elements = document.querySelectorAll("[id^='player-']");
         

@@ -1,50 +1,38 @@
-import requests, re, json, os
-
+import re
+import requests
+import os
+import json
 from http import HTTPStatus
+from flask import request, Response
 from dotenv import load_dotenv
-from flask import Response, request
 
 class YouTubeChapters:
-    
+
     video_patterns = [
-        re.compile(r'(\d{1,2}:\d{2}:\d{2})\s*[-–]?\s*(.+)'),  # Formato HH:MM:SS
-        re.compile(r'(\d{1,2}:\d{2})\s*[-–]?\s*(.+)'),        # Formato MM:SS
-        re.compile(r'(.+?)\s*[:\-–]\s*(\d{1,2}:\d{2})'),      # Título seguido de MM:SS
-        re.compile(r'(\d{1,2}:\d{2})\s*(.+)'),                # MM:SS seguido de título
+        re.compile(r'(\d{0,2}:?\d{1,2}:\d{2})\s+(.+)'),
     ]
     
     @classmethod
     def get_video_id(cls) -> str:
         url = request.args.get("v")
-        
         if 'https://youtu.be' in url:
             return url.split('/')[-1].split('?')[0]
-
+        
         if 'watch?v=' in url:
             return url.split('v=')[-1].split('&')[0]
-
-        video_id_match = re.search(
-            r'(?:v=|\/)([0-9A-Za-z_-]{11})', url
-        )
+        
+        video_id_match = re.search(r'(?:v=|\/)([0-9A-Za-z_-]{11})', url)
         
         if video_id_match:
             return video_id_match.group(1)
-
-        return url
-    
-    @classmethod
-    def __init__(cls, custom_patterns: list = None):
-        load_dotenv()
         
-        if custom_patterns:
-            cls.video_patterns.append(custom_patterns)
+        return url
     
     @classmethod
     def get_video_info(cls) -> dict:
         video_id = cls.get_video_id()
-        
         yt_api_key = os.getenv("YT_API_KEY")
-        response = requests.get(f'https://www.googleapis.com/youtube/v3/videos?part=snippet&id={ video_id }&key={ yt_api_key }')
+        response = requests.get(f'https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails&id={video_id}&key={yt_api_key}')
         
         if response.status_code == HTTPStatus.OK:
             return response.json()
@@ -52,83 +40,74 @@ class YouTubeChapters:
         return None
 
     @classmethod
-    def convert_seconds_to_timestamp(cls, seconds: int) -> str:
-        seconds = int(seconds)
-        
-        hours = seconds // 3600
-        minutes = (seconds % 3600) // 60
-        seconds = seconds % 60
-        
-        if hours > 0:
-            return f"{hours:02}:{minutes:02}:{seconds:02}"
-        
-        return f"{minutes:02}:{seconds:02}"
-
-    @classmethod
-    def extract_chapters(cls, description: str) -> list:
+    def extract_chapters(cls, description: str, video_duration: int) -> list:
         chapters_data = []
-        seen_chapters = set()  # Usado para rastrear capítulos únicos
+        seen_chapters = set()
         
         for pattern in cls.video_patterns:
             matches = pattern.findall(description)
-
             for match in matches:
-                start_time = match[0] if len(match) == 2 else match[1]
+                start_time = match[0].strip()
+                title = match[1].strip()
                 
                 if cls.is_valid_timestamp(start_time):
-                    text = match[1] if len(match) == 2 else match[0]
-                    title = cls.remove_seconds_from_title(text)
                     start_seconds = cls.convert_to_seconds(start_time)
-
-                    # Cria uma chave única baseada no título e no timestamp para evitar duplicação
-                    chapter_key = (title.strip().lower(), start_seconds)
                     
-                    if chapter_key not in seen_chapters:
-                        chapters_data.append({
-                            'title': title.strip(),
-                            'start_time': start_time.strip(),
-                            'start_time_seconds': f'{start_seconds}s',
-                            'link_start': cls.get_link_video(start_seconds)
-                        })
+                    if start_seconds <= video_duration:
+                        chapter_key = (title.lower(), start_seconds)
                         
-                        seen_chapters.add(chapter_key)  # Marca o capítulo como já visto
-
-        # Ordena os capítulos pelo 'start_time_seconds'
+                        if chapter_key not in seen_chapters:
+                            chapters_data.append({
+                                'title': title,
+                                'start_time': start_time,
+                                'start_time_seconds': f'{start_seconds}s',
+                                'link_start': cls.get_link_video(start_seconds)
+                            })
+                            
+                            seen_chapters.add(chapter_key)
+                            
         chapters_data.sort(key=lambda x: x['start_time_seconds'])
         return chapters_data
-
-    @staticmethod
-    def convert_to_seconds(timestamp: str) -> int:
-        parts = timestamp.split(':')
-        parts = [int(part) for part in parts if part.isdigit()]
-        
-        if len(parts) == 3:
-            return parts[0] * 3600 + parts[1] * 60 + parts[2]
-        elif len(parts) == 2:
-            return parts[0] * 60 + parts[1]
-        
-        return 0
-        
-    @staticmethod
-    def remove_seconds_from_title(title: str) -> str:
-        return re.sub(
-            r':\d{2}', '', title
-        )
 
     @staticmethod
     def is_valid_timestamp(timestamp: str) -> bool:
         return bool(
             re.match(
-                r'^\d{1,2}:\d{2}(:\d{2})?$', timestamp
+                r'^\d{0,2}:?\d{1,2}:\d{2}$', timestamp
             )
         )
+    
+    @staticmethod
+    def convert_to_seconds(timestamp: str) -> int:
+        parts = [int(part) for part in timestamp.split(':')]
+        
+        if len(parts) == 3:  # H:MM:SS ou HH:MM:SS
+            return parts[0] * 3600 + parts[1] * 60 + parts[2]
+        
+        elif len(parts) == 2:  # MM:SS
+            return parts[0] * 60 + parts[1]
+        
+        return 0
+
+    @staticmethod
+    def convert_duration_to_seconds(duration: str) -> int:
+        pattern = re.compile(r'PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?')
+        match = pattern.match(duration)
+        
+        if not match:
+            return 0
+        
+        hours, minutes, seconds = match.groups()
+        hours = int(hours) if hours else 0
+        minutes = int(minutes) if minutes else 0
+        seconds = int(seconds) if seconds else 0
+        
+        return hours * 3600 + minutes * 60 + seconds
 
     @classmethod
-    def get_link_video(cls, timestamp: int = None) -> str:
-        if timestamp is None:
-            return f'https://youtu.be/{cls.get_video_id()}'
-        
-        return f'https://youtu.be/{cls.get_video_id()}?t={timestamp}s'
+    def get_link_video(cls, timestamp: int) -> str:
+        video_id = cls.get_video_id()
+        return f'https://youtu.be/{video_id}?t={timestamp}s'
     
     @classmethod
     def get_summary(cls) -> Response:
@@ -136,44 +115,37 @@ class YouTubeChapters:
         
         if not video_info or 'items' not in video_info or len(video_info['items']) == 0:
             return Response(
-                json.dumps({
-                    'summary': False,
-                    'message': 'Video information not found'
-                }, ensure_ascii=False),
-                
-                status=HTTPStatus.OK,
-                mimetype='application/json'
+                json.dumps({'summary': False, 'message': 'Video information not found'}, ensure_ascii=False),
+                status=HTTPStatus.OK, mimetype='application/json'
             )
 
-        video_link = cls.get_link_video()
-        title = video_info['items'][0].get('snippet', {}).get('title', '')
-        description = video_info['items'][0].get('snippet', {}).get('description', '')
-        channel_title = video_info['items'][0].get('snippet', {}).get('channelTitle', '')
-        thumbnail = video_info['items'][0].get('snippet', {}).get('thumbnails', {}).get('medium', {}).get('url', '')
+        video_link = cls.get_link_video(0)
+        snippet = video_info['items'][0].get('snippet', {})
+        description = snippet.get('description', '')
+        channel_title = snippet.get('channelTitle', '')
+        thumbnail = snippet.get('thumbnails', {}).get('medium', {}).get('url', '')
+        duration_str = video_info['items'][0].get('contentDetails', {}).get('duration', '')
         
-        summary_data = cls.extract_chapters(description)
+        video_duration = cls.convert_duration_to_seconds(duration_str)
+        summary_data = cls.extract_chapters(description, video_duration)
+        
         if summary_data:
             return Response(
                 json.dumps({
-                    'title': title,
+                    'title': snippet.get('title', ''),
                     'link': video_link,
                     'thumbnail': thumbnail,
                     'channel': channel_title,
                     'summary': summary_data,
-                    'description': description,
                     'total_chapters': len(summary_data)
                 }, ensure_ascii=False),
-                
-                status=HTTPStatus.OK,
-                mimetype='application/json'
+                status=HTTPStatus.OK, mimetype='application/json'
             )
         
         return Response(
             json.dumps({
-                'summary': False,
+                'summary': False, 
                 'message': 'No summary found'
             }, ensure_ascii=False),
-            
-            status=HTTPStatus.OK,
-            mimetype='application/json'
+            status=HTTPStatus.OK, mimetype='application/json'
         )
