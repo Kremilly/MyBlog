@@ -132,6 +132,7 @@ class YouTubeChapters:
             return Response(
                 json.dumps({
                     'title': snippet.get('title', ''),
+                    'description': description,
                     'link': video_link,
                     'thumbnail': thumbnail,
                     'channel': channel_title,
