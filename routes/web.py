@@ -1,4 +1,4 @@
-from flask import Flask, Blueprint, render_template, redirect
+from flask import Flask, Blueprint, render_template
 
 from backend.classes.my_blog import MyBlog
 
@@ -11,7 +11,6 @@ from backend.docs.docs_meta import DocsMeta
 
 from backend.actions.rss import RSS
 from backend.actions.links import Links
-from backend.actions.export import Export
 
 web = Blueprint('web', __name__)
 
@@ -39,22 +38,12 @@ def inject_route_links_post():
 def inject_route_home():
     return MyBlog.check_if_home()
 
-@web.errorhandler(404)
-def page_not_found(error):
-    """
-    Handler de erro 404.
-    """
-    return render_template(
-        'errors/404.html',
-        **MyBlog.common_template_args(),
-        url=MyBlog.get_url(),
-    ), 404
-
 @web.route('/')
 def home():
     return render_template(
         'index.html', 
         **MyBlog.common_template_args(),
+        
         list_docs=Docs.list_docs(),
         list_posts=Posts.list_posts()
     ), 200
@@ -64,7 +53,9 @@ def projects():
     return render_template(
         'projects.html', 
         **MyBlog.common_template_args(),
+        
         title='Projects',
+        
         list_docs=Docs.list_docs(),
         list_posts=Posts.list_posts()
     ), 200
@@ -74,7 +65,9 @@ def docs():
     return render_template(
         'docs.html', 
         **MyBlog.common_template_args(),
+        
         title='Docs Hub',
+        
         list_docs=Docs.list_docs(),
         list_posts=Posts.list_posts(),
         list_categories=Docs.list_categories(),
@@ -85,7 +78,9 @@ def links():
     return render_template(
         'links.html', 
         **MyBlog.common_template_args(),
+        
         title='Links',
+        
         list_links=Links.list_links(),
         social_media=Links.social_media(),
     ), 200
@@ -96,27 +91,25 @@ def post(post:str):
         return render_template(
             'post.html', 
             **MyBlog.common_template_args(),
+            
             html_content=Posts.get_post(post),
             source_code=Posts.get_source_post(post),
+            
             url=MyBlog.get_url(),
+            
             qrcode=PostsMeta.get(post, 'QrCode'),
             title=PostsMeta.get_head_title(post),
-            post_cover=PostCover.generate(post),
-            post_export=PostsMeta.get(post, 'DownloadPdf'),
-            post_description=PostsMeta.get_description(post),
+            
             post_links=Posts.list_links(post),
             post_date=PostsMeta.get_date(post),
+            post_cover=PostCover.generate(post),
             post_tags=PostsMeta.get_lists(post, 'tags'),
             post_read_time=PostsMeta.get_read_time(post),
             post_files=PostsMeta.get_lists(post, 'files'),
+            post_export=PostsMeta.get(post, 'DownloadPdf'),
+            post_description=PostsMeta.get_description(post),
             post_posts_recommends=Posts.list_posts_recommends(post),
         ), 200
-    
-    return page_not_found(404)  # Evita redirecionar, chama diretamente o handler 404
-
-@web.route('/blog/<item>/export')
-def export_item(item:str):
-    return Export.run(item)
 
 @web.route('/blog/<item>/raw')
 def source_item(item:str):
@@ -132,18 +125,15 @@ def doc(api:str):
         return render_template(
             'post.html', 
             **MyBlog.common_template_args(),
+            
             url=MyBlog.get_url(),
+            
             html_content=Docs.get_doc(api),
             package=DocsMeta.get(api, 'Package'),
+            
             title=DocsMeta.get(api, 'Title'),
             qrcode=DocsMeta.get(api, 'QrCode'),
         ), 200
-    
-    return page_not_found(404)  # Evita redirecionar, chama diretamente o handler 404
-
-@web.route('/docs/<api>/export')
-def export_doc(api:str):
-    return Export.run(api, True)
 
 @web.route('/rss')
 def rss():

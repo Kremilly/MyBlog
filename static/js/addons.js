@@ -5,7 +5,13 @@ const Addons = ( _ => {
             '#', ''
         ).replace(
             window.location.hash, ''
-        ) + '/export';
+        );
+
+        endpoint = endpoint.replace(
+            '/docs', '/api/export/docs'
+        ).replace(
+            '/blog', '/api/export/blog'
+        );
 
         fetch(endpoint).then(response => {
             if (!response.ok) { throw new Error('Network response was not ok') }

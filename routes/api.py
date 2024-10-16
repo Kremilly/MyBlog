@@ -5,11 +5,15 @@ from backend.classes.my_blog import MyBlog
 from backend.docs.docs import Docs
 from backend.posts.posts import Posts
 
+from backend.actions.export import Export
 from backend.stats.stats_add import StatsAdd
-
 from backend.api.youtube_chapters import YouTubeChapters
 
 api = Blueprint('api', __name__)
+
+@api.route('/api/export/<type>/<item>')
+def export_item(type:str, item:str):
+    return Export.run(type, item)
 
 @api.route('/api/projects', methods=['GET'])
 def projects():
