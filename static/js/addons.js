@@ -1,13 +1,7 @@
 const Addons = ( _ => {
 
     let downloadPdf = _ => {
-        let endpoint = window.location.href.replace(
-            '#', ''
-        ).replace(
-            window.location.hash, ''
-        );
-
-        endpoint = endpoint.replace(
+        let endpoint = window.location.href.split('#')[0].replace(
             '/docs', '/api/export/docs'
         ).replace(
             '/blog', '/api/export/blog'
@@ -43,11 +37,7 @@ const Addons = ( _ => {
     };
 
     let sourceCode = _ => {
-        let endpoint = window.location.href.replace(
-            '#', ''
-        ).replace(
-            window.location.hash, ''
-        ) + '/raw';
+        let endpoint = window.location.href.split('#')[0] + '/raw';
 
         if (endpoint.includes('/docs') || endpoint.includes('/blog')) {
             fetch(endpoint).then(text => text.text()).then(content => {
