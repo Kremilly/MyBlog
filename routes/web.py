@@ -135,6 +135,16 @@ def doc(api:str):
             qrcode=DocsMeta.get(api, 'QrCode'),
         ), 200
 
+@web.route('/tools/subdomains')
+def tools_subdoamin():
+    return render_template(
+        'tools/subdomain.html', 
+        **MyBlog.common_template_args(),
+        
+        title='Tools > Subdomains',
+        url=MyBlog.get_url(),
+    ), 200
+
 @web.route('/rss')
 def rss():
     return RSS.posts()
