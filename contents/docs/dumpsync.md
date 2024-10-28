@@ -34,7 +34,7 @@ The tool uses three main parameters, which can be configured via arguments or en
    - **Environment Variable**: `DS_DUMP_PATH`
    - **Behavior**: If the `--folder` argument is provided, it will be used. Otherwise, the `DS_DUMP_PATH` environment variable will be used.
 
-#### Usage Example
+### Usage Example
 
 **Command-Line Arguments**:
 
