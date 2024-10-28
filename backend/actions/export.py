@@ -59,17 +59,23 @@ class Export:
         </body>
         </html>
         """
+        
+    @classmethod
+    def url_item(cls, section:str, item:str) -> str:
+        url_root = MyBlog.get_url_root()
+        return f'{url_root}/{section}/{item}'
     
     @classmethod
-    def run(cls, type: str, file: str) -> Response:
+    def run(cls, type:str, file:str) -> Response:
         current_url = MyBlog.get_url()
+        url_root = MyBlog.get_url_root()
 
         title = PostsMeta.get(file, 'Title')
         if type == "docs":
             title = DocsMeta.get(file, 'Title')
 
         download_pdf = PostsMeta.get(file, 'DownloadPdf')
-        url = current_url.replace('/' + current_url.split('/')[2], '')
+        url = cls.url_item(type, file)
         route = Routes.get_route(url)
 
         pdf_path = f'{file}.pdf'
