@@ -33,11 +33,11 @@ The tool uses three main parameters, which can be configured via arguments or en
    - **Command-Line Argument**: `--folder`
    - **Environment Variable**: `DS_DUMP_PATH`
    - **Behavior**: If the `--folder` argument is provided, it will be used. Otherwise, the `DS_DUMP_PATH` environment variable will be used.
-4. **Database Host (`db_host`)**: O endereço do host do banco de dados.
+4. **Database Host (`db_host`)**: The address of the database host.
 
    - **Environment Variable**: `DB_HOST`
 
-5. **Database Port (`db_port`)**: O número da porta do banco de dados.
+5. **Database Port (`db_port`)**: The port number of the database.
 
    - **Environment Variable**: `DB_PORT`
 
