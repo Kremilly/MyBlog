@@ -43,10 +43,16 @@ The tool uses three main parameters, which can be configured via arguments or en
 
 ### Usage Example
 
-**Command-Line Arguments**:
+**To make a dump, use like this:**:
 
 ```bash
-dumpsync -d my_database -i 3600 -f /path/to/
+dumpsync export -d my_database -i 3600 -f /path/to/
+```
+
+**To restore a dump, use like this**:
+
+```bash
+dumpsync import -f /path/to/dump.sql
 ```
 
 **Environment Variables**:
