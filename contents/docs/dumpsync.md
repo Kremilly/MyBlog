@@ -79,6 +79,12 @@ DS_DUMP_INTERVAL="3600"
 DS_DUMP_PATH="/path/to/"
 ```
 
+**Optional settings file**:
+
+<script src="https://gist.github.com/Kremilly/0189fecf4fe7d1b86f35beb8e14f6091.js"></script>
+
+> [!important] Save as `dumpsync.yaml` to the same directory where your project is running.
+
 ### Notes
 
 - The tool requires read and write permissions in the directory set for `backup_path`.
