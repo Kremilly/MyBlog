@@ -20,7 +20,6 @@ projects:
   - name: 'Dumpsync'
     url: 'https://dumpsync.kremilly.com/'
     description: 'DumpSync is a lightweight tool designed for efficiently dumping and restoring MySQL databases. Whether you need to create backups, restore databases, or transfer data between servers.'
-  
 
 profile:
   name: 'Kremilly'
