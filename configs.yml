@@ -10,12 +10,17 @@ social_media:
 
 projects:
   - name: 'Linkscraper'
-    url: 'https://kremilly.github.io/Linkscraper/'
+    url: 'https://linkscraper.kremilly.com/'
     description: 'Plunge into the depths of the web with Linkscraper! Uncover links, images, emails, and more swiftly, catering to researchers, developers, and curious explorers alike.'
   
   - name: 'Scimon'
     url: 'https://scibun.github.io/ScimonDocs/'
     description: 'Scimon is a tool designed for batch downloading PDF files using its own dedicated language, Monset (.mon). Monset features a very simple and quick-to-write syntax, making it easy to use.'
+  
+  - name: 'Dumpsync'
+    url: 'https://dumpsync.kremilly.com/'
+    description: 'DumpSync is a lightweight tool designed for efficiently dumping and restoring MySQL databases. Whether you need to create backups, restore databases, or transfer data between servers.'
+  
 
 profile:
   name: 'Kremilly'
