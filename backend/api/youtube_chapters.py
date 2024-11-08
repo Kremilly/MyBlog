@@ -113,7 +113,11 @@ class YouTubeChapters:
         
         if not video_info or 'items' not in video_info or len(video_info['items']) == 0:
             return Response(
-                json.dumps({'summary': False, 'message': 'Video information not found'}, ensure_ascii=False),
+                json.dumps({
+                    'summary': False, 
+                    'message': 'Video information not found'
+                }, ensure_ascii=False),
+                
                 status=HTTPStatus.OK, mimetype='application/json'
             )
 
