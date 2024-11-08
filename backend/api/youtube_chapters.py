@@ -1,7 +1,5 @@
-import re
-import requests
-import os
-import json
+import re, requests, os, json
+
 from http import HTTPStatus
 from flask import request, Response
 from dotenv import load_dotenv
@@ -46,6 +44,7 @@ class YouTubeChapters:
         
         for pattern in cls.video_patterns:
             matches = pattern.findall(description)
+            
             for match in matches:
                 start_time = match[0].strip()
                 title = match[1].strip()
