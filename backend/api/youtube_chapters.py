@@ -142,6 +142,7 @@ class YouTubeChapters:
                     'summary': summary_data,
                     'total_chapters': len(summary_data)
                 }, ensure_ascii=False),
+                
                 status=HTTPStatus.OK, mimetype='application/json'
             )
         
@@ -150,5 +151,6 @@ class YouTubeChapters:
                 'summary': False, 
                 'message': 'No summary found'
             }, ensure_ascii=False),
+            
             status=HTTPStatus.OK, mimetype='application/json'
         )
