@@ -152,3 +152,7 @@ def rss():
 @web.route('/rss/docs')
 def rss_docs():
     return RSS.docs()
+
+@web.route('/rss/crates')
+def rss_crates():
+    return RSS.crates()
