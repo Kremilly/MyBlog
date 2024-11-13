@@ -11,6 +11,8 @@ from backend.stats.stats_add import StatsAdd
 from backend.api.subdomains import Subdomains
 from backend.api.youtube_chapters import YouTubeChapters
 
+from backend.actions.rss import RSS
+
 api = Blueprint('api', __name__)
 
 @api.route('/api/export/<type>/<item>')
@@ -40,3 +42,15 @@ def get_chapters():
 @api.route('/api/tools/subdomains', methods=['GET'])
 def get_subdomains():
     return Subdomains.run()
+
+@api.route('/rss')
+def rss():
+    return RSS.posts()
+
+@api.route('/rss/docs')
+def rss_docs():
+    return RSS.docs()
+
+@api.route('/rss/crates')
+def rss_crates():
+    return RSS.crates()

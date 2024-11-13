@@ -9,7 +9,6 @@ from backend.posts.posts_meta import PostsMeta
 from backend.docs.docs import Docs
 from backend.docs.docs_meta import DocsMeta
 
-from backend.actions.rss import RSS
 from backend.actions.links import Links
 
 web = Blueprint('web', __name__)
@@ -148,15 +147,3 @@ def tools_subdoamin():
         title='Tools > Subdomains',
         url=MyBlog.get_url(),
     ), 200
-
-@web.route('/rss')
-def rss():
-    return RSS.posts()
-
-@web.route('/rss/docs')
-def rss_docs():
-    return RSS.docs()
-
-@web.route('/rss/crates')
-def rss_crates():
-    return RSS.crates()
