@@ -1,4 +1,4 @@
-from flask import Flask, Blueprint, render_template
+from flask import Flask, Blueprint, render_template, abort
 
 from backend.classes.my_blog import MyBlog
 
@@ -110,6 +110,8 @@ def post(post:str):
             post_description=PostsMeta.get_description(post),
             post_posts_recommends=Posts.list_posts_recommends(post),
         ), 200
+        
+    return abort(404)
 
 @web.route('/blog/<item>/raw')
 def source_item(item:str):
@@ -134,6 +136,8 @@ def doc(api:str):
             title=DocsMeta.get(api, 'Title'),
             qrcode=DocsMeta.get(api, 'QrCode'),
         ), 200
+        
+    return abort(404)
 
 @web.route('/tools/subdomains')
 def tools_subdoamin():
