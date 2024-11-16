@@ -46,6 +46,12 @@ class Posts:
         )
         
     @classmethod
+    def count_posts(cls) -> int:
+        path = Settings.get('paths.contents.blog', 'string')
+        total_posts = len(FilesUtils.scan_path(path))
+        return "+99" if total_posts > 99 else str(total_posts)
+            
+    @classmethod
     def list_posts_json(cls) -> dict:
         list_posts = []
         url_root = MyBlog.get_url_root()

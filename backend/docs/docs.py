@@ -35,6 +35,12 @@ class Docs:
         return sorted(
             list_docs, key=lambda x: x['slug']
         )
+        
+    @classmethod
+    def count_docs(cls) -> int:
+        path = Settings.get('paths.contents.docs', 'string')
+        total_docs = len(FilesUtils.scan_path(path))
+        return "+99" if total_docs > 99 else str(total_docs)
     
     @classmethod
     def list_docs_json(cls) -> dict:

@@ -19,16 +19,34 @@
 }
 
 .menu-links > .tab {
+    gap: 0.5em;
     color: inherit;
-    font-size: .8em;
     cursor: pointer;
+    font-size: 0.8em;
     font-weight: 600;
+    align-items: center;
+    display: inline-flex;
     text-decoration: none;
-    display: inline-block;
     height: var(--header-size);
-    line-height: var(--header-size);
     padding-left: var(--spacing-md);
     padding-right: var(--spacing-md);
+    border-radius: var(--border-radius);
+}
+
+.menu-links > .tab > .text { margin-right: .5em; }
+
+.menu-links > .tab > .bubble {
+    height: 24px;
+    display: flex;
+    font-weight: 600;
+    font-size: 0.75em;
+    padding: 0 .25rem;
+    align-items: center;
+    line-height: normal;
+    margin-right: -.75em;
+    justify-content: center;
+    background: var(--color-border);
+    color: var(--color-text-secondary);
     border-radius: var(--border-radius);
 }
 

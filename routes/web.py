@@ -36,7 +36,7 @@ def inject_route_links_post():
 @web.context_processor
 def inject_route_home():
     return MyBlog.check_if_home()
-
+ 
 @web.route('/')
 def home():
     return render_template(
@@ -44,9 +44,12 @@ def home():
         **MyBlog.common_template_args(),
         
         list_docs=Docs.list_docs(),
-        list_posts=Posts.list_posts()
+        list_posts=Posts.list_posts(),
+        
+        total_docs=Docs.count_docs(),
+        total_posts=Posts.count_posts(),
     ), 200
-    
+
 @web.route('/projects')
 def projects():
     return render_template(
@@ -55,8 +58,8 @@ def projects():
         
         title='Projects',
         
-        list_docs=Docs.list_docs(),
-        list_posts=Posts.list_posts()
+        total_docs=Docs.count_docs(),
+        total_posts=Posts.count_posts(),
     ), 200
     
 @web.route('/docs')
@@ -70,6 +73,9 @@ def docs():
         list_docs=Docs.list_docs(),
         list_posts=Posts.list_posts(),
         list_categories=Docs.list_categories(),
+        
+        total_docs=Docs.count_docs(),
+        total_posts=Posts.count_posts(),
     ), 200
     
 @web.route('/links')
@@ -82,6 +88,9 @@ def links():
         
         list_links=Links.list_links(),
         social_media=Links.social_media(),
+        
+        total_docs=Docs.count_docs(),
+        total_posts=Posts.count_posts(),
     ), 200
 
 @web.route('/blog/<post>')
@@ -108,6 +117,9 @@ def post(post:str):
             post_export=PostsMeta.get(post, 'DownloadPdf'),
             post_description=PostsMeta.get_description(post),
             post_posts_recommends=Posts.list_posts_recommends(post),
+        
+            total_docs=Docs.count_docs(),
+            total_posts=Posts.count_posts(),
         ), 200
         
     return abort(404)
@@ -134,6 +146,9 @@ def doc(api:str):
             
             title=DocsMeta.get(api, 'Title'),
             qrcode=DocsMeta.get(api, 'QrCode'),
+        
+            total_docs=Docs.count_docs(),
+            total_posts=Posts.count_posts(),
         ), 200
         
     return abort(404)
