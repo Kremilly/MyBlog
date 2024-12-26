@@ -25,5 +25,5 @@ body {
     color: var(--color-text);
     padding: var(--spacing-xl);
     font-family: var(--font-body);
-    background-color: var(--color-bg);
+    background-image: url("../images/bg.webp");
 }

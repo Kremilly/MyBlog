@@ -11,6 +11,14 @@ $( _ => {
 
     Error404.posts();
 
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 10) {
+            $('header').addClass('glass-effect');
+        } else {
+            $('header').removeClass('glass-effect');
+        }
+    });
+
     if ($('.container-projects').length > 0) {
         Crates.projects_page();
         GitHub.projects_page();

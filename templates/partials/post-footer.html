@@ -4,7 +4,7 @@
             {% if is_post and post_files.total > 0 %}
                 <div class='footer-btn' id='postFilesBtn'>
                     <div class='fas fa-paperclip'></div>
-                    <div class='text'>Arquivos</div>
+                    <div class='text'>Files</div>
                 </div>
             {% endif %}
 
@@ -18,7 +18,7 @@
             {% if is_post %}
                 <div class='footer-btn' id='postReadAlsoBtn'>
                     <div class='fas fa-blog'></div>
-                    <div class='text'>Leia também</div>
+                    <div class='text'>Read also</div>
                 </div>
             {% endif %}
         </div>
@@ -26,13 +26,13 @@
         <div class='right'>
             <div class='footer-btn' id='postShareBtn'>
                 <div class='fas fa-share'></div>
-                <div class='text'>Compartilhar</div>
+                <div class='text'>Share</div>
             </div>
 
             {% if post_export == 'enabled' or post_export == None or is_doc %}
                 <div class='footer-btn' id='postDownloadPdfBtn'>
                     <div class='fas fa-file-pdf'></div>
-                    <div class='text'>Baixar</div>
+                    <div class='text'>Download</div>
                 </div>
             {% endif %}
         </div>
@@ -45,19 +45,19 @@
 
         <div class='content'>
             <div class='icons'>
-                <a data-sharer='email' data-title='{{ title }}' data-url='{{ url }}' title='Enviar por e-mail' class='fas fa-envelope'></a>
-                <a data-sharer='facebook' data-title='{{ title }}' data-url='{{ url }}' title='Compartilhe no Facebook' class='fab fa-facebook'></a>
-                <a data-sharer='twitter' data-title='{{ title }}' data-url='{{ url }}' title='Compartilhe no X (Twitter)' class='fab fa-x-twitter'></a>
-                <a data-sharer='linkedin' data-title='{{ title }}' data-url='{{ url }}' title='Compartilhe no LinkedIn' class='fab fa-linkedin'></a>
-                <a data-sharer='whatsapp' data-title='{{ title }}' data-url='{{ url }}' title='Compartilhe no WhatsApp' class='fab fa-whatsapp'></a>
-                <a data-sharer='telegram' data-title='{{ title }}' data-url='{{ url }}' title='Compartilhe no Telegram' class='fab fa-telegram'></a>
+                <a data-sharer='email' data-title='{{ title }}' data-url='{{ url }}' title='Send via email' class='fas fa-envelope'></a>
+                <a data-sharer='facebook' data-title='{{ title }}' data-url='{{ url }}' title='Share on Facebook' class='fab fa-facebook'></a>
+                <a data-sharer='twitter' data-title='{{ title }}' data-url='{{ url }}' title='Share on X (Twitter)' class='fab fa-x-twitter'></a>
+                <a data-sharer='linkedin' data-title='{{ title }}' data-url='{{ url }}' title='Share on LinkedIn' class='fab fa-linkedin'></a>
+                <a data-sharer='whatsapp' data-title='{{ title }}' data-url='{{ url }}' title='Share on WhatsApp' class='fab fa-whatsapp'></a>
+                <a data-sharer='telegram' data-title='{{ title }}' data-url='{{ url }}' title='Share on Telegram' class='fab fa-telegram'></a>
             </div>
     
             <input type='text' value='{{ url }}' id='postShareBoxInput' readonly>
 
             <div class='btn' data-sharer='pocket' data-title='{{ title }}' data-url='{{ url }}'>
                 <div class='fab fa-get-pocket icon'></div>
-                Salvar no Pocket
+                Save on Pocket 
             </div>
         </div>
     </div>

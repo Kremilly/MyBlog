@@ -19,6 +19,9 @@
     --color-install-pkg: #ffc933;
     --color-wikipedia: #c3c4c5;
     
+    --color-border-glass: rgba(255, 255, 255, .2);
+    --box-shadow-glass: 0 8px 32px rgba(0, 0, 0, .25);
+
     --box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
     --box-shadow-inverted: rgba(0, 0, 0, 0.08) 0px -4px -12px;
 }
