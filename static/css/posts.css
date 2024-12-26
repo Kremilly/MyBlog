@@ -52,7 +52,11 @@
 }
 
 .posts > input:hover, .posts > input:focus {
-    background: var(--color-border);
+    backdrop-filter: blur(10px);
+    border-left: 0 solid transparent;
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: var(--box-shadow-glass);
+    background-color: transparent !important;
     animation: border-slide .5s ease-in-out forwards;
 }
 
@@ -100,9 +104,11 @@
 }
 
 .posts > li:hover {
-    box-shadow: var(--box-shadow);
-    background: var(--color-border);
+    backdrop-filter: blur(10px);
     border-left: 0 solid transparent;
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: var(--box-shadow-glass);
+    background-color: transparent !important;
     animation: border-slide .5s ease-in-out forwards;
 }
 
