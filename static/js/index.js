@@ -11,6 +11,12 @@ $( _ => {
 
     Error404.posts();
 
+    if (window.scrollY > 10) {
+        $('header').addClass('glass-effect');
+    } else {
+        $('header').removeClass('glass-effect');
+    }
+
     window.addEventListener('scroll', () => {
         if (window.scrollY > 10) {
             $('header').addClass('glass-effect');
