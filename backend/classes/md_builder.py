@@ -38,6 +38,8 @@ class MDBuilder:
             'wikipedia': 'wikipedia',
         }.get(alert_type, 'note')
         
+        alert_class += ' glass-effect-bordered'
+        
         if alert_class == 'install':
             pkg_type = plain_content.split(' ')[0]
             pkg_name = plain_content.split(' ')[-1]

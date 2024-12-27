@@ -8,6 +8,16 @@
     border-bottom: 1px solid var(--color-border-glass);
 }
 
+.glass-effect-bordered {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: var(--box-shadow-glass);
+    background-color: transparent !important;
+    border-top: 1px solid var(--color-border-glass);
+    border-right: 1px solid var(--color-border-glass);
+    border-bottom: 1px solid var(--color-border-glass);
+}
+
 .border { border: .1em solid var(--color) !important; }
 .no-border-top { border-top: .1em solid var(--color-border) !important; }
 .no-border-left { border-left: .1em solid var(--color-border) !important; }

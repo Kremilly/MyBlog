@@ -11,17 +11,27 @@ $( _ => {
 
     Error404.posts();
 
+    $('#postReadAlsoBox').show();
+
     if (window.scrollY > 10) {
         $('header').addClass('glass-effect');
+        $('#tocBox').addClass('glass-effect');
+        $('#toolsBox').addClass('glass-effect');
     } else {
         $('header').removeClass('glass-effect');
+        $('#tocBox').removeClass('glass-effect');
+        $('#toolsBox').removeClass('glass-effect');
     }
 
     window.addEventListener('scroll', () => {
         if (window.scrollY > 10) {
             $('header').addClass('glass-effect');
+            $('#tocBox').addClass('glass-effect');
+            $('#toolsBox').addClass('glass-effect');
         } else {
             $('header').removeClass('glass-effect');
+            $('#tocBox').removeClass('glass-effect');
+            $('#toolsBox').removeClass('glass-effect');
         }
     });
 

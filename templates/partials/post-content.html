@@ -32,7 +32,7 @@
     </div>
 
     {% if is_post and post_tags.total > 0 %}
-        <div class='tags'>
+        <div class='tags glass-effect'>
             {% for tag in post_tags.list %}
                 <a href='{{ url_root + "?q=" + tag }}' class='tag'>{{ tag }}</a>
             {% endfor %}
