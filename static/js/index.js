@@ -103,17 +103,6 @@ $( _ => {
     $(window).on('scroll', ScrollTo.checkScroll);
     $('#scrollToTopBtn').on('click', ScrollTo.top);
 
-    $('#projectsBoxBtn, #projectsBox').hover( function () {
-        clearTimeout(hideMenuTimeout);
-        $('#projectsBoxBtn').addClass('actived-logo');
-        $('#projectsBox').stop(true, true).fadeIn(250);
-    }, function () {
-        hideMenuTimeout = setTimeout(function() {
-            $('#projectsBoxBtn').removeClass('actived-logo');
-            $('#projectsBox').stop(true, true).fadeOut(250);
-        }, 300);
-    });
-
     $('#menuBoxTogglePagesBtn').on('click', function () {
         $(this).addClass('actived');
         $('#menuBoxToggleDocsBtn').removeClass('actived');

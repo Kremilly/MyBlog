@@ -8,6 +8,14 @@
         <div class="text">Docs</div>
         <div class="bubble">{{ total_docs }}</div>
     </a>
+
     <a href='{{ url_root }}/projects' class='tab' id='projects-tab-menu'>Projects</a>
-    <a href='{{ url_root }}/links' class='tab' id='links-tab-menu'>Links</a>
+
+    <a href='{{ url_root }}/rss' class='tab' id='links-tab-menu'>
+        <div class='fas fa-rss icon'></div>
+    </a>
+
+    <a href='{{ github }}' class='tab' id='links-tab-menu'>
+        <div class='fab fa-github icon'></div>
+    </a>
 </div>
