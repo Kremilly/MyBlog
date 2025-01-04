@@ -44,7 +44,7 @@
     100% {
         width: 9em;
         background-size: 70%;
-        background-color: transparent;
+        background-color: inherit;
         background-image: var(--logo-hover);
     }
 }
