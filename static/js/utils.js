@@ -2,17 +2,10 @@ const Utils = ( _ => {
 
     let format = number => {
         switch (true) {
-            case number >= 1e9:
-                return Math.floor(number / 1e9) + 'B';
-
-            case number >= 1e6:
-                return Math.floor(number / 1e6) + 'M';
-
-            case number >= 1000:
-                return Math.floor(number / 1000) + 'k';
-
-            default:
-                return number.toString();
+            case number >= 1e9: return Math.floor(number / 1e9) + 'B';
+            case number >= 1e6: return Math.floor(number / 1e6) + 'M';
+            case number >= 1000: return Math.floor(number / 1000) + 'k';
+            default: return number.toString();
         }
     };
 
