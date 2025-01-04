@@ -44,9 +44,8 @@
     100% {
         width: 9em;
         background-size: 70%;
-        box-shadow: var(--box-shadow);
+        background-color: transparent;
         background-image: var(--logo-hover);
-        background-color: var(--color-border);
     }
 }
 
