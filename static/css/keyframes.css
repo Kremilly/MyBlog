@@ -8,19 +8,6 @@
     100% { background: var(--color-bg); }
 }
 
-@keyframes margin-right {
-    0% {
-        opacity: 0;
-        margin-left: -1em;
-    }
-
-    100% {
-        opacity: 1;
-        animation-delay: 1s;
-        margin-left: var(--spacing-md);
-    }
-}
-
 @keyframes pdd-left {
     0% {
         padding-left: 0;
@@ -46,6 +33,19 @@
         background-size: 70%;
         background-color: inherit;
         background-image: var(--logo-hover);
+    }
+}
+
+@keyframes margin-right {
+    0% {
+        opacity: 0;
+        margin-left: -1em;
+    }
+
+    100% {
+        opacity: 1;
+        animation-delay: 1s;
+        margin-left: var(--spacing-md);
     }
 }
 
