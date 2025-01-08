@@ -23,9 +23,9 @@ minix -i file.js -o file.min.js
 
 minix -i js/*.js -o bundle.js
 
-# OR 
+# OR, with --watch mode
 
-minix -i js/*.js
+minix -i js/*.js -o bundle.js -w
 ```
 
 CSS:
@@ -37,7 +37,7 @@ minix -i file.css -o file.min.css
 
 minix -i css/*.css -o bundle.css
 
-# OR 
+# OR, with --watch mode
 
-minix -i css/*.css
+minix -i css/*.css -o bundle.css -w
 ```
