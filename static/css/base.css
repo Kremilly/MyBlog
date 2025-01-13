@@ -21,7 +21,7 @@
 }
 
 body {
-    line-height: 1.6;
+    line-height: 1.5;
     color: var(--color-text);
     padding: var(--spacing-xl);
     font-family: var(--font-body);
