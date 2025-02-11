@@ -25,7 +25,7 @@
 @keyframes logo-effect {
     0% {
         background-color: inherit;
-        background-image: var(--logo-hover);
+        background-image: var(--logo);
     }
 
     100% {
