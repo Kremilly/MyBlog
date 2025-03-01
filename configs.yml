@@ -10,19 +10,19 @@ social_media:
 
 projects:
   - name: 'Linkscraper'
-    url: 'https://linkscraper.kremilly.com/'
+    url: 'https://linkscraper.kremilly.com'
     description: 'Plunge into the depths of the web with Linkscraper! Uncover links, images, emails, and more swiftly, catering to researchers, developers, and curious explorers alike.'
   
   - name: 'Scimon'
-    url: 'https://scimon.kremilly.com'
+    url: 'https://scimon.dev'
     description: 'Scimon is a tool designed for batch downloading PDF files using its own dedicated language, Monset (.mon). Monset features a very simple and quick-to-write syntax, making it easy to use.'
   
   - name: 'Dumpsync'
-    url: 'https://dumpsync.kremilly.com/'
+    url: 'https://dumpsync.com'
     description: 'DumpSync is a lightweight tool designed for efficiently dumping and restoring MySQL databases. Whether you need to create backups, restore databases, or transfer data between servers.'
 
   - name: 'ShadowJS'
-    url: 'https://github.com/kremilly/ShadowJS'
+    url: 'https://github.com/Gausix/ShadowJS'
     description: 'ShadowJS is a fast, lightweight JavaScript obfuscator built with Rust. It protects your code by converting readable identifiers into obscure formats, ensuring security without sacrificing performance.'
   
 profile:
