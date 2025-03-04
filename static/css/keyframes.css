@@ -5,7 +5,7 @@
 
 @keyframes bg-color {
     0% { background: inherit; }
-    100% { background: var(--color-bg); }
+    100% { background: var(--color-border); }
 }
 
 @keyframes pdd-left {
