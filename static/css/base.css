@@ -25,5 +25,9 @@ body {
     color: var(--color-text);
     padding: var(--spacing-xl);
     font-family: var(--font-body);
-    background-image: url("../images/bg.webp");
+    background-color: #1e1e1e;
+    background-image:
+        linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
 }
