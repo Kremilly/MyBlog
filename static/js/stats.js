@@ -36,7 +36,7 @@ const Stats = ( _ => {
                 response => response.json()
             ).then(response => {
                 $('#stats-post').html(`
-                    <div class='fas fa-chart-simple icon'></div>
+                    <div class='fal fa-chart-simple icon'></div>
                     ${ Utils.format(response.acessos) + ' acessos' }
                 `);
             });

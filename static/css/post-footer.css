@@ -25,8 +25,8 @@
     border-radius: var(--border-radius);
 }
 
-.post-content > .footer > .meta > .left > .footer-btn > .fas, 
-.post-content > .footer > .meta > .right > .footer-btn > .fas {
+.post-content > .footer > .meta > .left > .footer-btn > .icon, 
+.post-content > .footer > .meta > .right > .footer-btn > .icon {
     float: left;
     line-height: 3em;
 }
