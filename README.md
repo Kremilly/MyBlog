@@ -15,8 +15,6 @@
   <a href='https://github.com/sponsors/Kremilly'>Sponsor-me</a>
 </p>
 
-## Technologies
-
 <ul>
     <li>Python</li>
     <li>Flask</li>
