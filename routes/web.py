@@ -120,4 +120,4 @@ def source_doc(api:str):
 
 @web.route('/docs/<api>')
 def doc(api:str):
-    return redirect(f'https://docs.kremilly.com/api', code=301)
+    return redirect(f'https://docs.kremilly.com/{api}', code=301)
