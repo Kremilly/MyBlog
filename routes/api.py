@@ -47,10 +47,6 @@ def get_subdomains():
 def rss():
     return RSS.posts()
 
-@api.route('/rss/docs')
-def rss_docs():
-    return RSS.docs()
-
 @api.route('/rss/crates')
 def rss_crates():
     return RSS.crates()
