@@ -10,7 +10,7 @@
 
 <p align='center'>
   <a href='https://kremilly.com'>Home</a> | 
-  <a href='https://kremilly.com/docs'>Documentation's</a> | 
+  <a href='https://docs.kremilly.com/'>Documentation's</a> | 
   <a href='https://kremilly.com/links'>Links</a> |
   <a href='https://github.com/sponsors/Kremilly'>Sponsor-me</a>
 </p>
@@ -24,13 +24,3 @@
     <li>xhtml2pdf</li>
     <li>Markdown</li>
 </ul>
-
-<details>
-  <summary>
-    📚 <b>Documentation's</b>
-  </summary>
-
-  <ul>
-    <!-- DOCS-LIST:START --><li><a href='https://kremilly.com/docs/cve'>CVE</a><br></li><li><a href='https://kremilly.com/docs/devto'>Devto</a><br></li><li><a href='https://kremilly.com/docs/github'>GitHub</a><br></li><li><a href='https://kremilly.com/docs/hiddenbytes'>HiddenBytes</a><br></li><li><a href='https://kremilly.com/docs/ipx'>IPX</a><br></li><li><a href='https://kremilly.com/docs/minix'>Minix</a><br></li><li><a href='https://kremilly.com/docs/pageshot'>PageShot</a><br></li><li><a href='https://kremilly.com/docs/passguard'>PassGuard</a><br></li><li><a href='https://kremilly.com/docs/pdfinfo'>PDFInfo</a><br></li><li><a href='https://kremilly.com/docs/pdfscrape'>PDFScrape</a><br></li><li><a href='https://kremilly.com/docs/pdfthumb'>PDFThumb</a><br></li><li><a href='https://kremilly.com/docs/qrcode'>QRCode</a><br></li><li><a href='https://kremilly.com/docs/statslangs'>Statslangs</a><br></li><li><a href='https://kremilly.com/docs/wikipedia'>Wikipedia</a><br></li><!-- DOCS-LIST:END -->
-  </ul>
-</details>
