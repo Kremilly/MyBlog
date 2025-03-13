@@ -1,4 +1,4 @@
-from flask import Flask, Blueprint, render_template, abort
+from flask import Flask, Blueprint, render_template, abort, redirect
 
 from backend.classes.my_blog import MyBlog
 
@@ -64,19 +64,7 @@ def projects():
     
 @web.route('/docs')
 def docs():
-    return render_template(
-        'docs.html', 
-        **MyBlog.common_template_args(),
-        
-        title='Docs Hub',
-        
-        list_docs=Docs.list_docs(),
-        list_posts=Posts.list_posts(),
-        list_categories=Docs.list_categories(),
-        
-        total_docs=Docs.count_docs(),
-        total_posts=Posts.count_posts(),
-    ), 200
+    return redirect('https://docs.kremilly.com', code=301)
     
 @web.route('/links')
 def links():
@@ -89,7 +77,6 @@ def links():
         list_links=Links.list_links(),
         social_media=Links.social_media(),
         
-        total_docs=Docs.count_docs(),
         total_posts=Posts.count_posts(),
     ), 200
 
@@ -118,7 +105,6 @@ def post(post:str):
             post_description=PostsMeta.get_description(post),
             post_posts_recommends=Posts.list_posts_recommends(post),
         
-            total_docs=Docs.count_docs(),
             total_posts=Posts.count_posts(),
         ), 200
         
@@ -134,31 +120,4 @@ def source_doc(api:str):
 
 @web.route('/docs/<api>')
 def doc(api:str):
-    if Docs.check_doc_exists(api):
-        return render_template(
-            'post.html', 
-            **MyBlog.common_template_args(),
-            
-            url=MyBlog.get_url(),
-            
-            html_content=Docs.get_doc(api),
-            package=DocsMeta.get(api, 'Package'),
-            
-            title=DocsMeta.get(api, 'Title'),
-            qrcode=DocsMeta.get(api, 'QrCode'),
-        
-            total_docs=Docs.count_docs(),
-            total_posts=Posts.count_posts(),
-        ), 200
-        
-    return abort(404)
-
-@web.route('/tools/subdomains')
-def tools_subdoamin():
-    return render_template(
-        'tools/subdomain.html', 
-        **MyBlog.common_template_args(),
-        
-        title='Tools > Subdomains',
-        url=MyBlog.get_url(),
-    ), 200
+    return redirect(f'https://docs.kremilly.com/api', code=301)
