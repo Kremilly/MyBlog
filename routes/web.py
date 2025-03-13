@@ -6,9 +6,6 @@ from backend.posts.posts import Posts
 from backend.posts.post_cover import PostCover
 from backend.posts.posts_meta import PostsMeta
 
-from backend.docs.docs import Docs
-from backend.docs.docs_meta import DocsMeta
-
 from backend.actions.links import Links
 
 web = Blueprint('web', __name__)
@@ -20,10 +17,6 @@ def inject_route_name():
 @web.context_processor
 def inject_route_post():
     return MyBlog.check_if_post()
-
-@web.context_processor
-def inject_route_doc():
-    return MyBlog.check_if_docs()
 
 @web.context_processor
 def inject_route_doc_post():
@@ -43,10 +36,7 @@ def home():
         'index.html', 
         **MyBlog.common_template_args(),
         
-        list_docs=Docs.list_docs(),
         list_posts=Posts.list_posts(),
-        
-        total_docs=Docs.count_docs(),
         total_posts=Posts.count_posts(),
     ), 200
 
@@ -57,8 +47,6 @@ def projects():
         **MyBlog.common_template_args(),
         
         title='Projects',
-        
-        total_docs=Docs.count_docs(),
         total_posts=Posts.count_posts(),
     ), 200
     
@@ -113,10 +101,6 @@ def post(post:str):
 @web.route('/blog/<item>/raw')
 def source_item(item:str):
     return Posts.get_source_post(item)
-
-@web.route('/docs/<api>/raw')
-def source_doc(api:str):
-    return Docs.get_source_doc(api)
 
 @web.route('/docs/<api>')
 def doc(api:str):

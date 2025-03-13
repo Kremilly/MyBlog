@@ -2,7 +2,6 @@ from flask import Flask, Blueprint
 
 from backend.classes.my_blog import MyBlog
 
-from backend.docs.docs import Docs
 from backend.posts.posts import Posts
 
 from backend.actions.export import Export
@@ -26,10 +25,6 @@ def projects():
 @api.route('/api/posts', methods=['GET'])
 def api_posts():
     return Posts.list_posts_json()
-
-@api.route('/api/docs', methods=['GET'])
-def api_docs():
-    return Docs.list_docs_json()
 
 @api.route('/api/stats/add', methods=['POST'])
 def add_stats():

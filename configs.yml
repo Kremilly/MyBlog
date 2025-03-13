@@ -44,9 +44,7 @@ external_css_libs:
 
 paths:
   contents: 
-    docs: './contents/docs/'
-    blog: './contents/blog/'
-    pages: './contents/pages/'
+    blog: './contents/'
 
   static:
     dist: './static/dist/'

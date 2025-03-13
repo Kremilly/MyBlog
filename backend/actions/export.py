@@ -10,7 +10,6 @@ from backend.utils.files import FilesUtils
 from backend.classes.my_blog import MyBlog
 from backend.classes.md_builder import MDBuilder
 
-from backend.docs.docs_meta import DocsMeta
 from backend.posts.posts_meta import PostsMeta
 
 class Export:
@@ -71,8 +70,6 @@ class Export:
         url_root = MyBlog.get_url_root()
 
         title = PostsMeta.get(file, 'Title')
-        if type == "docs":
-            title = DocsMeta.get(file, 'Title')
 
         download_pdf = PostsMeta.get(file, 'DownloadPdf')
         url = cls.url_item(type, file)

@@ -8,7 +8,6 @@ from backend.classes.settings import Settings
 
 from backend.actions.links import Links
 
-from backend.docs.docs import Docs
 from backend.posts.posts import Posts
 from backend.actions.crates import Crates
 
