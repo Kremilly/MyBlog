@@ -64,6 +64,7 @@ class MyBlog:
     def common_template_args(cls):
         return {
             'url_root': cls.get_url_root(),
+            'url_doamin': Settings.get('basic.domain', 'string'),
             
             'external_fonts': Load.fonts(),
             'internal_css_libs': Load.css(),

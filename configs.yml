@@ -1,5 +1,6 @@
 basic:
   site_name: 'Kremilly'
+  domain: 'https://kremilly.com'
   
 social_media:
   - GitHub: 'https://github.com/kremilly'
