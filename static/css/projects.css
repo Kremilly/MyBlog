@@ -1,7 +1,7 @@
 .container-projects {
     margin: auto;
     max-width: 900px;
-    margin-top: 90px;
+    margin-top: 20px;
 }
 
 .container-projects > .label {
@@ -91,4 +91,10 @@
     box-shadow: var(--box-shadow-glass);
     background-color: transparent !important;
     animation: border-slide .5s ease-in-out forwards;
+}
+
+@media screen and (max-width: 600px) {
+    .container-projects > .projects {
+        grid-template-columns: 1fr;
+    }
 }

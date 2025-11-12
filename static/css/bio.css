@@ -1,0 +1,44 @@
+.bio {
+    margin: auto;
+    max-width: 900px;
+    margin-top: 20px;
+}
+
+.bio > .user {
+    font-size: 1.5em;
+    font-weight: 700;
+    text-align: center;
+    color: var(--color-pre-fg);
+    margin-bottom: var(--spacing-sm);
+}
+
+.bio > .user > img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    box-shadow: var(--box-shadow);
+}
+
+.bio > .bio {
+    font-size: 1.1em;
+    line-height: 1.6em;
+    text-align: center;
+    box-sizing: border-box;
+    padding: var(--spacing-md);
+    color: var(--color-pre-fg);
+    box-shadow: var(--box-shadow);
+    background: var(--color-pre-bg);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--color-border);
+}
+
+.bio > .bio > strong {
+    font-weight: 700;
+    color: var(--color-github-note);
+}
+
+.animate-wave {
+    display: inline-block;
+    animation: wave 2s infinite;
+    transform-origin: 70% 70%;
+}
