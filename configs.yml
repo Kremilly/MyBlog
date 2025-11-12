@@ -39,7 +39,7 @@ external_js_libs:
   - 'https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js'
 
 external_css_libs:
-  - 'https://kit.fontawesome.com/5394478ac4.css'
+  - 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css'
 
 paths:
   contents: 
