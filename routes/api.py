@@ -7,7 +7,6 @@ from backend.posts.posts import Posts
 from backend.actions.export import Export
 from backend.stats.stats_add import StatsAdd
 
-from backend.api.subdomains import Subdomains
 from backend.api.youtube_chapters import YouTubeChapters
 
 from backend.actions.rss import RSS
@@ -33,10 +32,6 @@ def add_stats():
 @api.route('/api/plugins/ytc', methods=['GET'])
 def get_chapters():
     return YouTubeChapters.get_summary()
-
-@api.route('/api/tools/subdomains', methods=['GET'])
-def get_subdomains():
-    return Subdomains.run()
 
 @api.route('/rss')
 def rss():

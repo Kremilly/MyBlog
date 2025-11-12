@@ -1,10 +1,16 @@
 <header>
-    <a class='logo'></a>
+    <a href='{{ url_root }}' class='logo'></a>
     
     <div class='nav'>
+        <a href='{{ url_root }}/about' class='menu' id='posts-tab-menu'>About</a>
+        <a href='{{ url_root }}/projects' class='menu' id='posts-tab-menu'>Projects</a>
+
+        <a href='{{ github }}' class='tab' id='github-tab-menu'>
+            <div class='fab fa-github icon'></div>
+        </a>
+        
         {% if is_home != True and is_doc_post %}
             <div class='fal fa-list icon' id='tocBoxBtn'></div>
-            <div class='fal fa-screwdriver-wrench icon' id='toolsBoxBtn'></div>
         {% endif %}
 
         <div class='fal fa-arrow-up icon' id='scrollToTopBtn'></div>
@@ -12,5 +18,3 @@
 </header>
 
 {% include 'partials/toc-box.html' %}
-
-{% include 'partials/tools-box.html' %}

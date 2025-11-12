@@ -15,22 +15,19 @@ header{
 }
 
 header > .logo {
-    left: 50%;
-    width: 8em;
+    width: 3em;
     float: left;
 	height: 100%;
 	outline: none;
 	cursor: pointer;
     position: absolute;
-    background-size: 20%;
+    background-size: 60%;
     box-sizing: border-box;
-    transform: translateX(-50%);
-	background-position: center;
+	background-position: left;
     background-repeat: no-repeat;
     background-image: var(--logo);
+    margin-left: var(--spacing-sm);
 }
-
-header > .logo:hover { animation: logo-effect .3s ease-in-out forwards; }
 
 header > .icon {
     height: var(--header-size);
@@ -119,17 +116,39 @@ header > .nav {
     line-height: var(--header-size);
 }
 
-header > .nav > .icon {
+header > .nav > .icon, header > .nav > a  {
     width: 3em;
     float: left;
-    color: inherit;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
+    color: inherit !important;
     line-height: calc(var(--header-size) - .05em);
 }
 
-header > .nav > .icon:hover, header > .nav > .actived { background: var(--color-border); }
+header > .nav > .icon, header > .nav > .menu  {
+    width: auto;
+    float: left;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    color: inherit !important;
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+    line-height: calc(var(--header-size) - .05em);
+}
+
+header > .nav > .icon, header > .nav > .icon  {
+    width: 3em;
+    float: left;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    color: inherit !important;
+    line-height: calc(var(--header-size) - .05em);
+}
+
+header > .nav > .icon:hover, header > .nav > a:hover, header > .nav > .actived { background: var(--color-border); }
 
 header > .icon {
     float: left;

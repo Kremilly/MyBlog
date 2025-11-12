@@ -1,7 +1,7 @@
 .post-content {
     margin: auto;
     max-width: 900px;
-    margin-top: 90px;
+    margin-top: 20px;
     box-sizing: border-box;
     padding: var(--spacing-xl);
     backdrop-filter: blur(10px);
@@ -58,4 +58,19 @@
 .post-content > .tags > .tag:hover {
     border-radius: var(--border-radius);
     animation: bg-color .5s ease-in-out forwards;
+}
+
+@media screen and (max-width: 600px) {
+    .post-content {
+        padding: var(--spacing-md);
+    }
+
+    .post-content > .cover {
+        width: 100%;
+        margin: auto;
+    }
+
+    .post-content > .tags {
+        margin-bottom: var(--spacing-sm);
+    }
 }

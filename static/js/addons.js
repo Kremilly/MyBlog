@@ -2,8 +2,6 @@ const Addons = ( _ => {
 
     let downloadPdf = _ => {
         let endpoint = window.location.href.split('#')[0].replace(
-            '/docs', '/api/export/docs'
-        ).replace(
             '/blog', '/api/export/blog'
         );
 
@@ -24,32 +22,8 @@ const Addons = ( _ => {
         });
     };
 
-    let qrCodeDownload = _ => {
-        const imageUrl = $('#qrCodePage').attr('src');
-        const link = document.createElement('a');
-
-        link.href = imageUrl;
-        link.download = `qrcode-${ Utils.getSlug() }.png`;
-        document.body.appendChild(link);
-
-        link.click();
-        document.body.removeChild(link);
-    };
-
-    let sourceCode = _ => {
-        let endpoint = window.location.href.split('#')[0] + '/raw';
-
-        if (endpoint.includes('/docs') || endpoint.includes('/blog')) {
-            fetch(endpoint).then(text => text.text()).then(content => {
-                $('#sourceCodePage').val(content)
-            });
-        }
-    };
-
     return {
-        sourceCode: _ => { return sourceCode() },
         downloadPdf: _ => { return downloadPdf() },
-        qrCodeDownload: _ => { return qrCodeDownload() },
     };
 
 })();
