@@ -33,7 +33,14 @@ def inject_route_home():
 @web.route('/')
 def home():
     return render_template(
-        'index.html', 
+        'projects.html', 
+        **MyBlog.common_template_args(),
+    ), 200
+ 
+@web.route('/blog')
+def blog():
+    return render_template(
+        'blog.html', 
         **MyBlog.common_template_args(),
         
         list_posts=Posts.list_posts(),
