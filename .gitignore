@@ -162,6 +162,7 @@ blg/
 .vercel
 
 # Ignore all docs files
+*.png
 *.pdf
 *.doc
 *.docx

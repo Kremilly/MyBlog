@@ -76,8 +76,6 @@ def post(post:str):
             **MyBlog.common_template_args(),
             
             html_content=Posts.get_post(post),
-            source_code=Posts.get_source_post(post),
-            
             url=MyBlog.get_url(),
             
             qrcode=PostsMeta.get(post, 'QrCode'),
