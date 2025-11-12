@@ -5,9 +5,7 @@ basic:
 social_media:
   - GitHub: 'https://github.com/kremilly'
   - Crates: 'https://crates.io/users/Kremilly'
-  - Leetcode: 'https://leetcode.com/kremilly'
-  - Exercism: 'https://exercism.org/profiles/kremilly'
-  - BlueSky: 'https://bsky.app/profile/kremilly.com'
+  - LinkedIn: 'https://www.linkedin.com/in/cesarcorreadasilva/'
 
 projects:
   - name: 'Linkscraper'

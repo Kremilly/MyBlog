@@ -71,6 +71,7 @@ class MyBlog:
             'external_css_libs': Load.css_cdn(),
             
             'github': Links.github_profile(),
+            'linkedin': Links.linkedin_profile(),
             'crates': Links.crates_profile(),
             
             'external_js_libs': Load.js_cdn(),
