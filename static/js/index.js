@@ -69,7 +69,8 @@ $( _ => {
         }
     }, 10);
 
-    if (window.location.pathname.split('/').filter(Boolean).pop() === 'blog') {
+    let lastPath = window.location.pathname.split('/').filter(Boolean).pop();
+    if (lastPath === 'blog' || lastPath === 'links') {
         $('#tocBoxBtn').hide();
     }
 

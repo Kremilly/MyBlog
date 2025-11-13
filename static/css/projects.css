@@ -123,6 +123,16 @@
     padding-right: var(--spacing-md);
 }
 
+.container-projects > .projects > .project > .langs > .lang > .lang-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    background-color: currentColor;
+    margin-right: var(--spacing-sm);
+}
+
 .container-projects > .projects > .project > .langs > .lang:hover {
     border-radius: var(--border-radius);
     animation: bg-color .5s ease-in-out forwards;

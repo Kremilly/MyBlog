@@ -91,7 +91,10 @@ const GitHub = ( _ => {
                 }
 
                 for (const lang of item.languages) {
-                    langs += `<div class="lang ${lang.toLowerCase()}">${lang}</div>`;
+                    langs += `<div class="lang">
+                        <div class='lang-color ${lang.toLowerCase()}'></div>
+                        ${ lang }
+                    </div>`;
                 }
 
                 if (item.home) {
