@@ -24,7 +24,7 @@ const GitHub = ( _ => {
                 for (const lang of item.languages) {
                     langs += `<div class="lang">
                         <div class='lang-color ${lang.toLowerCase()}'></div>
-                        ${ lang }
+                        <div class='lang-text'> ${ lang }</div>
                     </div>`;
                 }
 
