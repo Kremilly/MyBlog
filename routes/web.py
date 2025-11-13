@@ -73,7 +73,11 @@ def post(post:str):
 @web.route('/docs')
 def docs():
     return redirect('https://docs.kremilly.com', code=301)
-    
+
+@web.route('/docs/<api>')
+def doc(api:str):
+    return redirect(f'https://docs.kremilly.com/{api}', code=301)
+
 @web.route('/links')
 def links():
     return render_template(
@@ -87,7 +91,3 @@ def links():
         
         total_posts=Posts.count_posts(),
     ), 200
-
-@web.route('/docs/<api>')
-def doc(api:str):
-    return redirect(f'https://docs.kremilly.com/{api}', code=301)
