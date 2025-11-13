@@ -4,9 +4,6 @@ $( _ => {
     ScrollTo.checkScroll();
     Crates.countDownloads();
 
-    Stats.add();
-    Stats.get();
-
     YTC.init();
 
     Error404.posts();
