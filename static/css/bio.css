@@ -19,6 +19,39 @@
     box-shadow: var(--box-shadow);
 }
 
+.bio > .user > .name {
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-top: var(--spacing-sm);
+}
+
+.bio > .user > .name > strong {
+    font-weight: 600;
+    color: var(--color-github-note);
+}
+
+.bio > .user > .badge {
+    font-size: .7em;
+    font-weight: 700;
+    padding: .2em .6em;
+    display: inline-block;
+    box-shadow: var(--box-shadow);
+    margin-top: var(--spacing-sm);
+    background: var(--color-border);
+    color: var(--color-github-note);
+    border-radius: var(--border-radius);
+}
+
+.bio > .user > .bio {
+    font-size: .8em;
+}
+
+.bio > .user > .bio > strong {
+    font-weight: 600;
+    text-decoration: underline;
+    color: var(--color-github-note);
+}
+
 .bio > .bio {
     font-size: 1.1em;
     line-height: 1.6em;
