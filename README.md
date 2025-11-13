@@ -8,13 +8,6 @@
   <a href='https://vercel.com'><img src='https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white' /></a>
 </p>
 
-<p align='center'>
-  <a href='https://kremilly.com'>Home</a> | 
-  <a href='https://docs.kremilly.com/'>Documentation's</a> | 
-  <a href='https://kremilly.com/links'>Links</a> |
-  <a href='https://github.com/sponsors/Kremilly'>Sponsor-me</a>
-</p>
-
 <ul>
     <li>Python</li>
     <li>Flask</li>
