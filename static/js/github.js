@@ -16,11 +16,16 @@ const GitHub = ( _ => {
             $('#projectsList').empty();
 
             response.forEach(item => {
+                let tags = '';
+                for (const tag of item.tags) {
+                    tags += `<div class="tag ${tag.toLowerCase()}">${tag}</div>`;
+                }
+                
                 $('#projectsList').append(`
                     <a href='${item.url}' target='_blank' class='item project-item'>
                         ${item.name}
-                        <div class="lang ${item.languages[0].toLowerCase()}">${item.languages[0]}</div>
                         <div class='description'>${ item.description }</div>
+                        ${tags}
                     </a>
                 `);
             });
@@ -77,12 +82,49 @@ const GitHub = ( _ => {
             $('#reposListPage').empty();
 
             response.forEach(item => {
+                let tags = '';
+                let langs = '';
+                let home = '';
+            
+                for (const tag of item.tags) {
+                    tags += `<div class="tag">${tag}</div>`;
+                }
+
+                for (const lang of item.languages) {
+                    langs += `<div class="lang ${lang.toLowerCase()}">${lang}</div>`;
+                }
+
+                if (item.home) {
+                    home = `<a href='${ item.home }' class='button'>Home</a>`;
+                }
+
                 $('#reposListPage').append(`
-                    <a href="${item.url}" target='_blank' class="project">
+                    <div class="project">
                         <h2>${ item.name }</h2>
-                        <div class="lang ${item.languages[0].toLowerCase()}">${item.languages[0]}</div>
+                        <div class='stats'>
+                            <div class='item'>
+                                <div class='fas fa-star icon gold'></div>${ Utils.format(item.stars) + ' stars' }
+                            </div>
+                            
+                            <div class='item'>
+                                <div class='fas fa-code-fork icon silver'></div> ${ Utils.format(item.forks) + ' forks' }
+                            </div>
+                        </div>
+
+                        <div class='langs'>
+                            ${ langs }
+                        </div>
+
                         <p>${ item.description }</p>
-                    </a>
+                        <div class='tags'>
+                            ${ tags }
+                        </div>
+
+                        <div class='buttons'>
+                            <a href='${ item.url }' class='button'>Repository</a>
+                            ${ home }
+                        </div>
+                    </div>
                 `);
             });
         });
