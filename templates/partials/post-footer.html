@@ -1,17 +1,10 @@
 <div class='footer'>
     <div class='meta'>
         <div class='left'>
-            {% if post_files.total > 0 %}
-                <div class='footer-btn' id='postFilesBtn'>
-                    <div class='fas fa-paperclip'></div>
-                    <div class='text'>Files</div>
-                </div>
-            {% endif %}
-
-            {% if post_links.total > 0 %}
-                <div class='footer-btn' id='postLinksBtn'>
-                    <div class='fas fa-link'></div>
-                    <div class='text'>Links</div>
+            {% if post_export == 'enabled' or post_export == None %}
+                <div class='footer-btn' id='postDownloadPdfBtn'>
+                    <div class='fas fa-file-pdf icon'></div>
+                    <div class='text'>Download</div>
                 </div>
             {% endif %}
         </div>
@@ -21,13 +14,6 @@
                 <div class='fas fa-share icon'></div>
                 <div class='text'>Share</div>
             </div>
-
-            {% if post_export == 'enabled' or post_export == None %}
-                <div class='footer-btn' id='postDownloadPdfBtn'>
-                    <div class='fas fa-file-pdf icon'></div>
-                    <div class='text'>Download</div>
-                </div>
-            {% endif %}
         </div>
     </div>
 
@@ -65,28 +51,4 @@
             {% endfor %}
         </div>
     </div>
-
-    {% if post_links.total > 0 %}
-        <div class='box' id='postLinksBox'>
-            <div class='body'>
-                {% for link in post_links.list %}
-                    <a href='{{ link.url }}' target='_blank' class='list'>
-                        <img src='{{ link.favico }}' class='favicon' alt='icon' />
-                        {{ link.text }}
-                        <div class='fal fa-arrow-up-right-from-square'></div>
-                    </a>
-                {% endfor %}
-            </div>
-        </div>
-    {% endif %}
-
-    {% if post_files.total > 0 %}
-        <div class='box' id='postFilesBox'>
-            <div class='body'>
-                {% for file in post_files.list %}
-                    <a href='{{ file }}' target='_blank' class='list'>{{ file.split('/')[-1] }}</a>
-                {% endfor %}
-            </div>
-        </div>
-    {% endif %}
 </div>

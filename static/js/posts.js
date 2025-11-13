@@ -9,16 +9,6 @@ $( _ => {
         $('#postShareBox').slideToggle(250);
     });
 
-    $('#postFilesBtn').on('click', function () {
-        $(this).toggleClass('actived');
-        $('#postLinksBtn').removeClass('actived');
-        $('#postReadAlsoBtn').removeClass('actived');
-
-        $('#postLinksBox').hide();
-        $('#postReadAlsoBox').hide();
-        $('#postFilesBox').slideToggle(250);
-    });
-
     $('#postReadAlsoBtn').on('click', function () {
         $(this).toggleClass('actived');
         $('#postLinksBtn').removeClass('actived');
@@ -27,16 +17,6 @@ $( _ => {
         $('#postLinksBox').hide();
         $('#postFilesBox').hide();
         $('#postReadAlsoBox').slideToggle(250);
-    });
-
-    $('#postLinksBtn').on('click', function () {
-        $(this).toggleClass('actived');
-        $('#postFilesBtn').removeClass('actived');
-        $('#postReadAlsoBtn').removeClass('actived');
-
-        $('#postFilesBox').hide();
-        $('#postReadAlsoBox').hide();
-        $('#postLinksBox').slideToggle(250);
     });
 
     $('#postShareBoxInput').on('click', function () {

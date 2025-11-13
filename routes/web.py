@@ -54,13 +54,11 @@ def post(post:str):
             qrcode=PostsMeta.get(post, 'QrCode'),
             title='Blog > ' + PostsMeta.get_head_title(post),
             
-            post_links=Posts.list_links(post),
             post_date=PostsMeta.get_date(post),
             post_cover=PostCover.generate(post),
             post_title= PostsMeta.get_head_title(post),
             post_tags=PostsMeta.get_lists(post, 'tags'),
             post_read_time=PostsMeta.get_read_time(post),
-            post_files=PostsMeta.get_lists(post, 'files'),
             post_export=PostsMeta.get(post, 'DownloadPdf'),
             post_description=PostsMeta.get_description(post),
             post_posts_recommends=Posts.list_posts_recommends(post),

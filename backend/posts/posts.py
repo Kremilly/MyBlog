@@ -102,36 +102,6 @@ class Posts:
         return sorted(
             list_posts, key=lambda x: x['date']
         )[:5]
-    
-    @classmethod
-    def list_links(cls, post: str) -> dict:
-        list_links = []
-
-        file_path = FilesUtils.get_file_path(post, 'blog')
-        html_content = MDBuilder.render(
-            FilesUtils.read_content(file_path).content
-        )
-
-        soup = BeautifulSoup(html_content, 'html.parser')
-        links = soup.find_all('a')
-
-        for link in links:
-            href = link.get('href')
-            text = link.get_text(strip=True)
-
-            if href:
-                list_links.append({
-                    'url': href,
-                    'text': text,
-                    'favico': Links.get_favico(href, None),
-                })
-
-        unique_links = {link['url']: link for link in list_links}.values()
-
-        return {
-            'list': list(unique_links),
-            'total': len(unique_links),
-        }
         
     @classmethod
     def get_post(cls, file:str) -> str:
