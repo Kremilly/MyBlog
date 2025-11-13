@@ -103,10 +103,6 @@ def post(post:str):
         
     return abort(404)
 
-@web.route('/blog/<item>/raw')
-def source_item(item:str):
-    return Posts.get_source_post(item)
-
 @web.route('/docs/<api>')
 def doc(api:str):
     return redirect(f'https://docs.kremilly.com/{api}', code=301)
