@@ -85,6 +85,7 @@ def post(post:str):
             post_links=Posts.list_links(post),
             post_date=PostsMeta.get_date(post),
             post_cover=PostCover.generate(post),
+            post_title= PostsMeta.get_head_title(post),
             post_tags=PostsMeta.get_lists(post, 'tags'),
             post_read_time=PostsMeta.get_read_time(post),
             post_files=PostsMeta.get_lists(post, 'files'),
