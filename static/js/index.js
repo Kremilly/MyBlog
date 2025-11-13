@@ -37,23 +37,38 @@ $( _ => {
         GitHub.projects_page();
         Projects.projects_page();
 
-        $('#reposListPage').slideDown(250);
+        $('#featuredListPage').slideDown(250);
+        $('#reposListPage').slideToggle(250);
         $('#cratesListPage').slideToggle(250);
 
         $('#toggleReposListPage').on('click', function () {
             $(this).addClass('actived');
             $('#toggleCratesListPage').removeClass('actived');
+            $('#toggleFeaturedListPage').removeClass('actived');
 
             $('#cratesListPage').slideUp(250);
+            $('#featuredListPage').slideUp(250);
             $('#reposListPage').slideDown(250);
         });
 
         $('#toggleCratesListPage').on('click', function () {
             $(this).addClass('actived');
             $('#toggleReposListPage').removeClass('actived');
+            $('#toggleFeaturedListPage').removeClass('actived');
             
             $('#reposListPage').slideUp(250);
+            $('#featuredListPage').slideUp(250);
             $('#cratesListPage').slideDown(250);
+        });
+
+        $('#toggleFeaturedListPage').on('click', function () {
+            $(this).addClass('actived');
+            $('#toggleReposListPage').removeClass('actived');
+            $('#toggleCratesListPage').removeClass('actived');
+
+            $('#reposListPage').slideUp(250);
+            $('#cratesListPage').slideUp(250);
+            $('#featuredListPage').slideDown(250);
         });
     }
 
