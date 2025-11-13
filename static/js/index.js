@@ -37,15 +37,23 @@ $( _ => {
         GitHub.projects_page();
         Projects.projects_page();
 
-        $('#reposListPage').slideToggle(250);
+        $('#reposListPage').slideDown(250);
         $('#cratesListPage').slideToggle(250);
 
         $('#toggleReposListPage').on('click', function () {
-            $('#reposListPage').slideToggle(250);
+            $(this).addClass('actived');
+            $('#toggleCratesListPage').removeClass('actived');
+
+            $('#cratesListPage').slideUp(250);
+            $('#reposListPage').slideDown(250);
         });
 
         $('#toggleCratesListPage').on('click', function () {
-            $('#cratesListPage').slideToggle(250);
+            $(this).addClass('actived');
+            $('#toggleReposListPage').removeClass('actived');
+            
+            $('#reposListPage').slideUp(250);
+            $('#cratesListPage').slideDown(250);
         });
     }
 

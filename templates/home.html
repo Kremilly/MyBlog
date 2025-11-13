@@ -9,7 +9,6 @@
     <div class="bio">
         <div class="user">
             <img src="https://avatars.githubusercontent.com/u/24691979?v=4" alt="Profile Picture">
-
             <div class="name">Hi, I'm <strong>Kremilly</strong>! <div class='animate-wave'>👋</div></div>
             
             <div class="badge">Software Engineer</div>
@@ -25,18 +24,12 @@
     <div class="container-projects">
         <div class="projects" id="projectsListPage"></div>
 
-        <div class="label">
-            <a href='{{ github }}' target='_blank'>GitHub</a>
-            <div class="right" id="toggleReposListPage">Show/Hide</div>
+        <div class="tabs">
+            <div class="tabProjects actived" id="toggleReposListPage">GitHub</div>
+            <div class="tabProjects" id="toggleCratesListPage">Crates.io</div>
         </div>
 
         <div class="projects" id="reposListPage"></div>
-
-        <div class="label">
-            <a href='{{ crates }}' target='_blank'>Crates</a>
-            <div class="right" id="toggleCratesListPage">Show/Hide</div>
-        </div>
-        
         <div class="projects" id="cratesListPage"></div>
     </div>
     

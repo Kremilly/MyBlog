@@ -4,6 +4,31 @@
     margin-top: 20px;
 }
 
+.container-projects > .tabs {
+    gap: 10px;
+    display: flex;
+    margin-bottom: var(--spacing-md);
+}
+
+.container-projects > .tabs > .tabProjects {
+    display: flex;
+    color: inherit;
+    cursor: pointer;
+    font-weight: 600;
+    align-items: center;
+    text-decoration: none;
+    height: var(--header-size);
+    margin-top: var(--spacing-md);
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+    border-radius: var(--border-radius);
+}
+
+.container-projects > .tabs > .tabProjects:hover, .container-projects > .tabs > .actived {
+    border-radius: var(--border-radius);
+    animation: bg-color .5s ease-in-out forwards;
+}
+
 .container-projects > .label {
     width: 100%;
     outline: none;
@@ -29,8 +54,7 @@
     cursor: pointer;
 }
 
-.container-projects > .label > .right:hover, 
-.container-projects > .label > a:hover {
+.container-projects > .label > .right:hover, .container-projects > .label > a:hover {
     text-decoration: underline;
 }
 
