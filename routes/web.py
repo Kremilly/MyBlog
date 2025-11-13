@@ -25,7 +25,7 @@ def inject_route_home():
 @web.route('/')
 def home():
     return render_template(
-        'projects.html', 
+        'home.html', 
         **MyBlog.common_template_args(),
     ), 200
  
@@ -38,34 +38,6 @@ def blog():
         title='Blog',
         
         list_posts=Posts.list_posts(),
-        total_posts=Posts.count_posts(),
-    ), 200
-
-@web.route('/projects')
-def projects():
-    return render_template(
-        'projects.html', 
-        **MyBlog.common_template_args(),
-        
-        title='Projects',
-        total_posts=Posts.count_posts(),
-    ), 200
-    
-@web.route('/docs')
-def docs():
-    return redirect('https://docs.kremilly.com', code=301)
-    
-@web.route('/links')
-def links():
-    return render_template(
-        'links.html', 
-        **MyBlog.common_template_args(),
-        
-        title='Links',
-        
-        list_links=Links.list_links(),
-        social_media=Links.social_media(),
-        
         total_posts=Posts.count_posts(),
     ), 200
 
@@ -97,6 +69,24 @@ def post(post:str):
         ), 200
         
     return abort(404)
+    
+@web.route('/docs')
+def docs():
+    return redirect('https://docs.kremilly.com', code=301)
+    
+@web.route('/links')
+def links():
+    return render_template(
+        'links.html', 
+        **MyBlog.common_template_args(),
+        
+        title='Links',
+        
+        list_links=Links.list_links(),
+        social_media=Links.social_media(),
+        
+        total_posts=Posts.count_posts(),
+    ), 200
 
 @web.route('/docs/<api>')
 def doc(api:str):

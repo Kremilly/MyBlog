@@ -69,32 +69,8 @@ $( _ => {
         }
     }, 10);
 
-    if (pathParts.length > 0) {
-        switch (pathParts[1]) {
-            case '':
-            case 'blog':
-                $('#blog-tab-menu').addClass('actived');
-                break;
-
-            case 'docs':
-                $('#docs-tab-menu').addClass('actived');
-                break;
-
-            case 'projects':
-                $('#projects-tab-menu').addClass('actived');
-                break;
-
-            case 'links':
-                $('#links-tab-menu').addClass('actived');
-                break;
-
-            case 'projects':
-                $('#projects-tab-menu').addClass('actived');
-                break;
-
-            default:
-                break;
-        }
+    if (window.location.pathname.split('/').filter(Boolean).pop() === 'blog') {
+        $('#tocBoxBtn').hide();
     }
 
     $(window).on('scroll', ScrollTo.checkScroll);
@@ -106,14 +82,6 @@ $( _ => {
         
         $('#menuBoxToggleDocs').slideUp(250);
         $('#menuBoxTogglePages').slideDown(250);
-    });
-    
-    $('#menuBoxToggleDocsBtn').on('click', function () {
-        $(this).addClass('actived');
-        $('#menuBoxTogglePagesBtn').removeClass('actived');
-        
-        $('#menuBoxTogglePages').slideUp(250);
-        $('#menuBoxToggleDocs').slideDown(250);
     });
 
     $('#postsSearch').on('input', function () {
@@ -161,7 +129,6 @@ $( _ => {
         });
     });
 
-    $('#docsTabError404').on('click', Error404.docs);
     $('#blogTabError404').on('click', Error404.posts);
 
 });
