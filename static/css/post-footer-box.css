@@ -91,3 +91,9 @@
     display: block;
     line-height: 3em;
 }
+
+@media screen and (max-width: 600px) {
+    .post-content > .footer {
+        margin-bottom: var(--spacing-lg) !important;
+    }
+}
