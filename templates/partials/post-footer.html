@@ -10,10 +10,14 @@
         </div>
 
         <div class='right'>
-            <div class='footer-btn' id='postShareBtn'>
-                <div class='fas fa-share icon'></div>
-                <div class='text'>Share</div>
-            </div>
+            <div class='footer-btn'>
+                <a data-sharer='email' data-title='{{ title }}' data-url='{{ url }}' title='Send via email' class='fal fa-envelope'></a>
+                <a data-sharer='facebook' data-title='{{ title }}' data-url='{{ url }}' title='Share on Facebook' class='fab fa-facebook'></a>
+                <a data-sharer='twitter' data-title='{{ title }}' data-url='{{ url }}' title='Share on X (Twitter)' class='fab fa-x-twitter'></a>
+                <a data-sharer='linkedin' data-title='{{ title }}' data-url='{{ url }}' title='Share on LinkedIn' class='fab fa-linkedin'></a>
+                <a data-sharer='whatsapp' data-title='{{ title }}' data-url='{{ url }}' title='Share on WhatsApp' class='fab fa-whatsapp'></a>
+                <a data-sharer='telegram' data-title='{{ title }}' data-url='{{ url }}' title='Share on Telegram' class='fab fa-telegram'></a>
+            </div> 
         </div>
     </div>
 
