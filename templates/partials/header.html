@@ -2,9 +2,10 @@
     <a href='{{ url_root }}' class='logo'></a>
     
     <div class='nav'>
-        <a href='{{ url_root }}' class='menu' id='posts-tab-menu'>Home</a>
-        <a href='{{ url_root }}/blog' class='menu' id='posts-tab-menu'>Blog</a>
-        <a href='https://docs.kremilly.com' class='menu' id='posts-tab-menu'>Docs</a>
+        
+        <a href='{{ url_root }}' class='menu {% if is_home == True %}actived{% endif %}' id='posts-tab-menu'>Home</a>
+        <a href='{{ url_root }}/blog' class='menu {% if is_home != True %}actived{% endif %}' id='posts-tab-menu'>Blog</a>
+        <a href='https://docs.kremilly.com' class='menu' id='docs-tab-menu'>Docs</a>
 
         <a href='{{ github }}' class='tab' id='github-tab-menu'>
             <div class='fab fa-github icon'></div>
