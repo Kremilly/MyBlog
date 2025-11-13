@@ -1,37 +1,33 @@
 <article class='post-content'>
-    {% if is_post %}
-        <div class='cover'>
-            <img src="{{ post_cover }}" alt="" srcset="">
-        </div>
-    {% endif %}
+    <div class='cover'>
+        <img src="{{ post_cover }}" alt="" srcset="">
+    </div>
     
     <div class='header'>
         <a href='{{ post_url }}'>{{ title }}</a>
 
-        {% if is_post %}
-            <div class='meta'>
-                <div class='author'>{{ post_author }}</div>
+        <div class='meta'>
+            <div class='author'>{{ post_author }}</div>
 
-                <div class='item'>
-                    <div class='fas fa-clock icon'></div>
-                    {{ post_read_time }}
-                </div>
-
-                <div class='item' id='stats-post'></div>
-
-                <div class='date'>
-                    <div class='fas fa-calendar icon'></div>
-                    {{ post_date }}
-                </div>
+            <div class='item'>
+                <div class='fas fa-clock icon'></div>
+                {{ post_read_time }}
             </div>
-        {% endif %}
+
+            <div class='item' id='stats-post'></div>
+
+            <div class='date'>
+                <div class='fas fa-calendar icon'></div>
+                {{ post_date }}
+            </div>
+        </div>
     </div>
 
     <div class='content'>
         {{ html_content }}
     </div>
 
-    {% if is_post and post_tags.total > 0 %}
+    {% if post_tags.total > 0 %}
         <div class='tags glass-effect'>
             {% for tag in post_tags.list %}
                 <a href='{{ url_root + "?q=" + tag }}' class='tag'>{{ tag }}</a>

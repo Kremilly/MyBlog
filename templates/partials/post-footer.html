@@ -1,14 +1,14 @@
 <div class='footer'>
     <div class='meta'>
         <div class='left'>
-            {% if is_post and post_files.total > 0 %}
+            {% if post_files.total > 0 %}
                 <div class='footer-btn' id='postFilesBtn'>
                     <div class='fas fa-paperclip'></div>
                     <div class='text'>Files</div>
                 </div>
             {% endif %}
 
-            {% if is_post and post_links.total > 0 %}
+            {% if post_links.total > 0 %}
                 <div class='footer-btn' id='postLinksBtn'>
                     <div class='fas fa-link'></div>
                     <div class='text'>Links</div>
@@ -55,20 +55,18 @@
         </div>
     </div>
 
-    {% if is_post %}
-        <div class='box glass-effect' id='postReadAlsoBox'>
-            <div class='body'>
-                {% for post in post_posts_recommends %}
-                    <a href='{{ post.url }}' class='list'>
-                        {{ post.title }}
-                        <div class='right'>{{ post.date }}</div>
-                    </a>
-                {% endfor %}
-            </div>
+    <div class='box glass-effect' id='postReadAlsoBox'>
+        <div class='body'>
+            {% for post in post_posts_recommends %}
+                <a href='{{ post.url }}' class='list'>
+                    {{ post.title }}
+                    <div class='right'>{{ post.date }}</div>
+                </a>
+            {% endfor %}
         </div>
-    {% endif %}
+    </div>
 
-    {% if is_post and post_links.total > 0 %}
+    {% if post_links.total > 0 %}
         <div class='box' id='postLinksBox'>
             <div class='body'>
                 {% for link in post_links.list %}
@@ -82,7 +80,7 @@
         </div>
     {% endif %}
 
-    {% if is_post and post_files.total > 0 %}
+    {% if post_files.total > 0 %}
         <div class='box' id='postFilesBox'>
             <div class='body'>
                 {% for file in post_files.list %}
