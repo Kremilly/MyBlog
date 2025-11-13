@@ -15,14 +15,6 @@ def inject_route_name():
     return MyBlog.get_current_route()
 
 @web.context_processor
-def inject_route_post():
-    return MyBlog.check_if_post()
-
-@web.context_processor
-def inject_route_doc_post():
-    return MyBlog.check_if_doc_post()
-
-@web.context_processor
 def inject_route_links_post():
     return MyBlog.check_if_links()
 
@@ -42,6 +34,8 @@ def blog():
     return render_template(
         'blog.html', 
         **MyBlog.common_template_args(),
+        
+        title='Blog',
         
         list_posts=Posts.list_posts(),
         total_posts=Posts.count_posts(),
@@ -86,7 +80,7 @@ def post(post:str):
             url=MyBlog.get_url(),
             
             qrcode=PostsMeta.get(post, 'QrCode'),
-            title=PostsMeta.get_head_title(post),
+            title='Blog > ' + PostsMeta.get_head_title(post),
             
             post_links=Posts.list_links(post),
             post_date=PostsMeta.get_date(post),

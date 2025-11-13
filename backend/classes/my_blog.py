@@ -15,16 +15,6 @@ class MyBlog:
         return request.url
     
     @classmethod
-    def check_if_blog(cls):
-        is_blog = 'blog' in cls.get_path()
-        return dict(is_blog=is_blog)
-    
-    @classmethod
-    def check_if_docs(cls):
-        is_docs = 'docs' in cls.get_path()
-        return dict(is_docs=is_docs)
-    
-    @classmethod
     def check_if_home(cls):
         is_home = cls.get_path() == '/'
         return dict(is_home=is_home)
@@ -71,8 +61,8 @@ class MyBlog:
             'external_css_libs': Load.css_cdn(),
             
             'github': Links.github_profile(),
-            'linkedin': Links.linkedin_profile(),
             'crates': Links.crates_profile(),
+            'linkedin': Links.linkedin_profile(),
             
             'external_js_libs': Load.js_cdn(),
             'internal_js_libs': Load.js('src'),
