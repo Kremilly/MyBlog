@@ -51,7 +51,6 @@ def post(post:str):
             html_content=Posts.get_post(post),
             url=MyBlog.get_url(),
             
-            qrcode=PostsMeta.get(post, 'QrCode'),
             title='Blog > ' + PostsMeta.get_head_title(post),
             
             post_date=PostsMeta.get_date(post),
